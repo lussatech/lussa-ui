@@ -1,0 +1,27 @@
+{
+  "name": "tarsius-ui",
+  "version": "0.0.1",
+  "description": "Responsive , Mobile-First front-End Frameworks for angular-based project on lussa team",
+  "keywords": [
+    "css",
+    "js",
+    "less",
+    "angular",
+    "cordova",
+    "mobile-first",
+    "responsive",
+    "front-end",
+    "framework",
+    "web"
+  ],
+  "homepage": "http://lussa-ui.lussa.net",
+  "license": "MIT",
+  "private": true,
+  "moduleType": "globals",
+  "dependencies": {
+    "jquery": "latest",
+    "jquery-easing-original": "latest",
+    "jquery-hoverIntent": "~1.8.1",
+    "jquery-cycle2": "~2.1.6",
+  }
+}

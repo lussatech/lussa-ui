@@ -1,0 +1,23 @@
+{
+  "name": "tarsius-ui",
+  "description": "Responsive, Mobile-First, Front-End Frameworks for Angular-Based App on Lussa Team",
+  "version": "0.0.1",
+  "homepage": "http://git.lussa.net/tarsius/tarsius-ui",
+  "repository": {
+    "type": "git",
+    "url": "http://git.lussa.net/tarsius/tarsius-ui"
+  },
+  "bugs": {
+    "url": "http://git.lussa.net/tarsius/tarsius-ui/issues"
+  },
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "test": "grunt test"
+  },
+  "engines": {
+    "node": ">=0.10.1"
+  },
+  "devDependencies": {
+  }
+}
