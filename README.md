@@ -2,6 +2,8 @@
 
 ----------
 
+[![build status](http://ci.lussa.net/projects/6/status.png?ref=master)](http://ci.lussa.net/projects/6?ref=master)
+
 Responsive, Mobile-First, Front-End Frameworks for Angular-Based App on Lussa Team, mainly on Tarsius-based projects. For Documentation reads the [wiki](http://git.lussa.net/tarsius/tarsius-ui/wikis/home "tarsius docs") or the Docs section.
 
 ## Test 
