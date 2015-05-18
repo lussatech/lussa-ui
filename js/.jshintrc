@@ -4,7 +4,7 @@
     "angular": true,
     "_": true,
     "module": true,
-    "console": true,
+    "console": true
   },
   "globalstrict": false,
   "quotmark": false,
