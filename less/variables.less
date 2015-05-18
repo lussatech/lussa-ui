@@ -1,0 +1,120 @@
+/**
+ * Variables
+ * ## Default Variable, Costumizable using themes file
+ * ==========================================================================
+ */
+
+/**
+ * Color
+ * ## text accent
+ */
+
+// By Translucency
+@accent-neutral: #88572C;
+@accent-dark: darken(@accent-neutral, 50%);
+@accent-light: lighten(@accent-neutral, 50%);
+@accent-soft: lighten(@accent-neutral, 10%);
+
+// By Contrast
+@accent-vibrant: #FFC926;
+@accent-clear: #FFFFFF;
+
+// By Context
+@accent-primary: #88572C;
+@accent-success: #349B02;
+@accent-info: #999999;
+@accent-warning: #F9FE34;
+@accent-error: #FF0000;
+
+// Global Accent
+@body-bg: @accent-clear;
+@text-color: @accent-primary;
+@link-color: @accent-primary;
+@link-hover-color: darken(@link-color, 15%);
+@link-hover-decoration: underline;
+
+/**
+ * Typography
+ * ## text font family
+ */
+// Font family
+@font-family-base: arial;
+@font-family-alternative-1: 'OpenSans Light';
+@font-family-alternative-2: 'OpenSans Regular';
+@font-family-alternative-3: 'georgia';
+
+// Heading font size
+@font-size-base: 13px;
+@font-size-large: ceil((@font-size-base * 1.25));
+@font-size-small: ceil((@font-size-base * 0.85));
+
+@font-size-h1: floor((@font-size-base * 2.6));
+@font-size-h2: floor((@font-size-base * 2.15));
+@font-size-h3: ceil((@font-size-base * 1.7));
+@font-size-h4: ceil((@font-size-base * 1.25));
+@font-size-h5: @font-size-base;
+@font-size-h6: ceil((@font-size-base * 0.85));
+
+// Unit-less `line-height` for use in components like buttons.
+@line-height-base:        1.428571429; // 20/14
+//Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
+@line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px
+
+// default heading
+@headings-font-family:    inherit;
+@headings-font-weight:    500;
+@headings-line-height:    1.1;
+@headings-color:          inherit;
+
+// Heading Variant
+@headings-large-font-family: @font-family-alternative-1;
+@headings-large-font-weight: light;
+@headings-large-line-height: 1.2;
+@headings-large-letter-spacing: 0.2em;
+
+@headings-medium-font-family: @font-family-alternative-2;
+@headings-medium-font-weight: normal;
+@headings-medium-line-height: 1.4;
+@headings-medium-letter-spacing: 0.1em;
+
+@headings-small-font-family: @font-family-alternative-3;
+@headings-small-font-weight: normal;
+@headings-small-line-height: 1.1;
+@headings-small-letter-spacing: 0;
+
+/**
+ * Iconography
+ * ## icon font & default sprite
+ */
+
+/**
+ * Component
+ * ## Componens stuff like padding, margin & border radius
+ */
+
+/**
+ * Tables
+ * ## default table sizing & stuff
+ */
+
+/**
+ * Button
+ * ## Button accent, size variant & accent
+ */
+
+/**
+ * Form
+ * ## input, textarea, autocomplete, tags style
+ */
+
+/**
+ * Z-Index
+ * ## z-index master contorol list
+ */
+
+/**
+ * Grid
+ * ## Spesify grid size for mobile, desktop, container max size & stuff
+ */
+
+

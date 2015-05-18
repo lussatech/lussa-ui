@@ -1,0 +1,287 @@
+/**
+ * Grid
+ * ## Using LESS version of nicooprat porting from unsemantic grid system
+ * ## https://gist.github.com/nicooprat/7200266
+ * ## https://github.com/nathansmith/unsemantic/issues/4
+ * ==========================================================================
+ */
+
+
+// -------------------
+// Vars
+// -------------------
+
+
+@tablet-breakpoint: 520px;
+@desktop-breakpoint: 780px;
+
+@desktop: ~"(min-width: @{desktop-breakpoint})";
+@tablet: ~"(min-width: @{tablet-breakpoint}) and (max-width: @{desktop-breakpoint})";
+@mobile: ~"(max-width: @{tablet-breakpoint})";
+
+@max-width: 1200px;
+@min-width: 320px;
+
+@grid-gutter: 20px;
+@grid-gutter-half: @grid-gutter/2;
+
+
+
+// -------------------
+// Miscellaneous
+// -------------------
+
+
+
+@media screen and (max-width: 400px) {
+    @-ms-viewport {
+        width: @min-width;
+    }
+}
+
+body {
+    min-width: @min-width;
+}
+
+
+
+// -------------------
+// Common
+// -------------------
+
+
+.grid-container:before, .clearfix:before,
+.grid-container:after,
+.clearfix:after {
+    content: ".";
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    font-size: 0;
+    line-height: 0;
+    width: 0;
+    height: 0;
+}
+
+.grid-container:after, .clearfix:after {
+    clear: both;
+}
+
+.grid-container, .clearfix {
+}
+
+.grid-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: @max-width;
+    padding-left: @grid-gutter/2;
+    padding-right: @grid-gutter/2;
+}
+
+
+
+// -------------------
+// Mixins
+// -------------------
+
+
+
+.make-grid(@width) {
+    float: left;
+    width: (1% * @width);
+}
+
+.make-pull(@offset) {
+    position: relative;
+    left: -(1% * @offset);
+}
+
+.make-push(@offset) {
+    position: relative;
+    left: (1% * @offset);
+}
+
+.make-prefix(@offset) {
+    margin-left: (1% * @offset);
+}
+
+.make-suffix(@offset) {
+    margin-right: (1% * @offset);
+}
+
+
+// -------------------
+// Loop
+// -------------------
+
+
+
+.loop (@index,@step) when (@index > 0) {
+
+    // Current value
+    @i: @index * @step;
+
+    @media @desktop {
+        .grid-@{i} { .make-grid(@i); }
+        .pull-@{i} { .make-pull(@i); }
+        .push-@{i} { .make-push(@i); }
+        .prefix-@{i} { .make-prefix(@i); }
+        .suffix-@{i} { .make-suffix(@i); }
+    }
+
+    @media @tablet {
+        .tablet-grid-@{i} { .make-grid(@i); }
+        .tablet-pull-@{i} { .make-pull(@i); }
+        .tablet-push-@{i} { .make-push(@i); }
+        .tablet-prefix-@{i} { .make-prefix(@i); }
+        .tablet-suffix-@{i} { .make-suffix(@i); }
+    }
+
+    @media @mobile {
+        .mobile-grid-@{i} { .make-grid(@i); }
+        .mobile-pull-@{i} { .make-pull(@i); }
+        .mobile-push-@{i} { .make-push(@i); }
+        .mobile-prefix-@{i} { .make-prefix(@i); }
+        .mobile-suffix-@{i} { .make-suffix(@i); }
+    }
+
+    // Recursive
+    .loop (@index - 1,@step);
+}
+
+// 5% --> 95%
+.loop (19,5);
+
+// 33% & 66%
+.loop (2,33);
+
+
+
+// -------------------
+// Width specific
+// -------------------
+
+
+
+@media @desktop {
+
+    .hide-on-desktop {
+        display: none;
+    }
+
+    [class*=" grid-"] , [class^="grid-"] {
+        min-height: 1px;
+        .box-sizing(border-box);
+        padding-left: @grid-gutter/2;
+        padding-right: @grid-gutter/2;
+    }
+
+    [class*=" grid-parent"] , [class^="grid-parent"] {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    [class*=" grid-100"] , [class^="grid-100"] {
+        float: left;
+        width: 100%;
+        clear: both;
+
+        &:before,
+        &:after {
+            content: ".";
+            display: block;
+            overflow: hidden;
+            visibility: hidden;
+            font-size: 0;
+            line-height: 0;
+            width: 0;
+            height: 0;
+        }
+
+        &:after {
+            clear: both;
+        }
+    }
+}
+
+@media @tablet {
+
+    .hide-on-tablet {
+        display: none;
+    }
+
+    [class*=" tablet-grid-"] , [class^="tablet-grid-"] {
+        min-height: 1px;
+        .box-sizing(border-box);
+        padding-left: @grid-gutter/2;
+        padding-right: @grid-gutter/2;
+    }
+
+    [class*=" tablet-grid-parent"] , [class^="tablet-grid-parent"] {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    [class*=" tablet-grid-100"] , [class^="tablet-grid-100"] {
+        float: left;
+        width: 100%;
+        clear: both;
+
+        &:before,
+        &:after {
+            content: ".";
+            display: block;
+            overflow: hidden;
+            visibility: hidden;
+            font-size: 0;
+            line-height: 0;
+            width: 0;
+            height: 0;
+        }
+
+        &:after {
+            clear: both;
+        }
+    }
+}
+
+@media @mobile {
+
+    .hide-on-mobile {
+        display: none;
+    }
+
+    [class*=" mobile-grid-"] , [class^="mobile-grid-"] {
+        min-height: 1px;
+        .box-sizing(border-box);
+        padding-left: @grid-gutter/2;
+        padding-right: @grid-gutter/2;
+    }
+
+    [class*=" mobile-grid-parent"] , [class^="mobile-grid-parent"] {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    [class*=" mobile-grid-100"] , [class^="mobile-grid-100"] {
+        float: left;
+        width: 100%;
+        clear: both;
+
+        &:before,
+        &:after {
+            content: ".";
+            display: block;
+            overflow: hidden;
+            visibility: hidden;
+            font-size: 0;
+            line-height: 0;
+            width: 0;
+            height: 0;
+        }
+
+        &:after {
+            clear: both;
+        }
+    }
+}

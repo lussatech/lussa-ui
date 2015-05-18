@@ -14,23 +14,10 @@ module.exports = function(grunt) {
         // jshint
         jshint: {
             options: {
-                "browser": true,
-                "globals": {
-                    "angular": true,
-                    "_": true,
-                    "module": true,
-                    "console": true,
-                },
-                "globalstrict": true,
-                "quotmark": false,
-                "undef": true,
-                "unused": false,
-                "shadow": true,
-                "jquery": true,
-                "node": true
+                jshintrc: 'js/.jshintrc'
             },
             beforeconcat: ['Gruntfile.js', 'js/**/*.js', 'test/**/*.js'],
-            afterconcat: ['dist/<%= pkg.name %>.js']
+            afterconcat: ['dist/js/<%= pkg.name %>.js']
         },
 
         // file watcher
@@ -50,7 +37,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 src: ['js/**/*.js'],
-                dest: 'dist/<%= pkg.name %>.js'
+                dest: 'dist/js/<%= pkg.name %>.js'
             }
         },
 
@@ -61,8 +48,45 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+                    'dist/js/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
                 }
+            }
+        },
+
+        // compile less
+        less: {
+            dist: {
+                options: {
+                    sourceMap: true,
+                    outputSourceFiles: true,
+                    sourceMapURL: '<%= pkg.name %>.css.map',
+                    sourceMapFilename: 'dist/css/<%= pkg.name %>.css.map'
+                },
+                src: 'less/main.less',
+                dest: 'dist/css/<%= pkg.name %>.css'
+            }
+        },
+
+        // linting css
+        csslint: {
+            options: {
+                csslintrc: 'less/.csslintrc'
+            },
+            dist: [
+                'dist/css/<%= pkg.name %>.css'
+            ],
+        },
+
+        // minified css
+        cssmin: {
+            options: {
+                compatibility: 'ie8',
+                keepSpecialComments: '*',
+                advanced: false
+            },
+            dist: {
+                src: 'dist/css/<%= pkg.name %>.css',
+                dest: 'dist/css/<%= pkg.name %>.min.css'
             }
         }
     });
@@ -70,15 +94,46 @@ module.exports = function(grunt) {
     // load tasks
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    // grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-csslint');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
     // register tasks
-    // test
-    grunt.registerTask('test',['jshint:beforeconcat','concat:dist','jshint:afterconcat']);
-    // deploy
-    grunt.registerTask('dist',['jshint:beforeconcat','concat:dist','jshint:afterconcat','uglify:dist']);
+
+    // JS test
+    grunt.registerTask('js-test', [
+        'jshint:beforeconcat',
+        'concat:dist',
+        'jshint:afterconcat'
+    ]);
+    // JS Deploy
+    grunt.registerTask('js-dist', [
+        'jshint:beforeconcat',
+        'concat:dist',
+        'jshint:afterconcat',
+        'uglify:dist'
+    ]);
+
+    // CSS test
+    grunt.registerTask('css-test', [
+        'less:dist',
+        'csslint:dist'
+    ]);
+    // CSS deploy
+    grunt.registerTask('css-dist', [
+        'less:dist',
+        'csslint:dist',
+        'cssmin:dist'
+    ]);
+
+    // Overall Test
+    grunt.registerTask('test',['js-test','css-test']);
+
+    // Overall Dist
+    grunt.registerTask('dist',['js-dist','css-dist']);
+
     // default
     grunt.registerTask('default',['dist']);
 };
