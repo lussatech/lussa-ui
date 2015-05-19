@@ -86,11 +86,35 @@
  * Iconography
  * ## icon font & default sprite
  */
+@icon-font-path: "../fonts/";
+@icon-font-name: "linea";
+@icon-font-svg-id: "linea";
 
 /**
  * Component
  * ## Componens stuff like padding, margin & border radius
  */
+@padding-base-vertical:     6px;
+@padding-base-horizontal:   12px;
+
+@padding-large-vertical:    10px;
+@padding-large-horizontal:  16px;
+
+@padding-small-vertical:    5px;
+@padding-small-horizontal:  10px;
+
+@padding-xs-vertical:       1px;
+@padding-xs-horizontal:     5px;
+
+@padding-xl-vertical:       15px;
+@padding-xl-horizontal:     80px;
+
+@line-height-large:         1.3333333; // extra decimals for Win 8.1 Chrome
+@line-height-small:         1.5;
+
+@border-radius-base:        5px;
+@border-radius-large:       8px;
+@border-radius-small:       3px;
 
 /**
  * Tables
@@ -101,11 +125,45 @@
  * Button
  * ## Button accent, size variant & accent
  */
+@button-font-weight:                normal;
+
+@button-default-color:              @accent-dark;
+@button-default-bg:                 @accent-clear;
+@button-default-border:             @accent-soft;
+
+@button-primary-color:              #fff;
+@button-primary-bg:                 @accent-primary;
+@button-primary-border:             darken(@button-primary-bg, 5%);
+
+@button-success-color:              #fff;
+@button-success-bg:                 @accent-success;
+@button-success-border:             darken(@button-success-bg, 5%);
+
+@button-info-color:                 #fff;
+@button-info-bg:                    @accent-info;
+@button-info-border:                darken(@button-info-bg, 5%);
+
+@button-warning-color:              #fff;
+@button-warning-bg:                 @accent-warning;
+@button-warning-border:             darken(@button-warning-bg, 5%);
+
+@button-error-color:               #fff;
+@button-error-bg:                  @accent-error;
+@button-error-border:              darken(@button-error-bg, 5%);
+
+@button-link-disabled-color:        @accent-light;
+
+// Allows for customizing button radius independently from global border radius
+@button-border-radius-base:         @border-radius-base;
+@button-border-radius-large:        @border-radius-large;
+@button-border-radius-small:        @border-radius-small;
 
 /**
  * Form
  * ## input, textarea, autocomplete, tags style
  */
+
+@cursor-disabled: not-allowed;
 
 /**
  * Z-Index

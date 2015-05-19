@@ -4,19 +4,161 @@
  * ==========================================================================
  */
 
+
 /**
  * Base Style
  */
+.button {
+  display: inline-block;
+  margin-bottom: 0; // For input.button
+  font-weight: @button-font-weight;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @button-border-radius-base);
+  .user-select(none);
+
+  &,
+  &:active,
+  &.active {
+    &:focus,
+    &.focus {
+      .tab-focus();
+    }
+  }
+
+  &:hover,
+  &:focus,
+  &.focus {
+    color: @button-default-color;
+    text-decoration: none;
+  }
+
+  &:active,
+  &.active {
+    outline: 0;
+    background-image: none;
+    .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: @cursor-disabled;
+    .opacity(.65);
+    .box-shadow(none);
+  }
+
+  a& {
+    &.disabled,
+    fieldset[disabled] & {
+      pointer-events: none; // Future-proof disabling of clicks on `<a>` elements
+    }
+  }
+}
 
 /**
  * Link Button
  */
 
+// Make a button look and behave like a link
+.button-link {
+  color: @link-color;
+  font-weight: normal;
+  border-radius: 0;
+
+  &,
+  &:active,
+  &.active,
+  &[disabled],
+  fieldset[disabled] & {
+    background-color: transparent;
+    .box-shadow(none);
+  }
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    border-color: transparent;
+  }
+  &:hover,
+  &:focus {
+    color: @link-hover-color;
+    text-decoration: @link-hover-decoration;
+    background-color: transparent;
+  }
+  &[disabled],
+  fieldset[disabled] & {
+    &:hover,
+    &:focus {
+      color: @button-link-disabled-color;
+      text-decoration: none;
+    }
+  }
+}
+
 /**
  *  Accent
  */
+.button-default {
+  .button-variant(@button-default-color; @button-default-bg; @button-default-border);
+}
+.button-primary {
+  .button-variant(@button-primary-color; @button-primary-bg; @button-primary-border);
+}
+.button-success {
+  .button-variant(@button-success-color; @button-success-bg; @button-success-border);
+}
+.button-info {
+  .button-variant(@button-info-color; @button-info-bg; @button-info-border);
+}
+.button-warning {
+  .button-variant(@button-warning-color; @button-warning-bg; @button-warning-border);
+}
+.button-error {
+  .button-variant(@button-error-color; @button-error-bg; @button-error-border);
+}
 
 /**
  *  Sizing
  */
+.button-large {
+  .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @button-border-radius-large);
+}
+.button-small {
+  .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @button-border-radius-small);
+}
+.button-xs {
+  .button-size(@padding-xs-vertical; @padding-xs-horizontal; @font-size-small; @line-height-small; @button-border-radius-small);
+}
+.button-xl {
+  .button-size(@padding-xl-vertical; @padding-xl-horizontal; @font-size-large; @line-height-large; @button-border-radius-large);
+}
 
+/**
+ * Variants
+ */
+
+// Block button
+.button-block {
+  display: block;
+  width: 100%;
+}
+
+// Vertically space out multiple block buttons
+.button-block + .button-block {
+  margin-top: 5px;
+}
+
+// Specificity overrides
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  &.button-block {
+    width: 100%;
+  }
+}
