@@ -39,9 +39,12 @@
  */
 // Font family
 @font-family-base: arial;
-@font-family-alternative-1: 'OpenSans Light';
-@font-family-alternative-2: 'OpenSans Regular';
+@font-family-alternative-1: 'open_sanslight';
+@font-family-alternative-2: 'open_sansregular';
 @font-family-alternative-3: 'georgia';
+
+// custom fonts
+@font-path: '../fonts';
 
 // Heading font size
 @font-size-base: 13px;
@@ -150,23 +153,23 @@
 @button-default-bg:                 @accent-clear;
 @button-default-border:             @accent-soft;
 
-@button-primary-color:              #fff;
+@button-primary-color:              @accent-clear;
 @button-primary-bg:                 @accent-primary;
 @button-primary-border:             darken(@button-primary-bg, 5%);
 
-@button-success-color:              #fff;
+@button-success-color:              @accent-clear;
 @button-success-bg:                 @accent-success;
 @button-success-border:             darken(@button-success-bg, 5%);
 
-@button-info-color:                 #fff;
+@button-info-color:                 @accent-clear;
 @button-info-bg:                    @accent-info;
 @button-info-border:                darken(@button-info-bg, 5%);
 
-@button-warning-color:              #fff;
+@button-warning-color:              @accent-clear;
 @button-warning-bg:                 @accent-warning;
 @button-warning-border:             darken(@button-warning-bg, 5%);
 
-@button-error-color:               #fff;
+@button-error-color:               @accent-clear;
 @button-error-bg:                  @accent-error;
 @button-error-border:              darken(@button-error-bg, 5%);
 
@@ -202,7 +205,7 @@
 @form-group-margin-bottom:       15px;
 
 @legend-color:                   @accent-dark;
-@legend-border-color:            #e5e5e5;
+@legend-border-color:            @accent-light;
 
 @input-group-addon-bg:           @accent-light;
 @input-group-addon-border-color: @input-border;
@@ -231,20 +234,21 @@
 * ## for forms & alert
 */
 
-@state-success-text:             #3c763d;
-@state-success-bg:               #dff0d8;
+@state-success-text:             darken(@accent-success,50);
+@state-success-bg:               lighten(@accent-success,50);
 @state-success-border:           darken(spin(@state-success-bg, -10), 5%);
 
-@state-info-text:                #31708f;
-@state-info-bg:                  #d9edf7;
+@state-info-text:                darken(@accent-info,50);
+@state-info-bg:                  lighten(@accent-info,50);
 @state-info-border:              darken(spin(@state-info-bg, -10), 7%);
 
-@state-warning-text:             #8a6d3b;
-@state-warning-bg:               #fcf8e3;
+@state-warning-text:             darken(@accent-warning,50);
+@state-warning-bg:               lighten(@accent-warning,50);
 @state-warning-border:           darken(spin(@state-warning-bg, -10), 5%);
 
-@state-danger-text:              #a94442;
-@state-danger-bg:                #f2dede;
+@state-error-text:              darken(@accent-error,50);
+@state-error-bg:                lighten(@accent-error,50);
+@state-error-border:            darken(spin(@state-error-bg, -10), 5%);
 
 /**
  * Z-Index
