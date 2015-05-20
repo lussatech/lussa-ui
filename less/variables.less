@@ -56,9 +56,8 @@
 @font-size-h6: ceil((@font-size-base * 0.85));
 
 // Unit-less `line-height` for use in components like buttons.
-@line-height-base:        1.428571429; // 20/14
-//Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
-@line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px
+@line-height-base:        1.428571429;
+@line-height-computed:    floor((@font-size-base * @line-height-base));
 
 // default heading
 @headings-font-family:    inherit;
@@ -82,13 +81,21 @@
 @headings-small-line-height: 1.1;
 @headings-small-letter-spacing: 0;
 
+// type
+@component-offset-horizontal: 180px;
+@text-muted:                  @accent-light;
+@dl-horizontal-offset:        @component-offset-horizontal;
+
+// hr accent
+@hr-border:                   @accent-light;
+
 /**
  * Iconography
  * ## icon font & default sprite
  */
-@icon-font-path: "../fonts/";
-@icon-font-name: "linea";
-@icon-font-svg-id: "linea";
+@icon-font-path: "../fonts";
+@icon-font-prefix: icon-;
+@icon-base-class: ionicon;
 
 /**
  * Component
@@ -120,6 +127,18 @@
  * Tables
  * ## default table sizing & stuff
  */
+@table-cell-padding:            8px;
+@table-condensed-cell-padding:  5px;
+
+@table-bg:                      transparent;
+// Background color used for `.table-striped`.
+@table-bg-accent:               #f9f9f9;
+// Background color used for `.table-hover`.
+@table-bg-hover:                #f5f5f5;
+@table-bg-active:               @table-bg-hover;
+// Border color for table and cell borders.
+@table-border-color:            #ddd;
+
 
 /**
  * Button
@@ -159,20 +178,95 @@
 @button-border-radius-small:        @border-radius-small;
 
 /**
- * Form
+ * Forms
  * ## input, textarea, autocomplete, tags style
  */
 
+@input-bg:                       @accent-clear;
+@input-bg-disabled:              @accent-light;
+@input-color:                    @accent-neutral;
+@input-border:                   @accent-dark;
+
+@input-border-radius:            @border-radius-base;
+@input-border-radius-large:      @border-radius-large;
+@input-border-radius-small:      @border-radius-small;
+
+@input-border-focus:             @accent-neutral;
+
+@input-color-placeholder:        @accent-soft;
+
+@input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);
+@input-height-large:             (ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
+@input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
+
+@form-group-margin-bottom:       15px;
+
+@legend-color:                   @accent-dark;
+@legend-border-color:            #e5e5e5;
+
+@input-group-addon-bg:           @accent-light;
+@input-group-addon-border-color: @input-border;
+
 @cursor-disabled: not-allowed;
+
+/**
+* Label
+* ## Label vars & control
+*/
+@label-default-bg:            @accent-light;
+@label-primary-bg:            @accent-primary;
+@label-success-bg:            @accent-success;
+@label-info-bg:               @accent-info;
+@label-warning-bg:            @accent-warning;
+@label-error-bg:              @accent-error;
+
+// color
+@label-color-light:          @accent-clear;
+@label-color-dark:           @accent-dark;
+@label-color:                @label-color-light;
+@label-link-hover-color:     @accent-light;
+
+/**
+* State Accent
+* ## for forms & alert
+*/
+
+@state-success-text:             #3c763d;
+@state-success-bg:               #dff0d8;
+@state-success-border:           darken(spin(@state-success-bg, -10), 5%);
+
+@state-info-text:                #31708f;
+@state-info-bg:                  #d9edf7;
+@state-info-border:              darken(spin(@state-info-bg, -10), 7%);
+
+@state-warning-text:             #8a6d3b;
+@state-warning-bg:               #fcf8e3;
+@state-warning-border:           darken(spin(@state-warning-bg, -10), 5%);
+
+@state-danger-text:              #a94442;
+@state-danger-bg:                #f2dede;
 
 /**
  * Z-Index
  * ## z-index master contorol list
  */
 
+
 /**
  * Grid
  * ## Spesify grid size for mobile, desktop, container max size & stuff
  */
 
+@tablet-breakpoint: 520px;
+@desktop-breakpoint: 780px;
+
+@desktop: ~"(min-width: @{desktop-breakpoint})";
+@tablet: ~"(min-width: @{tablet-breakpoint}) and (max-width: @{desktop-breakpoint})";
+@mobile: ~"(max-width: @{tablet-breakpoint})";
+
+@max-width: 1200px;
+@min-width: 320px;
+
+@grid-gutter: 20px;
+@grid-gutter-half: @grid-gutter/2;
 

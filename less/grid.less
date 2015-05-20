@@ -6,27 +6,6 @@
  * ==========================================================================
  */
 
-
-// -------------------
-// Vars
-// -------------------
-
-
-@tablet-breakpoint: 520px;
-@desktop-breakpoint: 780px;
-
-@desktop: ~"(min-width: @{desktop-breakpoint})";
-@tablet: ~"(min-width: @{tablet-breakpoint}) and (max-width: @{desktop-breakpoint})";
-@mobile: ~"(max-width: @{tablet-breakpoint})";
-
-@max-width: 1200px;
-@min-width: 320px;
-
-@grid-gutter: 20px;
-@grid-gutter-half: @grid-gutter/2;
-
-
-
 // -------------------
 // Miscellaneous
 // -------------------
@@ -107,6 +86,12 @@ body {
 
 .make-suffix(@offset) {
     margin-right: (1% * @offset);
+}
+
+.make-row(@gutter: @grid-gutter) {
+    margin-left:  ceil((@gutter / -2));
+    margin-right: floor((@gutter / -2));
+    &:extend(.clearfix all);
 }
 
 

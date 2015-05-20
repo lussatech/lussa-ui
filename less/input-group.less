@@ -1,0 +1,157 @@
+/**
+ * Input Group
+ * ## Nested Input group
+ * ==========================================================================
+ */
+
+/**
+ * Base Style
+ */
+.input-group {
+  position: relative;
+  display: table;
+  border-collapse: separate;
+
+  &[class*="grid-"] {
+    float: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .form-control {
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: 100%;
+    margin-bottom: 0;
+  }
+}
+
+/**
+ * Sizing
+ */
+.input-group-large > .form-control,
+.input-group-large > .input-group-addon,
+.input-group-large > .input-group-button > .button {
+  .input-large();
+}
+.input-group-small > .form-control,
+.input-group-small > .input-group-addon,
+.input-group-small > .input-group-button > .button {
+  .input-small();
+}
+
+/**
+ * Display as table cell
+ */
+.input-group-addon,
+.input-group-button,
+.input-group .form-control {
+  display: table-cell;
+
+  &:not(:first-child):not(:last-child) {
+    border-radius: 0;
+  }
+}
+
+// Addon and addon wrapper for buttons
+.input-group-addon,
+.input-group-button {
+  width: 1%;
+  white-space: nowrap;
+  vertical-align: middle; // Match the inputs
+}
+
+// Text input groups
+.input-group-addon {
+  padding: @padding-base-vertical @padding-base-horizontal;
+  font-size: @font-size-base;
+  font-weight: normal;
+  line-height: 1;
+  color: @input-color;
+  text-align: center;
+  background-color: @input-group-addon-bg;
+  border: 1px solid @input-group-addon-border-color;
+  border-radius: @border-radius-base;
+
+  // Sizing
+  &.input-small {
+    padding: @padding-small-vertical @padding-small-horizontal;
+    font-size: @font-size-small;
+    border-radius: @border-radius-small;
+  }
+  &.input-large {
+    padding: @padding-large-vertical @padding-large-horizontal;
+    font-size: @font-size-large;
+    border-radius: @border-radius-large;
+  }
+
+  // Nuke default margins from checkboxes and radios to vertically center within.
+  input[type="radio"],
+  input[type="checkbox"] {
+    margin-top: 0;
+  }
+}
+
+// Reset rounded corners
+.input-group .form-control:first-child,
+.input-group-addon:first-child,
+.input-group-button:first-child > .button,
+.input-group-button:first-child > .button-group > .button,
+.input-group-button:first-child > .dropdown-toggle,
+.input-group-button:last-child > .button:not(:last-child):not(.dropdown-toggle),
+.input-group-button:last-child > .button-group:not(:last-child) > .button {
+  .border-top-right-radius(0);
+  .border-bottom-right-radius(0);
+}
+.input-group-addon:first-child {
+  border-right: 0;
+}
+.input-group .form-control:last-child,
+.input-group-addon:last-child,
+.input-group-button:last-child > .button,
+.input-group-button:last-child > .button-group > .button,
+.input-group-button:last-child > .dropdown-toggle,
+.input-group-button:first-child > .button:not(:first-child),
+.input-group-button:first-child > .button-group:not(:first-child) > .button {
+  .border-top-left-radius(0);
+  .border-bottom-left-radius(0);
+}
+.input-group-addon:last-child {
+  border-left: 0;
+}
+
+// Button input groups
+// -------------------------
+.input-group-button {
+  position: relative;
+  font-size: 0;
+  white-space: nowrap;
+
+  > .button {
+    position: relative;
+    + .button {
+      margin-left: -1px;
+    }
+    &:hover,
+    &:focus,
+    &:active {
+      z-index: 2;
+    }
+  }
+
+  // Negative margin to only have a 1px border between the two
+  &:first-child {
+    > .button,
+    > .button-group {
+      margin-right: -1px;
+    }
+  }
+  &:last-child {
+    > .button,
+    > .button-group {
+      z-index: 2;
+      margin-left: -1px;
+    }
+  }
+}
