@@ -33,7 +33,7 @@ module.exports = function(grunt) {
                 banner: "<%= banner %>\n'use strict';\n",
                 process: function(src, filepath) {
                     return '// Source: ' + filepath + '\n' + src.replace(/(^|\n)[ \t]*('use strict'|"use strict");?\s*/g, '$1');
-                },
+                }
             },
             dist: {
                 src: ['js/**/*.js'],

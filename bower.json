@@ -4,7 +4,17 @@
   "version": "0.0.1",
   "homepage": "http://git.lussa.net/tarsius/tarsius-ui",
   "license": "MIT",
-  "private": true,
+  "moduleType": "globals",
+  "main": [
+    "less/main.less",
+    "dist/js/tarsius-ui.js"
+  ],
+  "ignore": [
+    "/.*",
+    "_config.yml",
+    "docs",
+    "test"
+  ],
   "dependencies": {
     "jquery": ">=1.7.0",
     "jquery-easing-original": "1.3.2",
