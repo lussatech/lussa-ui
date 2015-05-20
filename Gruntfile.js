@@ -74,7 +74,7 @@ module.exports = function(grunt) {
             },
             dist: [
                 'dist/css/<%= pkg.name %>.css'
-            ],
+            ]
         },
 
         // minified css
@@ -88,6 +88,31 @@ module.exports = function(grunt) {
                 src: 'dist/css/<%= pkg.name %>.css',
                 dest: 'dist/css/<%= pkg.name %>.min.css'
             }
+        },
+
+        copy: {
+            fonts: {
+                expand: true,
+                src: 'fonts/*',
+                dest: 'dist/'
+            },
+            docs: {
+                expand: true,
+                cwd: 'dist/',
+                src: [
+                    '**/*'
+                ],
+                dest: 'docs/dist/'
+            }
+        },
+
+        jekyll: {
+            options: {
+                src: 'docs',
+                dest: 'docs/_site',
+                config: '_config.yml'
+            },
+            docs: {}
         }
     });
 
@@ -99,6 +124,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-csslint');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-jekyll');
 
     // register tasks
 
@@ -119,11 +146,13 @@ module.exports = function(grunt) {
     // CSS test
     grunt.registerTask('css-test', [
         'less:dist',
+        'copy:fonts',
         'csslint:dist'
     ]);
     // CSS deploy
     grunt.registerTask('css-dist', [
         'less:dist',
+        'copy:fonts',
         'csslint:dist',
         'cssmin:dist'
     ]);
@@ -133,6 +162,9 @@ module.exports = function(grunt) {
 
     // Overall Dist
     grunt.registerTask('dist',['js-dist','css-dist']);
+
+    // Docs
+    grunt.registerTask('docs',['copy:docs','jekyll:docs']);
 
     // default
     grunt.registerTask('default',['dist']);
