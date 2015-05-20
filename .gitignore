@@ -15,6 +15,7 @@ node_modules
 *.sublime-workspace
 nbproject
 Thumbs.db
+.sass-cache
 
 # Numerous always-ignore extensions
 *.diff
