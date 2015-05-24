@@ -1,0 +1,20 @@
+<div class="docs-navbar grid-fluid">
+    <div class="navbar-brand grid-50">
+        <a href="/" title="homepage">
+            <img src="assets/img/header-logo.png" height="20px" width="95px" />
+        </a>
+    </div>
+    <div class="grid-50 text-center">
+        <ul class="list-inline">
+            <li><a href="/">Getting - Started</a></li>
+            {% if page.slug == 'css' %}
+            <li class="active"><a href="/css.html">CSS</a> </li>
+            {% else %}
+            <li><a href="/css.html">CSS</a> </li>
+            {% endif  %}
+            <li><a href="/component.html">Component</a> </li>
+            <li><a href="/icon.html">Iconography</a> </li>
+            <li><a href="/customization.html"><i>f</i>&nbsp;(x)</a> </li>
+        </ul>
+    </div>
+</div>

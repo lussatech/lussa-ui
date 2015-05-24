@@ -67,8 +67,8 @@ h6, .h6 {
 
 h1,.h1{
     font-size: @font-size-h1;
-    .title{
-        font-size: @font-size-h1 * 2;
+    &.title{
+        font-size: (@font-size-h1 * 2);
     }
 }
 h2, .h2 { font-size: @font-size-h2; }
@@ -82,7 +82,19 @@ h6, .h6 { font-size: @font-size-h6; }
  * Body
  */
 p{
-    margin: 0 0 (@line-height-computed / 2);
+  margin: 0 0 (@line-height-computed / 2);
+  font-size: @font-size-base;
+
+  &.lead {
+    margin-bottom: @line-height-computed;
+    font-size: floor((@font-size-base * 1.15));
+    font-weight: 300;
+    line-height: 1.4;
+
+    @media @desktop {
+      font-size: (@font-size-base * 1.5);
+    }
+  }
 }
 
 /**
@@ -165,10 +177,10 @@ mark,
 .text-capitalize { text-transform: capitalize; }
 
 // Spacing
-.text-loose{letter-spacing: 0.1em;}
-.text-very-loose{letter-spacing: 0.2em;}
-.text-condensed{letter-spacing: -0.1em;}
-.text-very-condensed{letter-spacing: -0.1em;}
+.text-loose{ letter-spacing: 0.1em; }
+.text-very-loose{ letter-spacing: 0.2em; }
+.text-condensed{ letter-spacing: -0.1em; }
+.text-very-condensed{ letter-spacing: -0.1em; }
 
 
 /**
@@ -184,6 +196,11 @@ mark,
 .text-info{ color: @accent-info; }
 .text-warning{ color: @accent-warning; }
 .text-error{ color: @accent-error; }
+
+/**
+ * Font Family
+ */
+.text-monospace{ font-family: @font-family-monospace; }
 
 
 /**

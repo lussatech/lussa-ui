@@ -31,6 +31,8 @@ body {
 
 .grid-container:before, .clearfix:before,
 .grid-container:after,
+.grid-fluid:before, .clearfix:before,
+.grid-fluid:after,
 .clearfix:after {
     content: ".";
     display: block;
@@ -42,11 +44,11 @@ body {
     height: 0;
 }
 
-.grid-container:after, .clearfix:after {
+.grid-container:after,.grid-fluid:after, .clearfix:after {
     clear: both;
 }
 
-.grid-container, .clearfix {
+.grid-container, .clearfix, .grid-fluid {
 }
 
 .grid-container {
@@ -56,13 +58,16 @@ body {
     padding-left: @grid-gutter/2;
     padding-right: @grid-gutter/2;
 }
-
-
+.grid-fluid {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: @grid-gutter/2;
+    padding-right: @grid-gutter/2;
+}
 
 // -------------------
 // Mixins
 // -------------------
-
 
 
 .make-grid(@width) {
@@ -94,6 +99,16 @@ body {
     &:extend(.clearfix all);
 }
 
+.clearfix() {
+    &:before,
+    &:after {
+        content: " "; // 1
+        display: table; // 2
+    }
+    &:after {
+        clear: both;
+    }
+}
 
 // -------------------
 // Loop

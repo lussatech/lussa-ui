@@ -1,20 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+    <head>
+        <!-- Meta, title, CSS, favicons, etc. -->
+        {% include header.html %}
+    </head>
+    <body>
+        <!-- main navigation -->
+        {% include nav/main.html %}
 
-  {% include head.html %}
+        <!-- banner -->
+        <div class="docs-banner">
+            {% if page.slug == 'css' %}
+            {% include banner/css.html %}
+            {% elsif page.slug == 'components' %}
+            {% include banner/components.html %}
+            {% elsif page.slug == 'fx' %}
+            {% include banner/fx.html %}
+            {% endif %}
+        </div>
 
-  <body>
+        <div class="grid-fluid">
+            <!-- left sidebar navigation -->
+            <div class="grid-25 docs-left-sidebar">
+                <ul>
+                    {% if page.slug == 'css' %}
+                    {% include nav/css.html %}
+                    {% elsif page.slug == 'components' %}
+                    {% include nav/components.html %}
+                    {% elsif page.slug == 'fx' %}
+                    {% include nav/fx.html %}
+                    {% endif %}
+                </ul>
+            </div>
+            <!-- content -->
+            <div class="grid-75 docs-content">
+                {{ content }}
+            </div>
+        </div>
 
-    {% include header.html %}
-
-    <div class="page-content">
-      <div class="wrapper">
-        {{ content }}
-      </div>
-    </div>
-
-    {% include footer.html %}
-
-  </body>
-
+        <!-- footer -->
+        {% include footer.html %}
+    </body>
 </html>

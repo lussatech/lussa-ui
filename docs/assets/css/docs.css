@@ -1,0 +1,173 @@
+/**
+* Main Stylesheet
+* --------------------------------------------------
+*/
+
+/* Layout */
+.docs-left-sidebar {
+    border-right: 1px solid #999999;
+}
+.docs-sidebar-fixed {
+    position: fixed;
+    width: 25%;
+    top: 50px;
+}
+.docs-left-sidebar a{text-decoration: none;}
+.docs-left-sidebar > li {
+    color: #0000f6;
+}
+
+/* z-index */
+.docs-navbar {
+    z-index: 10009;
+}
+
+/* navbar */
+.docs-navbar {
+    padding: 0;
+    top: 0;
+    position: fixed;
+    height: 50px;
+    width: 100%;
+    background: rgba(90,25,143,0.95);
+}
+.docs-navbar a{
+    color: inherit;
+    text-decoration: none;
+}
+/* inline link */
+.docs-navbar .list-inline{
+    margin-bottom: 0;
+}
+.docs-navbar .list-inline li{
+    font-size: 15px;
+    margin: 0 -2px;
+    color: #FFFFFF;
+    font-family: 'texgyreherosbold';
+    line-height: 20px;
+    vertical-align: top;
+    padding: 15px 15px;
+}
+.docs-navbar .list-inline li:hover,
+.docs-navbar .list-inline li.active {
+    background: rgba(0,0,0,0.3);
+}
+
+/* navbar-brand */
+.docs-navbar .navbar-brand {
+    padding: 15px;
+}
+.docs-navbar .navbar-brand a{
+    display: block;
+    padding: 0;
+    height: 20px;
+}
+
+/* left navigation */
+.docs-left-sidebar {
+    background: #888888;
+    padding: 10px 15px;
+    color: #FFFFFF;
+}
+.docs-left-sidebar a {
+    color: inherit;
+    text-decoration: none;
+}
+.docs-left-sidebar ul{
+    padding: 0;
+    list-style: none;
+}
+.docs-left-sidebar li{
+    text-align: right;
+}
+.docs-left-sidebar > ul > li {
+    font-family: 'texgyreherosbold';
+    font-size: 15px;
+}
+.docs-left-sidebar > ul > li > ul {
+    padding: 10px 0;
+    margin: 10px 0;
+    border-top: 1px solid #dddddd;
+}
+.docs-left-sidebar > ul > li > ul > li {
+    font-family: 'texgyreherosregular';
+    font-size: 13px;
+    color: #dddddd;
+    line-height: 160%;
+}
+.docs-left-sidebar > ul > li > ul > li:hover {
+    color: #FFFFFF;
+}
+.docs-left-sidebar > ul > li > ul > li.active {
+     color: #46008C;
+}
+
+/* banner */
+.docs-banner {
+    background: #3F1164;
+    margin-top: 50px;
+}
+
+/* content */
+.docs-content {
+    padding: 20px 15px;
+    background: #dddddd;
+}
+
+/* typography */
+.docs-section-title {
+    color: #46008C;
+    text-align: center;
+    margin: 10px 0;
+}
+.docs-section-desc {
+    color: #878787;
+    text-align: center;
+    margin: 10px 0;
+}
+.docs-subsection-title {
+    color: #444444;
+    line-height: 2em;
+}
+.docs-subsection-desc {
+    color: #444444;
+}
+
+/* example tabbed display */
+.docs-tab {
+    margin: 20px 0;
+}
+.docs-tab-link-container {
+    padding-left: 0;
+    list-style: none;
+    margin: 0;
+}
+.docs-tab-link-container li{
+    display: inline-block;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 8px 25px;
+    background: #5A198F;
+    margin-right: -5px;
+}
+.docs-tab-link-container li:hover,
+.docs-tab-link-container li.active {
+    background: #3F1164;
+}
+.docs-tab-content-container {
+    position: relative;
+    border: 1px solid #3F1164;
+}
+.docs-tab-content .docs-example {
+    padding: 15px;
+    background: #FFFFFF;
+}
+.docs-tab-content .highlight {
+    border-radius: 0;
+    margin: 0;
+}
+.docs-tab-content .highlight > pre {
+    margin: 0;
+    padding: 15px;
+}

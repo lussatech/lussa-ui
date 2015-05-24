@@ -20,12 +20,6 @@ module.exports = function(grunt) {
             afterconcat: ['dist/js/<%= pkg.name %>.js']
         },
 
-        // file watcher
-        watch: {
-            files : ['<%= jshint.files %>'],
-            task: ['jshint']
-        },
-
         // concat all scripts
         concat: {
             options: {
@@ -112,7 +106,46 @@ module.exports = function(grunt) {
                 dest: 'docs/_site',
                 config: '_config.yml'
             },
+            docsDev: {
+                options: {
+                    serve: true,
+                    watch: true,
+                    port: 4190
+                }
+            },
             docs: {}
+        },
+
+        // file watcher
+        watch: {
+            css: {
+                files : ['less/**/*.less'],
+                tasks: ['css-dist','copy:docs']
+            }
+        },
+
+        // bower installer for docs
+        bower: {
+            docs: {
+                options: {
+                    targetDir: './docs/lib',
+                    layout: 'byType',
+                    install: true,
+                    verbose: true,
+                    cleanTargetDir: false,
+                    cleanBowerDir: false
+                }
+            }
+        },
+
+        // concurrent process
+        concurrent: {
+            docs: {
+                tasks: ['docs-deploy','watch:css'],
+                options: {
+                    logConcurrentOutput: true
+                }
+            }
         }
     });
 
@@ -126,6 +159,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-jekyll');
+    grunt.loadNpmTasks('grunt-concurrent');
+    grunt.loadNpmTasks('grunt-bower-task');
 
     // register tasks
 
@@ -164,7 +199,9 @@ module.exports = function(grunt) {
     grunt.registerTask('dist',['js-dist','css-dist']);
 
     // Docs
-    grunt.registerTask('docs',['copy:docs','jekyll:docs']);
+    grunt.registerTask('docs-deploy',['dist','bower:docs','copy:docs','jekyll:docsDev']);
+    grunt.registerTask('docs-dev',['concurrent:docs']);
+    grunt.registerTask('docs',['dist','copy:docs','jekyll:docs']);
 
     // default
     grunt.registerTask('default',['dist']);

@@ -4,15 +4,18 @@
  * ==========================================================================
  */
 
+// Import Components Variables
+@import "variables/navbar";
+
 /**
  * Color
  * ## text accent
  */
 
 // By Translucency
-@accent-neutral: #88572C;
-@accent-dark: darken(@accent-neutral, 50%);
-@accent-light: lighten(@accent-neutral, 50%);
+@accent-neutral: #999999;
+@accent-dark: darken(@accent-neutral, 30%);
+@accent-light: lighten(@accent-neutral, 30%);
 @accent-soft: lighten(@accent-neutral, 10%);
 
 // By Contrast
@@ -38,10 +41,13 @@
  * ## text font family
  */
 // Font family
-@font-family-base: arial;
-@font-family-alternative-1: 'open_sanslight';
-@font-family-alternative-2: 'open_sansregular';
-@font-family-alternative-3: 'georgia';
+@font-family-base: 'texgyreherosregular';
+@font-family-monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
+
+// accent fonts
+@font-family-alternative-1: 'texgyreherosregular';
+@font-family-alternative-2: 'texgyreherosbold';
+@font-family-alternative-3: 'texgyreherositalic';
 
 // custom fonts
 @font-path: '../fonts';
@@ -69,17 +75,17 @@
 @headings-color:          inherit;
 
 // Heading Variant
-@headings-large-font-family: @font-family-alternative-1;
+@headings-large-font-family: @font-family-base;
 @headings-large-font-weight: light;
 @headings-large-line-height: 1.2;
-@headings-large-letter-spacing: 0.2em;
+@headings-large-letter-spacing: 0;
 
-@headings-medium-font-family: @font-family-alternative-2;
+@headings-medium-font-family: @font-family-base;
 @headings-medium-font-weight: normal;
 @headings-medium-line-height: 1.4;
-@headings-medium-letter-spacing: 0.1em;
+@headings-medium-letter-spacing: 0;
 
-@headings-small-font-family: @font-family-alternative-3;
+@headings-small-font-family: @font-family-base;
 @headings-small-font-weight: normal;
 @headings-small-line-height: 1.1;
 @headings-small-letter-spacing: 0;
@@ -104,27 +110,47 @@
  * Component
  * ## Componens stuff like padding, margin & border radius
  */
+
+// padding
 @padding-base-vertical:     6px;
 @padding-base-horizontal:   12px;
-
 @padding-large-vertical:    10px;
 @padding-large-horizontal:  16px;
-
 @padding-small-vertical:    5px;
 @padding-small-horizontal:  10px;
-
 @padding-xs-vertical:       1px;
 @padding-xs-horizontal:     5px;
-
 @padding-xl-vertical:       15px;
 @padding-xl-horizontal:     80px;
 
+// margin
+@margin-base-vertical:     6px;
+@margin-base-horizontal:   12px;
+@margin-large-vertical:    10px;
+@margin-large-horizontal:  16px;
+@margin-small-vertical:    5px;
+@margin-small-horizontal:  10px;
+@margin-xs-vertical:       1px;
+@margin-xs-horizontal:     5px;
+@margin-xl-vertical:       15px;
+@margin-xl-horizontal:     80px;
+
+// line
 @line-height-large:         1.3333333; // extra decimals for Win 8.1 Chrome
 @line-height-small:         1.5;
 
+// border radius
 @border-radius-base:        5px;
 @border-radius-large:       8px;
 @border-radius-small:       3px;
+
+// carret
+@caret-width-base:          4px;
+@caret-width-large:         5px;
+
+// components
+@component-active-color:    @accent-clear;
+@component-active-bg:       @accent-primary;
 
 /**
  * Tables
@@ -251,10 +277,19 @@
 @state-error-border:            darken(spin(@state-error-bg, -10), 5%);
 
 /**
- * Z-Index
- * ## z-index master contorol list
- */
+* Code
+* ## default code accent
+*/
 
+@pre-scrollable-max-height:   340px;
+
+/**
+ * Z-Index
+ * ## z-index master control list
+ */
+@zindex-navbar:            1000;
+@zindex-dropdown:          1000;
+@zindex-navbar-fixed:      1030;
 
 /**
  * Grid
@@ -265,12 +300,13 @@
 @desktop-breakpoint: 780px;
 
 @desktop: ~"(min-width: @{desktop-breakpoint})";
+@mobile-and-tablet: ~"(max-width: @{desktop-breakpoint})";
 @tablet: ~"(min-width: @{tablet-breakpoint}) and (max-width: @{desktop-breakpoint})";
 @mobile: ~"(max-width: @{tablet-breakpoint})";
 
 @max-width: 1200px;
 @min-width: 320px;
 
-@grid-gutter: 20px;
+@grid-gutter: 0;
 @grid-gutter-half: @grid-gutter/2;
 
