@@ -3,6 +3,10 @@
 * --------------------------------------------------
 */
 
+body {
+    background: #dddddd;
+}
+
 /* Layout */
 .docs-left-sidebar {
     border-right: 1px solid #999999;
@@ -68,6 +72,8 @@
     background: #888888;
     padding: 10px 15px;
     color: #FFFFFF;
+    height: calc(100vh - 50px);
+    overflow: auto;
 }
 .docs-left-sidebar a {
     color: inherit;
@@ -102,16 +108,25 @@
      color: #46008C;
 }
 
+/* credit */
+.docs-credits {
+    text-align: right;
+    color: #FFFFFF;
+    font-size: 11px;
+    margin: 25px 0;
+    line-height: 200%;
+}
+
 /* banner */
 .docs-banner {
     background: #3F1164;
     margin-top: 50px;
+    color: #FFFFFF;
 }
 
 /* content */
 .docs-content {
     padding: 20px 15px;
-    background: #dddddd;
 }
 
 /* typography */
@@ -119,6 +134,8 @@
     color: #46008C;
     text-align: center;
     margin: 10px 0;
+    margin-top: 30px;
+    font-size: 40px;
 }
 .docs-section-desc {
     color: #878787;
@@ -128,9 +145,16 @@
 .docs-subsection-title {
     color: #444444;
     line-height: 2em;
+    font-size: 24px;
 }
 .docs-subsection-desc {
     color: #444444;
+    font-size: 13px;
+}
+
+/* code */
+.highlight {
+    margin: 20px 0;
 }
 
 /* example tabbed display */
@@ -170,4 +194,17 @@
 .docs-tab-content .highlight > pre {
     margin: 0;
     padding: 15px;
+}
+
+/* home */
+#docs-home-artist{
+    margin: 50px 0;
+    color: #444444;
+}
+.docs-banner-home-logo{
+    padding: 50px 0;
+}
+
+.docs-banner-home-slogan{
+    padding: 20px 0;
 }

@@ -9,8 +9,10 @@
         {% include nav/main.html %}
 
         <!-- banner -->
-        <div class="docs-banner">
-            {% if page.slug == 'css' %}
+        <div class="grid-fluid docs-banner">
+            {% if page.slug == 'home' %}
+            {% include banner/home.html %}
+            {% elsif page.slug == 'css' %}
             {% include banner/css.html %}
             {% elsif page.slug == 'components' %}
             {% include banner/components.html %}
@@ -23,7 +25,9 @@
             <!-- left sidebar navigation -->
             <div class="grid-25 docs-left-sidebar">
                 <ul>
-                    {% if page.slug == 'css' %}
+                    {% if page.slug == 'home' %}
+                    {% include nav/getting-started.html %}
+                    {% elsif page.slug == 'css' %}
                     {% include nav/css.html %}
                     {% elsif page.slug == 'components' %}
                     {% include nav/components.html %}
@@ -31,9 +35,10 @@
                     {% include nav/fx.html %}
                     {% endif %}
                 </ul>
+                {% include footer-sidebar.html %}
             </div>
             <!-- content -->
-            <div class="grid-75 docs-content">
+            <div class="grid-60 docs-content">
                 {{ content }}
             </div>
         </div>

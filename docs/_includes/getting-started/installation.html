@@ -1,0 +1,148 @@
+<h1 class="docs-section-title" id="install">Installasi</h1>
+<p class="docs-section-desc">lussa ui dibikin pake node js environment, <br/>kalo kamu node developer harusnya ga ada masalah sih</p>
+
+<!-- prerequisite -->
+<h2 class="docs-subsection-title" id="install-prerequisite">Prerequisite</h2>
+<div class="docs-subsection-desc">
+    <p>
+    Lussa UI dibuat untuk memenuhi kebutuhan development web masa kini yang berbasis MEAN - stacks. Jika kamu adalah developer MEAN - stack seharusnya semua prerequisite dibawah ini sudah di-install.
+    </p>
+    <dl>
+        <dt>git</dt>
+        <dd>Pastikan git sudah diinstall dan sudah berada didalam path system. Kalo belum ada, rekomendasi kami bisa di-download langsung di official websitenya langsung <a href="http://git-scm.com">git-scm.com</a>
+
+{% highlight shell %}
+# konfirmasi installasi git
+git -v
+{% endhighlight %}
+        </dd>
+
+        <dt>node js</dt>
+        <dd>Node js merupakan komponen penting, karena lussa ui dibangun diatas lingkungan ini
+
+{% highlight shell %}
+# konfirmasi installasi nodejs
+node -v
+{% endhighlight %}
+        </dd>
+
+        <dt>grunt client</dt>
+        <dd>Grunt client merupakan task-runner yang akan menjalankan banyak fungsi, mulai dalam compiling hingga membuat dokumentasi
+
+{% highlight shell %}
+# installasi
+npm install grunt-cli -g
+{% endhighlight %}
+        </dd>
+
+        <dt>bower</dt>
+        <dd>Bower digunakan untuk menginstall beberapa dependency front-end untuk proses testing dan dokumentasi tarsius UI, komponen penting seperti jQuery dan angular diinstall melalui package manager ini
+
+{% highlight shell %}
+# installasi
+npm install bower -g
+{% endhighlight %}
+        </dd>
+
+    </dl>
+</div>
+
+<!-- prerequisite -->
+<h2 class="docs-subsection-title" id="install-npm">Installasi Menggunakan Node Package Manager a.k.a NPM</h2>
+<div class="docs-subsection-desc">
+    <p>
+    Secara resmi, lussa ui belum ada di <label>registry</label> npm, untuk sementara
+    installasi dengan NPM bisa dilakukan dengan menggunakan alamat repository dari lussa ui
+    </p>
+
+{% highlight shell %}
+# installasi dengan menggunakan npm
+npm install http://git.lussa.net/tarsius/tarsius-ui.git --save-dev
+{% endhighlight %}
+
+</div>
+
+<!-- prerequisite -->
+<h2 class="docs-subsection-title" id="install-bower">Installasi Menggunakan Bower</h2>
+<div class="docs-subsection-desc">
+    <p>
+    Sama halnya dengan NPM secara resmi, lussa ui belum ada di <label>registry</label> bower, untuk sementara installasi bower bisa dilakukan dengan menggunakan alamat repository dari lussa ui. Dengan menggunakan bower, kamu bisa lebih rapih dalam mengatur dependency dari aplikasi yang bakal develop.
+    </p>
+
+{% highlight shell %}
+# installasi dengan menggunakan bower
+bower install http://git.lussa.net/tarsius/tarsius-ui. --save
+{% endhighlight %}
+
+</div>
+
+<!-- prerequisite -->
+<h2 class="docs-subsection-title" id="install-source">Build Langsung Dari Source</h2>
+<div class="docs-subsection-desc">
+    <p>
+        Kalo kamu pengen merubah beberapa parameter dari source, atau cuma butuh beberapa component dari framework ini, kamu bisa build manual dari source, dan atur file less / js utamanya.
+    </p>
+    <p>
+        Download source bisa langsung download snapshot master / branch development, atau bisa di clone pake git
+    </p>
+{% highlight shell %}
+# cloning pake git
+git clone http://git.lussa.net/tarsius/tarsius-ui.git
+
+# download langsung dari snapshot
+wget http://git.lussa.net/tarsius/tarsius-ui/repository/archive.zip
+{% endhighlight %}
+
+    <p>
+        Jangan lupa install beberapa development library buat ngebuild sourcenya, cukup pake npm aja.
+    </p>
+
+{% highlight shell %}
+# install tools development
+npm install
+......
+{% endhighlight %}
+
+    <p>
+        kalo kamu juga butuh dokumentasinya, kamu juga perlu nginstall dependency buat fron-endnya pake bower
+    </p>
+
+{% highlight shell %}
+# install dependency buat dokumentasi
+bower install
+......
+{% endhighlight %}
+
+    <p>
+        kalo kamu sudah punya grunt-client di system, pastikan gruntnya sudah ada di path system, atau nodejs shell.
+    </p>
+
+{% highlight shell %}
+# konfirmasi grunt
+grunt -v
+grunt-cli: The grunt command line interface. (v0.1.13)
+
+{% endhighlight %}
+
+    <p>
+        Kalo udah cukup jalananin task untuk build source, prosesnya sudah dipermudah pake grunt, kalo mau agak
+        diulik cukup buka aja file gruntfile.js nya
+    </p>
+
+{% highlight shell %}
+# build semua
+grunt dist
+
+# build css aja
+grunt css-dist
+
+# build js aja
+grunt js-dist
+
+{% endhighlight %}
+
+    <p>
+        File hasil kompilasi ada di direktori <label>./dist</label>
+    </p>
+
+</div>

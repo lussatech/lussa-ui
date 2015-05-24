@@ -6,15 +6,21 @@
     </div>
     <div class="grid-50 text-center">
         <ul class="list-inline">
-            <li><a href="/">Getting - Started</a></li>
-            {% if page.slug == 'css' %}
-            <li class="active"><a href="/css.html">CSS</a> </li>
-            {% else %}
-            <li><a href="/css.html">CSS</a> </li>
-            {% endif  %}
-            <li><a href="/component.html">Component</a> </li>
-            <li><a href="/icon.html">Iconography</a> </li>
-            <li><a href="/customization.html"><i>f</i>&nbsp;(x)</a> </li>
+            <li {% if page.slug == 'home' %} class="active" {% endif %}>
+            <a href="/">Getting - Started</a>
+            </li>
+            <li {% if page.slug == 'css' %} class="active" {% endif %}>
+                <a href="/css.html">CSS</a>
+            </li>
+            <li {% if page.slug == 'components' %} class="active" {% endif %}>
+                <a href="/component.html">Components</a>
+            </li>
+            <li {% if page.slug == 'icon' %} class="active" {% endif %}>
+                <a href="/icon.html">Iconography</a>
+            </li>
+            <li {% if page.slug == 'fx' %} class="active" {% endif %}>
+                <a href="/fx.html"><i>f</i>&nbsp;(x)</a>
+            </li>
         </ul>
     </div>
 </div>
