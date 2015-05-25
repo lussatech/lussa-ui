@@ -83,7 +83,7 @@ h6, .h6 { font-size: @font-size-h6; }
  */
 p{
   margin: 0 0 (@line-height-computed / 2);
-  font-size: @font-size-base;
+  font-size: floor((@font-size-base * 1.15));
 
   &.lead {
     margin-bottom: @line-height-computed;
@@ -160,7 +160,7 @@ small,
 
 mark,
 .mark {
-  background-color: @accent-neutral;
+  background-color: @accent-vibrant;
   padding: .2em;
 }
 
@@ -186,16 +186,18 @@ mark,
 /**
  * Accent
  */
-.text-neutral{ color: @accent-neutral; }
-.text-dark{ color: @accent-dark; }
-.text-light{ color: @accent-light; }
-.text-vibrant{ color: @accent-vibrant; }
+.text-neutral { color: @accent-neutral; }
+.text-dark { color: @accent-dark; }
+.text-light { color: @accent-light; }
+.text-vibrant { color: @accent-vibrant; }
+.text-clear { color: @accent-clear; }
 
-.text-primary{ color: @accent-primary; }
-.text-success{ color: @accent-success; }
-.text-info{ color: @accent-info; }
-.text-warning{ color: @accent-warning; }
-.text-error{ color: @accent-error; }
+.text-primary { color: @accent-primary; }
+.text-success { color: @accent-success; }
+.text-info { color: @accent-info; }
+.text-warning { color: @accent-warning; }
+.text-error { color: @accent-error; }
+.text-muted { color: @text-muted; }
 
 /**
  * Font Family
@@ -207,3 +209,56 @@ mark,
  * Screen Settings
  * ## responsive value
  */
+
+
+/**
+ * Block Quotes
+ */
+// Blockquotes
+blockquote {
+  padding: (@line-height-computed / 2) @line-height-computed;
+  margin: 0 0 @line-height-computed;
+  font-size: @blockquote-font-size;
+  border-left: 5px solid @blockquote-border-color;
+
+  p,
+  ul,
+  ol {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  footer,
+  small,
+  .small {
+    display: block;
+    font-size: 80%; // back to default font-size
+    line-height: @line-height-base;
+    color: @blockquote-small-color;
+
+    &:before {
+      content: '\2014 \00A0'; // em dash, nbsp
+    }
+  }
+}
+
+// Opposite alignment of blockquote
+.blockquote-reverse,
+blockquote.pull-right {
+  padding-right: 15px;
+  padding-left: 0;
+  border-right: 5px solid @blockquote-border-color;
+  border-left: 0;
+  text-align: right;
+
+  // Account for citation
+  footer,
+  small,
+  .small {
+    &:before { content: ''; }
+    &:after {
+      content: '\00A0 \2014'; // nbsp, em dash
+    }
+  }
+}

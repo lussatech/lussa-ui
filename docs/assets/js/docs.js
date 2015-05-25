@@ -37,8 +37,8 @@ function BuildTabs(){
         content = '.docs-tab-content';
 
     function _open_tab(tab, idx){
-        $(link).removeClass('active');
-        $(link).eq(idx).addClass('active');
+        tab.find(link).removeClass('active');
+        tab.find(link).eq(idx).addClass('active');
         tab.find(content).hide();
         tab.find(content).eq(idx).show();
     }
@@ -68,7 +68,7 @@ function LeftSidebar(){
     }
 
     function _get_all_menu_scroll_offset(){
-        $('.docs-content > h1, .docs-content > h2, .docs-content > h3').each(function(index){
+        $('.docs-content > h1, .docs-content > h2').each(function(index){
             var hash = $(this).attr('id');
             if(hash){
                 menu_offset_collections.push({

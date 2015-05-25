@@ -13,9 +13,9 @@
  */
 
 // By Translucency
-@accent-neutral: #999999;
-@accent-dark: darken(@accent-neutral, 30%);
-@accent-light: lighten(@accent-neutral, 30%);
+@accent-neutral: #555555;
+@accent-dark: darken(@accent-neutral, 40%);
+@accent-light: lighten(@accent-neutral, 40%);
 @accent-soft: lighten(@accent-neutral, 10%);
 
 // By Contrast
@@ -31,7 +31,7 @@
 
 // Global Accent
 @body-bg: @accent-clear;
-@text-color: @accent-primary;
+@text-color: @accent-dark;
 @link-color: @accent-primary;
 @link-hover-color: darken(@link-color, 15%);
 @link-hover-decoration: underline;
@@ -53,7 +53,7 @@
 @font-path: '../fonts';
 
 // Heading font size
-@font-size-base: 13px;
+@font-size-base: 12px;
 @font-size-large: ceil((@font-size-base * 1.25));
 @font-size-small: ceil((@font-size-base * 0.85));
 
@@ -94,6 +94,10 @@
 @component-offset-horizontal: 180px;
 @text-muted:                  @accent-light;
 @dl-horizontal-offset:        @component-offset-horizontal;
+
+@blockquote-small-color:      @accent-soft;
+@blockquote-font-size:        (@font-size-base * 1.25);
+@blockquote-border-color:     @accent-light;
 
 // hr accent
 @hr-border:                   @accent-light;
@@ -275,6 +279,19 @@
 @state-error-text:              darken(@accent-error,50);
 @state-error-bg:                lighten(@accent-error,50);
 @state-error-border:            darken(spin(@state-error-bg, -10), 5%);
+
+/**
+* Thumbnails
+* ## default image style
+*/
+
+@thumbnail-padding:           4px;
+@thumbnail-bg:                @body-bg;
+@thumbnail-border:            #ddd;
+@thumbnail-border-radius:     @border-radius-base;
+@thumbnail-caption-color:     @text-color;
+@thumbnail-caption-padding:   9px;
+
 
 /**
 * Code

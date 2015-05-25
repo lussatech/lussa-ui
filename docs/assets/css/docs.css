@@ -6,6 +6,12 @@
 body {
     background: #dddddd;
 }
+body a{
+    color: #46008C;
+}
+ body a:hover{
+    color: #3F1164;
+ }
 
 /* Layout */
 .docs-left-sidebar {
@@ -15,10 +21,6 @@ body {
     position: fixed;
     width: 25%;
     top: 50px;
-}
-.docs-left-sidebar a{text-decoration: none;}
-.docs-left-sidebar > li {
-    color: #0000f6;
 }
 
 /* z-index */
@@ -35,7 +37,8 @@ body {
     width: 100%;
     background: rgba(90,25,143,0.95);
 }
-.docs-navbar a{
+.docs-navbar a,
+.docs-navbar a:hover {
     color: inherit;
     text-decoration: none;
 }
@@ -75,7 +78,8 @@ body {
     height: calc(100vh - 50px);
     overflow: auto;
 }
-.docs-left-sidebar a {
+.docs-left-sidebar a,
+.docs-left-sidebar a:hover {
     color: inherit;
     text-decoration: none;
 }
@@ -89,6 +93,11 @@ body {
 .docs-left-sidebar > ul > li {
     font-family: 'texgyreherosbold';
     font-size: 15px;
+    color: #FFFFFF;
+}
+.docs-left-sidebar > ul > li.active,
+.docs-left-sidebar > ul > li:hover {
+    color: #FFFFFF;
 }
 .docs-left-sidebar > ul > li > ul {
     padding: 10px 0;
@@ -141,6 +150,8 @@ body {
     color: #878787;
     text-align: center;
     margin: 10px 0;
+    width: 50%;
+    margin-left: 25%;
 }
 .docs-subsection-title {
     color: #444444;

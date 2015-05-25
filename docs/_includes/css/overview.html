@@ -1,0 +1,72 @@
+<h1 class="docs-section-title" id="overview">Overview</h1>
+<p class="docs-section-desc">Beberapa teknologi baru & aturan-aturan dasar yang digunakan untuk menggantikan standar default browser sebelum menggunakan lussa ui</p>
+
+<!-- Html5 Doctype -->
+<h2 class="docs-subsection-title" id="overview-html5">HTML5 Doctype</h2>
+<div class="docs-subsection-desc">
+    <p>lussa ui menggunakan beberapa tambahan direktif untuk html 5, seperti web-component dan beberapa modul pada angular, anda bisa menggunakan html5 boilerplate, atau bisa secara manual menambahkan doctype html5</p>
+
+{% highlight html %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+</html>
+{% endhighlight %}
+</div>
+
+
+<!-- Mobile -->
+<h2 class="docs-subsection-title" id="overview-mobile">Mobile First</h2>
+<div class="docs-subsection-desc">
+    <p>
+    lussa ui dibuat pada mindset awal ditujukan untuk tampilan mobile di-awal. Tiap kode pada komponen-komponen lussa UI di utamakan untuk tampilan mobile. Untuk mendukung fungsi ini, kamu harus mendefiniskan viewport meta tag pada <code>&lt;head&gt;</code>
+    </p>
+
+{% highlight html %}
+<head>
+  <!--
+    Formatted for readability
+  -->
+  <meta
+    name="viewport"
+    content="
+      width=device-width,
+      initial-scale=1,
+      minimum-scale=1,
+      maximum-scale=1
+    "
+  />
+</head>
+{% endhighlight %}
+
+    <p>
+        Dengan tambahan meta ini user tidak dapat melakukan fungsi pinc-to-zoom, masalah ukuran huruf dan component tidak menjadi masalah karena lussa-ui dibangun dengan ukuran dan bentuk yang responsif menyesuaikan dengan ukuran layar perangkat.
+    </p>
+    <p>
+        Drawback untuk metode ini bisa dilakukan menggunakan javascript (god i hate polyfill), saran saya bisa pake <a href="http://adactio.com/journal/4470/">http://adactio.com/journal/4470/</a>
+    </p>
+    <p>Tapi secara default script tadi ga kita include, jadi bisa kamu tambahin sendiri, kalo mau support browser-browser tua kayak IE</p>
+
+</div>
+
+<!-- Customization -->
+<h2 class="docs-subsection-title" id="overview-customization">Modular dan Mudah di Custom</h2>
+<div class="docs-subsection-desc">
+    <p>
+        Karena lussa-ui menggunakan angular dan CSS-Preprocessor yaitu <a href="http://lesscss.org/">less-css</a>. Ukuran huruf, font serta icon yang digunakan bisa dengan mudah diganti sesuai kebutuhan, dengan mengubah file variable, font, icon atau theme di masing-masing file.
+    </p>
+</div>
+
+<!-- Normalization -->
+<h2 class="docs-subsection-title" id="overview-normalize">Normalize.css</h2>
+<div class="docs-subsection-desc">
+    <p>
+        Agar mendukung cross-browser rendering, lussa-ui perlu melakukan fungsi normalisasi komponen-komponen web yang biasa-nya beda-beda untuk tiap browser. Disini kita pake <a href="http://necolas.github.io/normalize.css/">Normalize.css</a>, punya Nicolas Gallagher dan Jonathan Neal yang sudah PoC dan banyak digunakan khalayak ramai.
+    </p>
+</div>
+
+
+

@@ -4,88 +4,621 @@
 <!-- Headings -->
 <h2 class="docs-subsection-title" id="type-headings">Headings</h2>
 <div class="docs-subsection-desc">
-    <p>heading 1 hingga heading 6</p>
+    <p>Standar ukuran <code>h1</code> hingga <code>h6</code>, juga bisa pake class <code>.h1</code> hingga <code>.h6</code></p>
 </div>
 <div class="docs-tab">
-<ul class="docs-tab-link-container">
-    <li>tampilan</li>
-    <li class="text-monospace">&lt; html &gt;</li>
-</ul>
-<div class="docs-tab-content-container">
-<div class="docs-tab-content">
-    <div class="docs-example">
-        <h1>h1. Tarsius UI heading</h1>
-        <h2>h2. Tarsius UI heading</h2>
-        <h3>h3. Tarsius UI heading</h3>
-        <h4>h4. Tarsius UI heading</h4>
-        <h5>h5. Tarsius UI heading</h5>
-        <h6>h6. Tarsius UI heading</h6>
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <h1>h1. Lussa UI heading</h1>
+                <h2>h2. Lussa UI heading</h2>
+                <h3>h3. Lussa UI heading</h3>
+                <h4>h4. Lussa UI heading</h4>
+                <h5>h5. Lussa UI heading</h5>
+                <h6>h6. Lussa UI heading</h6>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<h1>h1. Lussa UI heading</h1>
+<h2>h2. Lussa UI heading</h2>
+<h3>h3. Lussa UI heading</h3>
+<h4>h4. Lussa UI heading</h4>
+<h5>h5. Lussa UI heading</h5>
+<h6>h6. Lussa UI heading</h6>
+{% endhighlight %}
+        </div>
     </div>
 </div>
-<div class="docs-tab-content">
+
+<div class="docs-subsection-desc">
+    <p>
+        Teks yang lebih ringan bisa pake standar tag <code>&lt;small&gt;</code> atau bisa pake class <code>.small</code>
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <h1>h1. Lussa UI heading <small>Secondary text</small></h1>
+                <h2>h2. Lussa UI heading <small>Secondary text</small></h2>
+                <h3>h3. Lussa UI heading <small>Secondary text</small></h3>
+                <h4>h4. Lussa UI heading <small>Secondary text</small></h4>
+                <h5>h5. Lussa UI heading <small>Secondary text</small></h5>
+                <h6>h6. Lussa UI heading <small>Secondary text</small></h6>
+            </div>
+        </div>
+        <div class="docs-tab-content">
 {% highlight html %}
-<h1>h1. Tarsius UI heading</h1>
-<h2>h2. Tarsius UI heading</h2>
-<h3>h3. Tarsius UI heading</h3>
-<h4>h4. Tarsius UI heading</h4>
-<h5>h5. Tarsius UI heading</h5>
-<h6>h6. Tarsius UI heading</h6>
+<h1>h1. Lussa UI heading <small>Secondary text</small></h1>
+<h2>h2. Lussa UI heading <small>Secondary text</small></h2>
+<h3>h3. Lussa UI heading <small>Secondary text</small></h3>
+<h4>h4. Lussa UI heading <small>Secondary text</small></h4>
+<h5>h5. Lussa UI heading <small>Secondary text</small></h5>
+<h6>h6. Lussa UI heading <small>Secondary text</small></h6>
 {% endhighlight %}
-</div>
-</div>
+        </div>
+    </div>
 </div>
 
-<!--
- Template
-
-<hr/>
-<h2 id="headings"></h2>
-<p>Contoh Tampilan</p>
-<div class="docs-example">
+<!-- Body & Paragraph -->
+<h2 class="docs-subsection-title" id="type-paragraph">Body dan Paragraf</h2>
+<div class="docs-subsection-desc">
+    <p>Tarsius UI secara default menggunakan global <code>font-size</code> 13 px dengan <code>line-height</code> 1.428 em semua ini berlaku untuk element dibawah <code>&lt;body&gt;</code> termasuk paragraf dll. paragraf memiliki margin bawah sebesar <code>computed-line-height</code> atau sekitar 15px </p>
 </div>
-<p>Source Code</p>
-{% highlight html %}
-{% endhighlight %}
--->
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
 
-<!-- Small heading -->
-<hr/>
-<h2 id="headings-variant">Heading Variants</h2>
-<div class="docs-example">
-    <h1 class="title">h1. Title heading</h1>
-    <h1>h1. Tarsius UI heading <small>Secondary text</small></h1>
-    <h2>h2. Tarsius UI heading <small>Secondary text</small></h2>
-    <h3>h3. Tarsius UI heading <small>Secondary text</small></h3>
-    <h4>h4. Tarsius UI heading <small>Secondary text</small></h4>
-    <h5>h5. Tarsius UI heading <small>Secondary text</small></h5>
-    <h6>h6. Tarsius UI heading <small>Secondary text</small></h6>
-</div>
-{% highlight html %}
-<h1 class="title">h1. Title heading</h1>
-<h1>h1. Tarsius UI heading <small>Secondary text</small></h1>
-<h2>h2. Tarsius UI heading <small>Secondary text</small></h2>
-<h3>h3. Tarsius UI heading <small>Secondary text</small></h3>
-<h4>h4. Tarsius UI heading <small>Secondary text</small></h4>
-<h5>h5. Tarsius UI heading <small>Secondary text</small></h5>
-<h6>h6. Tarsius UI heading <small>Secondary text</small></h6>
-{% endhighlight %}
-
-<!-- Body -->
-<h2 id="paragraph">Paragraf</h2>
-<div class="docs-example">
-    <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
-    <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
-    <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-</div>
+                <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+            </div>
+        </div>
+        <div class="docs-tab-content">
 {% highlight html %}
 <p>...</p>
 {% endhighlight %}
-
-<hr/>
-<h2 id="paragraph-lead">Leading Paragraf</h2>
-<div class="docs-example">
-    <p class="lead">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.</p>
+        </div>
+    </div>
 </div>
+
+<div class="docs-subsection-desc">
+    <h3>Paragraph Lead</h3>
+    <p>membuat paragraf keliatan stand-out dengan menambahkan class <code>.lead</code></p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <p class="lead">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.</p>
+            </div>
+        </div>
+        <div class="docs-tab-content">
 {% highlight html %}
 <p class="lead">...</p>
 {% endhighlight %}
+        </div>
+    </div>
+</div>
+
+
+<!-- Body & Paragraph -->
+<h2 class="docs-subsection-title" id="type-inline-text">Inline text elements</h2>
+<div class="docs-subsection-desc">
+    <p>kita bisa menambahkan beberapa elemen inline yang biasa ada didalam sebuah teks, untuk merepresentasikan konteks sebuah tulisan. Element-element tersebut antara lain</p>
+    <dl>
+        <dt>Marked Text</dt>
+        <dd>Biasa digunakan untuk men-stabilo / marking sebuah teks dengan tag <code>&lt;mark&gt;</code></dd>
+        <dt>Deleted Text</dt>
+        <dd>Biasa digunakan untuk menunujukan teks yang sudah tidak ada lagi / dihapus dengan tag <code>&lt;del&gt;</code></dd>
+        <dt>Striketrough Text</dt>
+        <dd>Biasa digunakan untuk  menunujukan teks yang sudah tidak relevan lagi dengan tag <code>&lt;s&gt;</code></dd>
+        <dt>Inserted Text</dt>
+        <dd>Biasa digunakan untuk menunjukan penambahan dengan tag <code>&lt;ins&gt;</code></dd>
+        <dt>Underline Text</dt>
+        <dd>Untuk meng-underline sebuah teks cukup dengan tag <code>&lt;u&gt;</code></dd>
+        <dt>Small Text</dt>
+        <dd>Biasa digunakan untuk menandai footnote / alternative teks dengan tag <code>&lt;small&gt;</code> atau class <code>.small</code></dd>
+        <dt>Bold</dt>
+        <dd>Untuk element yang berukuran tebal bisa menggunakan <code>&lt;strong&gt;</code></dd>
+        <dt>Italics</dt>
+        <dd>Untuk memiringkan teks bisa dengan tag <code>&lt;em&gt;</code>, biasa dipakai untuk kalimat / istilah asing</dd>
+    </dl>
+</div>
+
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <p>You can use the mark tag to <mark>highlight</mark> text.
+                <del>This line of text is meant to be treated as deleted text.</del>
+                <s>This line of text is meant to be treated as no longer accurate.</s>
+                <ins>This line of text is meant to be treated as an addition to the document.</ins>
+                <u>This line of text will render as underlined</u>
+                <small>This line of text is meant to be treated as fine print.</small>
+                <strong>rendered as bold text</strong>
+                <em>rendered as italicized text</em></p>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<p>
+You can use the mark tag to <mark>highlight</mark> text.
+<del>This line of text is meant to be treated as deleted text.</del>
+<s>This line of text is meant to be treated as no longer accurate.</s>
+<ins>This line of text is meant to be treated as an addition to the document.</ins>
+<u>This line of text will render as underlined</u>
+<small>This line of text is meant to be treated as fine print.</small>
+<strong>rendered as bold text</strong>
+<em>rendered as italicized text</em>
+</p>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Text Alignment -->
+<h2 class="docs-subsection-title" id="type-alignment">Alignment Class</h2>
+<div class="docs-subsection-desc">
+    <p>Digunakan untuk memberikan alignment pada teks dengan menggunakan <code>text-alignment</code> class</p>
+</div>
+
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <p class="text-left">Left aligned text.</p>
+                <p class="text-center">Center aligned text.</p>
+                <p class="text-right">Right aligned text.</p>
+                <p class="text-justify">Justified text.</p>
+                <p class="text-nowrap">No wrap text.</p>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<p class="text-left">Left aligned text.</p>
+<p class="text-center">Center aligned text.</p>
+<p class="text-right">Right aligned text.</p>
+<p class="text-justify">Justified text.</p>
+<p class="text-nowrap">No wrap text.</p>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Text Transformation -->
+<h2 class="docs-subsection-title" id="type-transformation">Kapitalisasi Teks</h2>
+<div class="docs-subsection-desc">
+    <p>Mentransformasikan teks dalam aspek kapitalisasi huruf, seperti <code>lowercase</code> dan <code>uppercase</code></p>
+</div>
+
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+            <p class="text-lowercase">Lowercased text.</p>
+            <p class="text-uppercase">Uppercased text.</p>
+            <p class="text-capitalize">Capitalized text.</p>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<p class="text-lowercase">Lowercased text.</p>
+<p class="text-uppercase">Uppercased text.</p>
+<p class="text-capitalize">Capitalized text.</p>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Text Accent -->
+<h2 class="docs-subsection-title" id="type-accent">Aksen Teks</h2>
+<div class="docs-subsection-desc">
+    <p>Memberikan aksen kepada teks, aksen sendiri bisa bertujuan untuk memberikan konteks pada sebuah teks, atau bisa juga memberikan aspek estetika tampilan teks. Accent class memiliki aturan semantik <code>text-x</code> dimana x merupakan konteks/accent warna teks</p>
+</div>
+
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+            <p class="text-neutral">Neutral Accent text.</p>
+            <p class="text-dark">Dark Accent text.</p>
+            <p class="text-light">Light Accent text.</p>
+            <p class="text-clear">Clear Accent text.</p>
+            <p class="text-vibrant">Vibrant Accent text.</p>
+            <p class="text-primary">Primary Accent text.</p>
+            <p class="text-success">Success Accent text.</p>
+            <p class="text-info">Info Accent text.</p>
+            <p class="text-warning">Warning Accent text.</p>
+            <p class="text-error">Error Accent text.</p>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<p class="text-neutral">Neutral Accent text.</p>
+<p class="text-dark">Dark Accent text.</p>
+<p class="text-light">Light Accent text.</p>
+<p class="text-clear">Clear Accent text.</p>
+<p class="text-vibrant">Vibrant Accent text.</p>
+<p class="text-primary">Primary Accent text.</p>
+<p class="text-success">Success Accent text.</p>
+<p class="text-info">Info Accent text.</p>
+<p class="text-warning">Warning Accent text.</p>
+<p class="text-error">Error Accent text.</p>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Text Spacing -->
+<h2 class="docs-subsection-title" id="type-spacing">Spacing / Jarak Huruf</h2>
+<div class="docs-subsection-desc">
+    <p>Apabila kamu perlu memberikan jarak / spacing antar huruf, kamu cukup menambahkan <code>spacing class</code>.</p>
+</div>
+
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+            <p class="text-loose">Teks Renggang</p>
+            <p class="text-very-loose">Teks Sangat Renggang</p>
+            <p class="text-condensed">Teks Padat & Berisi</p>
+            <p class="text-very-condensed">Teks Sangat Padat dan Berisi</p>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<p class="text-loose">Teks Renggang</p>
+<p class="text-very-loose">Teks Sangat Renggang</p>
+<p class="text-condensed">Teks Padat & Berisi</p>
+<p class="text-very-condensed">Teks Sangat Padat dan Berisi</p>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Kutipan -->
+<h2 class="docs-subsection-title" id="type-blockquotes">Kutipan</h2>
+<div class="docs-subsection-desc">
+    <p>Dipakai untuk buat kutipan dari sumber lain di dokumen yang kita buat</p>
+
+    <h3>Kutipan Dasar</h3>
+    <p>tinggal pake tag <code>&lt;blockquote&gt;</code> terus isi dalemnya pake tag html apapun, saran kami, gunakan tag <code>&lt;p&gt;</code> untuk kutipan langsung</p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+            <blockquote>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            </blockquote>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<blockquote>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+</blockquote>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<div class="docs-subsection-desc">
+    <h3>Kutipan Dengan Sumber</h3>
+    <p>tambahkan tag <code>&lt;footer&gt;</code> lalu gunakan tag <code>&lt;cite&gt;</code> untuk nama sumber / <em>citation</em></p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+            <blockquote>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+            </blockquote>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<blockquote>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+    <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+</blockquote>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<div class="docs-subsection-desc">
+    <h3>Tampilan Alternatif</h3>
+    <p>tambahkan class <code>.blockquote-reverse</code> untuk merubah arah alignment dari kutipan menjadi ke kanan</p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+            <blockquote class="blockquote-reverse">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+            </blockquote>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<blockquote class="blockquote-reverse">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+    <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+</blockquote>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- List -->
+<h2 class="docs-subsection-title" id="type-lists">List</h2>
+<div class="docs-subsection-desc">
+    <h3>Unordered</h3>
+    <p>list yang ga peduli urutan a.k.a <code>ul</code></p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+            <ul>
+              <li>Lorem ipsum dolor sit amet</li>
+              <li>Consectetur adipiscing elit</li>
+              <li>Integer molestie lorem at massa</li>
+              <li>Facilisis in pretium nisl aliquet</li>
+              <li>Nulla volutpat aliquam velit
+                <ul>
+                  <li>Phasellus iaculis neque</li>
+                  <li>Purus sodales ultricies</li>
+                  <li>Vestibulum laoreet porttitor sem</li>
+                  <li>Ac tristique libero volutpat at</li>
+                </ul>
+              </li>
+              <li>Faucibus porta lacus fringilla vel</li>
+              <li>Aenean sit amet erat nunc</li>
+              <li>Eget porttitor lorem</li>
+            </ul>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<ul>
+  <li>Lorem ipsum dolor sit amet</li>
+  ...
+</ul>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<div class="docs-subsection-desc">
+    <h3>Ordered</h3>
+    <p>list yang peduli urutan a.k.a <code>ol</code></p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+            <ol>
+                <li>Lorem ipsum dolor sit amet</li>
+                <li>Consectetur adipiscing elit</li>
+                <li>Integer molestie lorem at massa</li>
+                <li>Facilisis in pretium nisl aliquet</li>
+                <li>Nulla volutpat aliquam velit</li>
+                <li>Faucibus porta lacus fringilla vel</li>
+                <li>Aenean sit amet erat nunc</li>
+                <li>Eget porttitor lorem</li>
+            </ol>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<ol>
+  <li>Lorem ipsum dolor sit amet</li>
+  ...
+</ol>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<div class="docs-subsection-desc">
+    <h3>Unstyled</h3>
+    <p>list yang tidak ada markernya, a.k.a <code>list-style: none</code></p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <ul class="list-unstyled">
+                  <li>Lorem ipsum dolor sit amet</li>
+                  <li>Consectetur adipiscing elit</li>
+                  <li>Integer molestie lorem at massa</li>
+                  <li>Facilisis in pretium nisl aliquet</li>
+                  <li>Nulla volutpat aliquam velit
+                    <ul>
+                      <li>Phasellus iaculis neque</li>
+                      <li>Purus sodales ultricies</li>
+                      <li>Vestibulum laoreet porttitor sem</li>
+                      <li>Ac tristique libero volutpat at</li>
+                    </ul>
+                  </li>
+                  <li>Faucibus porta lacus fringilla vel</li>
+                  <li>Aenean sit amet erat nunc</li>
+                  <li>Eget porttitor lorem</li>
+                </ul>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<ul class="list-unstyled">
+  <li>Lorem ipsum dolor sit amet</li>
+  ...
+</ol>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<div class="docs-subsection-desc">
+    <h3>Inline</h3>
+    <p>list yang tampilannya tidak stacking kebawah melainkan di stack ke kanan, dengan 1 line. Cukup tambahkan class <code>list-inline</code> pada unorderred list <code>ul</code></p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+            <ul class="list-inline">
+                <li>Lorem ipsum</li>
+                <li>Phasellus iaculis</li>
+                <li>Nulla volutpat</li>
+            </ul>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<ul class="list-inline">
+    <li>...</li>
+</ul>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<div class="docs-subsection-desc">
+    <h3>Description</h3>
+    <p>Daftar item dengan diikuti deskripsi dibawahnya</p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+            <dl>
+                <dt>Description lists</dt>
+                <dd>A description list is perfect for defining terms.</dd>
+                <dt>Euismod</dt>
+                <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+                <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+                <dt>Malesuada porta</dt>
+                <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+            </dl>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<dl>
+  <dt>...</dt>
+  <dd>...</dd>
+</dl>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<div class="docs-subsection-desc">
+    <h3>Horizontal Description</h3>
+    <p>Tampilan alternatif dari description list, yg judul dan deskripsinya saling bersebelahan</p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+            <dl class="dl-horizontal">
+              <dt>Description lists</dt>
+              <dd>A description list is perfect for defining terms.</dd>
+              <dt>Euismod</dt>
+              <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+              <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+              <dt>Malesuada porta</dt>
+              <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+              <dt>Felis euismod semper eget lacinia</dt>
+              <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
+            </dl>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<dl class="dl-horizontal">
+  <dt>...</dt>
+  <dd>...</dd>
+</dl>
+{% endhighlight %}
+        </div>
+    </div>
+</div>

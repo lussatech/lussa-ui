@@ -4,24 +4,37 @@
  * ==========================================================================
  */
 
-/**
-* Accent
-*/
+
+// Accent
+// -------------------------
 // By Translucency
-.accent-neutral {.generate-accent(@accent-neutral);}
-.accent-dark {.generate-accent(@accent-dark);}
-.accent-light {.generate-accent(@accent-light);}
-.accent-soft {.generate-accent(@accent-soft);}
+.bg-neutral {.generate-accent(@accent-neutral);}
+.bg-dark {.generate-accent(@accent-dark);}
+.bg-light {.generate-accent(@accent-light);}
+.bg-soft {.generate-accent(@accent-soft);}
 
 // By Contrast
-.accent-vibrant {.generate-accent(@accent-vibrant);}
-.accent-clear {.generate-accent(@accent-clear);}
+.bg-vibrant {.generate-accent(@accent-vibrant);}
+.bg-clear {.generate-accent(@accent-clear);}
 
 // By Context
-.accent-primary {.generate-accent(@accent-primary);}
-.accent-success {.generate-accent(@accent-success);}
-.accent-info {.generate-accent(@accent-info);}
-.accent-warning {.generate-accent(@accent-warning);}
-.accent-error {.generate-accent(@accent-error);}
+.bg-primary {.generate-accent(@accent-primary);}
+.bg-success {.generate-accent(@accent-success);}
+.bg-info {.generate-accent(@accent-info);}
+.bg-warning {.generate-accent(@accent-warning);}
+.bg-error {.generate-accent(@accent-error);}
+.bg-muted {.generate-accent(@accent-light);}
 
-// Size
+// Floats
+// -------------------------
+
+.clearfix {
+  .clearfix();
+}
+.pull-right {
+  float: right !important;
+}
+.pull-left {
+  float: left !important;
+}
+
