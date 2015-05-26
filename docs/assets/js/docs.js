@@ -52,7 +52,7 @@ function BuildTabs(){
             _open_tab(tab, $(this).index());
         });
     });
-};
+}
 
 /**
  * Left Sidebar
@@ -107,7 +107,7 @@ function LeftSidebar(){
                     link.parent('ul').show(0);
                 }
 
-            };
+            }
         });
     }
 
@@ -140,7 +140,7 @@ function LeftSidebar(){
         renderMenubyHash : _render_menu_by_hash,
         init: _init
     };
-};
+}
 
 /**
  * Smooth Scroll
@@ -180,4 +180,4 @@ function SmoothScroll(){
         scrollTo: _scroll_to
     };
 
-};
+}

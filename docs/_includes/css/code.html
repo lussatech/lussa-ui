@@ -1,0 +1,134 @@
+<h1 class="docs-section-title" id="code">Code</h1>
+<p class="docs-section-desc">Tipografi khusus untuk kode program</p>
+
+<!-- Inline -->
+<h2 class="docs-subsection-title" id="code-inline">Inline</h2>
+<div class="docs-subsection-desc">
+    <p>
+        Kamu bisa pake tag <code>&lt;code&gt;</code> secara inline untuk konteks teks yang berhubungan dengan kode/syntax, misal tag html nama fungsi dll.
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                For example, <code>&lt;section&gt;</code> should be wrapped as inline.
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+For example, <code>&lt;section&gt;</code> should be wrapped as inline.
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- User Input -->
+<h2 class="docs-subsection-title" id="code-user-input">User Input</h2>
+<div class="docs-subsection-desc">
+    <p>
+        Untuk teks yang menunjukan input dari user (keyboard), kamu dapat menggunakan tag <code>&lt;kbd&gt;</code> secara inline.
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                To switch directories, type <kbd>cd</kbd> followed by the name of the directory.<br>
+                To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+To switch directories, type <kbd>cd</kbd> followed by the name of the directory.<br>
+To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Blok Code -->
+<h2 class="docs-subsection-title" id="code-block">Blok Kode</h2>
+<div class="docs-subsection-desc">
+    <p>
+        Gunakan tag <code>&lt;pre&gt;</code> untuk menampilkan paragraf untuk source-code
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Variable -->
+<h2 class="docs-subsection-title" id="code-variables">Variable / Fungsi</h2>
+<div class="docs-subsection-desc">
+    <p>
+        Gunakan tag <code>&lt;var&gt;</code> untuk menandakan sebuah teks sebagai variable / fungsi
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <var>y</var> = <var>m</var><var>x</var> + <var>b</var>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<var>y</var> = <var>m</var><var>x</var> + <var>b</var>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Sample Output -->
+<h2 class="docs-subsection-title" id="code-sample-output">Sample Output</h2>
+<div class="docs-subsection-desc">
+    <p>
+        Gunakan tag <code>&lt;samp&gt;</code> untuk menunjukan output dari sebuah program
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <samp>This text is meant to be treated as sample output from a computer program.</samp>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<samp>This text is meant to be treated as sample output from a computer program.</samp>
+{% endhighlight %}
+        </div>
+    </div>
+</div>

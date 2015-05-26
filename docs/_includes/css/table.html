@@ -1,0 +1,539 @@
+<h1 class="docs-section-title" id="table">Tabel</h1>
+<p class="docs-section-desc">tabel</p>
+
+<!-- Table -->
+<h2 class="docs-subsection-title" id="table-basic">Tabel Umum / Basic</h2>
+<div class="docs-subsection-desc">
+    <p>
+        Untuk tabel umum / biasa bisa menggunakan tag <code>&lt;table&gt;</code> ditambah dengan class <code>.table</code>. Penggunaan class <code>.table</code> bertujuan untuk mengisolasi style untuk table biasa. Karena kebanyakan tag table digunakan untuk layouting / tampilan direktif seperti date-picker dan cart system.
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <table class="table">
+                  <caption>Optional table caption.</caption>
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Username</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<table class="table">
+<caption>Optional table caption.</caption>
+<thead>
+<tr>
+  <th>#</th>
+  <th>...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <th scope="row">1</th>
+  <td>...</td>
+</tr>
+...
+</tbody>
+</table>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Stripped -->
+<h2 class="docs-subsection-title" id="table-striped">Tabel Belang-belang / Zebra</h2>
+<div class="docs-subsection-desc">
+    <p>
+        Untuk tampilan belang-belang cukup tambahkan class <code>.table-stripped</code> di table, otomatis semua baris yang ada di dalam <code>&lt;tbody&gt;</code> jadi belang-belang
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Username</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<table class="table table-bordered">
+<thead>
+<tr>
+  <th>#</th>
+  <th>...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <th scope="row">1</th>
+  <td>...</td>
+</tr>
+...
+</tbody>
+</table>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Bordered -->
+<h2 class="docs-subsection-title" id="table-bordered">Tabel dengan Border</h2>
+<div class="docs-subsection-desc">
+    <p>
+        Untuk tampilan table dengan border cukup tambahkan class <code>.table-bordered</code> pada table, akan membuat semua cell dan table memiliki border.
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Username</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<table class="table table-bordered">
+<thead>
+<tr>
+  <th>#</th>
+  <th>...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <th scope="row">1</th>
+  <td>...</td>
+</tr>
+...
+</tbody>
+</table>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Hover Row -->
+<h2 class="docs-subsection-title" id="table-bordered">Hover Row</h2>
+<div class="docs-subsection-desc">
+    <p>
+        Untuk mengaktifkan hoverable row cukup tambahkan class <code>.table-hover</code> pada table.
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Username</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<table class="table table-hover">
+<thead>
+<tr>
+  <th>#</th>
+  <th>...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <th scope="row">1</th>
+  <td>...</td>
+</tr>
+...
+</tbody>
+</table>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Table Condensed -->
+<h2 class="docs-subsection-title" id="table-condensed">Tabel Padat</h2>
+<div class="docs-subsection-desc">
+    <p>
+        tambahkan class <code>.table-condensed</code> untuk membuat tinggi baris lebih kecil, sehingga membuat table lebih padat
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <table class="table table-condensed">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Username</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<table class="table table-condensed">
+<thead>
+<tr>
+  <th>#</th>
+  <th>...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <th scope="row">1</th>
+  <td>...</td>
+</tr>
+...
+</tbody>
+</table>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Table Contextual -->
+<h2 class="docs-subsection-title" id="table-accent">Konteks Warna</h2>
+<div class="docs-subsection-desc">
+    <p>
+        Gunakan class aksen khusus tabel, untuk memberikan warna / konteks yang berbeda untuk baris yang diberikan kelas tersebut.
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Column heading</th>
+                      <th>Column heading</th>
+                      <th>Column heading</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="active">
+                      <th scope="row">1</th>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                    </tr>
+                    <tr class="success">
+                      <th scope="row">3</th>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">4</th>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                    </tr>
+                    <tr class="info">
+                      <th scope="row">5</th>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">6</th>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                    </tr>
+                    <tr class="warning">
+                      <th scope="row">7</th>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">8</th>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                    </tr>
+                    <tr class="error">
+                      <th scope="row">9</th>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                      <td>Column content</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<!-- pada baris -->
+<tr class="active">...</tr>
+<tr class="success">...</tr>
+<tr class="warning">...</tr>
+<tr class="error">...</tr>
+<tr class="info">...</tr>
+
+<!-- Didalem sell (`td` or `th`) -->
+<tr>
+  <td class="active">...</td>
+  <td class="success">...</td>
+  <td class="warning">...</td>
+  <td class="error">...</td>
+  <td class="info">...</td>
+</tr>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Table Responsive -->
+<h2 class="docs-subsection-title" id="table-responsive">Tabel Responsive</h2>
+<div class="docs-subsection-desc">
+    <p>
+        Untuk membuat tabel menjadi responsive kamu cukup membungkus tabel dengan container berkelas <code>.table-responsive</code>. Container secara otomatis akan dapat discroll ketika konten table didalamnya lebih lebar dari screen device.
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <div class="table-responsive">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Table heading</th>
+                        <th>Table heading</th>
+                        <th>Table heading</th>
+                        <th>Table heading</th>
+                        <th>Table heading</th>
+                        <th>Table heading</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+              <th>#</th>
+              <th>...</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>...</td>
+            </tr>
+            ...
+        </tbody>
+    </table>
+</div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
