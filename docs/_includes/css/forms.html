@@ -1,0 +1,921 @@
+<h1 class="docs-section-title" id="forms">Form</h1>
+<p class="docs-section-desc">Komponen dan Layout untuk form, seperti input label dkk.</p>
+
+<!-- Basic -->
+<h2 class="docs-subsection-title" id="forms-basic">Form Biasa / Dasar / Basic</h2>
+<div class="docs-subsection-desc">
+    <p>
+    Setiap input diwrap dengan element class <code>.from-group</code> dan tiap <code>&lt;input&gt;</code>,<code>&lt;textarea&gt;</code> dan <code>&lt;select&gt;</code> wajib diberi class <code>.form-control</code> yang secara otomoatis akan memiliki lebar 100%. Layout secara default akan stacking dari atas ke bawah.
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <form>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputFile">File input</label>
+                    <input type="file" id="exampleInputFile">
+                    <p class="help-block">Example block-level help text here.</p>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox"> Check me out
+                    </label>
+                  </div>
+                  <button type="submit" class="button button-default">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputFile">File input</label>
+    <input type="file" id="exampleInputFile">
+    <p class="help-block">Example block-level help text here.</p>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox"> Check me out
+    </label>
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- inline -->
+<h2 class="docs-subsection-title" id="forms-inline">Inline Form</h2>
+<div class="docs-subsection-desc">
+    <p>
+        Kalau kamu ingin form dengan tampilan sebaris (inline) dari kiri ke kanan, kamu cukup menambahkan class <code>.form-inline</code> pada tag <code>&lt;form&gt;</code>. Pada layar mobile, tampilan ini akan secara responsive stacking ke bawah
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <form class="form-inline">
+                  <div class="form-group">
+                    <label for="exampleInputName2">Name</label>
+                    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail2">Email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+                  </div>
+                  <button type="submit" class="button button-default">Send invitation</button>
+                </form>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<form class="form-inline">
+  <div class="form-group">
+    <label for="exampleInputName2">Name</label>
+    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail2">Email</label>
+    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+  </div>
+  <button type="submit" class="button button-default">Send invitation</button>
+</form>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+
+<!-- Horizontal Forms -->
+<h2 class="docs-subsection-title" id="forms-horizontal">Horizontal Form</h2>
+<div class="docs-subsection-desc">
+    <p>
+        Tambahkan class <code>.form-horizontal</code> untuk membuat layout form dengan label dan input saling berseblahan, seperti halnya pada horizontal description list. Pada dasarnya horizontal form memanfaat grid untuk membentuk layoutnya, disini akan diberikan contoh untuk membuat layout form horizontal.
+    </p>
+    <p>
+        Jangan lupa atur ukuran grid untuk kolom <code>label</code> dan kolom <code>.form-control</code>.
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <form class="form-horizontal">
+                  <div class="form-group">
+                    <label for="inputEmail3" class="grid-20 control-label">Email</label>
+                    <div class="grid-80">
+                      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputPassword3" class="grid-20 control-label">Password</label>
+                    <div class="grid-80">
+                      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="prefix-20 grid-80">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox"> Remember me
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="prefix-20 grid-80">
+                      <button type="submit" class="button button-default">Sign in</button>
+                    </div>
+                  </div>
+                </form>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<form class="form-horizontal">
+  <div class="form-group">
+    <label for="inputEmail3" class="grid-20 control-label">Email</label>
+    <div class="grid-80">
+      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="grid-20 control-label">Password</label>
+    <div class="grid-80">
+      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="prefix-20 grid-80">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"> Remember me
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="prefix-20 grid-80">
+      <button type="submit" class="button button-default">Sign in</button>
+    </div>
+  </div>
+</form>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Supported Control -->
+<h2 class="docs-subsection-title" id="forms-controls">Supported Controls</h2>
+<div class="docs-subsection-desc">
+    <p>
+        Contoh standar form control yang di support oleh lussa UI
+    </p>
+    <h3>Input</h3>
+    <p>Text-based input fields, termasuk html-5 type seperti <code>text</code>, <code>password</code>, <code>datetime</code>, <code>datetime-local</code>, <code>date</code>, <code>month</code>, <code>time</code>, <code>week</code>, <code>number</code>, <code>email</code>, <code>url</code>, <code>search</code>, <code>tel</code>, and <code>color</code>.</p></p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <input type="text" class="form-control" placeholder="Text input">
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<input type="text" class="form-control" placeholder="Text input">
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+<div class="docs-subsection-desc">
+    <p>
+        Contoh standar form control yang di support oleh lussa UI
+    </p>
+</div>
+<div class="docs-subsection-desc">
+    <h3>Textarea</h3>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+            <textarea class="form-control" rows="3" placeholder="contoh textarea"></textarea>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<textarea class="form-control" rows="3" placeholder="contoh textarea"></textarea>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<div class="docs-subsection-desc">
+    <h3>Checkbox dan Radio Button</h3>
+    <p>Checkbox dengan atribut <code>disabled</code> akan memiliki aksen yang disesuaikan. Untuk dapat memiliki label checkbox / radio yang menampilkan cursor "not-allowed" ketika cursor di hover, tambahkan class <code>.disabled</code> pada element <code>.radio-inline</code>, <code>.checkbox</code>, <code>.chckbox-inline</code> atau <code>&lt;fieldset&gt;</code></p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" value="">
+                    Option one is this and that&mdash;be sure to include why it's great
+                  </label>
+                </div>
+                <div class="checkbox disabled">
+                  <label>
+                    <input type="checkbox" value="" disabled>
+                    Option two is disabled
+                  </label>
+                </div>
+
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                    Option one is this and that&mdash;be sure to include why it's great
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                    Option two can be something else and selecting it will deselect option one
+                  </label>
+                </div>
+                <div class="radio disabled">
+                  <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+                    Option three is disabled
+                  </label>
+                </div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<div class="checkbox">
+  <label>
+    <input type="checkbox" value="">
+    Option one is this and that&mdash;be sure to include why it's great
+  </label>
+</div>
+<div class="checkbox disabled">
+  <label>
+    <input type="checkbox" value="" disabled>
+    Option two is disabled
+  </label>
+</div>
+
+<div class="radio">
+  <label>
+    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+    Option one is this and that&mdash;be sure to include why it's great
+  </label>
+</div>
+<div class="radio">
+  <label>
+    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+    Option two can be something else and selecting it will deselect option one
+  </label>
+</div>
+<div class="radio disabled">
+  <label>
+    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+    Option three is disabled
+  </label>
+</div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<div class="docs-subsection-desc">
+    <h4>Inline Checkbox & Radio</h4>
+    <p>
+    Agar tampilan checkbox dan radio menjadi inline (sebaris) tambahkan class <code>.checkbox-inline</code> atau <code>.radio-inline</code>.
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <div class="checkbox">
+                    <label class="checkbox-inline">
+                      <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+                    </label>
+                </div>
+                <div class="radio">
+                    <label class="radio-inline">
+                      <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<div class="checkbox">
+    <label class="checkbox-inline">
+      <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+    </label>
+    <label class="checkbox-inline">
+      <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+    </label>
+    <label class="checkbox-inline">
+      <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+    </label>
+</div>
+<div class="radio">
+    <label class="radio-inline">
+      <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+    </label>
+</div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<div class="docs-subsection-desc">
+    <h4>Tanpa Label</h4>
+    <p>
+    Punya chekcbox tanpa label?. Biasanya bakal jadi berantakan, lussa ui sudah menghandle ini.
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" id="blankCheckbox" value="option1">
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="blankRadio" id="blankRadio1" value="option1">
+                  </label>
+                </div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<div class="checkbox">
+  <label>
+    <input type="checkbox" id="blankCheckbox" value="option1">
+  </label>
+</div>
+<div class="radio">
+  <label>
+    <input type="radio" name="blankRadio" id="blankRadio1" value="option1">
+  </label>
+</div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<div class="docs-subsection-desc">
+    <h3>Select</h3>
+    <p>
+    Tampilan <code>&lt;select&gt;</code> akan identik dengan input, sehingga tampilan form menjadi lebih konsisten.
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <select class="form-control">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+                <br/>
+                <select multiple class="form-control">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<!-- single select -->
+<select class="form-control">
+  <option>1</option>
+  <option>2</option>
+  <option>3</option>
+  <option>4</option>
+  <option>5</option>
+</select>
+<!-- multiple select -->
+<select multiple class="form-control">
+  <option>1</option>
+  <option>2</option>
+  <option>3</option>
+  <option>4</option>
+  <option>5</option>
+</select>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Static Control -->
+<h2 class="docs-subsection-title" id="forms-controls-static">Static Control</h2>
+<div class="docs-subsection-desc">
+    <p>
+    Jika kamu butuh form dengan value static, misal pada tampilan show atau edit. Kamu dapat menggunakan class <code>.form-control-static</code> pada tag <code>&lt;p&gt;</code> yang menggantikan control yang bersangkutan.
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <form class="form-horizontal">
+                  <div class="form-group">
+                    <label class="grid-20 control-label">Email</label>
+                    <div class="grid-80">
+                      <p class="form-control-static">email@example.com</p>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputPassword" class="grid-20 control-label">Password</label>
+                    <div class="grid-80">
+                      <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                    </div>
+                  </div>
+                </form>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<form class="form-horizontal">
+  <div class="form-group">
+    <label class="grid-20 control-label">Email</label>
+    <div class="grid-80">
+      <p class="form-control-static">email@example.com</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword" class="grid-20 control-label">Password</label>
+    <div class="grid-80">
+      <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+    </div>
+  </div>
+</form>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- State -->
+<h2 class="docs-subsection-title" id="forms-control-state">Keadaan / State dari From Control</h2>
+<div class="docs-subsection-desc">
+    <p>
+    Form control memiliki beberapa keadaan / status standar yang merepresentasikan konteks UX sebuah input. Misal ketika input dalam keadaan di fokus, di matikan (disabled) atau hanya bisa dibaca (readonly).
+    </p>
+    <p>
+        Tampilan <code>disabled</code> berlaku juga bila <code>&lt;fieldset&gt;</code> juga dalam state <code>disabled</code>. Jadi jika ingin mendisabled semua input secaram bersamaan cukup gunakan <code>&lt;fieldset disabled&gt;</code>
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <div class="form-group">
+                    <label>focus input dibawah ini untuk melihat focus state</label>
+                    <input class="form-control" type="text" placeholder="klik untuk melihat tampilan state focus" />
+                </div>
+                <div class="form-group">
+                    <label>form dibawah dalam keadaan mati</label>
+                    <input class="form-control" type="text" placeholder="field ini dimatikan / disabled" disabled/>
+                </div>
+                <div class="form-group">
+                    <label>form dibawah dalam keadaan readonly</label>
+                    <input class="form-control" type="text" placeholder="readonly" readonly/>
+                </div>
+                <fieldset disabled>
+                    <div class="form-group">
+                        <label>mati karena fieldset dimatikan</label>
+                        <input class="form-control" type="text" placeholder="field ini dimatikan / disabled karena fieldsetnya di disabled"/>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox"> Ga bisa di-cheklist
+                      </label>
+                    </div>
+                    <button type="submit" class="button button-success">Ga bisa di Submit</button>
+                </fieldset>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<div class="form-group">
+    <label>focus input dibawah ini untuk melihat focus state</label>
+    <input class="form-control" type="text" placeholder="klik untuk melihat tampilan state focus" />
+</div>
+<div class="form-group">
+    <label>form dibawah dalam keadaan mati</label>
+    <input class="form-control" type="text" placeholder="field ini dimatikan / disabled" disabled/>
+</div>
+<div class="form-group">
+    <label>form dibawah dalam keadaan readonly</label>
+    <input class="form-control" type="text" placeholder="readonly" readonly/>
+</div>
+<fieldset disabled>
+    <div class="form-group">
+        <label>mati karena fieldset dimatikan</label>
+        <input class="form-control" type="text" placeholder="field ini dimatikan / disabled karena fieldsetnya di disabled"/>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox"> Ga bisa di-cheklist
+      </label>
+    </div>
+    <button type="submit" class="button button-success">Ga bisa di Submit</button>
+</fieldset>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- ValidationState -->
+<h2 class="docs-subsection-title" id="forms-control-validation">Form Validasi</h2>
+<div class="docs-subsection-desc">
+    <p>
+        Secara default, class untuk validasi akan dihasilkan oleh angular, tetapi disini akan ditampilkan bagaimana state validasi tersebut.
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+
+                <div class="form-group validation-success">
+                  <label class="control-label" for="inputSuccess1">Input with success</label>
+                  <input type="text" class="form-control" id="inputSuccess1">
+                </div>
+                <div class="form-group validation-warning">
+                  <label class="control-label" for="inputWarning1">Input with warning</label>
+                  <input type="text" class="form-control" id="inputWarning1">
+                </div>
+                <div class="form-group validation-error">
+                  <label class="control-label" for="inputError1">Input with error</label>
+                  <input type="text" class="form-control" id="inputError1">
+                </div>
+                <div class="validation-success">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" id="checkboxSuccess" value="option1">
+                      Checkbox with success
+                    </label>
+                  </div>
+                </div>
+                <div class="validation-warning">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" id="checkboxWarning" value="option1">
+                      Checkbox with warning
+                    </label>
+                  </div>
+                </div>
+                <div class="validation-error">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" id="checkboxError" value="option1">
+                      Checkbox with error
+                    </label>
+                  </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<div class="form-group validation-success">
+  <label class="control-label" for="inputSuccess1">Input with success</label>
+  <input type="text" class="form-control" id="inputSuccess1">
+</div>
+<div class="form-group validation-warning">
+  <label class="control-label" for="inputWarning1">Input with warning</label>
+  <input type="text" class="form-control" id="inputWarning1">
+</div>
+<div class="form-group validation-error">
+  <label class="control-label" for="inputError1">Input with error</label>
+  <input type="text" class="form-control" id="inputError1">
+</div>
+<div class="validation-success">
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" id="checkboxSuccess" value="option1">
+      Checkbox with success
+    </label>
+  </div>
+</div>
+<div class="validation-warning">
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" id="checkboxWarning" value="option1">
+      Checkbox with warning
+    </label>
+  </div>
+</div>
+<div class="validation-error">
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" id="checkboxError" value="option1">
+      Checkbox with error
+    </label>
+  </div>
+</div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<div class="docs-subsection-desc">
+    <h3>Menamahkan Icon validasi</h3>
+    <p>
+    Kamu bisa juga memberikan icon untuk aksen validasi dengan menambahkan class <code>.has-validation</code>.
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <div class="form-group validation-success has-validation">
+                  <label class="control-label" for="inputSuccess1">Input with success</label>
+                  <input type="text" class="form-control" id="inputSuccess1">
+                  <span class="form-validation-icon icon icon-ios-checkmark"></span>
+                </div>
+                <div class="form-group validation-warning has-validation">
+                  <label class="control-label" for="inputWarning1">Input with warning</label>
+                  <input type="text" class="form-control" id="inputWarning1">
+                  <span class="form-validation-icon icon icon-ios-information"></span>
+                </div>
+                <div class="form-group validation-error has-validation">
+                  <label class="control-label" for="inputError1">Input with error</label>
+                  <input type="text" class="form-control" id="inputError1">
+                  <span class="form-validation-icon icon icon-ios-close"></span>
+                </div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<div class="form-group validation-success has-validation">
+  <label class="control-label" for="inputSuccess1">Input with success</label>
+  <input type="text" class="form-control" id="inputSuccess1">
+  <span class="form-validation-icon icon icon-ios-checkmark"></span>
+</div>
+<div class="form-group validation-warning has-validation">
+  <label class="control-label" for="inputWarning1">Input with warning</label>
+  <input type="text" class="form-control" id="inputWarning1">
+  <span class="form-validation-icon icon icon-ios-information"></span>
+</div>
+<div class="form-group validation-error has-validation">
+  <label class="control-label" for="inputError1">Input with error</label>
+  <input type="text" class="form-control" id="inputError1">
+  <span class="form-validation-icon icon icon-ios-close"></span>
+</div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Variasi Ukuran -->
+<h2 class="docs-subsection-title" id="forms-control-sizes">Variasi Ukuran Form Control</h2>
+<div class="docs-subsection-desc">
+    <p>
+    Anda bisa mengatur ukuran form-control cukup dengan <code>.input-x</code> dan <code>.input-group-x</code>, dimana x adalah standar varian ukuran pada lussa ui. Untuk saat ini yang available varian <code>-large</code> dan <code>-small</code>, sedangkan untuk
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+            <form>
+                <div class="form-group">
+                    <input class="form-control input-large" type="text" placeholder=".input-large">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Default input">
+                </div>
+                <div class="form-group">
+                    <input class="form-control input-small" type="text" placeholder=".input-small">
+                </div>
+
+                <div class="form-group">
+                    <select class="form-control input-large">
+                      <option value="">.input-large</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select class="form-control">
+                      <option value="">Default select</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select class="form-control input-small">
+                      <option value="">.input-small</option>
+                    </select>
+                </div>
+            </form>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<input class="form-control input-large" type="text" placeholder=".input-large">
+<input class="form-control" type="text" placeholder="Default input">
+<input class="form-control input-small" type="text" placeholder=".input-small">
+
+<select class="form-control input-large">...</select>
+<select class="form-control">...</select>
+<select class="form-control input-small">...</select>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+<div class="docs-subsection-desc">
+    <h3>Horizontal form dengan varian ukuran dari <code>input-group</code></h3>
+    <p>
+    mengubah ukuran label, form-control hingga icon validasi cukup dengan menambahkan <code>.form-group-large</code> atau <code>.form-group-small</code
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <form class="form-horizontal">
+                  <div class="form-group form-group-large">
+                    <label class="grid-20 control-label" for="formGroupInputLarge">Large label</label>
+                    <div class="grid-80">
+                      <input class="form-control" type="text" id="formGroupInputLarge" placeholder="Large input">
+                    </div>
+                  </div>
+                  <div class="form-group form-group-small">
+                    <label class="grid-20 control-label" for="formGroupInputSmall">Small label</label>
+                    <div class="grid-80">
+                      <input class="form-control" type="text" id="formGroupInputSmall" placeholder="Small input">
+                    </div>
+                  </div>
+                </form>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<form class="form-horizontal">
+  <div class="form-group form-group-large">
+    <label class="grid-20 control-label" for="formGroupInputLarge">Large label</label>
+    <div class="grid-80">
+      <input class="form-control" type="text" id="formGroupInputLarge" placeholder="Large input">
+    </div>
+  </div>
+  <div class="form-group form-group-small">
+    <label class="grid-20 control-label" for="formGroupInputSmall">Small label</label>
+    <div class="grid-80">
+      <input class="form-control" type="text" id="formGroupInputSmall" placeholder="Small input">
+    </div>
+  </div>
+</form>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Help Teks -->
+<h2 class="docs-subsection-title" id="forms-help-text">Help Text / Keterangan</h2>
+<div class="docs-subsection-desc">
+    <p>
+    Keterangan biasanya untuk menjelasakan lebih lanjut mengenai input yang hendak dimasukan user kedalam <code>form-control</code>. Cukup buat <code>span</code> atau <code>p</code> setelah form control.
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <form>
+                    <div class="form-group">
+                        <label for="inputHelpBlock">Input with help text</label>
+                        <input type="text" id="inputHelpBlock" class="form-control">
+                    </div>
+                    <span class="help-block">Sepotong help teks / keterangan yang berfungsi untuk menejlasakan lebih lanjut mengenai input yang akan dimasukkan user</span>
+                </form>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<div class="form-group">
+    <label for="inputHelpBlock">Input with help text</label>
+    <input type="text" id="inputHelpBlock" class="form-control">
+</div>
+<span class="help-block">Sepotong help teks / keterangan yang berfungsi untuk menejlasakan lebih lanjut mengenai input yang akan dimasukkan user</span>
+{% endhighlight %}
+        </div>
+    </div>
+</div>

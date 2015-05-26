@@ -1,0 +1,197 @@
+<h1 class="docs-section-title" id="buttons">Tombol / Button</h1>
+<p class="docs-section-desc">Tombol dan link yang menyerupai tombol serta variannya</p>
+
+<!-- Button Tags -->
+<h2 class="docs-subsection-title" id="buttons-tags">Button Tags</h2>
+<div class="docs-subsection-desc">
+    <p>
+    Menggunakan kelas <code>.button</code> pada elemen <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code> atau <code>&lt;input&gt;</code>
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <a class="button button-default" href="#" role="button">Link</a>
+                <button class="button button-default" type="submit">Button</button>
+                <input class="button button-default" type="button" value="Input">
+                <input class="button button-default" type="submit" value="Submit">
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<a class="button button-default" href="#" role="button">Link</a>
+<button class="button button-default" type="submit">Button</button>
+<input class="button button-default" type="button" value="Input">
+<input class="button button-default" type="submit" value="Submit">
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Button Accent -->
+<h2 class="docs-subsection-title" id="buttons-accent">Aksen</h2>
+<div class="docs-subsection-desc">
+    <p>
+    Untuk menunjukan konteks terntentu, kamu bisa menggunakan kelas aksen khusus tombol
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+            <!-- Standard button -->
+            <button type="button" class="button button-default">Default</button>
+            <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+            <button type="button" class="button button-primary">Primary</button>
+            <!-- Indicates a successful or positive action -->
+            <button type="button" class="button button-success">Success</button>
+            <!-- Contextual button for informational alert messages -->
+            <button type="button" class="button button-info">Info</button>
+            <!-- Indicates caution should be taken with this action -->
+            <button type="button" class="button button-warning">Warning</button>
+            <!-- Indicates a dangerous or potentially negative action -->
+            <button type="button" class="button button-error">Error</button>
+            <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
+            <button type="button" class="button button-link">Link</button>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<!-- Standard button -->
+<button type="button" class="button button-default">Default</button>
+<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+<button type="button" class="button button-primary">Primary</button>
+<!-- Indicates a successful or positive action -->
+<button type="button" class="button button-success">Success</button>
+<!-- Contextual button for informational alert messages -->
+<button type="button" class="button button-info">Info</button>
+<!-- Indicates caution should be taken with this action -->
+<button type="button" class="button button-warning">Warning</button>
+<!-- Indicates a dangerous or potentially negative action -->
+<button type="button" class="button button-error">Error</button>
+<!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
+<button type="button" class="button button-link">Link</button>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Varian Tombol -->
+<h2 class="docs-subsection-title" id="buttons-sizes">Variasi Ukuran</h2>
+<div class="docs-subsection-desc">
+    <p>
+    Seperti elemen dasar lain, untuk variasi ukuran tombol bisa menggunakan kelas <code>.button-large</code> atau <code>.button-small</code>
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+            <p>
+              <button type="button" class="button button-primary button-large">Large button</button>
+              <button type="button" class="button button-default button-large">Large button</button>
+            </p>
+            <p>
+              <button type="button" class="button button-primary">Default button</button>
+              <button type="button" class="button button-default">Default button</button>
+            </p>
+            <p>
+              <button type="button" class="button button-primary button-small">Small button</button>
+              <button type="button" class="button button-default button-small">Small button</button>
+            </p>
+            <p>
+              <button type="button" class="button button-primary button-xs">Extra small button</button>
+              <button type="button" class="button button-default button-xs">Extra small button</button>
+            </p>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<p>
+  <button type="button" class="button button-primary button-large">Large button</button>
+  <button type="button" class="button button-default button-large">Large button</button>
+</p>
+<p>
+  <button type="button" class="button button-primary">Default button</button>
+  <button type="button" class="button button-default">Default button</button>
+</p>
+<p>
+  <button type="button" class="button button-primary button-small">Small button</button>
+  <button type="button" class="button button-default button-small">Small button</button>
+</p>
+<p>
+  <button type="button" class="button button-primary button-xs">Extra small button</button>
+  <button type="button" class="button button-default button-xs">Extra small button</button>
+</p>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+<div class="docs-subsection-desc">
+    <p>
+        Kalau tombolnya ingin se-lebar containernya gunakan <code>.button-block</code>
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+            <button type="button" class="button button-primary button-large button-block">Block level button</button>
+<button type="button" class="button button-default button-large button-block">Block level button</button>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<button type="button" class="button button-primary button-large button-block">Block level button</button>
+<button type="button" class="button button-default button-large button-block">Block level button</button>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Button State  -->
+<h2 class="docs-subsection-title" id="buttons-state">Button State</h2>
+<div class="docs-subsection-desc">
+    <p>
+        Berdasakan state-nya (keadaan), lussa ui memberikan aksen yang berbeda-beda. Ada 2 aksen tambahan berdasarkan state tombol, <code>active</code> state dan <code>disabled</code> state. Secara default css mengatur <code>active</code> state dengan menggunakan <code>selector :active</code>, dan akan ditampilkan ketika tombol dalam keadaan ditekan. Tetapi kita dapat memaksakan tampilan active dengan menambahkan class <code>.active</code> pada button tag manapun.
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <button type="button" class="button button-primary active">Active State</button>
+                <button type="button" class="button button-primary">Active When Hover</button>
+                <button type="button" class="button button-primary" disabled>Disabled</button>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<button type="button" class="button button-primary active">Active State</button>
+<button type="button" class="button button-primary">Active When Hover</button>
+<button type="button" class="button button-primary" disabled>Disabled</button>
+{% endhighlight %}
+        </div>
+    </div>
+</div>

@@ -3451,14 +3451,14 @@ body {
   margin-left: auto;
   margin-right: auto;
   max-width: 1200px;
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .grid-fluid {
   margin-left: 0;
   margin-right: 0;
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 @media (min-width: 780px) {
   .grid-95 {
@@ -4730,8 +4730,8 @@ body {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 5px;
+    padding-right: 5px;
   }
   [class*=" grid-parent"],
   [class^="grid-parent"] {
@@ -4772,8 +4772,8 @@ body {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 5px;
+    padding-right: 5px;
   }
   [class*=" tablet-grid-parent"],
   [class^="tablet-grid-parent"] {
@@ -4814,8 +4814,8 @@ body {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 5px;
+    padding-right: 5px;
   }
   [class*=" mobile-grid-parent"],
   [class^="mobile-grid-parent"] {
@@ -5471,27 +5471,27 @@ fieldset[disabled] .checkbox label {
 .validation-success.checkbox label,
 .validation-success.radio-inline label,
 .validation-success.checkbox-inline label {
-  color: #000000;
+  color: #123601;
 }
 .validation-success .form-control {
-  border-color: #000000;
+  border-color: #9afc3a;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 .validation-success .form-control:focus {
-  border-color: #000000;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #333333;
-  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #333333;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #333333;
+  border-color: #80fc07;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #cdfe9e;
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #cdfe9e;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #cdfe9e;
 }
 .validation-success .input-group-addon {
-  color: #000000;
-  border-color: #000000;
+  color: #123601;
+  border-color: #9afc3a;
   background-color: #bdfe9e;
 }
 .validation-success .form-validation-icon {
-  color: #000000;
+  color: #123601;
 }
 .validation-warning .help-block,
 .validation-warning .control-label,
@@ -5503,27 +5503,27 @@ fieldset[disabled] .checkbox label {
 .validation-warning.checkbox label,
 .validation-warning.radio-inline label,
 .validation-warning.checkbox-inline label {
-  color: #313300;
+  color: #c6cb01;
 }
 .validation-warning .form-control {
-  border-color: #313300;
+  border-color: #fee967;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 .validation-warning .form-control:focus {
-  border-color: #000000;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #949801;
-  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #949801;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #949801;
+  border-color: #fee134;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #fff8cc;
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #fff8cc;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #fff8cc;
 }
 .validation-warning .input-group-addon {
-  color: #313300;
-  border-color: #313300;
+  color: #c6cb01;
+  border-color: #fee967;
   background-color: #fdffcc;
 }
 .validation-warning .form-validation-icon {
-  color: #313300;
+  color: #c6cb01;
 }
 .validation-error .help-block,
 .validation-error .control-label,
@@ -5535,27 +5535,27 @@ fieldset[disabled] .checkbox label {
 .validation-error.checkbox label,
 .validation-error.radio-inline label,
 .validation-error.checkbox-inline label {
-  color: #000000;
+  color: #990000;
 }
 .validation-error .form-control {
-  border-color: #000000;
+  border-color: #ff3355;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 .validation-error .form-control:focus {
-  border-color: #000000;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #333333;
-  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #333333;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #333333;
+  border-color: #ff002b;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ff99aa;
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ff99aa;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ff99aa;
 }
 .validation-error .input-group-addon {
-  color: #000000;
-  border-color: #000000;
+  color: #990000;
+  border-color: #ff3355;
   background-color: #ff9999;
 }
 .validation-error .form-validation-icon {
-  color: #000000;
+  color: #990000;
 }
 /**
  * Help Text
@@ -5717,8 +5717,8 @@ select[multiple].input-large {
   min-height: 24px;
 }
 .form-horizontal .form-group {
-  margin-left: 0;
-  margin-right: 0;
+  margin-left: -5px;
+  margin-right: -5px;
 }
 @media (min-width: 780px) {
   .form-horizontal .control-label {
@@ -5728,7 +5728,7 @@ select[multiple].input-large {
   }
 }
 .form-horizontal .has-validation .form-validation-icon {
-  right: 0;
+  right: 5px;
 }
 @media (min-width: 780px) {
   .form-horizontal .form-group-large .control-label {
