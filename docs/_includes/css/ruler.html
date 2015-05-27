@@ -1,0 +1,215 @@
+<h1 class="docs-section-title" id="ruler">Garis Pemisah</h1>
+<p class="docs-section-desc">Garis yang memisahkan elemen aku dan dia..</p>
+
+<!-- Horizontal Ruler -->
+<h2 class="docs-subsection-title" id="ruler-horizontal">Horizontal Ruler</h2>
+<div class="docs-subsection-desc">
+    <p>
+        Sesuai namanya, garis ini memisahkan elemen secara horizontal, merupakan elemen murni dari html <code>&lt;hr&gt;</code>, dapat juga menggunakan class <code>.hr</code> untuk elemen lain.
+        Secara default, elemen <code>hr</code> memiliki margin atas dan bawah sebesar computed line height, atau sekita 17px tergatung konfigurasi <code>@font-size-base</code>
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <hr/>
+                <div class="hr"></div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<hr/>
+<div class="hr"></div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Vertical Ruler -->
+<h2 class="docs-subsection-title" id="ruler-vertical">Vertical Ruler</h2>
+<div class="docs-subsection-desc">
+    <p>
+        Vertical ruler berfungsi untuk memberikan garis pemisah anatara inline element. Untuk mengimplementasikan vertical ruler cukup menggunakan kelas <code>.vr</code>, dengan syarat container element tersebut memiliki tinggi yang terdefinisi.
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <div style="height:100px">
+                    <div class="vr"></div>
+                </div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<div style="height:100px">
+    <div class="vr"></div>
+</div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- variant -->
+<h2 class="docs-subsection-title" id="ruler-variant">Varian Aksen Dan Bentuk</h2>
+<div class="docs-subsection-desc">
+    <p>
+    Ruler sendiri memiliki varian aksen, ukuran dan tipe. Untuk mengimplementasikan varian tersebut kamu cukup menambahkan kelas <code>.ruler-x</code>, dimana <var>x</var> adalah nama varian.
+    </p>
+    <h3>Varian Aksen</h3>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <p>By Translucency</p>
+                <hr class="ruler-neutral"/>
+                <hr class="ruler-dark"/>
+                <hr class="ruler-light"/>
+                <hr class="ruler-soft"/>
+                <p>By Contrast</p>
+                <hr class="ruler-vibrant"/>
+                <hr class="ruler-clear"/>
+                <p>By Context</p>
+                <hr class="ruler-primary"/>
+                <hr class="ruler-success"/>
+                <hr class="ruler-info"/>
+                <hr class="ruler-warning"/>
+                <hr class="ruler-error"/>
+                <p>Contoh di Vertical Ruler</p>
+                <div style="height:100px">
+                    <div class="vr ruler-neutral"></div>
+                    <div class="vr ruler-dark"></div>
+                    <div class="vr ruler-light"></div>
+                    <div class="vr ruler-soft"></div>
+                    <div class="vr ruler-vibrant"></div>
+                    <div class="vr ruler-primary"></div>
+                    <div class="vr ruler-clear"></div>
+                    <div class="vr ruler-success"></div>
+                    <div class="vr ruler-info"></div>
+                    <div class="vr ruler-warning"></div>
+                    <div class="vr ruler-error"></div>
+                </div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<!-- by translucency -->
+<hr class="ruler-neutral"/>
+<hr class="ruler-dark"/>
+<hr class="ruler-light"/>
+<hr class="ruler-soft"/>
+<!-- by contrast -->
+<hr class="ruler-vibrant"/>
+<hr class="ruler-clear"/>
+<!-- by context -->
+<hr class="ruler-primary"/>
+<hr class="ruler-success"/>
+<hr class="ruler-info"/>
+<hr class="ruler-warning"/>
+<hr class="ruler-error"/>
+
+<!-- on vertical -->
+<div style="height:100px">
+    <div class="vr ruler-neutral"></div>
+    <div class="vr ruler-dark"></div>
+    <div class="vr ruler-light"></div>
+    <div class="vr ruler-soft"></div>
+    <div class="vr ruler-vibrant"></div>
+    <div class="vr ruler-clear"></div>
+    <div class="vr ruler-primary"></div>
+    <div class="vr ruler-success"></div>
+    <div class="vr ruler-info"></div>
+    <div class="vr ruler-warning"></div>
+    <div class="vr ruler-error"></div>
+</div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<div class="docs-subsection-desc">
+    <h3>Varian Ukuran</h3>
+    <p>Untuk varian ukuran, saat ini hanya tersedia untuk ukuran normal (1px) dan ukuran besar (5px)</p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <hr class="ruler-large" />
+                <div style="height:100px">
+                    <div class="vr ruler-large"></div>
+                </div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<hr class="ruler-large" />
+<div style="height:100px">
+    <div class="vr ruler-large"></div>
+</div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<div class="docs-subsection-desc">
+    <h3>Varian Tipe / <em>Style</em></h3>
+    <p>
+        Untuk style sendiri, kamu bisa menggunakan beberapa variasi tipe border.
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <hr class="ruler-dotted" />
+                <hr class="ruler-dashed" />
+                <hr class="ruler-groove" />
+                <hr class="ruler-ridge" />
+                <div style="height:100px">
+                    <div class="vr ruler-dotted"></div>
+                    <div class="vr ruler-dashed"></div>
+                    <div class="vr ruler-groove"></div>
+                    <div class="vr ruler-ridge"></div>
+                </div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<hr class="ruler-dotted" />
+<hr class="ruler-dashed" />
+<hr class="ruler-groove" />
+<hr class="ruler-ridge" />
+<div style="height:100px">
+    <div class="vr ruler-dotted"></div>
+    <div class="vr ruler-dashed"></div>
+    <div class="vr ruler-groove"></div>
+    <div class="vr ruler-ridge"></div>
+</div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>

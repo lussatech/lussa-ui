@@ -1,0 +1,35 @@
+/**
+ * Ruller & Stuff
+ * ## Horizontal rule, vertical devider
+ * ==========================================================================
+ */
+
+// Horizontal Ruler
+
+hr,
+.hr {
+    margin-top: @line-height-computed;
+    margin-bottom: @line-height-computed;
+    border: none;
+    border-top: @ruler-border-size @ruler-border-style @ruler-border-accent;
+
+    .ruler-variant(top);
+}
+
+// Vertical Ruler
+.vr {
+    display: inline-block;
+    position: relative;
+    margin-right: @line-height-computed;
+    margin-left: @line-height-computed;
+    width: 0;
+    height: 100%;
+    border: none;
+    border-right: @ruler-border-size @ruler-border-style @ruler-border-accent;
+
+    // clearfix
+    &:extend(.clearfix);
+
+    // variant
+    .ruler-variant(right);
+}

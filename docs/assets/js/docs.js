@@ -9,7 +9,7 @@ var header_height = 50,
     menu_offset_collections = [];
 
 // main routine & service
-$(document).ready(function(e){
+$(window).load(function(e){
     // init
     BuildTabs();
     LeftSidebar().init();

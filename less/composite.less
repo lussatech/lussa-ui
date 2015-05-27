@@ -1,0 +1,155 @@
+/**
+ * Utility
+ * ## Utility for that can apply to all kind of component & aspect
+ * ==========================================================================
+ */
+
+
+/**
+ * Accent
+ */
+// By Translucency
+.make-accent(neutral,@accent-neutral);
+.make-accent(dark,@accent-dark);
+.make-accent(light,@accent-light);
+.make-accent(soft,@accent-soft);
+
+// By Contrast
+.make-accent(vibrant,@accent-vibrant);
+.make-accent(clear,@accent-clear);
+
+// By Context
+.make-accent(primary,@accent-primary);
+.make-accent(success,@accent-success);
+.make-accent(info,@accent-info);
+.make-accent(warning,@accent-warning);
+.make-accent(error,@accent-error);
+.make-accent(muted,@accent-muted);
+
+/**
+ * Cross Accent Combinator
+ */
+
+
+/**
+ * Shape
+ */
+// rounded
+.rounded{ border-radius: @border-radius-base; }
+.rounded-small{ border-radius: @border-radius-small; }
+.rounded-large{ border-radius: @border-radius-large; }
+
+// aspect ratio .ratio-1-1, .ratio-1-2
+.make-ratio(1,1);
+.make-ratio(2,1);
+.loop-ratio(3,2);
+.loop-ratio(4,2,2,-1);
+.loop-ratio(5,4);
+.make-ratio(6,5);
+.loop-ratio(7,6);
+.loop-ratio(8,4,2,-1);
+.make-ratio(16,9);
+
+// screen vertical height .screen-v-20 ... .screen-v-100
+.generate-screen();
+// circle
+.frame-circle{
+    border-radius: 100%;
+}
+
+/**
+ * Border Style
+ */
+.border-dotted{ border-style: dotted; }
+.border-dashed{ border-style: dashed; }
+.border-inset{ border-style: inset; }
+.border-outset{ border-style: outset; }
+.border-groove{ border-style: groove; }
+.border-ridge{ border-style: ridge; }
+
+/**
+ * Padding & Margin
+ */
+.generate-padding();
+.generate-margin();
+
+/**
+ * Position & Layout
+ */
+.clearfix {
+  .clearfix();
+}
+.pull-right {
+  float: right !important;
+}
+.pull-left {
+  float: left !important;
+}
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// positioning
+.corner-wrapper{
+    position: relative;
+
+    // element
+    > .top,
+    > .bottom,
+    > .left,
+    > .right {
+        position:absolute;
+        z-index: 2;
+    }
+    .left-right-mix() {
+        &-left{
+            left: 0;
+        }
+        &-right{
+            right: 0;
+        }
+    }
+    > .top {
+        top: 0;
+        .left-right-mix();
+    }
+    > .bottom {
+        bottom: 0;
+        .left-right-mix();
+    }
+}
+
+// Close icon
+.close {
+  float: right;
+  font-size: (@font-size-base * 1.5);
+  font-weight: @close-font-weight;
+  line-height: 1;
+  color: @close-color;
+  text-shadow: @close-text-shadow;
+  .opacity(.2);
+
+  &:extend(.icon);
+
+  &:before {
+    content: @close-icon;
+  }
+
+  &:hover,
+  &:focus {
+    color: @close-color;
+    text-decoration: none;
+    cursor: pointer;
+    .opacity(.5);
+  }
+
+  button& {
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    -webkit-appearance: none;
+  }
+}

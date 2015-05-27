@@ -1,0 +1,772 @@
+<h1 class="docs-section-title" id="composite">Kelas Komposit</h1>
+<p class="docs-section-desc">kelas yang bila dipadukan akan menghasilkan elemen baru yang unik, bisa diimplementasi ke elemen lain yang sudah memiliki tampilan default.</p>
+
+<!-- Aksen  -->
+<h2 class="docs-subsection-title" id="composite-accent">Aksen</h2>
+<div class="docs-subsection-desc">
+    <p>
+        Jika kamu amati, hampir tiap elemen seperti tombol dan garis pemisah memiliki variasi warna khusus. Sebenernya, hampir semua elemen html dapat memiliki variasi warna tersebut, yaitu dengan menggunakan kelas-kelas <em>composite</em> khusus aksen.
+        Kelas-kelas aksen akan memberikan aksen warna pada <code>text</code>, <code>background</code> dan <code>bg</code>. Lussa UI sendiri mengklasifikan aksen menjadi 3 kelompok yaitu,
+    </p>
+    <ul>
+        <li>
+            Berdasarkan Tingkat Kecerahan (by brightness & translucency)
+            <ul>
+                <li class="text-neutral">neutral</li>
+                <li class="text-dark">dark</li>
+                <li class="text-light">light</li>
+                <li class="text-soft">soft</li>
+            </ul>
+        </li>
+        <li>
+            Berdasarkan Kontras
+            <ul>
+                <li class="text-vibrant">vibrant</li>
+                <li class="text-clear">clear</li>
+            </ul>
+        </li>
+        <li>
+            Berdasarkan Konteks
+            <ul>
+                <li class="text-primary">primary</li>
+                <li class="text-success">success</li>
+                <li class="text-info">info</li>
+                <li class="text-warning">warning</li>
+                <li class="text-error">error</li>
+                <li class="text-muted">muted</li>
+            </ul>
+        </li>
+    </ul>
+    <h3>Bg Class</h3>
+    <p>berfungsi untuk memberikan warna pada latar (<code>background</code>) elemen, cukup manambahkan class <code>.bg-x</code>, dimana <var>x</var> adalah nama aksen-nya.</p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <div class="docs-bg-example bg-neutral"></div>
+                <div class="docs-bg-example bg-dark"></div>
+                <div class="docs-bg-example bg-light"></div>
+                <div class="docs-bg-example bg-soft"></div>
+                <div class="docs-bg-example bg-vibrant"></div>
+                <div class="docs-bg-example bg-clear"></div>
+                <div class="docs-bg-example bg-primary"></div>
+                <div class="docs-bg-example bg-success"></div>
+                <div class="docs-bg-example bg-info"></div>
+                <div class="docs-bg-example bg-warning"></div>
+                <div class="docs-bg-example bg-error"></div>
+                <div class="docs-bg-example bg-muted"></div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<div class="bg-neutral"></div>
+<div class="bg-dark"></div>
+<div class="bg-light"></div>
+<div class="bg-soft"></div>
+<div class="bg-vibrant"></div>
+<div class="bg-clear"></div>
+<div class="bg-primary"></div>
+<div class="bg-success"></div>
+<div class="bg-info"></div>
+<div class="bg-warning"></div>
+<div class="bg-error"></div>
+<div class="bg-muted"></div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<div class="docs-subsection-desc">
+    <h3>Border Class</h3>
+    <p>berfungsi untuk memberikan warna pada batas (<code>border</code>) elemen, cukup menambahkan class <code>.border-x</code>, dimana <var>x</var> adalah nama aksen-nya.</p> By default ukuran bg adah <code>1px</code> dengan style <code>solid</code>. Untuk menggantinya bisa menggunakan kelas bentuk.
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <div class="docs-border-example border-neutral"></div>
+                <div class="docs-border-example border-dark"></div>
+                <div class="docs-border-example border-light"></div>
+                <div class="docs-border-example border-soft"></div>
+                <div class="docs-border-example border-vibrant"></div>
+                <div class="docs-border-example border-clear"></div>
+                <div class="docs-border-example border-primary"></div>
+                <div class="docs-border-example border-success"></div>
+                <div class="docs-border-example border-info"></div>
+                <div class="docs-border-example border-warning"></div>
+                <div class="docs-border-example border-error"></div>
+                <div class="docs-border-example border-muted"></div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<div class="border-neutral"></div>
+<div class="border-dark"></div>
+<div class="border-light"></div>
+<div class="border-soft"></div>
+<div class="border-vibrant"></div>
+<div class="border-clear"></div>
+<div class="border-primary"></div>
+<div class="border-success"></div>
+<div class="border-info"></div>
+<div class="border-warning"></div>
+<div class="border-error"></div>
+<div class="border-muted"></div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<div class="docs-subsection-desc">
+    <h3>Hover Class</h3>
+    <p>
+        hover class adalah varian kelas aksen yang akan membuat elemen memiliki aksen warna ketika di hover. Untuk menggunakan kelas ini cukup tambahkan class <code>.bg-x-h</code> untuk background ,<code>.bg-x-h</code> untuk bg dan <code>.text-x-h</code> untuk teks.
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <div class="docs-hover-example bg-neutral-h"></div>
+                <div class="docs-hover-example bg-dark-h"></div>
+                <div class="docs-hover-example bg-light-h"></div>
+                <div class="docs-hover-example bg-soft-h"></div>
+                <div class="docs-hover-example bg-vibrant-h"></div>
+                <div class="docs-hover-example bg-clear-h"></div>
+                <div class="docs-hover-example bg-primary-h"></div>
+                <div class="docs-hover-example bg-success-h"></div>
+                <div class="docs-hover-example bg-info-h"></div>
+                <div class="docs-hover-example bg-warning-h"></div>
+                <div class="docs-hover-example bg-error-h"></div>
+                <div class="docs-hover-example bg-muted-h"></div>
+                <br/>
+                <div class="docs-hover-example border-neutral-h"></div>
+                <div class="docs-hover-example border-dark-h"></div>
+                <div class="docs-hover-example border-light-h"></div>
+                <div class="docs-hover-example border-soft-h"></div>
+                <div class="docs-hover-example border-vibrant-h"></div>
+                <div class="docs-hover-example border-clear-h"></div>
+                <div class="docs-hover-example border-primary-h"></div>
+                <div class="docs-hover-example border-success-h"></div>
+                <div class="docs-hover-example border-info-h"></div>
+                <div class="docs-hover-example border-warning-h"></div>
+                <div class="docs-hover-example border-error-h"></div>
+                <div class="docs-hover-example border-muted-h"></div>
+                <p class="text-success-h">
+                    teks ini berubah jadi success jika di hover
+                </p>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<div class="bg-neutral-h"></div>
+<div class="bg-dark-h"></div>
+<div class="bg-light-h"></div>
+<div class="bg-soft-h"></div>
+<div class="bg-vibrant-h"></div>
+<div class="bg-clear-h"></div>
+<div class="bg-primary-h"></div>
+<div class="bg-success-h"></div>
+<div class="bg-info-h"></div>
+<div class="bg-warning-h"></div>
+<div class="bg-error-h"></div>
+<div class="bg-muted-h"></div>
+<br/>
+<div class="border-neutral-h"></div>
+<div class="border-dark-h"></div>
+<div class="border-light-h"></div>
+<div class="border-soft-h"></div>
+<div class="border-vibrant-h"></div>
+<div class="border-clear-h"></div>
+<div class="border-primary-h"></div>
+<div class="border-success-h"></div>
+<div class="border-info-h"></div>
+<div class="border-warning-h"></div>
+<div class="border-error-h"></div>
+<div class="border-muted-h"></div>
+<p class="text-success-h">
+    ...
+</p>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<div class="docs-subsection-desc">
+    <h3>Accent Set</h3>
+    <p>
+        Adalah satu set aksen, yang mempermudah developer dalam membuat sebuah element dengan aksen background dan tulisan yang sinkron, baik ketika dalam keadaan normal, maupun di hover/focus.
+    </p>
+</div>
+
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="width:100px">accent / class</th>
+                <th>neutral</th>
+                <th>dark</th>
+                <th>light</th>
+                <th>soft</th>
+                <th>vibrant</th>
+                <th>clear</th>
+                <th>primary</th>
+                <th>success</th>
+                <th>info</th>
+                <th>warning</th>
+                <th>error</th>
+                <th>muted</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th><code>.accent-x</code></th>
+                <td><div class="docs-accent-set-example accent-neutral"></div></td>
+                <td><div class="docs-accent-set-example accent-dark"></div></td>
+                <td><div class="docs-accent-set-example accent-light"></div></td>
+                <td><div class="docs-accent-set-example accent-soft"></div></td>
+                <td><div class="docs-accent-set-example accent-vibrant"></div></td>
+                <td><div class="docs-accent-set-example accent-clear"></div></td>
+                <td><div class="docs-accent-set-example accent-primary"></div></td>
+                <td><div class="docs-accent-set-example accent-success"></div></td>
+                <td><div class="docs-accent-set-example accent-info"></div></td>
+                <td><div class="docs-accent-set-example accent-warning"></div></td>
+                <td><div class="docs-accent-set-example accent-error"></div></td>
+                <td><div class="docs-accent-set-example accent-muted"></div></td>
+            </tr>
+            <tr>
+                <th><code>.accent-x-h</code></th>
+                <td rowspan="2"><div class="docs-accent-set-example accent-neutral-h"></div></td>
+                <td rowspan="2"><div class="docs-accent-set-example accent-dark-h"></div></td>
+                <td rowspan="2"><div class="docs-accent-set-example accent-light-h"></div></td>
+                <td rowspan="2"><div class="docs-accent-set-example accent-soft-h"></div></td>
+                <td rowspan="2"><div class="docs-accent-set-example accent-vibrant-h"></div></td>
+                <td rowspan="2"><div class="docs-accent-set-example accent-clear-h"></div></td>
+                <td rowspan="2"><div class="docs-accent-set-example accent-primary-h"></div></td>
+                <td rowspan="2"><div class="docs-accent-set-example accent-success-h"></div></td>
+                <td rowspan="2"><div class="docs-accent-set-example accent-info-h"></div></td>
+                <td rowspan="2"><div class="docs-accent-set-example accent-warning-h"></div></td>
+                <td rowspan="2"><div class="docs-accent-set-example accent-error-h"></div></td>
+                <td rowspan="2"><div class="docs-accent-set-example accent-muted-h"></div></td>
+            </tr>
+            <tr>
+                <th><code>.accent-x-h-lighten</code></th>
+            </tr>
+            <tr>
+                <th><code>.accent-x-h-contrast</code></th>
+                <td><div class="docs-accent-set-example accent-neutral-h-contrast"></div></td>
+                <td><div class="docs-accent-set-example accent-dark-h-contrast"></div></td>
+                <td><div class="docs-accent-set-example accent-light-h-contrast"></div></td>
+                <td><div class="docs-accent-set-example accent-soft-h-contrast"></div></td>
+                <td><div class="docs-accent-set-example accent-vibrant-h-contrast"></div></td>
+                <td><div class="docs-accent-set-example accent-clear-h-contrast"></div></td>
+                <td><div class="docs-accent-set-example accent-primary-h-contrast"></div></td>
+                <td><div class="docs-accent-set-example accent-success-h-contrast"></div></td>
+                <td><div class="docs-accent-set-example accent-info-h-contrast"></div></td>
+                <td><div class="docs-accent-set-example accent-warning-h-contrast"></div></td>
+                <td><div class="docs-accent-set-example accent-error-h-contrast"></div></td>
+                <td><div class="docs-accent-set-example accent-muted-h-contrast"></div></td>
+            </tr>
+            <tr>
+                <th><code>.accent-x-h-darken</code></th>
+                <td><div class="docs-accent-set-example accent-neutral-h-darken"></div></td>
+                <td><div class="docs-accent-set-example accent-dark-h-darken"></div></td>
+                <td><div class="docs-accent-set-example accent-light-h-darken"></div></td>
+                <td><div class="docs-accent-set-example accent-soft-h-darken"></div></td>
+                <td><div class="docs-accent-set-example accent-vibrant-h-darken"></div></td>
+                <td><div class="docs-accent-set-example accent-clear-h-darken"></div></td>
+                <td><div class="docs-accent-set-example accent-primary-h-darken"></div></td>
+                <td><div class="docs-accent-set-example accent-success-h-darken"></div></td>
+                <td><div class="docs-accent-set-example accent-info-h-darken"></div></td>
+                <td><div class="docs-accent-set-example accent-warning-h-darken"></div></td>
+                <td><div class="docs-accent-set-example accent-error-h-darken"></div></td>
+                <td><div class="docs-accent-set-example accent-muted-h-darken"></div></td>
+            </tr>
+            <tr>
+                <th><code>.accent-x-h-reverse</code></th>
+                <td><div class="docs-accent-set-example accent-neutral-h-reverse"></div></td>
+                <td><div class="docs-accent-set-example accent-dark-h-reverse"></div></td>
+                <td><div class="docs-accent-set-example accent-light-h-reverse"></div></td>
+                <td><div class="docs-accent-set-example accent-soft-h-reverse"></div></td>
+                <td><div class="docs-accent-set-example accent-vibrant-h-reverse"></div></td>
+                <td><div class="docs-accent-set-example accent-clear-h-reverse"></div></td>
+                <td><div class="docs-accent-set-example accent-primary-h-reverse"></div></td>
+                <td><div class="docs-accent-set-example accent-success-h-reverse"></div></td>
+                <td><div class="docs-accent-set-example accent-info-h-reverse"></div></td>
+                <td><div class="docs-accent-set-example accent-warning-h-reverse"></div></td>
+                <td><div class="docs-accent-set-example accent-error-h-reverse"></div></td>
+                <td><div class="docs-accent-set-example accent-muted-h-reverse"></div></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<!-- accent normal, tidak bisa dihover -->
+<div class="accent-neutral"></div>
+<div class="accent-dark"></div>
+...
+<div class="accent-error"></div>
+
+<!-- accent bisa di hover -->
+<div class="accent-neutral-h"></div>
+<div class="accent-dark-h"></div>
+...
+<div class="accent-error-h"></div>
+
+<!-- accent ketika dihover akan bertambah terang -->
+<div class="accent-neutral-h-lighten"></div>
+<div class="accent-dark-h-lighten"></div>
+...
+<div class="accent-error-h-lighten"></div>
+
+<!-- accent ketika dihover akan bertambah gelap -->
+<div class="accent-neutral-h-darken"></div>
+<div class="accent-dark-h-darken"></div>
+...
+</div class="accent-error-h-darken"></div>
+
+<!-- accent ketika dihover akan secara kontras berubah warna -->
+<div class="accent-neutral-h-contrast"></div>
+<div class="accent-dark-h-contrast"></div>
+...
+<div class="accent-error-h-contrast"></div>
+
+<!-- keals accent contrast yg di balik -->
+<div class="accent-neutral-h-reverse"></div>
+<div class="accent-dark-h-reverse"></div>
+...
+<div class="accent-error-h-reverse"></div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Shape  -->
+<h2 class="docs-subsection-title" id="composite-shape">Bentuk</h2>
+<div class="docs-subsection-desc">
+    <p>
+        Kelas ini mampu membuat komponen memiliki ujung yang melengkung, membuat elemen menjadi lingkaran, mengatur rasio element dan lain-lain.
+    </p>
+    <h3>Rounded Class</h3>
+    <p>
+        Rounded class, sesuia namanya yaitu kelas komposit yang berfungsi untuk membuat element memiliki frame yang melengkung. Untuk menggunakannya cukup tambahkan class <code>.rounded-x</code>, dimana <var>x</var> adalah varian radius border yaitu <code>small</code> dan <code>large</code>.
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <div class="docs-rounded-example rounded"></div>
+                <div class="docs-rounded-example rounded-small"></div>
+                <div class="docs-rounded-example rounded-large"></div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<div class="rounded"></div>
+<div class="rounded-small"></div>
+<div class="rounded-large"></div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- aspect ratio -->
+<div class="docs-subsection-desc">
+    <h3>Responsive Ratio Class</h3>
+    <p>
+        Responsive ratio class, adalah kelas komposit yang berfungsi untuk membuat bentuk yang memiliki rasio ukuran yang tetap meskipun lebar elemen tersebut berubah. Kelas ini sangat berguna untuk membuat elemen-elemen yang bersifat interaktif.
+    </p>
+    <p>
+        Menggunakan kelas ini cukup mudah, kamu cukup menambahkan kelas <code>.ratio-x-y</code>, dimana <var>x</var> dan <var>y</var> secara berurutan adalah rasio lebar dan tinggi elemen. Didalam elemen ini kamu wajib memasukkan kelas <code>.ratio-content</code> untuk mengisi konten elemen ini.
+    </p>
+    <p>
+        Kombinasi rasio yang tersedia yaitu dari <var>1:1</var>,<var>1:2</var> ... <var>7:8</var> dengan tambahan rasio <var>16:9 / 9:16</var>
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <div class="grid-fluid">
+                    <div class="grid-20">
+                        <div class="docs-ratio-example ratio-1-1">
+                            <div class="ratio-content">
+                             <code>.ratio-1-1</code>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-20">
+                        <div class="docs-ratio-example ratio-2-3">
+                            <div class="ratio-content">
+                             <code>.ratio-2-3</code>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-20">
+                        <div class="docs-ratio-example ratio-4-1">
+                            <div class="ratio-content">
+                             <code>.ratio-4-1</code>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-20">
+                        <div class="docs-ratio-example ratio-8-5">
+                            <div class="ratio-content">
+                                <code>.ratio-5-8</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<div class="grid-fluid">
+    <div class="grid-20">
+        <div class="ratio-1-1">
+            <div class="ratio-content">
+            ...
+            </div>
+        </div>
+    </div>
+    <div class="grid-20">
+        <div class="ratio-2-3">
+            <div class="ratio-content">
+             ...
+            </div>
+        </div>
+    </div>
+    <div class="grid-20">
+        <div class="ratio-4-1">
+            <div class="ratio-content">
+            ...
+            </div>
+        </div>
+    </div>
+    <div class="grid-20">
+        <div class="ratio-8-5">
+            <div class="ratio-content">
+            ...
+            </div>
+        </div>
+    </div>
+</div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- screen size -->
+<div class="docs-subsection-desc">
+    <h3>Vertical Screen Class</h3>
+    <p>
+        Dengan menambahkan class <code>.screen-v-x</code>, dengan <var>x</var> adalah tinggi screen kamu bisa menghasilkan elemen dengan tingi setinggi <var>x</var>% tinggi screen. Jadi misal tinggi screen <var>768px</var> untuk class <code>.screen-v-50</code>, tinggi elemen menjadi <var>384px</var>.
+    </p>
+    <p>
+        Tinggi yang tersedia kelipatan <var>25</var>, <var>20</var> dan <var>33</var>
+    </p>
+    <blockquote>
+        <p>Sangat berguna untuk layout <code>fullscreen</code>.</p>
+    </blockquote>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <div class="grid-fluid">
+                    <div class="grid-50">
+                        <div class="docs-screen-example screen-v-25">
+                            <code>.screen-v-25</code>
+                        </div>
+                    </div>
+                    <div class="grid-50">
+                        <div class="docs-screen-example screen-v-33">
+                            <code>.screen-v-33</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<div class="screen-v-25">
+    ...
+</div>
+<div class="screen-v-33">
+    ...
+</div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!--  frame circle -->
+<div class="docs-subsection-desc">
+    <h3>Frame Circle Class</h3>
+    <p>
+        Sama seperti apda gambar, kelas ini berfungsi untuk memberikan frame berbentuk lingkaran pada elemen, dengan menambhakan kelas <code>.frame-circle</code>
+    </p>
+    <blockquote>
+        <p>sangat cocok dicampur dengan kelas ratio-1-1 untuk menghasilkan lingkaran yg responsif</p>
+    </blockquote>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <div class="grid-fluid">
+                    <div class="grid-20">
+                        <div class="docs-ratio-example ratio-1-1 frame-circle">
+                            <div class="ratio-content text-center padding-large">
+                             <code>.frame-circle <br/> .ratio-1-1</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<!-- contoh yg sudah dicampur ratio-1-1 -->
+<div class="ratio-1-1 frame-circle">
+    <div class="ratio-content">
+    </div>
+</div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Border Style  -->
+<div class="docs-subsection-desc">
+    <h3>Border Style Class</h3>
+    <p>
+        Kelas yang berfungsi untuk memberikan aksen pada border, sama halnya dengan varian pada <code>ruler</code>
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <div class="docs-border-style-example border-dotted"></div>
+                <div class="docs-border-style-example border-dashed"></div>
+                <div class="docs-border-style-example border-inset"></div>
+                <div class="docs-border-style-example border-outset"></div>
+                <div class="docs-border-style-example border-groove"></div>
+                <div class="docs-border-style-example border-ridge"></div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<div class="border-dotted"></div>
+<div class="border-dashed"></div>
+<div class="border-inset"></div>
+<div class="border-outset"></div>
+<div class="border-groove"></div>
+<div class="border-ridge"></div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Icon  -->
+<h2 class="docs-subsection-title" id="composite-icons">Icon</h2>
+<div class="docs-subsection-desc">
+    <p>
+    Lussa UI menggunakan kelas <code>.icon</code> ditambah dengan varian kelas <code>.icon-x</code>, dengan <var>x</var> adalah nama icon. Untuk katalog icon, bisa dilihat pada laman <a href="/icon.html">iconography</a>. Kelas icon dapat digunakan secara inline, atau dapat diimplementasikan pada elemen manapun.
+    </p>
+    <blockquote>
+        <p>Icon dirender menggunakan teknik <code>iconfont</code>, untuk modifikasi aksen dan ukuran dapat mengikuti varian tipografi / teks</p>
+    </blockquote>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <span class="icon icon-outlet text-error"></span>
+                <span class="icon icon-nuclear text-warning"></span>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<span class="icon icon-outlet text-error"></span>
+<span class="icon icon-nuclear text-warning"></span>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Icon Close -->
+<div class="docs-subsection-desc">
+    <h3>Close Icon</h3>
+    <p>
+        Icon ini biasanya digunakan diberbagai konteks "batal", contohnya menutup modal, window ataupun membatalkan sebuah task.
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <h3 class="icon icon-ios-close"></h3>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<button type="button" class="close"></button>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Caret Icon -->
+<div class="docs-subsection-desc">
+    <h3>Caret Icon</h3>
+    <p>
+        Icon ini biasanya digunakan untuk dropdown
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <span class="caret"></span>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<span class="caret"></span>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Padding & Margin  -->
+<h2 class="docs-subsection-title" id="composite-padding-margin">Pading & Margin</h2>
+<div class="docs-subsection-desc">
+    <p>
+        Padding dan Margin dapat diimplementasikan pada elemen dengan menambahkan class <code>padding-x-y</code>, dengan <var>x</var> adalah varian arah, dan <var>y</var> adalah varian ukuran. Untuk diimplementasikan ke semua arah, cukup gunakan <code>padding-y</code>. Varian arah yang tersedia yaitu <code>top</code>,<code>bottom</code>, <code>left</code>, <code>right</code>, <code>vertical</code> dan <code>horizontal</code>. Varian ukuran yang tersedia yaitu <code>medium</code>,<code>small</code>, <code>large</code>, <code>xl</code>, dan <code>xs</code>.
+    </p>
+    <p>
+        Untuk margin cukup gunakan class <code>margin-x-y</code>, variable <var>x</var> dan <var>y</var> sama dengan padding.
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <div class="docs-margin-example">
+                    <div class="docs-padding-example margin-large padding-medium">
+                        <div class="docs-padding-content-example"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<div class="margin-large padding-medium"></div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Position -->
+<h2 class="docs-subsection-title" id="composite-position">Posisi Elemen</h2>
+<div class="docs-subsection-desc">
+    <p>
+        Kelas ini berfungsi memposikan element / layouting. Sebenarnya layouting sudah dihanding oleh grid, tetapi grid yang dimplemntasikan saat ini belum memenuhi beberap aspek penting dari layout, misal merubah arah layout dari kanan ke kiri, membuat elemen menjadi ke tengah dll.
+    </p>
+    <h3>Corner Class</h3>
+    <p>
+        Kelas ini berfungsi, untuk memojokan (<em>cornerring</em>) elemen. Yaitu dengan memberikan <code>parent element</code> kelas <code>.corner-wrapper</code> kemudian berikan kelas arah untuk elemen yang akan di pojokan. Misal untuk membuat elemen menjadi di pojok kanan atas, gunakan kelas <code>.top-left</code>
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <div class="docs-corner-wrapper-example corner-wrapper">
+                    <h4 class="top-left">top left</h4>
+                    <h4 class="top-right">top right</h4>
+                    <h4 class="bottom-left">bottom left</h4>
+                    <h4 class="bottom-right">bottom right</h4>
+                </div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<div class="corner-wrapper">
+    <h4 class="top-left">top left</h4>
+    <h4 class="top-right">top right</h4>
+    <h4 class="bottom-left">bottom left</h4>
+    <h4 class="bottom-right">bottom right</h4>
+</div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+

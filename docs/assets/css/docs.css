@@ -219,3 +219,87 @@ body a{
 .docs-banner-home-slogan{
     padding: 20px 0;
 }
+
+/* example */
+.docs-hover-example,
+.docs-bg-example,
+.docs-border-style-example,
+.docs-border-example {
+    position: relative;
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    border-radius: 3px;
+    margin: 5px;
+}
+.docs-bg-example {
+    border: 1px solid #333333;
+}
+.docs-border-example {
+    background: #F9F9F9;
+    border-width: 1px;
+    border-style: solid;
+}
+.docs-hover-example{
+    background: #F9F9F9;
+    border: 1px solid #999999;
+    cursor: pointer;
+}
+.docs-accent-set-example{
+    border-radius: 3px;
+    display: inline-block;
+    padding: 8px 5px;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    font-size: 13px;
+}
+.docs-accent-set-example:before{
+    content: "teks";
+}
+.docs-rounded-example{
+    position: relative;
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    margin: 5px;
+    border: 1px solid #333333;
+}
+.docs-ratio-example {
+    position: relative;
+    background: #CCCCCC;
+    border: 1px solid #333333;
+}
+.docs-screen-example {
+    position: relative;
+    background: #CCCCCC;
+    width: 100%;
+    border: 1px solid #333333;
+}
+.docs-border-style-example {
+    background: #CCCCCC;
+    border-width: 1px;
+    border-color: #3900E6;
+}
+.docs-margin-example {
+    display: inline-block;
+    background: #449BFB;
+    border: 1px dotted #033E7E;
+}
+.docs-padding-example {
+    background: #FF8040;
+    border: 1px dotted #953100;
+}
+.docs-padding-content-example {
+    background: #FFFFFF;
+    width: 100px;
+    height: 50px;
+    position: relative;
+}
+.docs-corner-wrapper-example {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #000000;
+    background: #888888;
+    color: #FFFFFF;
+}

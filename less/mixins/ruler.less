@@ -1,0 +1,40 @@
+/**
+ * Ruler Mixins
+ * ## Composite
+ */
+
+.ruler-variant( @border-position: top ){
+    // accent
+    &.ruler-neutral { border-@{border-position}-color: @accent-neutral; }
+    &.ruler-dark { border-@{border-position}-color: @accent-dark; }
+    &.ruler-light { border-@{border-position}-color: @accent-light; }
+    &.ruler-soft { border-@{border-position}-color: @accent-soft; }
+    &.ruler-vibrant { border-@{border-position}-color: @accent-vibrant; }
+    &.ruler-clear { border-@{border-position}-color: @accent-clear; }
+    &.ruler-primary { border-@{border-position}-color: @accent-primary; }
+    &.ruler-success { border-@{border-position}-color: @accent-success; }
+    &.ruler-info { border-@{border-position}-color: @accent-info; }
+    &.ruler-warning { border-@{border-position}-color: @accent-warning; }
+    &.ruler-error { border-@{border-position}-color: @accent-error; }
+
+    // size
+    &.ruler-large{ border-@{border-position}-width: @ruler-border-size-large; }
+
+    // variant
+    &.ruler-dotted { border-@{border-position}-style: dotted; }
+    &.ruler-groove {
+        border-@{border-position}-style: groove;
+        border-@{border-position}-width: @ruler-border-size * 2;
+        &.ruler-large{
+            border-@{border-position}-width: @ruler-border-size-large * 2;
+        }
+    }
+    &.ruler-ridge {
+        border-@{border-position}-style: ridge;
+        border-@{border-position}-width: @ruler-border-size * 2;
+        &.ruler-large{
+            border-@{border-position}-width: @ruler-border-size-large * 2;
+        }
+    }
+    &.ruler-dashed { border-@{border-position}-style: dashed; }
+}

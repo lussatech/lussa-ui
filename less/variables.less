@@ -23,11 +23,12 @@
 @accent-clear: #FFFFFF;
 
 // By Context
-@accent-primary: #88572C;
+@accent-primary: #3F1164;
 @accent-success: #349B02;
 @accent-info: #999999;
 @accent-warning: #F9FE34;
 @accent-error: #FF0000;
+@accent-muted: @accent-light;
 
 // Global Accent
 @body-bg: @accent-clear;
@@ -35,6 +36,13 @@
 @link-color: @accent-primary;
 @link-hover-color: darken(@link-color, 15%);
 @link-hover-decoration: underline;
+
+/**
+ * Transistion
+ * ## Global transition speed & easing
+ */
+@transition-speed: 0.5s;
+@transition-easing: ease;
 
 /**
  * Typography
@@ -99,8 +107,14 @@
 @blockquote-font-size:        (@font-size-base * 1.25);
 @blockquote-border-color:     @accent-light;
 
-// hr accent
-@hr-border:                   @accent-light;
+/**
+ * Ruler
+ * ## hr & vr
+ */
+@ruler-border-accent: @accent-light;
+@ruler-border-size: 1px;
+@ruler-border-style: solid;
+@ruler-border-size-large: 5px;
 
 /**
  * Iconography
@@ -109,6 +123,11 @@
 @icon-font-path: "../fonts";
 @icon-font-prefix: icon-;
 @icon-base-class: ionicon;
+
+@close-font-weight:  bold;
+@close-color: #000;
+@close-text-shadow: 0 1px 0 #fff;
+@close-icon: "\f405";
 
 /**
  * Component

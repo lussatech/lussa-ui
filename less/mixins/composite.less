@@ -1,0 +1,282 @@
+/**
+ * Composite Mixins
+ * ##
+ */
+
+
+/**
+ * Accent
+ *
+ */
+// bg accent
+.generate-accent(@color:inherit ,@background-color:inherit ,@border-color:inherit){
+  background-color: @background-color;
+  color: @color;
+  border-color: @border-color !important;
+}
+
+// determine text color by accent
+.determine-accent-text-color(@color) {
+    & when ( lightness(@color) < 50% ){
+        color: @accent-clear;
+    }
+
+    & when ( lightness(@color) >= 50% ){
+        color: @accent-dark;
+    }
+}
+
+// make accent
+.make-accent( @accent, @color ){
+
+    // bg
+    .bg-@{accent} {
+        .generate-accent(inherit, @color);
+    }
+    .bg-@{accent}-h{
+        .transition(background  @transition-speed @transition-easing);
+        &:hover {
+            .generate-accent(inherit, @color);
+        }
+    }
+
+    // border
+    .border-@{accent}{
+        .generate-accent(inherit, inherit, @color);
+    }
+    .border-@{accent}-h{
+        .transition(border-color @transition-speed @transition-easing);
+        &:hover {
+            .generate-accent(inherit, inherit, @color);
+        }
+    }
+
+    // text
+    .text-@{accent}-h:hover{
+        .generate-accent(@color, inherit, inherit);
+    }
+
+    // Accent Set
+    .accent-@{accent},
+    .accent-@{accent}-h,
+    .accent-@{accent}-h-contrast,
+    .accent-@{accent}-h-lighten,
+    .accent-@{accent}-h-darken {
+        .transition( background  @transition-speed @transition-easing,
+            color @transition-speed @transition-easing);
+        background-color: @color;
+        border-color: @color;
+        .determine-accent-text-color(@color);
+
+        &-h-contrast:hover {
+            background-color: transparent;
+            color: @color;
+        }
+        &-h-lighten:hover,
+        &-h:hover {
+            background-color: lighten(@color, 20%);
+            .determine-accent-text-color(lighten(@color, 20%));
+        }
+        &-h-darken:hover {
+            background-color: darken(@color, 20%);
+            .determine-accent-text-color(darken(@color, 20%));
+        }
+    }
+    .accent-@{accent}-h-reverse {
+        .transition( background  @transition-speed @transition-easing,
+            color @transition-speed @transition-easing);
+        background-color: transparent;
+        color: inherit;
+        border-color: @color;
+        &:hover {
+            background-color: @color;
+            border-color: @color;
+            .determine-accent-text-color(@color);
+        }
+    }
+}
+
+/**
+ * Shape
+ */
+
+// Aspect ratio
+.make-ratio( @width: 1, @height: 1 ){
+    .ratio-@{width}-@{height},
+    .ratio-@{height}-@{width}{
+        height: 0;
+        position: relative;
+        > .ratio-content {
+            width: 100%; position: absolute; top: 0; left: 0;
+        }
+    }
+    .ratio-@{width}-@{height} {
+        padding-bottom: ceil((@height / @width) * 100%);
+    }
+    .ratio-@{height}-@{width} {
+        padding-bottom: ceil((@width / @height) * 100%);
+    }
+
+}
+
+.loop-ratio( @x, @y: 1, @stepping: 1, @start: 0){
+    .loop (@index,@step) when (@index > 0) {
+        @i: (@index * @step) + @start;
+        .make-ratio(@x,@i);
+        .loop (@index - 1,@step);
+    }
+    .loop(@y,@stepping);
+}
+
+// Screen
+.make-screen(@height){
+    .screen-v-@{height}{
+        height: @height * 1vh;
+        overflow: auto;
+    }
+}
+
+.generate-screen(){
+    .loop (@index,@step) when (@index > 0) {
+        @i: @index * @step;
+        .make-screen(@i);
+        .loop (@index - 1,@step);
+    }
+    .loop(4,25);
+    .loop(4,20);
+    .loop(2,33);
+}
+
+/**
+ * Padding & Margin
+ */
+
+.make-space-size-variant(@name:padding, @direction, @base, @large, @small, @xs, @xl){
+    & when (@direction = vertical) {
+        &-medium {
+            @{name}-top: @base;
+            @{name}-bottom: @base;
+        }
+        &-large {
+            @{name}-top: @large;
+            @{name}-bottom: @large;
+        }
+        &-small {
+            @{name}-top: @small;
+            @{name}-bottom: @small;
+        }
+        &-xs {
+            @{name}-top: @xs;
+            @{name}-bottom: @xs;
+        }
+        &-xl {
+            @{name}-top: @xl;
+            @{name}-bottom: @xl;
+        }
+    }
+    & when (@direction = top) and (@direction = bottom)
+        and (@direction = left) and (@direction = right) {
+        &-medium {
+            @{name}-@{direction}: @base;
+        }
+        &-large {
+            @{name}-@{direction}: @large;
+        }
+        &-small {
+            @{name}-@{direction}: @small;
+        }
+        &-xs {
+            @{name}-@{direction}: @xs;
+        }
+        &-xl {
+            @{name}-@{direction}: @xl;
+        }
+    }
+}
+
+
+.make-padding-horizontal(@direction) {
+    .padding-@{direction} {
+        .make-space-size-variant(padding, @direction,
+            @padding-base-horizontal, @padding-large-horizontal,
+            @padding-small-horizontal,  @padding-xs-horizontal,
+            @padding-xl-horizontal);
+    }
+}
+
+.make-padding-vertical(@direction) {
+    .padding-@{direction} {
+        .make-space-size-variant(padding, @direction,
+            @padding-base-vertical, @padding-large-vertical,
+            @padding-small-vertical,  @padding-xs-vertical,
+            @padding-xl-vertical);
+    }
+}
+.generate-padding(){
+    .make-padding-horizontal(left);
+    .make-padding-horizontal(right);
+    .make-padding-horizontal(horizontal);
+    .make-padding-vertical(top);
+    .make-padding-vertical(bottom);
+    .make-padding-vertical(vertical);
+    .padding {
+        &-medium {
+            padding: @padding-base-vertical @padding-base-horizontal;
+        }
+        &-large {
+            padding: @padding-large-vertical @padding-large-horizontal;
+        }
+        &-small {
+            padding: @padding-small-vertical @padding-small-horizontal;
+        }
+        &-xs {
+            padding: @padding-xs-vertical @padding-xs-horizontal;
+        }
+        &-xl {
+            padding: @padding-xl-vertical @padding-xl-horizontal;
+        }
+    }
+}
+
+.make-margin-horizontal(@direction) {
+    .margin-@{direction} {
+        .make-space-size-variant(margin, @direction,
+            @margin-base-horizontal, @margin-large-horizontal,
+            @margin-small-horizontal,  @margin-xs-horizontal,
+            @margin-xl-horizontal);
+    }
+}
+
+.make-margin-vertical(@direction) {
+    .margin-@{direction} {
+        .make-space-size-variant(margin, @direction,
+            @margin-base-vertical, @margin-large-vertical,
+            @margin-small-vertical,  @margin-xs-vertical,
+            @margin-xl-vertical);
+    }
+}
+.generate-margin(){
+    .make-margin-horizontal(left);
+    .make-margin-horizontal(right);
+    .make-margin-horizontal(horizontal);
+    .make-margin-vertical(top);
+    .make-margin-vertical(bottom);
+    .make-margin-vertical(vertical);
+    .margin {
+        &-medium {
+            margin: @margin-base-vertical @margin-base-horizontal;
+        }
+        &-large {
+            margin: @margin-large-vertical @margin-large-horizontal;
+        }
+        &-small {
+            margin: @margin-small-vertical @margin-small-horizontal;
+        }
+        &-xs {
+            margin: @margin-xs-vertical @margin-xs-horizontal;
+        }
+        &-xl {
+            margin: @margin-xl-vertical @margin-xl-horizontal;
+        }
+    }
+}
