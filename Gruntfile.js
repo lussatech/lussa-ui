@@ -199,9 +199,9 @@ module.exports = function(grunt) {
     grunt.registerTask('dist',['js-dist','css-dist']);
 
     // Docs
-    grunt.registerTask('docs-deploy',['dist','bower:docs','copy:docs','jekyll:docsDev']);
+    grunt.registerTask('docs-deploy',['dist','copy:docs','bower:docs','jekyll:docsDev']);
     grunt.registerTask('docs-dev',['concurrent:docs']);
-    grunt.registerTask('docs',['dist','copy:docs','jekyll:docs']);
+    grunt.registerTask('docs',['dist','copy:docs','bower:docs','jekyll:docs']);
 
     // default
     grunt.registerTask('default',['dist']);
