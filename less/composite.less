@@ -4,7 +4,6 @@
  * ==========================================================================
  */
 
-
 /**
  * Accent
  */
@@ -29,7 +28,6 @@
 /**
  * Cross Accent Combinator
  */
-
 
 /**
  * Shape
@@ -93,32 +91,26 @@
 
 // positioning
 .corner-wrapper{
-    position: relative;
-
-    // element
-    > .top,
-    > .bottom,
-    > .left,
-    > .right {
-        position:absolute;
-        z-index: 2;
+  .clearfix();
+  position: relative;
+  > .top {
+    .make-position(0);
+    &-left{
+      .make-position(0, auto, auto, 0);
     }
-    .left-right-mix() {
-        &-left{
-            left: 0;
-        }
-        &-right{
-            right: 0;
-        }
+    &-right{
+      .make-position(0, auto, 0, auto);
     }
-    > .top {
-        top: 0;
-        .left-right-mix();
+  }
+  > .bottom {
+    .make-position(auto, 0);
+    &-left{
+      .make-position(auto, 0, auto, 0);
     }
-    > .bottom {
-        bottom: 0;
-        .left-right-mix();
+    &-right{
+      .make-position(auto, 0, 0, auto);
     }
+  }
 }
 
 // Close icon

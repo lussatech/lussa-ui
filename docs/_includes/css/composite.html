@@ -738,7 +738,7 @@
     </p>
     <h3>Corner Class</h3>
     <p>
-        Kelas ini berfungsi, untuk memojokan (<em>cornerring</em>) elemen. Yaitu dengan memberikan <code>parent element</code> kelas <code>.corner-wrapper</code> kemudian berikan kelas arah untuk elemen yang akan di pojokan. Misal untuk membuat elemen menjadi di pojok kanan atas, gunakan kelas <code>.top-left</code>
+        Kelas ini berfungsi, untuk memojokan (<em>cornering</em>) elemen. Yaitu dengan memberikan <code>parent element</code> kelas <code>.corner-wrapper</code> kemudian berikan kelas arah untuk elemen yang akan di pojokan. Misal untuk membuat elemen menjadi di pojok kanan atas, gunakan kelas <code>.top-left</code>
     </p>
 </div>
 <div class="docs-tab">
@@ -750,10 +750,10 @@
         <div class="docs-tab-content">
             <div class="docs-example">
                 <div class="docs-corner-wrapper-example corner-wrapper">
-                    <h4 class="top-left">top left</h4>
-                    <h4 class="top-right">top right</h4>
-                    <h4 class="bottom-left">bottom left</h4>
-                    <h4 class="bottom-right">bottom right</h4>
+                    <h5 class="top-left"><code>.top-left</code></h5>
+                    <h5 class="top-right"><code>.top-right</code></h5>
+                    <h5 class="bottom-left"><code>.bottom-left</code></h5>
+                    <h5 class="bottom-right"><code>.bottom-right</code></h5>
                 </div>
             </div>
         </div>
@@ -770,3 +770,53 @@
     </div>
 </div>
 
+<!-- Alignment Class -->
+<div class="docs-subsection-desc">
+    <h3>Alignment Class</h3>
+    <p>
+    Yaitu kelas yang berfungsi untuk memposisikan elemen didalam <code>container</code>. Ada 3 kelas yaitu, <code>.pull-right</code>, <code>.pull-left</code> dan <code>.center-block</code>.
+    </p>
+    <blockquote>
+        <p>Kamu perlu mendefinisikan lebar maksimum (<code>max-width</code>) untuk element <code>.center-block</code> agar elemen tersebut tidak blocking 100%;</p>
+    </blockquote>
+    <blockquote>
+        <p> Untuk menghindari keanehan tampilan, parent elemen harus menggunakan kelas <code>.clearfix</code> untuk menghindari perbedaan tinggi antar parent dengan element. Secara default class <code>.grid-container</code> dan <code>.grid-fluid</code> sudah memiliki menggunakan kelas <code>.clearfix</code></p>
+    </blockquote>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example clearfix">
+                <div class="docs-pull-example pull-right">
+                    <code>.pull-right</code>
+                </div>
+                <div class="docs-pull-example pull-left">
+                    <code>.pull-left</code>
+                </div>
+            </div>
+            <div class="docs-example clearfix">
+                <div class="docs-pull-example center-block text-center">
+                    <code>.center-block</code> <br/>
+                    <code>max-width: 200px;</code>
+                </div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<!-- parent harus memiliki clearfix -->
+<div class="clearfix">
+    <div class="pull-right"></div>
+    <div class="pull-left"></div>
+</div>
+<!-- definisikan max width pada elemen center-block -->
+<div class="clearfix">
+    <div class="center-block" style="max-width:200px"></div>
+</div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>

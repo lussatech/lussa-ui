@@ -8926,29 +8926,68 @@ select[multiple].input-group-small > .input-group-button > .button {
 .corner-wrapper {
   position: relative;
 }
-.corner-wrapper > .top,
-.corner-wrapper > .bottom,
-.corner-wrapper > .left,
-.corner-wrapper > .right {
-  position: absolute;
-  z-index: 2;
+.corner-wrapper:before,
+.corner-wrapper:after {
+  content: " ";
+  display: table;
+}
+.corner-wrapper:after {
+  clear: both;
+}
+.corner-wrapper:before,
+.corner-wrapper:after {
+  content: " ";
+  display: table;
+}
+.corner-wrapper:after {
+  clear: both;
 }
 .corner-wrapper > .top {
+  position: absolute;
+  z-index: 2;
   top: 0;
+  bottom: auto;
+  left: auto;
+  right: auto;
 }
 .corner-wrapper > .top-left {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: auto;
   left: 0;
+  right: auto;
 }
 .corner-wrapper > .top-right {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: auto;
+  left: auto;
   right: 0;
 }
 .corner-wrapper > .bottom {
+  position: absolute;
+  z-index: 2;
+  top: auto;
   bottom: 0;
+  left: auto;
+  right: auto;
 }
 .corner-wrapper > .bottom-left {
+  position: absolute;
+  z-index: 2;
+  top: auto;
+  bottom: 0;
   left: 0;
+  right: auto;
 }
 .corner-wrapper > .bottom-right {
+  position: absolute;
+  z-index: 2;
+  top: auto;
+  bottom: 0;
+  left: auto;
   right: 0;
 }
 .close {

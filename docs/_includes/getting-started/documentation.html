@@ -1,0 +1,66 @@
+<h1 class="docs-section-title" id="docs">Dokumentasi</h1>
+<p class="docs-section-desc">dokumentasi di build menggunakan static web generator yang biasa digunakan oleh github yaitu <a href="http://jekyllrb.com/">jekyll</a></p>
+
+<!-- Requirement -->
+<h2 class="docs-subsection-title" id="docs-requirement">Requirement</h2>
+<div class="docs-subsection-desc">
+    <p>Sebelum dapat melakukan <em>mengombpile</em> documentation, pastikan sistem di komputer kamu sudah memiliki libary / runtime berikut</p>
+    <ul>
+        <li>Ruby, termasuk header development library-nya</li>
+        <li>RubyGems</li>
+        <li>Rouge</li>
+        <li>Jekyll</li>
+    </ul>
+    <h3>Instalasi Ruby</h3>
+    <p>
+        Untuk installasi ruby, disarankan menggunakan <a href="https://rvm.io/">RVM</a> (ruby version manager) untuk linux, sedangkan untuk windows kamu bisa menggunakan <a href="http://rubyinstaller.org/">rubyinstaller</a>.
+    </p>
+    <h3>Instalasi Header Development Ruby</h3>
+    <p>
+        Untuk windows bisa dilihat di <a href="http://jekyll-windows.juthilo.com/1-ruby-and-devkit/">sini</a>.
+    </p>
+    <h3>Instalasi RubyGems</h3>
+    <p>
+        Untuk linux bisa dilihat <a href="https://rvm.io/rubies/rubygems">disini</a>. Untuk windows secara otomatis sudah terinstall jika menggunakan ruby installer.
+    </p>
+    <h3>Instalasi Jekyll</h3>
+    <p>Jekyll dapat dengan mudah diinstall menggunakan rubygem</p>
+{% highlight shell %}
+gem install jekyll
+{% endhighlight %}
+    <p>Konfirmasi instalasi dengan menggunakan command ini</p>
+{% highlight shell %}
+jekyll -v
+{% endhighlight %}
+    <h3>Instalasi Rouge</h3>
+    <p>By default, jekyll menggunakan pygments untuk merender syntax higlighting, tetapi untuk OS windows, pygments terkadang sering tidak berjalan, dan perlu menginstall python untuk membuatnya dapat berjalan. Alternatifnya kamu bisa pake rouge yang ditulis menggunakan ruby.</p>
+{% highlight shell %}
+gem install rouge
+{% endhighlight %}
+</div>
+
+<!-- Build Docs -->
+<h2 class="docs-subsection-title" id="docs-build">Build the Documentation</h2>
+<div class="docs-subsection-desc">
+    <p>Untuk sekedar build saja, kamu cukup mengeksekusi command ini</p>
+{% highlight shell %}
+grunt docs
+{% endhighlight %}
+    <p>File dokumentasi ada di <code>docs/_site/</code></p>
+    <p>Jika ingin sekalian menjalankan http server, pakai command ini</p>
+{% highlight shell %}
+grunt docs-deploy
+{% endhighlight %}
+    <p>Buka <a href="http://localhost:4190/">localhost:4190</a></p>
+</div>
+
+<!-- Test -->
+<h2 class="docs-subsection-title" id="docs-test">Pengujian</h2>
+<div class="docs-subsection-desc">
+    <p>Kalau kamu seandainya ngulik-ngulik code Lussa-UI kamu bisa nge-test ulikan kamu dengan menggunakan command ini</p>
+{% highlight shell %}
+grunt test
+# atau bisa juga via NPM script
+npm test
+{% endhighlight %}
+</div>
