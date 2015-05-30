@@ -498,6 +498,156 @@
     </div>
 </div>
 
+<!-- Input group -->
+<h2 class="docs-subsection-title" id="forms-input-group">Input Group</h2>
+<div class="docs-subsection-desc">
+    <p>
+    Terkadang kita mau buat input dengan icon disebelah kanan input atau ingin membuat input dengan tombol dikanan, seperti pada input untuk pencarian. Hal ini bisa kita lakukan dengan menambahkan class <code>.input-group</code> pada <code>.form-group</code>. Lalu jangan lupa tambahkan kelas <code>.input-group-addon</code> untuk tambahan (<em>add-on</em>) nya.
+    </p>
+    <h3>Contoh Dasar</h3>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+              <div class="form-group input-group">
+                <span class="input-group-addon">@</span>
+                <input type="text" class="form-control" placeholder="Username">
+              </div>
+              <div class="form-group input-group">
+                <input type="text" class="form-control" placeholder="Email">
+                <span class="input-group-addon">@lussa.net</span>
+              </div>
+              <div class="form-group input-group">
+                <span class="input-group-addon">Rp</span>
+                <input type="text" class="form-control" placeholder="Amount" />
+                <span class="input-group-addon">,00</span>
+              </div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<div class="form-group input-group">
+  <span class="input-group-addon">@</span>
+  <input type="text" class="form-control" placeholder="Username">
+</div>
+<div class="form-group input-group">
+  <input type="text" class="form-control" placeholder="Email">
+  <span class="input-group-addon">@lussa.net</span>
+</div>
+<div class="form-group input-group">
+  <span class="input-group-addon">Rp</span>
+  <input type="text" class="form-control" placeholder="Amount" />
+  <span class="input-group-addon">,00</span>
+</div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- input group using radio -->
+<div class="docs-subsection-desc">
+    <h3>Radio Button / Checkbox</h3>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+              <div class="form-group input-group">
+                <span class="input-group-addon">
+                  <input type="checkbox"/>
+                </span>
+                <input type="text" class="form-control" placeholder="Username">
+              </div>
+              <div class="form-group input-group">
+                <span class="input-group-addon">
+                  <input type="radio"/>
+                </span>
+                <input type="text" class="form-control" placeholder="Email">
+                <span class="input-group-addon">@lussa.net</span>
+              </div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<div class="form-group input-group">
+  <span class="input-group-addon">
+    <input type="checkbox"/>
+  </span>
+  <input type="text" class="form-control" placeholder="Username">
+</div>
+<div class="form-group input-group">
+  <span class="input-group-addon">
+    <input type="radio"/>
+  </span>
+  <input type="text" class="form-control" placeholder="Email">
+  <span class="input-group-addon">@lussa.net</span>
+              </div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- input group button -->
+<div class="docs-subsection-desc">
+    <h3>Add-On Button</h3>
+    <p>Untuk add-on elemen tombol, kamu perlu menambahkan kelas <code>.input-group-button</code> pada add-on. Lalu masukkan elemen <code>.button</code> kedalam add-on.</p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+              <div class="form-group input-group">
+                <input type="text" class="form-control" placeholder="Filter">
+                <span class="input-group-button">
+                  <button class="button button-primary">
+                    <span class="icon icon-arrow-down-b"></span>
+                  </button>
+                  <button class="button button-primary">Filter</button>
+                </span>
+              </div>
+              <div class="form-group input-group">
+                <span class="input-group-button">
+                  <button class="button button-primary">
+                    <span class="icon icon-arrow-down-b"></span>
+                  </button>
+                </span>
+                <input type="text" class="form-control" placeholder="Pencarian">
+                <span class="input-group-button">
+                  <button class="button button-primary">
+                    <span class="icon icon-ios-search-strong"></span>
+                  </button>
+                </span>
+              </div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<div class="form-group input-group">
+  <input type="text" class="form-control" />
+  <span class="input-group-button">
+    <button class="button button-primary"></button>
+    ...
+    <button class="button button-primary"></button>
+  </span>
+</div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
 <!-- Static Control -->
 <h2 class="docs-subsection-title" id="forms-controls-static">Static Control</h2>
 <div class="docs-subsection-desc">
@@ -817,6 +967,15 @@
                       <option value="">.input-small</option>
                     </select>
                 </div>
+
+                <div class="form-group input-group input-group-large">
+                  <span class="input-group-addon">@</span>
+                  <input type="text" class="form-control" placeholder="Username">
+                </div>
+                <div class="form-group input-group input-group-small">
+                  <input type="text" class="form-control" placeholder="Email">
+                  <span class="input-group-addon">@lussa.net</span>
+                </div>
             </form>
             </div>
         </div>
@@ -829,6 +988,15 @@
 <select class="form-control input-large">...</select>
 <select class="form-control">...</select>
 <select class="form-control input-small">...</select>
+
+<div class="form-group input-group input-group-large">
+  <span class="input-group-addon">add-on</span>
+  <input type="text" class="form-control" placeholder=".input-group-large">
+</div>
+<div class="form-group input-group input-group-small">
+  <input type="text" class="form-control" placeholder=".input-group-small">
+  <span class="input-group-addon">add-on</span>
+</div>
 {% endhighlight %}
         </div>
     </div>

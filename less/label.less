@@ -13,7 +13,7 @@
   font-size: 75%;
   font-weight: bold;
   line-height: 1;
-  color: @label-color;
+  .determine-accent-text-color(@label-default-bg);
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
@@ -44,6 +44,8 @@
 /**
  * Accent
  */
+
+// by context
 .label-default {
   .label-variant(@label-default-bg);
 }
@@ -59,12 +61,6 @@
 .label-warning {
   .label-variant(@label-warning-bg);
 }
-.label-danger {
-  .label-variant(@label-danger-bg);
+.label-error {
+  .label-variant(@label-error-bg);
 }
-
-/**
- * Sizing
- */
-
-

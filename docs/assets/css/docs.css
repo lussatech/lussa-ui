@@ -232,6 +232,28 @@ body a{
     border-radius: 3px;
     margin: 5px;
 }
+.docs-grid-example,
+.docs-grid-example-ok,
+.docs-grid-example-muted {
+    text-align: center;
+    padding: 20px 0;
+    border: 1px solid #FFFFFF;
+}
+.docs-grid-example {
+    background: #dddddd;
+    color: #333333;
+}
+.docs-grid-example-ok {
+    background: #8DFEAA;
+    color: #004831;
+}
+.docs-grid-example-muted {
+    background: #dddddd;
+    color: #FFFFFF;
+}
+.docs-grid-parent-example {
+    border: 1px solid #FF8040;
+}
 .docs-bg-example {
     border: 1px solid #333333;
 }

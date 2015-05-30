@@ -148,6 +148,25 @@ dd {
   margin-left: 0; // Undo browser default
 }
 
+.dl-horizontal {
+  dd {
+    &:extend(.clearfix all);
+  }
+
+  @media @desktop {
+    dt {
+      float: left;
+      width: (@dl-horizontal-offset - 20);
+      clear: left;
+      text-align: right;
+      .text-overflow();
+    }
+    dd {
+      margin-left: @dl-horizontal-offset;
+    }
+  }
+}
+
 
 /**
  * Emphasizes & Misc

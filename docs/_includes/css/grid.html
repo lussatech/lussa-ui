@@ -28,6 +28,7 @@
             <dd>sesuai namanya, grid-fluid memiliki sifat mirip fluida (cairan) yang ukurannya selalu menyesuaikan penampungnya, grid-fluid akan selalu memiliki lebar sama dengan parent-nya.</dd>
         </dl>
     </p>
+</div>
 {% highlight html %}
 <!-- maximum width at desktop breakpoint -->
 <div class="grid-container">
@@ -41,30 +42,54 @@
     ...
 </div>
 {% endhighlight %}
-</div>
 
 <!-- Grid Class -->
 <h2 class="docs-subsection-title" id="grid-class">Grid Classess</h2>
 <div class="docs-subsection-desc">
-    <p>
-        Jadi ada grid dengan nama kelas <code>grid-x</code> dimana "x" merupakan angka yang merepresentasikan presentase lebar grid unit relatif terhadap <code>container</code>. X sendiri memiliki rentang nilai dengan faktorisasi 5 dan maksimum nilainya 100 (<code>grid-5, grid-10 .... grid-95, grid-100</code>), ditambah juga dengan tambahan pembagi 3, yaitu <code>grid-33</code> dan <code>grid-66</code>.
-    </p>
-    <p>
-        Tiap unit grid sendiri memiliki padding di sebelah kiri dan kanan, istilahnya adalah <code>grid-gutter</code>, grid-gutter secara default memiliki ukuran 20px. ukuran padding untuk sebelah kiri dan kanan adalah 1/2 dari <code>grid-gutter</code>. <code>Grid-gutter</code> dapat diganti pada file variabel pada <code>variable.less</code>.
-    </p>
+  <p>
+      Jadi ada grid dengan nama kelas <code>grid-x</code> dimana "x" merupakan angka yang merepresentasikan presentase lebar grid unit relatif terhadap <code>container</code>. X sendiri memiliki rentang nilai dengan faktorisasi 5 dan maksimum nilainya 100 (<code>grid-5, grid-10 .... grid-95, grid-100</code>), ditambah juga dengan tambahan pembagi 3, yaitu <code>grid-33</code> dan <code>grid-66</code>.
+  </p>
+  <p>
+      Tiap unit grid sendiri memiliki padding di sebelah kiri dan kanan, istilahnya adalah <code>grid-gutter</code>, grid-gutter secara default memiliki ukuran 20px. ukuran padding untuk sebelah kiri dan kanan adalah 1/2 dari <code>grid-gutter</code>. <code>Grid-gutter</code> dapat diganti pada file variabel pada <code>variable.less</code>.
+  </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+              <div class="grid-fluid">
+                <div class="grid-50 docs-grid-example">
+                  .grid-50
+                </div>
+                <div class="grid-30 docs-grid-example">
+                  .grid-30
+                </div>
+                <div class="grid-20 docs-grid-example">
+                  .grid-20
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
 {% highlight html %}
 <div class="grid-container">
   <div class="grid-50">
-    Lebar aku 50%
+    ...
   </div>
-  <div class="grid-25">
-    Kalo aku 25%.
+  <div class="grid-30">
+    ...
   </div>
-  <div class="grid-25">
-    Aku juga 25% loh
+  <div class="grid-20">
+    ...
   </div>
 </div>
 {% endhighlight %}
+        </div>
+    </div>
 </div>
 
 <!-- Nested Grid, Zero Padding -->
@@ -74,157 +99,248 @@
     Kalo kamu mau naro grid di dalam grid, kamu butuh <code>container</code> khusus yaitu <code>grid-parent</code> yang bakal menampung grid-unit didalamnya. Grid-parent akan menghapus <code>grid-gutter</code> membuat grid-unit yang menjadi <code>parent container</code> tidak memiliki padding pada kanan dan kirinya.
     Teknik ini juga relevan dipake untuk sekedar mengapus gutter pada grid-unit yang kamu inginkan.
     </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+              <div class="grid-fluid">
+                <div class="grid-50 grid-parent docs-grid-parent-example">
+                  <div class="grid-100 docs-grid-example">
+                    .grid-50.grid-parent
+                  </div>
+                  <div class="grid-50 docs-grid-example">
+                    .grid-50
+                  </div>
+                  <div class="grid-50 docs-grid-example">
+                    .grid-50
+                  </div>
+                  <div class="grid-50 docs-grid-example">
+                    .grid-50
+                  </div>
+                  <div class="grid-50 docs-grid-example">
+                    .grid-50
+                  </div>
+                </div>
+                <div class="grid-30 docs-grid-example">
+                  .grid-30
+                </div>
+                <div class="grid-20 docs-grid-example">
+                  .grid-20
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
 {% highlight html %}
 <div class="grid-container">
-  <div class="grid-50">
-    Tall content here that
-    would be alongside the
-    50%, 25|25 25|25 rows.
-  </div>
-
-  <!--
-    Nested grid units...
-  -->
-
+  <!--  nested grid -->
   <div class="grid-50 grid-parent">
     <div class="grid-50">
-      Row 1:
-        I am 25% (50% of 50%)
+      ...
     </div>
     <div class="grid-50">
-      Row 1:
-        I am 25% (50% of 50%)
+      ...
     </div>
-    <div class="grid-50">
-      Row 2:
-        I am 25% (50% of 50%)
-    </div>
-    <div class="grid-50">
-      Row 2:
-        I am 25% (50% of 50%)
-    </div>
+    ...
+  </div>
+  <div class="grid-30">
+    ...
+  </div>
+  <div class="grid-20">
+    ...
   </div>
 </div>
 {% endhighlight %}
-<p>Tapi kalo kamu bener-bener mau bikin semua <code>gutter</code> hilang dari tiap unit, kamu cukup mengganti parameter <code>@grid-gutter-half</code> jadi 0 pada file variable.less</p>
+        </div>
+    </div>
+</div>
+<div class="docs-subsection-desc">
+  <p>Tapi kalo kamu bener-bener mau bikin semua <code>gutter</code> hilang dari tiap unit, kamu cukup mengganti parameter <code>@grid-gutter-half</code> jadi 0 pada file variable.less</p>
 </div>
 
 <!-- Mobile & Hidden Class -->
 <h2 class="docs-subsection-title" id="grid-mobile-hidden-class">Mobile & Hidden Class</h2>
 <div class="docs-subsection-desc">
-    <p>
-        Ada juga class <code>mobile-grid-x</code> yang berfungsi untuk menciptakan ukuran unit-grid yang berbeda pada perangkat mobile (layar dengan ukuran dibawah desktop breakpoint dalam hal ini 720px), jadi kalo ipad dalam keadaan landscape, tampilannya akan mengikuti desktop. Hal ini membuat kamu bisa mencampur beberapa nama class untuk tipe screen yang desktop dan mobile.
-    </p>
-    <p>
-        Lalu ada class untuk menghilangkan elment untuk ukuran screen tertentu, yaitu <code>hide-on-mobile</code> dan <code>hide-on-desktop</code> yang secara berurutan akan menghilangkan element untuk layar mobile dan desktop.
-    </p>
+  <p>
+      Ada juga class <code>mobile-grid-x</code> yang berfungsi untuk menciptakan ukuran unit-grid yang berbeda pada perangkat mobile (layar dengan ukuran dibawah desktop breakpoint dalam hal ini 720px), jadi kalo ipad dalam keadaan landscape, tampilannya akan mengikuti desktop. Hal ini membuat kamu bisa mencampur beberapa nama class untuk tipe screen yang desktop dan mobile.
+  </p>
+  <p>
+      Lalu ada class untuk menghilangkan elment untuk ukuran screen tertentu, yaitu <code>hide-on-mobile</code> dan <code>hide-on-desktop</code> yang secara berurutan akan menghilangkan element untuk layar mobile dan desktop.
+  </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+              <div class="grid-fluid">
+                <div class="grid-50 hide-on-mobile docs-grid-example-ok">
+                  saya hilang di layar mobile
+                </div>
+                <div class="grid-50 hide-on-desktop hide-on-tablet docs-grid-example-muted">
+                  saya hilang di layar mobile
+                </div>
+                <div class="grid-50 hide-on-desktop  docs-grid-example-ok">
+                  saya hilang di layar desktop
+                </div>
+                <div class="grid-50 hide-on-mobile hide-on-tablet docs-grid-example-muted">
+                  saya hilang di layar desktop
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
 {% highlight html %}
 <div class="grid-container">
-  <div class="grid-50 mobile-grid-100">
-    I am 50% wide on desktop.
-    I am 100% wide on mobile.
+  <div class="grid-50 hide-on-mobile">
+    ...
   </div>
-  <div class="grid-25 mobile-grid-50">
-    I am 25% wide on desktop.
-    I am 50% wide on mobile.
-  </div>
-  <div class="grid-25 mobile-grid-50">
-    <span class="hide-on-desktop">
-      Aku hilang di layar desktop.
-    </span>
-    <span class="hide-on-mobile">
-      Aku hilang di layar mobile.
-    </span>
+  <div class="grid-50 hide-on-desktop">
+    ...
   </div>
 </div>
 {% endhighlight %}
+        </div>
+    </div>
 </div>
 
 <!-- Tablet Class -->
 <h2 class="docs-subsection-title" id="grid-tablet-class">Tablet Class</h2>
 <div class="docs-subsection-desc">
     <p>
-        Dengan diperkenalkannya iPad, membuat layar dengan dimensi tablet menjadi diperhitungkan dalam layouting sebuah aplikasi web, kami mendefinisikan tablet dengan ukuran layar antara 768-1024px (tipikal ipad). sama halnya dengan mobile, dia juga punya class untuk grid-unit dan hidden class khusus yaitu <code>grid-tablet-x</code> dan <code>hidden-on-tablet</code>
+        Dengan diperkenalkannya iPad, membuat layar dengan dimensi tablet menjadi diperhitungkan dalam layouting sebuah aplikasi web, kami mendefinisikan tablet dengan ukuran layar antara 768-1024px (tipikal ipad). sama halnya dengan mobile, dia juga punya class untuk grid-unit dan hidden class khusus yaitu <code>grid-tablet-x</code> dan <code>hide-on-tablet</code>
     </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+              <div class="grid-fluid">
+                <div class="grid-50 mobile-grid-100 tablet-grid-70 docs-grid-example">
+                  lebar saya 50% di desktop <br/>
+                  70% di layar tablet <br/>
+                  100% di mobile
+                </div>
+                <div class="grid-50 hide-on-tablet  docs-grid-example-ok">
+                  saya hilang di layar tablet
+                </div>
+                <div class="grid-50 hide-on-mobile hide-on-desktop docs-grid-example-muted">
+                  saya hilang di layar tablet
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
 {% highlight html %}
 <div class="grid-container">
-  <div class="grid-50 mobile-grid-100 tablet-grid-50">
-    I am 50% wide on desktop.
-    I am 100% wide on mobile.
-    I am 50% wide on tablet.
+  <div class="grid-50 mobile-grid-100 tablet-grid-70">
+    ...
   </div>
-  <div class="grid-25 mobile-grid-50 tablet-grid-50">
-    I am 25% wide on desktop.
-    I am 50% wide on mobile.
-    I am 50% wide on tablet.
-  </div>
-  <div class="grid-25 mobile-grid-50 tablet-grid-100">
-    <span class="hide-on-desktop">
-      I am hidden on desktop.
-    </span>
-    <span class="hide-on-mobile">
-      I am hidden on mobile.
-    </span>
-    <span class="hide-on-tablet">
-      I am hidden on tablet.
-    </span>
+  <div class="grid-50 hide-on-tablet">
+    ...
   </div>
 </div>
 {% endhighlight %}
+        </div>
+    </div>
 </div>
 
 <!-- Push & Pull -->
 <h2 class="docs-subsection-title" id="grid-push-pull">Push & Pull (Dorong & Tarik)</h2>
 <div class="docs-subsection-desc">
-    <p>
-        Kalo kamu cuma mau mindahin grid unit dari kanan ke kiri, atau geser-geser dikit tanpa perlu mengubah struktur code utama, kamu bisa menggunakan kelas <code>push-x</code> dan <code>pull-x</code>. Class ini juga ada versi mobile dan tabletnya, <code>mobile-push-x</code>, <code>tablet-push-x</code> ...
-    </p>
+  <p>
+      Kalo kamu cuma mau mindahin grid unit dari kanan ke kiri, atau geser-geser dikit tanpa perlu mengubah struktur code utama, kamu bisa menggunakan kelas <code>push-x</code> dan <code>pull-x</code>. Class ini juga ada versi mobile dan tabletnya, <code>mobile-push-x</code>, <code>tablet-push-x</code> ...
+  </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+              <div class="grid-fluid">
+                <div class="grid-50 push-50 docs-grid-example">
+                  <code>.grid-50 .push-50</code>
+                </div>
+                <div class="grid-50 pull-50 docs-grid-example">
+                  <code>.grid-50 .pull-50</code>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
 {% highlight html %}
-<!-- Contoh Dasar -->
 <div class="grid-container">
   <div class="grid-50 push-50">
-    I am second on desktop.
+    ...
   </div>
   <div class="grid-50 pull-50">
-    I am first on desktop.
-  </div>
-</div>
-
-<!-- contoh yang agak ribet / kompleks -->
-<div class="grid-container">
-  <div class="grid-50 push-50 mobile-grid-50 mobile-push-50">
-    I am third, on desktkop.
-    I am second, on mobile.
-  </div>
-  <div class="grid-25 pull-50 mobile-grid-50 mobile-pull-50">
-    I am first, on desktop.
-    I am first, on mobile.
-  </div>
-  <div class="grid-25 pull-50 mobile-grid-100">
-    I am second, on desktop.
-    I am 100% wide on mobile.
+    ...
   </div>
 </div>
 {% endhighlight %}
+        </div>
+    </div>
 </div>
 
 <!-- Prefix & Suffix -->
 <h2 class="docs-subsection-title" id="grid-prefix-suffix">Prefix & Suffix (Awalan dan Akhiran)</h2>
 <div class="docs-subsection-desc">
-    <p>
-        Kalo kamu mau ngasih grid kosong, yang tidak ada isinya. tidak perlu repot-repot buat grid sungguhan, cukup tambahkan class <code>prefix-x</code> untuk menambahkan ruang selebar x unit sebelum grid unit dan <code>suffix-x</code> untuk setelah unit.
-    </p>
+  <p>
+      Kalo kamu mau ngasih grid kosong, yang tidak ada isinya. tidak perlu repot-repot buat grid sungguhan, cukup tambahkan class <code>prefix-x</code> untuk menambahkan ruang selebar x unit sebelum grid unit dan <code>suffix-x</code> untuk setelah unit.
+  </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+              <div class="grid-fluid">
+                <div class="grid-30 prefix-10 docs-grid-example">
+                  <code>.grid-30 .prefix-10</code>
+                </div>
+                <div class="grid-30 suffix-10 docs-grid-example">
+                  <code>.grid-30 .suffix-10</code>
+                </div>
+                <div class="grid-20 docs-grid-example">
+                  <code>.grid-20</code>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
 {% highlight html %}
 <div class="grid-container">
-  <div class="grid-30 suffix-20">
-    I'm 30% wide, followed by...
+  <div class="grid-30 prefix-10 ">
+    ...
   </div>
-  <div class="grid-30 prefix-20">
-    Another 30% column, with
-    40% empty space between.
+  <div class="grid-30 suffix-10">
+    ...
+  </div>
+  <div class="grid-20">
+    ...
   </div>
 </div>
 {% endhighlight %}
+        </div>
+    </div>
 </div>
 
 <!-- Clearfix -->
@@ -234,13 +350,7 @@
     <p>Source class <code>clearfix</code> pada element grid yang bisa kamu gunakan</p>
 {% highlight css %}
 .clearfix:before,
-.clearfix:after,
-.grid-container:before,
-.grid-container:after,
-.grid-100:before,
-.grid-100:after,
-.mobile-grid-100:before,
-.mobile-grid-100:after {
+.clearfix:after {
   content: ".";
   display: block;
   overflow: hidden;
@@ -251,17 +361,12 @@
   height: 0;
 }
 
-.clearfix:after,
-.grid-container:after,
-.grid-100:after,
-.mobile-grid-100:after {
+.clearfix:after {
   clear: both;
 }
 
-.clearfix,
-.grid-container,
-.grid-100,
-.mobile-grid-100 {
+/* ie 7 */
+.clearfix {
   zoom: 1;
 }
 {% endhighlight %}

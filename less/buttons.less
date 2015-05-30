@@ -21,6 +21,8 @@
   white-space: nowrap;
   .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @button-border-radius-base);
   .user-select(none);
+  .transition( background  @transition-speed @transition-easing,
+      color @transition-speed @transition-easing);
 
   &,
   &:active,

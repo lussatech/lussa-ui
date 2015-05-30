@@ -6,6 +6,7 @@
 
 .label-variant(@color) {
   background-color: @color;
+  .determine-accent-text-color(@color);
 
   &[href] {
     &:hover,

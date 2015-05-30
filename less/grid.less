@@ -31,9 +31,8 @@ body {
 
 .grid-container:before,
 .clearfix:before,
-.grid-container:after,
 .grid-fluid:before,
-.clearfix:before,
+.grid-container:after,
 .grid-fluid:after,
 .clearfix:after {
     content: ".";
@@ -46,7 +45,7 @@ body {
     height: 0;
 }
 
-.grid-container:after,.grid-fluid:after, .clearfix:after {
+.grid-container:after,.grid-fluid:after,.clearfix:after {
     clear: both;
 }
 
@@ -104,8 +103,8 @@ body {
 .clearfix() {
     &:before,
     &:after {
-        content: " "; // 1
-        display: table; // 2
+        content: " ";
+        display: table;
     }
     &:after {
         clear: both;

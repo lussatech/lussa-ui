@@ -33,6 +33,184 @@
     </div>
 </div>
 
+<!-- Button Group -->
+<h2 class="docs-subsection-title" id="buttons-group">Button Group</h2>
+<div class="docs-subsection-desc">
+    <p>
+        Sesuai namanya <code>button group</code>, merupakan elemen tambahan pada lussa UI yang berfungsi untuk mengelompokan tombol menjadi suatu blok khusus. Biasa digunakan pada <code>pagination</code>, atau bisa juga dipakai sebagai action button.
+    </p>
+    <h3>Contoh Dasar</h3>
+    <p>Penggunaan paling dasar adalah dengan membungkus sekelompok tombol / <code>.button</code>, menggunakan kelas <code>.button-group</code>.</p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <div class="button-group" role="group">
+                  <button type="button" class="button button-default">Kiri</button>
+                  <button type="button" class="button button-default">Tengah</button>
+                  <button type="button" class="button button-default">Kanan</button>
+                </div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<div class="button-group" role="group">
+  <button type="button" class="button button-default">Kiri</button>
+  <button type="button" class="button button-default">Tengah</button>
+  <button type="button" class="button button-default">Kanan</button>
+</div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- button toolbar -->
+<div class="docs-subsection-desc">
+    <h3>Button Toolbar</h3>
+    <p>Jika ada semacam pengelompokan lagi (nested), bisa menggunakan kelas <code>.button-toolbar</code>, sebagai pembungkus paling luar.</p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <div class="button-toolbar">
+                    <div class="button-group" role="group">
+                      <button type="button" class="button button-default">1</button>
+                      <button type="button" class="button button-default">2</button>
+                      <button type="button" class="button button-default">3</button>
+                    </div>
+                    <div class="button-group" role="group">
+                      <button type="button" class="button button-default">4</button>
+                      <button type="button" class="button button-default">5</button>
+                    </div>
+                    <div class="button-group" role="group">
+                      <button type="button" class="button button-default">6</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<div class="button-toolbar">
+    <div class="button-group" role="group">
+      <button type="button" class="button button-default">1</button>
+      <button type="button" class="button button-default">2</button>
+      <button type="button" class="button button-default">3</button>
+    </div>
+    <div class="button-group" role="group">
+      <button type="button" class="button button-default">4</button>
+      <button type="button" class="button button-default">5</button>
+    </div>
+    <div class="button-group" role="group">
+      <button type="button" class="button button-default">6</button>
+    </div>
+</div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<div class="docs-subsection-desc">
+    <h3>Button Group Vertikal</h3>
+    <p><code>.button-group</code> distacking secara inline (horizontal) dari kiri ke kanan. jika kamu mau tombol yang di-stacking dari atas kebawah, bisa menggunakan kelas <code>.button-group-vertical</code> menggantikan <code>.button-group</code> biasa</p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <div class="button-group-vertical">
+                  <button type="button" class="button button-default">atas</button>
+                  <button type="button" class="button button-default">tengah</button>
+                  <button type="button" class="button button-default">bawah</button>
+                </div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<div class="button-group-vertical">
+  <button type="button" class="button button-default">atas</button>
+  <button type="button" class="button button-default">tengah</button>
+  <button type="button" class="button button-default">bawah</button>
+</div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- jsutified button group -->
+<div class="docs-subsection-desc">
+    <h3>Justified</h3>
+    <p><code>.button-group</code> biasa bersifat inline, artinnya apabila ada elemen setelahnya, akan berada disamping <code>.button-group</code>. Hal ini juga menyebabkan kita bisa menggunakan tombol dengan panjang berbeda-beda. Jika ingin button group membloking 1 line, tanpa perlu mengatur panjang masing-masing tombol, gunakan kelas <code>button-group-justified</code>.</p>
+    <blockquote>
+        <p>Untuk elemen <code>&lt;button&gt;</code>, kamu harus menggunakan kelas <code>.button-group</code> sebagai pembungkus</p>
+    </blockquote>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <p>untuk elemen <code>&lt;button&gt;</code></p>
+                <div class="button-group button-group-justified">
+                    <div class="button-group">
+                        <button type="button" class="button button-default">kiri</button>
+                    </div>
+                    <div class="button-group">
+                        <button type="button" class="button button-default">tengah</button>
+                    </div>
+                    <div class="button-group">
+                        <button type="button" class="button button-default">kanan</button>
+                    </div>
+                </div>
+                <p>untuk elemen <code>&lt;a&gt;</code> atau link</p>
+                <div class="button-group button-group-justified">
+                    <a href="" type="button" class="button button-default">kiri</a>
+                    <a href="" type="button" class="button button-default">tengah</a>
+                    <a href="" type="button" class="button button-default">kanan</a>
+                </div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<!-- untuk elemen <button> -->
+<div class="button-group button-group-justified">
+    <div class="button-group">
+        <button type="button" class="button button-default">kiri</button>
+    </div>
+    <div class="button-group">
+        <button type="button" class="button button-default">tengah</button>
+    </div>
+    <div class="button-group">
+        <button type="button" class="button button-default">kanan</button>
+    </div>
+</div>
+<!-- untuk elemen <a> atau link -->
+<div class="button-group button-group-justified">
+    <a href="" type="button" class="button button-default">kiri</a>
+    <a href="" type="button" class="button button-default">tengah</a>
+    <a href="" type="button" class="button button-default">kanan</a>
+</div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
 <!-- Button Accent -->
 <h2 class="docs-subsection-title" id="buttons-accent">Aksen</h2>
 <div class="docs-subsection-desc">
@@ -140,6 +318,63 @@
         </div>
     </div>
 </div>
+
+<!-- butto group variant -->
+<div class="docs-subsection-desc">
+    <p>
+    Sedangkan untuk button group juga bisa menggunakan kelas <code>.button-group-x</code>, dimana <var>x</var> adalah varian ukuran.
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <p>
+                <div class="button-group button-group-large" role="group">
+                  <button type="button" class="button button-default">Kiri</button>
+                  <button type="button" class="button button-default"><code>.button-group-large</code></button>
+                  <button type="button" class="button button-default">Kanan</button>
+                </div>
+                </p>
+                <p>
+                <div class="button-group" role="group">
+                  <button type="button" class="button button-default">Kiri</button>
+                  <button type="button" class="button button-default">Default</button>
+                  <button type="button" class="button button-default">Kanan</button>
+                </div>
+                </p>
+                <p>
+                <div class="button-group button-group-small" role="group">
+                  <button type="button" class="button button-default">Kiri</button>
+                  <button type="button" class="button button-default">.button-group-small</button>
+                  <button type="button" class="button button-default">Kanan</button>
+                </div>
+                </p>
+                <p>
+                <div class="button-group button-group-xs" role="group">
+                  <button type="button" class="button button-default">Kiri</button>
+                  <button type="button" class="button button-default">.button-group-xs</button>
+                  <button type="button" class="button button-default">Kanan</button>
+                </div>
+                </p>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<div class="button-group button-group-large" >...</div>
+<div class="button-group" >...</div>
+<div class="button-group button-group-small" >...</div>
+<div class="button-group button-group-xs" >...</div>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- button block -->
 <div class="docs-subsection-desc">
     <p>
         Kalau tombolnya ingin se-lebar containernya gunakan <code>.button-block</code>

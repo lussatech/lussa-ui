@@ -14,9 +14,9 @@
 
 // By Translucency
 @accent-neutral: #555555;
-@accent-dark: darken(@accent-neutral, 40%);
-@accent-light: lighten(@accent-neutral, 40%);
-@accent-soft: lighten(@accent-neutral, 10%);
+@accent-dark: darken(@accent-neutral, 20%);
+@accent-light: lighten(@accent-neutral, 55%);
+@accent-soft: lighten(@accent-neutral, 30%);
 
 // By Contrast
 @accent-vibrant: #FFC926;
@@ -28,7 +28,7 @@
 @accent-info: #999999;
 @accent-warning: #F9FE34;
 @accent-error: #FF0000;
-@accent-muted: @accent-light;
+@accent-muted: lighten(@accent-neutral, 55%);
 
 // Global Accent
 @body-bg: @accent-clear;
@@ -100,18 +100,20 @@
 
 // type
 @component-offset-horizontal: 180px;
-@text-muted:                  @accent-light;
+@text-muted:                  @accent-muted;
 @dl-horizontal-offset:        @component-offset-horizontal;
 
 @blockquote-small-color:      @accent-soft;
 @blockquote-font-size:        (@font-size-base * 1.25);
-@blockquote-border-color:     @accent-light;
+@blockquote-border-color:     @accent-soft;
+
+
 
 /**
  * Ruler
  * ## hr & vr
  */
-@ruler-border-accent: @accent-light;
+@ruler-border-accent: @accent-soft;
 @ruler-border-size: 1px;
 @ruler-border-style: solid;
 @ruler-border-size-large: 5px;
@@ -163,8 +165,8 @@
 @line-height-small:         1.5;
 
 // border radius
-@border-radius-base:        5px;
-@border-radius-large:       8px;
+@border-radius-base:        3px;
+@border-radius-large:       3px;
 @border-radius-small:       3px;
 
 // carret
@@ -174,6 +176,9 @@
 // components
 @component-active-color:    @accent-clear;
 @component-active-bg:       @accent-primary;
+
+// list
+@dl-horizontal-offset: 180px;
 
 /**
  * Tables
@@ -222,7 +227,7 @@
 @button-error-bg:                  @accent-error;
 @button-error-border:              darken(@button-error-bg, 5%);
 
-@button-link-disabled-color:        @accent-light;
+@button-link-disabled-color:        @accent-muted;
 
 // Allows for customizing button radius independently from global border radius
 @button-border-radius-base:         @border-radius-base;
@@ -235,7 +240,7 @@
  */
 
 @input-bg:                       @accent-clear;
-@input-bg-disabled:              @accent-light;
+@input-bg-disabled:              @accent-muted;
 @input-color:                    @accent-neutral;
 @input-border:                   @accent-dark;
 
