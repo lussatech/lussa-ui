@@ -4,7 +4,7 @@
  * [toast description]
  * @type {[type]}
  */
-var toast = angular.module('tarsius.toast',[
+var toast = angular.module('lussa.ui.toast',[
 	'ngAnimate',
 	'ngSanitize',
 ]);
@@ -104,7 +104,7 @@ toast.provider('toast',[
 /**
  * @name  toast directive
  */
-toast.directive('toast', ['toast', '$templateCache', '$log', 
+toast.directive('toast', ['toast', '$templateCache', '$log',
 	function(toast, $templateCache, $log){
 	return {
 		replace: true,
@@ -118,9 +118,9 @@ toast.directive('toast', ['toast', '$templateCache', '$log',
 			'</toast-message>' +
 			'</ul>' +
 			'</div>',
-		
+
 		compile: function(tElem, tAttrs) {
-			// check if template options exists	
+			// check if template options exists
 			if (tAttrs.template) {
 				var template = $templateCache.get(tAttrs.template);
 				if (template) {
@@ -144,7 +144,7 @@ toast.directive('toast', ['toast', '$templateCache', '$log',
  * @name  toastMessage
  * @description render toast message inside the toast directive
  */
-toast.directive('toastMessage', ['$timeout','$compile','toast', 
+toast.directive('toastMessage', ['$timeout','$compile','toast',
 	function($timeout,$compile,toast){
 	return {
 		replace: true,
@@ -153,7 +153,7 @@ toast.directive('toastMessage', ['$timeout','$compile','toast',
 		scope: {
 			message: '='
 		},
-		controller: ['$scope', 'toast', 
+		controller: ['$scope', 'toast',
 			function($scope, toast) {
 			$scope.dismiss = function() {
 				toast.dismiss($scope.message.id);

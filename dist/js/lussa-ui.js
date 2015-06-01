@@ -5,12 +5,31 @@
  */
 
 'use strict';
+// Source: js/form.js
+/**
+ * @ngdoc overview
+ * @name  lussa.ui.form
+ * @module lussa.ui
+ *
+ * @description
+ * Collection of form related module
+ *
+ * @requires
+ *
+ */
+var lussaUiForm = angular.module('lussa.ui.form',[
+    'lussa.ui.form.datePicker',
+    'lussa.ui.form.autoComplete',
+    'lussa.ui.form.fileUploader',
+    'lussa.ui.form.tag',
+    'lussa.ui.form.validation'
+]);
 // Source: js/form/auto-complete.js
 /**
  * [form description]
  * @type {[type]}
  */
-var form = angular.module('tarsius.form',[]);
+var form = angular.module('lussa.ui.form.autoComplete',[]);
 
 /**
  * [description]
@@ -655,7 +674,7 @@ form.directive('autoComplete', ['$q', '$parse', '$http', '$sce', '$timeout',
     };
 }]);
 // Source: js/form/date-picker.js
-var DatePicker = angular.module('tarsius.form',[]);
+var DatePicker = angular.module('lussa.ui.form.datePicker',[]);
 
 DatePicker.directive('datePicker', ['$log', '$document', '$filter',
 function ($log, $document, $filter){
@@ -1353,7 +1372,7 @@ return {
  * [fileUploader description]
  * @type {[type]}
  */
-var form = angular.module('tarsius.form',[]);
+var form = angular.module('lussa.ui.form.fileUploader',[]);
 
 
 form.factory('fileUploader',['$http','$log',
@@ -1506,7 +1525,7 @@ var KEYS = {
 var MAX_SAFE_INTEGER = 9007199254740991;
 var SUPPORTED_INPUT_TYPES = ['text', 'email', 'url'];
 
-var form = angular.module('tarsius.form', []);
+var form = angular.module('lussa.ui.form.tag', []);
 
 /**
  * @ngdoc directive
@@ -2387,7 +2406,7 @@ form.factory('tiUtil', ["$timeout", function($timeout) {
  * [form description]
  * @type {[type]}
  */
-var form = angular.module('tarsius.form',[]);
+var form = angular.module('lussa.ui.form.validation',[]);
 
 /**
  * Input Match Directives
@@ -2428,7 +2447,14 @@ form.directive('ngMatch',['$parse','$log',
 }]);
 
 // Source: js/loading-bar.js
-var LoadingBar = angular.module('tarsius.loadingBar', []);
+/**
+ * Loading-Bar
+ * @type {directives}
+ * @description [description]
+ */
+
+
+var LoadingBar = angular.module('lussa.ui.loadingBar', []);
 
 // for ls-progress bar
 // XHR interceptors
@@ -2539,7 +2565,7 @@ LoadingBar.provider('loadingBar', function() {
 
       var startSize = this.startSize;
 
-      // Inserts the loading bar element into the dom, 
+      // Inserts the loading bar element into the dom,
       // and sets it to 2%
       function _start() {
         if (!$animate) {
@@ -2628,164 +2654,36 @@ LoadingBar.provider('loadingBar', function() {
       };
 
 
-    }]; 
+    }];
   });
-// Source: js/modal.js
+// Source: js/main.js
 /**
- * [modal description]
- * @type {[type]}
+ * @ngdoc overview
+ * @name lussa.ui
+ *
+ * @description
+ * Lussa UI components
+ *
+ * @requires [description]
  */
-var modal = angular.module('tarsius.modal',[]);
-
-modal.factory('ModalService', ['$document', '$compile', '$controller', '$http', '$rootScope', '$q', '$timeout', '$templateCache',
-	function($document, $compile, $controller, $http, $rootScope, $q, $timeout, $templateCache) {
-
-	//  Get the body of the document, we'll add the modal to this.
-	var body = $document.find('body');
-
-	function ModalService() {
-
-		var self = this;
-
-		//  Returns a promise which gets the template, either
-		//  from the template parameter or via a request to the
-		//  template url parameter.
-		var getTemplate = function(template, templateUrl) {
-			var deferred = $q.defer();
-			if(template) {
-				deferred.resolve(template);
-			} else if(templateUrl) {
-				// check to see if the template has already been loaded
-				var cachedTemplate = $templateCache.get(templateUrl);
-				if(cachedTemplate !== undefined) {
-					deferred.resolve(cachedTemplate);
-				}
-				// if not, let's grab the template for the first time
-				else {
-					$http({method: 'GET', url: templateUrl, cache: true})
-					.then(function(result) {
-						// save template into the cache and return the template
-						$templateCache.put(templateUrl, result.data);
-						deferred.resolve(result.data);
-						})
-						.catch(function(error) {
-						deferred.reject(error);
-						});
-				}
-			} else {
-				deferred.reject("No template or templateUrl has been specified.");
-			}
-			return deferred.promise;
-		};
-
-		self.showModal = function(options) {
-
-			//  Create a deferred we'll resolve when the modal is ready.
-			var deferred = $q.defer();
-
-			//  Validate the input parameters.
-			var controllerName = options.controller;
-			if(!controllerName) {
-				deferred.reject("No controller has been specified.");
-				return deferred.promise;
-			}
-
-			//  If a 'controllerAs' option has been provided, we change the controller
-			//  name to use 'as' syntax. $controller will automatically handle this.
-			if(options.controllerAs) {
-				controllerName = controllerName + " as " + options.controllerAs;
-			}
-
-			//  Get the actual html of the template.
-			getTemplate(options.template, options.templateUrl)
-			.then(function(template) {
-
-				//  Create a new scope for the modal.
-				var modalScope = $rootScope.$new();
-
-				//  Create the inputs object to the controller - this will include
-				//  the scope, as well as all inputs provided.
-				//  We will also create a deferred that is resolved with a provided
-				//  close function. The controller can then call 'close(result)'.
-				//  The controller can also provide a delay for closing - this is
-				//  helpful if there are closing animations which must finish first.
-				var closeDeferred = $q.defer();
-				var inputs = {
-					$scope: modalScope,
-					close: function(result, delay) {
-						if(delay === undefined || delay === null) delay = 0;
-
-						$timeout(function () {
-						closeDeferred.resolve(result);
-						}, delay);
-					}
-				};
-
-				//  If we have provided any inputs, pass them to the controller.
-				if(options.inputs) {
-					for(var inputName in options.inputs) {
-						inputs[inputName] = options.inputs[inputName];
-					}
-				}
-
-				//  Parse the modal HTML into a DOM element (in template form).
-				var modalElementTemplate = angular.element(template);
-
-				//  Compile then link the template element, building the actual element.
-				//  Set the $element on the inputs so that it can be injected if required.
-				var linkFn = $compile(modalElementTemplate);
-				var modalElement = linkFn(modalScope);
-				inputs.$element = modalElement;
-
-				//  Create the controller, explicitly specifying the scope to use.
-				var modalController = $controller(controllerName, inputs);
-
-
-				//  Finally, append the modal to the dom.
-				if (options.appendElement) {
-					// append to custom append element
-					options.appendElement.append(modalElement);
-				} else {
-					// append to body when no custom append element is specified
-					body.append(modalElement);
-				}
-
-				//  We now have a modal object.
-				var modal = {
-					controller: modalController,
-					scope: modalScope,
-					element: modalElement,
-					close: closeDeferred.promise
-				};
-
-				//  When close is resolved, we'll clean up the scope and element.
-				modal.close.then(function(result) {
-					//  Clean up the scope
-					modalScope.$destroy();
-					//  Remove the element from the dom.
-					modalElement.remove();
-				});
-
-				deferred.resolve(modal);
-
-			})
-			.catch(function(error) {
-				deferred.reject(error);
-			});
-
-			return deferred.promise;
-		};
-
-	}
-
-	return new ModalService();
-}]);
+var lussaUi = angular.module('lussa.ui',[
+    // form
+    'lussa.ui.form',
+    // dropdown
+//  'lussa.ui.dropdown',
+    // components
+    'lussa.ui.loadingBar',
+    'lussa.ui.toast',
+//  'lussa.ui.tab',
+//  'lussa.ui.preloader',
+    'lussa.ui.pagination'
+]);
 // Source: js/pagination.js
 /**
  * [pagination description]
  * @type {[type]}
  */
-var pagination = angular.module('tarsius.pagination',[]);
+var pagination = angular.module('lussa.ui.pagination',[]);
 
 pagination.factory('pagination',['$log',
 	function($log){
@@ -2919,7 +2817,7 @@ pagination.directive('paginationBar', ['$log','$http','$sce','$location','$state
 						// manage mid stop page
 						stop = currentPage + Math.ceil((segment.middle-1)/2);
 					}
-					
+
 				}
 
 				// middle segment
@@ -2937,12 +2835,12 @@ pagination.directive('paginationBar', ['$log','$http','$sce','$location','$state
 			scope.$watch('currentPage',function(_current,_old){
 				scope.pages = getPages(scope.currentPage,scope.totalItems,scope.itemPerPage);
 			});
-			
+
 			// watch current page data change
 			scope.$watch('totalItems',function(_current,_old){
 				scope.pages = getPages(scope.currentPage,scope.totalItems,scope.itemPerPage);
 			});
-			
+
 			// watch current page data change
 			scope.$watch('itemPerPage',function(_current,_old){
 				scope.pages = getPages(scope.currentPage,scope.totalItems,scope.itemPerPage);
@@ -2955,7 +2853,7 @@ pagination.directive('paginationBar', ['$log','$http','$sce','$location','$state
  * [toast description]
  * @type {[type]}
  */
-var toast = angular.module('tarsius.toast',[
+var toast = angular.module('lussa.ui.toast',[
 	'ngAnimate',
 	'ngSanitize',
 ]);
@@ -3055,7 +2953,7 @@ toast.provider('toast',[
 /**
  * @name  toast directive
  */
-toast.directive('toast', ['toast', '$templateCache', '$log', 
+toast.directive('toast', ['toast', '$templateCache', '$log',
 	function(toast, $templateCache, $log){
 	return {
 		replace: true,
@@ -3069,9 +2967,9 @@ toast.directive('toast', ['toast', '$templateCache', '$log',
 			'</toast-message>' +
 			'</ul>' +
 			'</div>',
-		
+
 		compile: function(tElem, tAttrs) {
-			// check if template options exists	
+			// check if template options exists
 			if (tAttrs.template) {
 				var template = $templateCache.get(tAttrs.template);
 				if (template) {
@@ -3095,7 +2993,7 @@ toast.directive('toast', ['toast', '$templateCache', '$log',
  * @name  toastMessage
  * @description render toast message inside the toast directive
  */
-toast.directive('toastMessage', ['$timeout','$compile','toast', 
+toast.directive('toastMessage', ['$timeout','$compile','toast',
 	function($timeout,$compile,toast){
 	return {
 		replace: true,
@@ -3104,7 +3002,7 @@ toast.directive('toastMessage', ['$timeout','$compile','toast',
 		scope: {
 			message: '='
 		},
-		controller: ['$scope', 'toast', 
+		controller: ['$scope', 'toast',
 			function($scope, toast) {
 			$scope.dismiss = function() {
 				toast.dismiss($scope.message.id);

@@ -4,7 +4,7 @@
  * [fileUploader description]
  * @type {[type]}
  */
-var form = angular.module('tarsius.form',[]);
+var form = angular.module('lussa.ui.form.fileUploader',[]);
 
 
 form.factory('fileUploader',['$http','$log',

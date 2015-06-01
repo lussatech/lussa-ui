@@ -4,7 +4,7 @@
  * [pagination description]
  * @type {[type]}
  */
-var pagination = angular.module('tarsius.pagination',[]);
+var pagination = angular.module('lussa.ui.pagination',[]);
 
 pagination.factory('pagination',['$log',
 	function($log){
@@ -138,7 +138,7 @@ pagination.directive('paginationBar', ['$log','$http','$sce','$location','$state
 						// manage mid stop page
 						stop = currentPage + Math.ceil((segment.middle-1)/2);
 					}
-					
+
 				}
 
 				// middle segment
@@ -156,12 +156,12 @@ pagination.directive('paginationBar', ['$log','$http','$sce','$location','$state
 			scope.$watch('currentPage',function(_current,_old){
 				scope.pages = getPages(scope.currentPage,scope.totalItems,scope.itemPerPage);
 			});
-			
+
 			// watch current page data change
 			scope.$watch('totalItems',function(_current,_old){
 				scope.pages = getPages(scope.currentPage,scope.totalItems,scope.itemPerPage);
 			});
-			
+
 			// watch current page data change
 			scope.$watch('itemPerPage',function(_current,_old){
 				scope.pages = getPages(scope.currentPage,scope.totalItems,scope.itemPerPage);

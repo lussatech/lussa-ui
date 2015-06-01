@@ -1,0 +1,172 @@
+<h1 class="docs-section-title" id="overview">Overview</h1>
+<p class="docs-section-desc"></p>
+
+
+<!-- intro -->
+<h2 class="docs-subsection-title" id="overview-introduction">Intro</h2>
+<div class="docs-subsection-desc">
+    <p>
+        Component disini adalah elemen-elemen non standar html, maupun elemen-elemen standar yang dirasa perlu di-<em>extend</em> untuk meningkatkan aspek <em>user experience</em> maupun <em>compability</em> element tersebut.
+    </p>
+    <p>
+         Bingung? oke saya kasih contoh kasus. Misal elemen <code>.input[type=date]</code> pada browser chrome jika di klik akan memberikan kalendar yang dapat dipilih, tetapi di browser firefox muncul tampilan dengan format berbeda. Hal-hal seperti ini dirasa perlu di ganti dengan Component.
+    </p>
+    <p>
+        Kemudian ada elemen seperti input <code>autocomplete</code>, <code>input tag</code> yang secara default tidak ada pada html standar dan dirasa perlu dibuat direktif khusus, disertakan juga pada lussa UI.
+    </p>
+    <p>
+        Selain itu elemen-elemen seperti slider, atau loading-bar yang digunakan dibanyak aplikasi. Agar mempercepat proses <em>prototyping</em> dirasa perlu dibuat.
+    </p>
+</div>
+
+<!-- Dependency -->
+<h2 class="docs-subsection-title" id="overview-dependency">Dependency</h2>
+<div class="docs-subsection-desc">
+    <p>Modul lussa UI hanya bisa bekerja pada lingkungan aplikasi yang berbasis angular, selain angular lussa UI juga bergantung terhadap modul-modul ini. Kamu bisa menginstallnya menggunakan bower lalu disertakan dalam aplikasi yang kamu buat.</p>
+    <blockquote>
+        <p>Jika kamu menginstall lussa-ui menggunakan bower, kamu cukup menyertakan file dependecy saja, tidak perlu menginstall dependency secara manual.</p>
+    </blockquote>
+{% highlight json %}
+"dependencies": {
+    "jquery": ">=1.7.0",
+    "jquery-easing-original": "1.3.2",
+    "jquery-hoverIntent": "~1.8.1",
+    "underscore": "~1.8.2",
+    "angular": "~1.3.15",
+    "angular-animate": "~1.3.15",
+    "angular-sanitize": "~1.3.15",
+    "underscore.string": "~3.0.3"
+}
+{% endhighlight %}
+</div>
+
+<!-- how to use -->
+<h2 class="docs-subsection-title" id="overview-how-to-use">Penggunaan</h2>
+<div class="docs-subsection-desc">
+    <p>
+        Sebelum dapat menggunakan custom component dari tarsius-ui kamu harus menyertakan file <code>lussa-ui.js</code> dan menyertakan modul <code>lussa.ui</code> ke dalam <em>dependency</em> aplikasi angular kamu.
+    </p>
+{% highlight html %}
+<script type="text/javascript" src="angular.js"></script>
+...
+<!-- sertakan file javascript dari lussa-ui -->
+<script type="text/javascript" src="lussa-ui.js"></script>
+<!-- untuk lingkungan production kamu dapat menggunakan versi yang sudah di kompres -->
+<script type="text/javascript" src="lussa-ui.min.js"></script>
+{% endhighlight %}
+
+{% highlight js %}
+var app = angular.module('YourFunkyAppName', [
+    ...
+    'lussa.ui'
+]);
+{% endhighlight %}
+</div>
+
+<!-- Penamaan dan Semantik -->
+<h2 class="docs-subsection-title" id="overview-naming-convention-and-semantic">Penamaan dan Semantik</h2>
+<div class="docs-subsection-desc">
+    <p>
+        Standar penamaan dan semantik perlu distandarisasi untuk memudahkan developer dalam memahami atribut-atribut khusus tiap komponen dan cara menggunakannya.
+    </p>
+    <table class="table bg-clear">
+        <tbody>
+            <thead>
+                <tr>
+                    <th colspan="2">Aspek</th>
+                    <th>Case</th>
+                    <th>Format khusus</th>
+                    <th>Contoh semantik</th>
+                    <th width="40%">Contoh penggunaan</th>
+                </tr>
+            </thead>
+            <tr>
+                <th colspan="2">Event</th>
+                <td>lowercase</td>
+                <td>
+                    <code>lussaui:&lt;nama komponen&gt;:&lt;nama event&gt;</code>
+                </td>
+                <td>
+                    <code>lussaui:loadingbar:start</code>
+                </td>
+                <td>
+{% highlight js %}
+element.on('lussaui:loadingbar:load', function(event){
+    ...
+});
+{% endhighlight %}
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">Config</th>
+                <td>Lower Camelcase</td>
+                <td>- </td>
+                <td>maxHeight</td>
+                <td>
+{% highlight js %}
+LoadingBarProvider.maxHeight = 3;
+{% endhighlight %}
+                </td>
+            </tr>
+            <tr>
+                <th rowspan="5">Directive</th>
+                <td>js</td>
+                <td>Upper Camelcase</td>
+                <td>- </td>
+                <td>LoadingBar</td>
+                <td>
+{% highlight js %}
+angular.directive('LoadingBar', [, function(){
+    ...
+}]);
+{% endhighlight %}
+                </td>
+            </tr>
+            <tr>
+                <td>html element</td>
+                <td>stripped lowercase</td>
+                <td>- </td>
+                <td>&lt;loading-bar&gt;&lt;/loading-bar&gt;</td>
+                <td>
+{% highlight html %}
+<loading-bar></loading-bar>
+{% endhighlight %}
+                </td>
+            </tr>
+            <tr>
+                <td>html class</td>
+                <td>stripped lowercase</td>
+                <td>ui-&lt;nama komponen&gt;</td>
+                <td>class="ui-loading-bar"</td>
+                <td>
+{% highlight html %}
+<div class="ui-loading-bar"></div>
+{% endhighlight %}
+                </td>
+            </tr>
+            <tr>
+                <td>html attribute</td>
+                <td>stripped lowercase</td>
+                <td>ui-&lt;nama komponen&gt;</td>
+                <td>ui-form-match=true</td>
+                <td>
+{% highlight html %}
+<input type="text" ui-form-match=true/>
+{% endhighlight %}
+                </td>
+            </tr>
+            <tr>
+                <td>html config attribute</td>
+                <td>stripped lowercase</td>
+                <td>data-&lt;nama konfigurasi&gt;</td>
+                <td>data-max-height=50px</td>
+                <td>
+{% highlight html %}
+<loading-bar data-max-height=50px></loading-bar>
+{% endhighlight %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

@@ -1,10 +1,20 @@
 <!DOCTYPE html>
+{% if page.angular %}
+<html lang="en" ng-app="docs">
+{% else %}
 <html lang="en">
+{% endif %}
     <head>
         <!-- Meta, title, CSS, favicons, etc. -->
         {% include header.html %}
     </head>
+
+    {% if page.slug == 'component' %}
+    <body ng-controller="ComponentController">
+    {% else %}
     <body>
+    {% endif %}
+
         <!-- main navigation -->
         {% include nav/main.html %}
 
@@ -14,10 +24,10 @@
             {% include banner/home.html %}
             {% elsif page.slug == 'css' %}
             {% include banner/css.html %}
-            {% elsif page.slug == 'components' %}
-            {% include banner/components.html %}
-            {% elsif page.slug == 'fx' %}
-            {% include banner/fx.html %}
+            {% elsif page.slug == 'component' %}
+            {% include banner/component.html %}
+            {% elsif page.slug == 'theme' %}
+            {% include nav/theme.html %}
             {% endif %}
         </div>
 
@@ -29,10 +39,10 @@
                     {% include nav/getting-started.html %}
                     {% elsif page.slug == 'css' %}
                     {% include nav/css.html %}
-                    {% elsif page.slug == 'components' %}
-                    {% include nav/components.html %}
-                    {% elsif page.slug == 'fx' %}
-                    {% include nav/fx.html %}
+                    {% elsif page.slug == 'component' %}
+                    {% include nav/component.html %}
+                    {% elsif page.slug == 'theme' %}
+                    {% include nav/theme.html %}
                     {% endif %}
                 </ul>
                 {% include footer-sidebar.html %}

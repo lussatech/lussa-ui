@@ -1,6 +1,6 @@
 'use strict';
 
-var DatePicker = angular.module('tarsius.form',[]);
+var DatePicker = angular.module('lussa.ui.form.datePicker',[]);
 
 DatePicker.directive('datePicker', ['$log', '$document', '$filter',
 function ($log, $document, $filter){

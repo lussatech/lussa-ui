@@ -118,6 +118,17 @@ module.exports = function(grunt) {
 
         // file watcher
         watch: {
+            docs: {
+                files : [
+                    'less/**/*.less',
+                    'js/**/*.js'
+                ],
+                tasks: ['dist','copy:docs']
+            },
+            js: {
+                files : ['js/**/*.js'],
+                tasks: ['js-dist','copy:docs']
+            },
             css: {
                 files : ['less/**/*.less'],
                 tasks: ['css-dist','copy:docs']
@@ -141,7 +152,7 @@ module.exports = function(grunt) {
         // concurrent process
         concurrent: {
             docs: {
-                tasks: ['docs-deploy','watch:css'],
+                tasks: ['docs-deploy','watch:docs'],
                 options: {
                     logConcurrentOutput: true
                 }

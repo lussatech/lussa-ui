@@ -1,5 +1,11 @@
-'use strict';
-var LoadingBar = angular.module('tarsius.loadingBar', []);
+/**
+ * Loading-Bar
+ * @type {directives}
+ * @description [description]
+ */
+
+
+var LoadingBar = angular.module('lussa.ui.loadingBar', []);
 
 // for ls-progress bar
 // XHR interceptors
@@ -110,7 +116,7 @@ LoadingBar.provider('loadingBar', function() {
 
       var startSize = this.startSize;
 
-      // Inserts the loading bar element into the dom, 
+      // Inserts the loading bar element into the dom,
       // and sets it to 2%
       function _start() {
         if (!$animate) {
@@ -199,5 +205,5 @@ LoadingBar.provider('loadingBar', function() {
       };
 
 
-    }]; 
+    }];
   });

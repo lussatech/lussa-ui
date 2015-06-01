@@ -1,5 +1,5 @@
 {
-  "name": "tarsius-ui",
+  "name": "lussa-ui",
   "author": "Muhammad Hasan",
   "description": "Responsive, Mobile-First, Front-End Frameworks for Angular-Based App on Lussa Team",
   "version": "0.0.1",
@@ -20,6 +20,7 @@
     "node": ">=0.10.1"
   },
   "devDependencies": {
+    "dgeni": "^0.4.1",
     "grunt": "^0.4.5",
     "grunt-bower-task": "^0.4.0",
     "grunt-concurrent": "^1.0.0",
@@ -38,18 +39,7 @@
     "doc": "docs",
     "test": "test"
   },
-  "dependencies": {
-    "grunt-contrib-copy": "^0.8.0",
-    "grunt-contrib-jshint": "^0.11.2",
-    "grunt-jekyll": "^0.4.2",
-    "grunt-contrib-concat": "^0.5.1",
-    "grunt-contrib-csslint": "^0.4.0",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt": "^0.4.5",
-    "grunt-contrib-less": "^1.0.1",
-    "grunt-contrib-cssmin": "^0.12.3",
-    "grunt-contrib-uglify": "^0.9.1"
-  },
+  "dependencies": {},
   "keywords": [
     "responsive",
     "mobile-first",
