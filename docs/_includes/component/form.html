@@ -4,29 +4,150 @@
 <!-- Date Picker -->
 <h2 class="docs-subsection-title" id="form-input-date">Date Picker</h2>
 <div class="docs-subsection-desc">
-    <p></p>
+    <p>Direktif untuk menginput tanggal</p>
 </div>
 <div class="docs-tab">
     <ul class="docs-tab-link-container">
         <li>tampilan</li>
-        <li>&lt;html&gt;</li>
+        <li>penggunaan</li>
+        <li>pengaturan</li>
     </ul>
     <div class="docs-tab-content-container">
         <div class="docs-tab-content">
             <div class="docs-example">
-                <date-picker
-                    class="form-group"
-                    input-class="form-control"
-                    placeholder="write in dd/MM/YYYY e.g. 30/05/2016 "
-                    format="dd/MM/yy"
-                    ng-model="docs.datePicker"
-                    dayoff=[] >
-                </date-picker>
+                <date-picker ng-model="docs.datePicker"></date-picker>
             </div>
         </div>
         <div class="docs-tab-content">
 {% highlight html %}
+<date-picker
+    ng-model="viewDate"
+    [placeholder="{string}"]
+    [data-callback="{model}"]
+    [data-not-after="{model}"]
+    [data-not-before="{model}"]
+    [data-format="{string}"]
+    [data-language="{string}"]
+    [data-weekstart="{integer}"]
+    [data-input-class="{string}"]
+    [data-today="{true|'text'}"]
+    [data-dayoff="{array, [0-7]}"]
+    [data-weeknum="{boolean}"]
+    [data-autohide="{boolean}"]
+/></date-picker>
 {% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+            <table class="table table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th width="20%">attribut</th>
+                        <th>tipe</th>
+                        <th>wajib diisi</th>
+                        <th>default value</th>
+                        <th>contoh</th>
+                        <th>keterangan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>ng-model</td>
+                        <td>model</td>
+                        <td class="accent-success">ya</td>
+                        <td>-</td>
+                        <td>ng-model="birth"</td>
+                        <td>sama seperti ng-model pada form input</td>
+                    </tr>
+                    <tr>
+                        <th>data-callback</th>
+                        <td>expression</td>
+                        <td class="accent-warning">tidak</td>
+                        <td>-</td>
+                        <td>data-callback="updateDate"</td>
+                        <td>fungsi <em>callback</em> yang dipanggil ketika ada perubahan data</td>
+                    </tr>
+                    <tr>
+                        <th>data-not-after</th>
+                        <td>model</td>
+                        <td class="accent-warning">tidak</td>
+                        <td>-</td>
+                        <td>data-not-after="endDate"</td>
+                        <td>maksimum tanggal</td>
+                    </tr>
+                    <tr>
+                        <th>data-not-before</th>
+                        <td>model</td>
+                        <td class="accent-warning">tidak</td>
+                        <td>-</td>
+                        <td>data-not-before="startDate"</td>
+                        <td>minimum tanggal</td>
+                    </tr>
+                    <tr>
+                        <th>data-format</th>
+                        <td>string</td>
+                        <td class="accent-warning">tidak</td>
+                        <td>dd-MM-yy</td>
+                        <td>data-format="dd-MM-yy"</td>
+                        <td>format penanggalan dalam javascript</td>
+                    </tr>
+                    <tr>
+                        <th>data-language</th>
+                        <td>string</td>
+                        <td class="accent-warning">tidak</td>
+                        <td>en</td>
+                        <td>data-language="de"</td>
+                        <td>kode i18n untuk bahasa penanggalan</td>
+                    </tr>
+                    <tr>
+                        <th>data-weekstart</th>
+                        <td>integer</td>
+                        <td class="accent-warning">tidak</td>
+                        <td>1</td>
+                        <td>data-language="7"</td>
+                        <td>hari pertama dalam seminggu (1-7 , 1 = senin)</td>
+                    </tr>
+                    <tr>
+                        <th>data-input-class</th>
+                        <td>string</td>
+                        <td class="accent-warning">tidak</td>
+                        <td>-</td>
+                        <td>data-input-class="form-error"</td>
+                        <td>kelas untuk form control / input</td>
+                    </tr>
+                    <tr>
+                        <th>data-today</th>
+                        <td>string / boolean</td>
+                        <td class="accent-warning">tidak</td>
+                        <td>true</td>
+                        <td>data-today="text"</td>
+                        <td>indikator tanggal (true|text)</td>
+                    </tr>
+                    <tr>
+                        <th>data-dayoff</th>
+                        <td>array</td>
+                        <td class="accent-warning">tidak</td>
+                        <td>[6,7]</td>
+                        <td>data-dayoff=[5,7]</td>
+                        <td>hari libur</td>
+                    </tr>
+                    <tr>
+                        <th>data-weeknum</th>
+                        <td>boolean</td>
+                        <td class="accent-warning">tidak</td>
+                        <td>true</td>
+                        <td>data-weeknum=false</td>
+                        <td>menampilkan nomor minggu</td>
+                    </tr>
+                    <tr>
+                        <th>data-autohide</th>
+                        <td>boolean</td>
+                        <td class="accent-warning">tidak</td>
+                        <td>false</td>
+                        <td>data-autohide=true</td>
+                        <td>autohide</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
@@ -34,7 +155,7 @@
 <!-- Color Picker -->
 <h2 class="docs-subsection-title" id="form-input-color">Color Picker</h2>
 <div class="docs-subsection-desc">
-    <p></p>
+    <p><em>coming soon!</em></p>
 </div>
 <div class="docs-tab">
     <ul class="docs-tab-link-container">
@@ -56,64 +177,157 @@
 <!-- Input Tag -->
 <h2 class="docs-subsection-title" id="form-input-tag">Input Tag</h2>
 <div class="docs-subsection-desc">
-    <p></p>
+    <p>
+        Yaitu input box buatan mbenford yang sudah diadaptasi ke lingkungan lussa UI, dimana input tag akan secara otomatis membuat tag / token, tiap kali user menekan tombol tertentu. Berguna sekali untuk melakukan proses <em>tagging</em>, atau <em>highlighting</em> sebuah informasi langsung dari input box.</p>
+    <p>Untuk penggunaan lebih lanjut dapat dilihat di <a href="https://github.com/mbenford/ngTagsInput">github project ini</a></p>
 </div>
 <div class="docs-tab">
     <ul class="docs-tab-link-container">
         <li>tampilan</li>
-        <li>&lt;html&gt;</li>
+        <li>penggunaan</li>
+        <li>pengaturan</li>
     </ul>
     <div class="docs-tab-content-container">
         <div class="docs-tab-content">
             <div class="docs-example">
+                <tags-input ng-model="docs.tagsInput"></tags-input>
             </div>
         </div>
         <div class="docs-tab-content">
 {% highlight html %}
+<tags-input
+  ng-model="{string}"
+  [data-template="{string}"]
+  [data-key-property="{string}"]
+  [data-display-property="{string}"]
+  [type="{string}"]
+  [tabindex="{number}"]
+  [placeholder="{string}"]
+  [min-length="{number}"]
+  [max-length="{number}"]
+  [min-tags="{number}"]
+  [max-tags="{number}"]
+  [allow-leftover-text="{boolean}"]
+  [remove-tag-symbol="{string}"]
+  [add-on-enter="{boolean}"]
+  [add-on-space="{boolean}"]
+  [add-on-comma="{boolean}"]
+  [add-on-blur="{boolean}"]
+  [add-on-paste="{boolean}"]
+  [paste-split-pattern="{string}"]
+  [replace-spaces-with-dashes="{boolean}"]
+  [allowed-tags-pattern="{string}"]
+  [enable-editing-last-tag="{boolean}"]
+  [add-from-autocomplete-only="{boolean}"]
+  [spellcheck="{boolean}"]
+  [on-tag-adding="{expression}"]
+  [on-tag-added="{expression}"]
+  [on-invalid-tag="{expression}"]
+  [on-tag-removing="{expression}"]
+  [on-tag-removed="{expression}"]>
+</tags-input>
 {% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
         </div>
     </div>
 </div>
 
 <!-- File Uploader -->
-<h2 class="docs-subsection-title" id="form-input-upload">File Uploader</h2>
+<h2 class="docs-subsection-title" id="form-input-upload">File Upload</h2>
 <div class="docs-subsection-desc">
-    <p></p>
+    <p>Yaitu form control yang dapat melakukan binding struktur data file kedalam model angular. Komponen ini juga menyediakan <code>service</code> yang memudahkan kamu dalam mengupload sebuah file. </p>
 </div>
 <div class="docs-tab">
     <ul class="docs-tab-link-container">
         <li>tampilan</li>
-        <li>&lt;html&gt;</li>
+        <li>penggunaan</li>
     </ul>
     <div class="docs-tab-content-container">
         <div class="docs-tab-content">
             <div class="docs-example">
+                <input type="file" class="form-control" ui-file-model="docs.fileUpload"/>
+                <h5>output data model</h5>
+                <p>
+                    <code>{( docs.dump(docs.fileUpload) )}</code>
+                </p>
             </div>
         </div>
         <div class="docs-tab-content">
 {% highlight html %}
+<input type="file"
+ui-file-model="{model}"/>
 {% endhighlight %}
         </div>
     </div>
+</div>
+<div class="docs-subsection-desc">
+    <p>Komponen ini juga disertai <code>service</code> yang bisa dimanfaatkan untuk mempermudah developer menjalankan fungsi upload file (multi-part form) menggunakan REST API.</p>
 </div>
 
 <!-- Auto Complete -->
 <h2 class="docs-subsection-title" id="form-input-auto-complete">Auto Complete</h2>
 <div class="docs-subsection-desc">
-    <p></p>
+    <p>Komponen yang bisa kamu gunakan untuk memberikan daftar saran input. Komponen ini diadaptasi dari form autocomplete buatan <a href="http://ghiden.github.io/angucomplete-alt/">Daryl Rowland's</a> kamu bisa langsung cek di website doi untuk penggunaan yg lebih <em>advance</em></p>
 </div>
 <div class="docs-tab">
     <ul class="docs-tab-link-container">
         <li>tampilan</li>
-        <li>&lt;html&gt;</li>
+        <li>penggunaan</li>
+        <li>pengaturan</li>
     </ul>
     <div class="docs-tab-content-container">
         <div class="docs-tab-content">
             <div class="docs-example">
+                <auto-complete
+                    pause="100"
+                    local-data="docs.autoComplete.suggestion"
+                    selected-object="docs.autoComplete.model"
+                    search-fields="name"
+                    title-field="name"
+                    minlength="1"
+                    placeholder="negara dengan huruf depan A.."
+                    input-class="form-control">
+                </auto-complete>
             </div>
         </div>
         <div class="docs-tab-content">
 {% highlight html %}
+<auto-complete
+    selected-object="{model}"
+    title-field="{string}"
+    [placeholder="{string}"]
+    [maxlength="{integer}"]
+    [pause="{integer}"]
+    [remote-url="{string}"]
+    [remote-url-data-field="{string}"]
+    [description-field="{string}"]
+    [image-field="{string}"]
+    [minlength="{integer}"]
+    [input-name="{string}"]
+    [input-class="{string}"]
+    [match-class="{string}"]
+    [local-data="{array}"]
+    [search-fields="{string}"]
+    [remote-url-request-formatter="{function}"]
+    [remote-url-request-with-credentials="{boolean}"]
+    [remote-url-response-formatter="{function}"]
+    [remote-url-error-callback="{function}"]
+    [remote-api-handler="{function}"]
+    [clear-selected="{boolean}"]
+    [override-suggestions="{boolean}"]
+    [field-required="{boolean}"]
+    [field-required-class="{string}"]
+    [text-searching="{string}"]
+    [text-no-results="{string}"]
+    [initial-value="{string}"]
+    [input-changed="{function}"]
+    [auto-match="{boolean}"]
+    [focus-in="{function}"]
+    [focus-out="{function}"]
+    [disable-input="{model}"]
+    [template-url="{string}"]
+></auto-complete>
 {% endhighlight %}
         </div>
     </div>
@@ -122,21 +336,39 @@
 <!-- Validasi -->
 <h2 class="docs-subsection-title" id="form-validation">Validasi</h2>
 <div class="docs-subsection-desc">
-    <p></p>
+    <p>Kumpulan <em>model evaluator</em> yang akan melakukan validasi model yang diinput melalui elemen form control.</p>
+    <h3>ui-match</h3>
+    <p>Validator yang akan melakukan pengecekan, apakah model yang di evalauasi sama dengan input user</p>
 </div>
 <div class="docs-tab">
     <ul class="docs-tab-link-container">
         <li>tampilan</li>
-        <li>&lt;html&gt;</li>
+        <li>penggunaan</li>
+        <li>pengaturan</li>
     </ul>
     <div class="docs-tab-content-container">
         <div class="docs-tab-content">
             <div class="docs-example">
+                <form name="validationTest" novalidate>
+                <div class="form-group">
+                    <input class="form-control" ng-model="docs.validator.match.reference"/>
+                </div>
+                <div class="form-group" ng-class="validationTest.confirm.$error.match && validationTest.confirm.$dirty ? 'validation-error':''">
+                    <label class="control-label" for="confirm">ketik kata diatas</label>
+                    <input name="confirm" class="form-control" ng-model="docs.validator.match.confirm" ui-match="docs.validator.match.reference" />
+                    <p class="text-error help-block" ng-show="validationTest.confirm.$error.match && validationTest.confirm.$dirty">Konfirmasi tidak cocok</p>
+                </div>
+                </form>
             </div>
         </div>
         <div class="docs-tab-content">
 {% highlight html %}
+<input
+    ng-model="{model}"
+    ui-match="{model}" />
 {% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
         </div>
     </div>
 </div>
@@ -144,7 +376,7 @@
 <!-- Form Filter -->
 <h2 class="docs-subsection-title" id="form-filter">Form Filter</h2>
 <div class="docs-subsection-desc">
-    <p></p>
+    <p><em>coming soon!</em></p>
 </div>
 <div class="docs-tab">
     <ul class="docs-tab-link-container">

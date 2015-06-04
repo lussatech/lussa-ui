@@ -16,6 +16,44 @@ var SUPPORTED_INPUT_TYPES = ['text', 'email', 'url'];
 
 var form = angular.module('lussa.ui.form.tag', []);
 
+
+var partials = {
+    tagsInput : '<div class="host"'+
+        'tabindex="-1"'+
+        'ng-click="eventHandlers.host.click()"'+
+        'ti-transclude-append="">'+
+        '<div class="tags" ng-class="{focused: hasFocus}">'+
+        '    <ul class="tag-list">'+
+        '        <li class="tag-item" ng-repeat="tag in tagList.items track by track(tag)"'+
+        '            ng-class="{ selected: tag == tagList.selected }">'+
+        '            <span ng-bind="getDisplayText(tag)"></span>'+
+        '            <a class="remove-button icon icon-android-remove-circle"'+
+        '                ng-click="tagList.remove($index)" ></a>'+
+        '        </li>'+
+        '    </ul>'+
+        '   <input class="input" ng-model="newTag.text"'+
+        '        ng-change="eventHandlers.input.change(newTag.text)"'+
+        '        ng-keydown="eventHandlers.input.keydown($event)"'+
+        '        ng-focus="eventHandlers.input.focus($event)"'+
+        '        ng-blur="eventHandlers.input.blur($event)"'+
+        '        ng-paste="eventHandlers.input.paste($event)"'+
+        '        ng-trim="false" ng-class="{\'invalid-tag\': newTag.invalid}"'+
+        '        ti-bind-attrs="{type: options.type, placeholder: options.placeholder, tabindex: options.tabindex, spellcheck: options.spellcheck}"'+
+        '        ti-autosize="">'+
+        '</div>'+
+        '</div>',
+    tagsAutoComplete: '<div class="tags-auto-complete" ng-show="suggestionList.visible">'+
+        '<ul class="suggestion-list">'+
+        '    <li class="suggestion-item" ng-repeat="item in suggestionList.items track by track(item)"'+
+        '        ng-class="{selected: item == suggestionList.selected}"'+
+        '        ng-click="addSuggestionByIndex($index)"'+
+        '        ng-mouseenter="suggestionList.select($index)"'+
+        '        ng-bind-html="highlight(item)">'+
+        '    </li>'+
+        '</ul>'+
+        '</div>'
+};
+
 /**
  * @ngdoc directive
  * @name tagsInput
@@ -143,7 +181,7 @@ form.directive('tagsInput', ["$timeout","$document","tagsInputConfig","tiUtil", 
         },
         replace: false,
         transclude: true,
-        templateUrl: '/partials/dependency/directives/tags/tags-input.html',
+        template: partials.tagsInput,
         controller: ["$scope","$attrs","$element", function($scope, $attrs, $element) {
             $scope.events = tiUtil.simplePubSub();
 
@@ -467,7 +505,7 @@ form.directive('tagsAutoComplete', ["$document","$timeout","$sce","$q","tagsInpu
         restrict: 'E',
         require: '^tagsInput',
         scope: { source: '&' },
-        templateUrl: '/partials/dependency/directives/tags/tags-auto-complete.html',
+        template: partials.tagsAutoComplete,
         link: function(scope, element, attrs, tagsInputCtrl) {
             var hotkeys = [KEYS.enter, KEYS.tab, KEYS.escape, KEYS.up, KEYS.down],
                 suggestionList, tagsInput, options, getItem, getDisplayText, shouldLoadSuggestions;

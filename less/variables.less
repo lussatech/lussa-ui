@@ -25,7 +25,7 @@
 // By Context
 @accent-primary: #3F1164;
 @accent-success: #349B02;
-@accent-info: #999999;
+@accent-info: #FFFFFF;
 @accent-warning: #F9FE34;
 @accent-error: #FF0000;
 @accent-muted: lighten(@accent-neutral, 55%);
@@ -215,7 +215,7 @@
 @button-success-bg:                 @accent-success;
 @button-success-border:             darken(@button-success-bg, 5%);
 
-@button-info-color:                 @accent-clear;
+@button-info-color:                 @accent-dark;
 @button-info-bg:                    @accent-info;
 @button-info-border:                darken(@button-info-bg, 5%);
 
@@ -292,7 +292,7 @@
 @state-success-bg:               lighten(@accent-success,50);
 @state-success-border:           darken(spin(@state-success-bg, -10), 20%);
 
-@state-info-text:                darken(@accent-info,20);
+@state-info-text:                darken(@accent-info,60);
 @state-info-bg:                  lighten(@accent-info,30);
 @state-info-border:              darken(spin(@state-info-bg, -10), 20%);
 
@@ -321,8 +321,79 @@
 * Code
 * ## default code accent
 */
-
 @pre-scrollable-max-height:   340px;
+
+
+/**
+ * Dropdowns
+ * ## Dropdown menu container and contents.
+ */
+
+@dropdown-bg:                    @accent-clear;
+@dropdown-border:                rgba(0,0,0,.15);
+@dropdown-fallback-border:       @accent-soft;
+@dropdown-divider-bg:            @ruler-border-accent;
+
+@dropdown-link-color:            @accent-neutral;
+@dropdown-link-hover-color:      @accent-neutral;
+@dropdown-link-hover-bg:         @accent-light;
+
+@dropdown-link-active-color:     @component-active-color;
+@dropdown-link-active-bg:        @component-active-bg;
+
+@dropdown-link-disabled-color:   @accent-light;
+
+@dropdown-header-color:          @accent-neutral;
+@dropdown-caret-color:           @accent-dark;
+
+/**
+ * Alert
+ * ## Define alert colors, border radius, and padding.
+ */
+@alert-padding:               15px;
+@alert-border-radius:         @border-radius-base;
+@alert-link-font-weight:      bold;
+
+@alert-success-bg:            @state-success-bg;
+@alert-success-text:          @state-success-text;
+@alert-success-border:        @state-success-border;
+
+@alert-info-bg:               @state-info-bg;
+@alert-info-text:             @state-info-text;
+@alert-info-border:           @state-info-border;
+
+@alert-warning-bg:            @state-warning-bg;
+@alert-warning-text:          @state-warning-text;
+@alert-warning-border:        @state-warning-border;
+
+@alert-error-bg:             @state-error-bg;
+@alert-error-text:           @state-error-text;
+@alert-error-border:         @state-error-border;
+
+/**
+ * Loading Bar
+ */
+@loading-bar-bg:            @accent-clear;
+@loading-bar-border:        @accent-clear;
+
+/**
+ * Pagination
+ */
+@pagination-color:                     @accent-dark;
+@pagination-bg:                        @accent-clear;
+@pagination-border:                    @accent-dark;
+
+@pagination-hover-color:               @accent-dark;
+@pagination-hover-bg:                  @accent-light;
+@pagination-hover-border:              @accent-dark;
+
+@pagination-active-color:              @accent-light;
+@pagination-active-bg:                 @accent-primary;
+@pagination-active-border:             @accent-primary;
+
+@pagination-disabled-color:            @accent-muted;
+@pagination-disabled-bg:               @accent-clear;
+@pagination-disabled-border:           lighten(@accent-muted, 20);
 
 /**
  * Z-Index
@@ -331,6 +402,7 @@
 @zindex-navbar:            1000;
 @zindex-dropdown:          1000;
 @zindex-navbar-fixed:      1030;
+@zindex-loading-bar:      1033;
 
 /**
  * Grid

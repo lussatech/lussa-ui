@@ -1,45 +1,61 @@
 <h1 class="docs-section-title" id="loading-bar">Loading Bar</h1>
-<p class="docs-section-desc"></p>
+<p class="docs-section-desc">sebuah loading bar yang bekerja secara otomatis dengan membaca request <code>XHR</code> aplikasi angular kamu.</p>
 
 <!-- Contoh Dasar -->
-<h2 class="docs-subsection-title" id="loading-bar-basic">Contoh Dasar</h2>
+<h2 class="docs-subsection-title" id="loading-bar-setup">Setup</h2>
 <div class="docs-subsection-desc">
-    <p></p>
-</div>
-<div class="docs-tab">
-    <ul class="docs-tab-link-container">
-        <li>tampilan</li>
-        <li>&lt;html&gt;</li>
-    </ul>
-    <div class="docs-tab-content-container">
-        <div class="docs-tab-content">
-            <div class="docs-example">
-            </div>
-        </div>
-        <div class="docs-tab-content">
-{% highlight html %}
+    <p>Seperti halnya toast, loading bar dapat diatur langsung di fasa konfigurasi aplikasi kamu. <code>loading bar</code> juga memiliki beberapa event dan service yang dapat digunakan didalam controller kamu.</p>
+    <ol>
+        <li>Atur parameter <code>loading bar</code> pada fase konfigurasi</li>
+{% highlight js %}
+angular.config(['loadingBar' ,function(loadingBar){
+    loadingbar.latencyThreshold = 100;
+    loadingbar.startSize = 0.02;
+    loadingbar.parentSelector = 'body';
+}]);
 {% endhighlight %}
-        </div>
-    </div>
+        <li>You good to go!</li>
+    </ol>
 </div>
 
-<!-- Pengaturan / Config -->
-<h2 class="docs-subsection-title" id="loading-bar-config">Pengaturan / Config</h2>
+
+<!-- Service -->
+<h2 class="docs-subsection-title" id="loading-bar-service">Service</h2>
 <div class="docs-subsection-desc">
-    <p></p>
+    <p>Loading bar sendiri, dipersenjatai 5 method yang dapat digunakan untuk memanipulasi <code>loading bar</code> yang dapat kamu panggil didalam <code>controller</code> aplikasi kamu.</p>
 </div>
 <div class="docs-tab">
     <ul class="docs-tab-link-container">
         <li>tampilan</li>
-        <li>&lt;html&gt;</li>
+        <li>controller</li>
     </ul>
     <div class="docs-tab-content-container">
         <div class="docs-tab-content">
             <div class="docs-example">
+                <button class="button button-primary" ng-click="docs.loadingBar.start()">loadingBar.start()</button>
+                <button class="button button-primary" ng-click="docs.loadingBar.set(0.32)">loadingBar.set(0.32)</button>
+                <button class="button button-primary" ng-click="docs.loadingBar.inc()">loadingBar.inc()</button>
+                <button class="button button-primary" ng-click="docs.loadingBar.complete()">loadingBar.complete()</button>
+                <button class="button button-primary" ng-click="docs.loadingBar.xhr()">Real XHR request</button>
+
+                <h4>loadingBar.status
+                    {( (docs.loadingBar.status() * 100) + ' %' )}
+                </h4>
             </div>
         </div>
         <div class="docs-tab-content">
-{% highlight html %}
+{% highlight js %}
+app.controller('loadingbarCtrl' ,['loadingBar',function(loadingBar){
+    // start the bar
+    loadingBar.start();
+    // set to 0.32
+    loadingBar.set(0.32); // 0 - 1
+    loadingBar.inc(); // increment
+    // finish the bar & destory
+    loadingBar.complete();
+    // get status
+    var status = loadingBar.status;
+}]);
 {% endhighlight %}
         </div>
     </div>
@@ -48,65 +64,15 @@
 <!-- Event -->
 <h2 class="docs-subsection-title" id="loading-bar-event">Event</h2>
 <div class="docs-subsection-desc">
-    <p></p>
-</div>
-<div class="docs-tab">
-    <ul class="docs-tab-link-container">
-        <li>tampilan</li>
-        <li>&lt;html&gt;</li>
-    </ul>
-    <div class="docs-tab-content-container">
-        <div class="docs-tab-content">
-            <div class="docs-example">
-            </div>
-        </div>
-        <div class="docs-tab-content">
-{% highlight html %}
-{% endhighlight %}
-        </div>
-    </div>
-</div>
-
-<!-- Service -->
-<h2 class="docs-subsection-title" id="loading-bar-service">Service</h2>
-<div class="docs-subsection-desc">
-    <p></p>
-</div>
-<div class="docs-tab">
-    <ul class="docs-tab-link-container">
-        <li>tampilan</li>
-        <li>&lt;html&gt;</li>
-    </ul>
-    <div class="docs-tab-content-container">
-        <div class="docs-tab-content">
-            <div class="docs-example">
-            </div>
-        </div>
-        <div class="docs-tab-content">
-{% highlight html %}
-{% endhighlight %}
-        </div>
-    </div>
-</div>
-
-<!-- Mengubah Template -->
-<h2 class="docs-subsection-title" id="loading-bar-templating">Mengubah Template</h2>
-<div class="docs-subsection-desc">
-    <p></p>
-</div>
-<div class="docs-tab">
-    <ul class="docs-tab-link-container">
-        <li>tampilan</li>
-        <li>&lt;html&gt;</li>
-    </ul>
-    <div class="docs-tab-content-container">
-        <div class="docs-tab-content">
-            <div class="docs-example">
-            </div>
-        </div>
-        <div class="docs-tab-content">
-{% highlight html %}
-{% endhighlight %}
-        </div>
-    </div>
+    <p>Loading-bar memancarkan (<em>broadcast</em>) beberapa event</p>
+    <dl>
+        <dt>loadingBar:loading</dt>
+        <dd>di broadcast ketika loading bar menerima XHR request yg belum di <em>cache</em></dd>
+        <dt>loadingBar:loaded</dt>
+        <dd>di broadcast ketika loading bar menerima XHR resddond, baik sukses maupun gagal</dd>
+        <dt>loadingBar:completed</dt>
+        <dd>di broadcast ketika semua antrian XHR task telah selesai di eksekusi</dd>
+        <dt>loadingBar:started</dt>
+        <dd>di broadcast ketika memulai sebuah antrian XHR task</dd>
+    </dl>
 </div>

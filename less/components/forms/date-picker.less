@@ -1,0 +1,140 @@
+/**
+ * Date Picker
+ */
+
+.ui-date-picker,
+ui-date-picker {
+    position: relative;
+    padding: 0;
+    display: block;
+    width: 100%;
+
+    .ui-iconified {
+        display: inline-block;
+    }
+
+    label,
+    input {
+      width: 100%;
+    }
+    .date-display {
+        position: relative;
+        padding: 0;
+        display: block;
+        width: 100%;
+    }
+    .icon-label-input {
+        .pull-right();
+    }
+    .date-input-hidden {
+        display: none;
+        visibility: hidden;
+    }
+    .datepicker {
+        display: none;
+        background: @accent-clear;
+        position: absolute;
+        padding: 4px;
+        margin-top: 1px;
+
+        > div {
+            display: block;
+        }
+        table {
+            margin: 0;
+            thead {
+                cursor: pointer; border-top: none;
+            }
+            th,
+            td {
+                text-align: center;
+                width: 20px;
+                height: 20px;
+                border-bottom: 1px solid transparent;
+                font-size: @font-size-base;
+                padding: 4px 8px;
+                cursor: pointer;
+
+                > span {
+                    display: block;
+                    width: 23%;
+                    height: 54px;
+                    line-height: 54px;
+                    float: left;
+                    margin: 1%;
+                    cursor: pointer;
+                    border-bottom: 1px solid transparent;
+                }
+            }
+            tr:hover > td {
+                background: @accent-light;
+            }
+        }
+        .date-switch:hover,
+        .prev:hover,
+        .next:hover {
+            border-bottom: 1px solid @accent-primary;
+            background: @accent-light;
+        }
+        .date-switch {
+            width: 145px;
+        }
+        .picker {
+            .transition( 0.3s ease border,
+                0.3s ease background,
+                0.3s ease color );
+            &:not(.disabled):hover {
+                background: @accent-soft;
+                color: @accent-dark;
+                border-bottom: 1px solid @accent-dark;
+            }
+            &.disabled {
+                .text-muted();
+                &:hover {
+                    background: @accent-muted;
+                    .text-muted();
+                }
+            }
+            &.old,
+            &.new {
+                .text-neutral();
+            }
+            &.today {
+                color: @accent-clear;
+                background: @accent-primary;
+            }
+            &.active {
+                .text-primary();
+                background: @accent-light;
+                border-bottom: 1px solid @accent-primary;
+            }
+        }
+    }
+    .datepicker-inline {
+        width: 220px;
+    }
+    .datepicker-dropdown {
+        left: 0;
+        border : 1px solid @accent-dark;
+    }
+    .datepicker-dropdown-before,
+    .datepicker-dropdown-after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+    }
+    .datepicker-days div.datepicker-days,
+    .datepicker-months div.datepicker-months,
+    .datepicker-years div.datepicker-years, {
+        display: block;
+    }
+    .datepicker-close {
+        position: absolute;
+        top: -30px;
+        right: 0;
+        width: 15px;
+        height: 30px;
+        padding: 0;
+        display: none;
+    }
+}

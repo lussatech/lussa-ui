@@ -1,89 +1,74 @@
-<h1 class="docs-section-title" id="dropdown">Overview</h1>
+<h1 class="docs-section-title" id="dropdown">Dropdown</h1>
 <p class="docs-section-desc"></p>
 
 <!-- Contoh Dasar -->
-<h2 class="docs-subsection-title" id="dropdown-basic">Contoh Dasar</h2>
+<h2 class="docs-subsection-title" id="dropdown-menu">Dropdown List / Menu</h2>
 <div class="docs-subsection-desc">
-    <p></p>
+    <p>Untuk membuat sebuah menu dropdown, kamu bisa menggunakan direktif khusus yaitu <code>dropdown</code> yang bisa diimplementasikan dalam bentuk kelas , elemen atau atribut. Disertai dengan toggle (<code>.dropdown-toggle</code>) dan menunya (<code>.dropdown-menu</code>)</p>
 </div>
 <div class="docs-tab">
     <ul class="docs-tab-link-container">
         <li>tampilan</li>
-        <li>&lt;html&gt;</li>
+        <li>penggunaan</li>
+        <li>pengaturan</li>
     </ul>
     <div class="docs-tab-content-container">
         <div class="docs-tab-content">
             <div class="docs-example">
+                <ui-dropdown>
+                    <button class="button button-default dropdown-toggle" type="button">
+                        Dropdown Toggle
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li role="presentation" class="dropdown-header">Dropdown header</li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+                        <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Disabled</a></li>
+                        <li role="presentation" class="divider"></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+                    </ul>
+                </ui-dropdown>
+                <ui-dropdown toggle-by-hover="true">
+                    <button class="button button-primary dropdown-toggle" type="button">
+                        Dropdown Hover
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li role="presentation" class="dropdown-header">Dropdown header</li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+                        <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Disabled</a></li>
+                        <li role="presentation" class="divider"></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+                    </ul>
+                </ui-dropdown>
             </div>
         </div>
         <div class="docs-tab-content">
 {% highlight html %}
-{% endhighlight %}
-        </div>
-    </div>
-</div>
+<ui-dropdown
+    [is-open="{boolean}"]
+    [toggle-by-hover="{boolean}"]
+    [on-open="{function}"]
+    [on-close="{function}"]
+    [open-easing="{string}"]
+    [close-easing="{string}"]
+    [open-speed="{integer}"]
+    [close-speed="{integer}"]
+    >
 
-<!-- Dropdown List -->
-<h2 class="docs-subsection-title" id="dropdown-list">Dropdown List</h2>
-<div class="docs-subsection-desc">
-    <p></p>
-</div>
-<div class="docs-tab">
-    <ul class="docs-tab-link-container">
-        <li>tampilan</li>
-        <li>&lt;html&gt;</li>
+    <button class="button button-default dropdown-toggle" type="button">
+        Dropdown <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li class="dropdown-header"><a href="#">Header</a></li>
+        <li><a href="#">Action</a></li>
+        <li class="divider"></li>
+        <li class="disabled"><a href="#">Disabled</a></li>
+        ...
     </ul>
-    <div class="docs-tab-content-container">
-        <div class="docs-tab-content">
-            <div class="docs-example">
-            </div>
-        </div>
-        <div class="docs-tab-content">
-{% highlight html %}
-{% endhighlight %}
-        </div>
-    </div>
-</div>
-
-<!-- Tombol -->
-<h2 class="docs-subsection-title" id="dropdown-button">Tombol</h2>
-<div class="docs-subsection-desc">
-    <p></p>
-</div>
-<div class="docs-tab">
-    <ul class="docs-tab-link-container">
-        <li>tampilan</li>
-        <li>&lt;html&gt;</li>
-    </ul>
-    <div class="docs-tab-content-container">
-        <div class="docs-tab-content">
-            <div class="docs-example">
-            </div>
-        </div>
-        <div class="docs-tab-content">
-{% highlight html %}
-{% endhighlight %}
-        </div>
-    </div>
-</div>
-
-<!-- Efek-efek -->
-<h2 class="docs-subsection-title" id="dropdown-fx">Efek-efek</h2>
-<div class="docs-subsection-desc">
-    <p></p>
-</div>
-<div class="docs-tab">
-    <ul class="docs-tab-link-container">
-        <li>tampilan</li>
-        <li>&lt;html&gt;</li>
-    </ul>
-    <div class="docs-tab-content-container">
-        <div class="docs-tab-content">
-            <div class="docs-example">
-            </div>
-        </div>
-        <div class="docs-tab-content">
-{% highlight html %}
+</ui-dropdown>
 {% endhighlight %}
         </div>
     </div>
@@ -92,20 +77,50 @@
 <!-- Custom Content -->
 <h2 class="docs-subsection-title" id="dropdown-content">Custom Content</h2>
 <div class="docs-subsection-desc">
-    <p></p>
+    <p>Dropdown content sebenernya bisa di isi sama konten apapun, kamu bisa mengganti <code>.dropdown-menu</code> dengan <code>.dropdown-content</code> </p>
 </div>
 <div class="docs-tab">
     <ul class="docs-tab-link-container">
         <li>tampilan</li>
-        <li>&lt;html&gt;</li>
+        <li>penggunaan</li>
+        <li>pengaturan</li>
     </ul>
     <div class="docs-tab-content-container">
         <div class="docs-tab-content">
             <div class="docs-example">
+                <ui-dropdown>
+                    <button class="button button-default dropdown-toggle" type="button">
+                        Custom Content
+                        <span class="caret"></span>
+                    </button>
+                    <div class="dropdown-content" style="width:50vw">
+                        <h1>Ini adalah contoh custom content!</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet vehicula purus, ut venenatis leo. Sed et dolor mattis, maximus ipsum id, blandit sapien. Donec elementum velit nisl, sit amet ultrices diam scelerisque eget. Vivamus iaculis elit id pharetra bibendum. Etiam finibus faucibus consectetur. Sed sit amet turpis velit. Mauris egestas velit dui, ac blandit purus commodo aliquam. Vivamus tincidunt placerat sollicitudin. Suspendisse luctus arcu eget ante sollicitudin, et interdum ligula facilisis. Phasellus efficitur magna eget leo condimentum, nec lobortis leo viverra. Pellentesque sagittis turpis metus, ut dictum felis dapibus nec. Integer elementum vulputate velit, id placerat nunc accumsan eget. Maecenas varius quam a velit congue, at bibendum ipsum consequat. Vivamus molestie pulvinar lorem, id tincidunt tortor fermentum vel. Suspendisse dictum auctor neque non lacinia.</p>
+                    </div>
+                </ui-dropdown>
             </div>
         </div>
         <div class="docs-tab-content">
 {% highlight html %}
+<ui-dropdown
+    [is-open="{boolean}"]
+    [toggle-by-hover="{boolean}"]
+    [on-open="{function}"]
+    [on-close="{function}"]
+    [open-easing="{string}"]
+    [close-easing="{string}"]
+    [open-speed="{integer}"]
+    [close-speed="{integer}"]
+    >
+
+    <button class="button button-default dropdown-toggle" type="button">
+        Custom Content <span class="caret"></span>
+    </button>
+    <div class="dropdown-content">
+        <!-- taro konten disini -->
+        ...
+    </div>
+</ui-dropdown>
 {% endhighlight %}
         </div>
     </div>

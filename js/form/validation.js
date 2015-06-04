@@ -10,7 +10,7 @@ var form = angular.module('lussa.ui.form.validation',[]);
  * Input Match Directives
  * @requires $parse
  */
-form.directive('ngMatch',['$parse','$log',
+form.directive('uiMatch',['$parse','$log',
 	function($parse,$log){
 	return {
         require: '?ngModel',
@@ -18,9 +18,9 @@ form.directive('ngMatch',['$parse','$log',
         link: function(scope, elem, attrs, ctrl) {
 			// if ngModel is not defined, we don't need to do anything
 			if (!ctrl) return;
-			if (!attrs.ngMatch) return;
+			if (!attrs.uiMatch) return;
 
-			var firstPassword = $parse(attrs.ngMatch);
+			var firstPassword = $parse(attrs.uiMatch);
 
 			/**
 			 * [validator description]

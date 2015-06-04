@@ -3,3 +3,31 @@
  * ##
  * ==========================================================================
  */
+
+.progress-container {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: @zindex-loading-bar;
+    pointer-events: none;
+
+    &.ng-enter,
+    &.ng-leave.ng-leave-active {
+        opacity: 0;
+    }
+
+    &.ng-enter.ng-enter-active,
+    &.ng-leave {
+        opacity: 1;
+    }
+}
+
+.progress-bar{
+    position: relative;
+    height: 2px;
+    background: @loading-bar-bg;
+    border-bottom: 1px solid @loading-bar-border;
+    box-shadow: 2px 1px 1px rgba(0,0,0,0.1);
+    border-radius: 0 2px 2px 0px;
+    .transition(width 350ms);
+}

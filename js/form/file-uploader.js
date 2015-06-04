@@ -7,7 +7,7 @@
 var form = angular.module('lussa.ui.form.fileUploader',[]);
 
 
-form.factory('fileUploader',['$http','$log',
+form.factory('FileUploaderFactory',['$http','$log',
 	function($http,$log){
 
 	/**
@@ -44,7 +44,7 @@ form.factory('fileUploader',['$http','$log',
 	 * @param  {[type]} file [description]
 	 * @return {[type]}      [description]
 	 */
-	var _uploadFile = function(files){
+	var _uploadFile = function(files, url){
 		var form = new FormData();
 
 		// iterate trough files
@@ -58,7 +58,7 @@ form.factory('fileUploader',['$http','$log',
 		});
 
 		// send file using http POST verb
-		$http.post('/upload', form, {
+		$http.post(url, form, {
 			transformRequest : angular.identity,
 			headers : {'Content-Type': undefined}
 		}).then(
@@ -78,7 +78,7 @@ form.factory('fileUploader',['$http','$log',
 	 * @param  {[type]} params [description]
 	 * @return {[type]}        [description]
 	 */
-	var _uploadImage = function(file,params){
+	var _uploadImage = function(file, url, params){
 		var form;
 
 		// validate file type & size
@@ -93,7 +93,7 @@ form.factory('fileUploader',['$http','$log',
 		// send file using http POST verb
 		return $http({
 			'method' : 'POST',
-			'url' : '/upload-image',
+			'url' : url,
 			'params' : params,
 			'data' : form,
 			'transformRequest' : angular.identity,
@@ -123,14 +123,14 @@ form.factory('fileUploader',['$http','$log',
  * @param  {[type]} $parse [description]
  * @return {[type]}        [description]
  */
-form.directive('fileModel', ['$parse', '$log',
+form.directive('uiFileModel', ['$parse', '$log',
     function ($parse,$log) {
     return {
         restrict: 'A',
         link: function(scope, element, attrs) {
             //setup model
-            var model = $parse(attrs.fileModel);
-            var modelSetter = model.assign;
+            var model = $parse(attrs.uiFileModel),
+            	modelSetter = model.assign;
 
             // bind element change
             element.bind('change', function(){

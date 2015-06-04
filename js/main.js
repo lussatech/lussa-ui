@@ -7,11 +7,11 @@
  *
  * @requires [description]
  */
-var lussaUi = angular.module('lussa.ui',[
+var LussaUi = angular.module('lussa.ui',[
     // form
     'lussa.ui.form',
     // dropdown
-//  'lussa.ui.dropdown',
+    'lussa.ui.dropdown',
     // components
     'lussa.ui.loadingBar',
     'lussa.ui.toast',

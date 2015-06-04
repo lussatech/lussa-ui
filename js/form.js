@@ -9,7 +9,7 @@
  * @requires
  *
  */
-var lussaUiForm = angular.module('lussa.ui.form',[
+var LussaUiForm = angular.module('lussa.ui.form',[
     'lussa.ui.form.datePicker',
     'lussa.ui.form.autoComplete',
     'lussa.ui.form.fileUploader',

@@ -1,23 +1,98 @@
 <h1 class="docs-section-title" id="toast">Toast</h1>
-<p class="docs-section-desc"></p>
+<p class="docs-section-desc">pesan mengambang diatas awan, cheers!</p>
 
-<!-- Contoh Dasar -->
-<h2 class="docs-subsection-title" id="toast-basic">Contoh Dasar</h2>
+<!-- Setup -->
+<h2 class="docs-subsection-title" id="toast-setup">Setup</h2>
 <div class="docs-subsection-desc">
-    <p></p>
+    <p>sebelum kamu bisa menggunakan toast, kamu harus melakukan beberapa hal penting.</p>
+    <ol>
+        <li>Masukan direktif <code>toast</code> sebelum tag <code>body</code> ditutup.</li>
+{% highlight html %}
+...
+<!-- toast  directive -->
+<toast></toast>
+</body>
+{% endhighlight %}
+        <li>Bila diperlukan, lakukan beberapa konfigurasi pada fase <code>config</code></li>
+{% highlight js %}
+angular.config(['toast', function(toast){
+    toast.className: 'info',
+    toast.dismissOnTimeout: true,
+    toast.timeout: 5000,
+    toast.toast.dismissButton: true,
+    toast.dismissButtonHtml: '',
+    toast.dismissOnClick: true,
+    toast.compileContent: false,
+    toast.horizontalPosition: 'right', // right, center, left
+    toast.verticalPosition: 'top', // top, bottom,
+    toast.maxNumber: 0
+}]);
+{% endhighlight %}
+        <li>Panggil method <code>toast.create</code> didalam <code>controller</code>, untuk menguji toast.</li>
+{% highlight js %}
+toast.create({
+    content: "howdy!"
+    className: "success"
+});
+
+// atau bisa juga
+toast.create("howdy!");
+{% endhighlight %}
+    </ol>
+</div>
+
+<!-- Contoh -->
+<h2 class="docs-subsection-title" id="toast-example">Contoh</h2>
+<div class="docs-subsection-desc">
+    <p>klik tombol-tombol dibawah ini untuk melihat contoh</p>
 </div>
 <div class="docs-tab">
     <ul class="docs-tab-link-container">
         <li>tampilan</li>
-        <li>&lt;html&gt;</li>
+        <li>index.html</li>
+        <li>controller.js</li>
     </ul>
     <div class="docs-tab-content-container">
         <div class="docs-tab-content">
             <div class="docs-example">
+                <button class="button button-primary" ng-click="docs.summonToast()">
+                    Summon Toast!
+                </button>
+                <button class="button button-success" ng-click="docs.toastSuccess()">
+                    Toast Success
+                </button>
             </div>
         </div>
         <div class="docs-tab-content">
 {% highlight html %}
+<div ng-controller="toastCtrl">
+    <button class="button button-primary" ng-click="summonToast()">
+    Summon Toast!
+    </button>
+    <button class="button button-success" ng-click="toastSuccess()">
+    Toast Success
+    </button>
+</div>
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight js %}
+
+angular.controller('toastCtrl',['toast',function(toast){
+
+    $scope.summonToast = function(){
+        toast.create('howdy!');
+    }
+
+    $scope.toastSuccess = function(){
+        toast.create({
+            content:'Yeah we are all success',
+            className: 'success'
+        });
+    }
+
+}])
+
 {% endhighlight %}
         </div>
     </div>
@@ -26,86 +101,41 @@
 <!-- Pengaturan / Config -->
 <h2 class="docs-subsection-title" id="toast-config">Pengaturan / Config</h2>
 <div class="docs-subsection-desc">
-    <p></p>
+    <p>Toast sendiri terdiri dari 2 elemen utama, yaitu <code>toast container</code> dan <code>toast message</code>. Beberapa konfigurasi umum dapat dilakukan pada fase config. Sedangkan untuk menampilkan <code>toast message</code> kamu bisa mengatur konten, kelas dan beberapa konfigurasi unik per pesan.</p>
 </div>
 <div class="docs-tab">
     <ul class="docs-tab-link-container">
-        <li>tampilan</li>
-        <li>&lt;html&gt;</li>
+        <li>global config</li>
+        <li>message config</li>
     </ul>
     <div class="docs-tab-content-container">
         <div class="docs-tab-content">
-            <div class="docs-example">
-            </div>
-        </div>
-        <div class="docs-tab-content">
-{% highlight html %}
+{% highlight js %}
+className: 'info',
+dismissOnTimeout: true,
+timeout: 5000,
+dismissButton: true,
+dismissButtonHtml: '',
+dismissOnClick: true,
+compileContent: false,
+horizontalPosition: 'right', // right, center, left
+verticalPosition: 'top', // top, bottom,
+maxNumber: 0
 {% endhighlight %}
         </div>
-    </div>
-</div>
-
-<!-- Event -->
-<h2 class="docs-subsection-title" id="toast-event">Event</h2>
-<div class="docs-subsection-desc">
-    <p></p>
-</div>
-<div class="docs-tab">
-    <ul class="docs-tab-link-container">
-        <li>tampilan</li>
-        <li>&lt;html&gt;</li>
-    </ul>
-    <div class="docs-tab-content-container">
         <div class="docs-tab-content">
-            <div class="docs-example">
-            </div>
-        </div>
-        <div class="docs-tab-content">
-{% highlight html %}
-{% endhighlight %}
-        </div>
-    </div>
-</div>
-
-<!-- Service -->
-<h2 class="docs-subsection-title" id="toast-service">Service</h2>
-<div class="docs-subsection-desc">
-    <p></p>
-</div>
-<div class="docs-tab">
-    <ul class="docs-tab-link-container">
-        <li>tampilan</li>
-        <li>&lt;html&gt;</li>
-    </ul>
-    <div class="docs-tab-content-container">
-        <div class="docs-tab-content">
-            <div class="docs-example">
-            </div>
-        </div>
-        <div class="docs-tab-content">
-{% highlight html %}
-{% endhighlight %}
-        </div>
-    </div>
-</div>
-
-<!-- Mengubah Template -->
-<h2 class="docs-subsection-title" id="toast-templating">Mengubah Template</h2>
-<div class="docs-subsection-desc">
-    <p></p>
-</div>
-<div class="docs-tab">
-    <ul class="docs-tab-link-container">
-        <li>tampilan</li>
-        <li>&lt;html&gt;</li>
-    </ul>
-    <div class="docs-tab-content-container">
-        <div class="docs-tab-content">
-            <div class="docs-example">
-            </div>
-        </div>
-        <div class="docs-tab-content">
-{% highlight html %}
+{% highlight js %}
+toast.create({
+    content: "{string}",
+    [id: "{float}"],
+    [className: "{string}"],
+    [dismissOnTimeout: "{boolean}"],
+    [timeout: "{integer}"],
+    [dismissButton: "{boolean}"],
+    [dismissButtonHtml: "{string}"],
+    [dismissOnClick: "{boolean}"],
+    [compileContent: "{boolean}"]
+});
 {% endhighlight %}
         </div>
     </div>

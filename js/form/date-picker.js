@@ -1,5 +1,3 @@
-'use strict';
-
 var DatePicker = angular.module('lussa.ui.form.datePicker',[]);
 
 DatePicker.directive('datePicker', ['$log', '$document', '$filter',
@@ -38,27 +36,27 @@ function ($log, $document, $filter){
     var partials = {
         headTemplate : '<thead>'+
         '<tr>'+
-        '<th class="prev"><i class="icon ion-ios-arrow-left"/></th>'+
+        '<th class="prev"><i class="icon icon-ios-arrow-left"/></th>'+
         '<th colspan="5" class="date-switch"></th>'+
-        '<th class="next"><i class="icon ion-ios-arrow-right"/></th>'+
+        '<th class="next"><i class="icon icon-ios-arrow-right"/></th>'+
         '</tr>'+
         '</thead>',
         contTemplate: '<tbody><tr><td colspan="7"></td></tr></tbody>',
         footTemplate: '<tfoot ng-show="todayButton"><tr><th colspan="7" class="today">{{todayButton}}</th></tr></tfoot>',
         headTemplateDays: '<thead>'+
         '<tr>'+
-        '<th class="prev"><i class="icon ion-ios-arrow-left"/></th>'+
+        '<th class="prev"><i class="icon icon-ios-arrow-left"/></th>'+
         '<th colspan="5" class="date-switch"></th>'+
-        '<th class="next"><i class="icon ion-ios-arrow-right"/></th>'+
+        '<th class="next"><i class="icon icon-ios-arrow-right"/></th>'+
         '</tr>'+
         '</thead>',
         footTemplateDays: '<tfoot class="picker {{todayClass}}" ng-show="todayButton"><tr><th colspan="7" class="today">{{todayButton}}</th></tr></tfoot>'
     };
 
     var template = '<div class="ui-date-picker"> ' +
-        '<div ng-click="displayPicker()" class="date-display">' +
+        '<div ng-click="displayPicker()" class="date-display form-group">' +
         '<label for={{pickerid}} class="date-input-label"></label>' +
-        '<input readonly id={{pickerid}} class="date-input {{attrs.inputClass}}" placeholder="{{placeholder}}" value="{{modelviewvalue}}">' +
+        '<input readonly id={{pickerid}} class="date-input form-control {{attrs.inputClass}}" placeholder="{{placeholder}}" value="{{modelviewvalue}}">' +
         '<span class="date-input-icon"></span>' +
 
         '<div ng-show="showPicker" class="datepicker datepicker-dropdown">'+

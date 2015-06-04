@@ -37,7 +37,37 @@ form.directive('autoComplete', ['$q', '$parse', '$http', '$sce', '$timeout',
     var REQUIRED_CLASS = 'autocomplete-required';
     var TEXT_SEARCHING = 'Pencarian..';
     var TEXT_NORESULTS = 'Pencarian tidak ditemukan';
-    var TEMPLATE_URL = '/partials/dependency/directives/form/auto-complete-default.html';
+    var TEMPLATE = '<div class="auto-complete-container" ng-class="{\'auto-complete-dropdown-visible\': showDropdown}"> '+
+        '   <input id="{{id}}_value" ng-model="searchStr" '+
+        '       ng-disabled="disableInput" '+
+        '       type="{{type}}" '+
+        '       placeholder="{{placeholder}}" '+
+        '       ng-focus="onFocusHandler()" '+
+        '       class="{{inputClass}}" '+
+        '       ng-focus="resetHideResults()" '+
+        '       ng-blur="hideResults($event)" '+
+        '       autocapitalize="off" '+
+        '       autocorrect="off" '+
+        '       autocomplete="off" '+
+        '       ng-change="inputChangeHandler(searchStr)"/> '+
+        '   <div id="{{id}}_dropdown" class="auto-complete-dropdown" ng-show="showDropdown"> '+
+        '       <div class="auto-complete-searching" ng-show="searching" ng-bind="textSearching"></div>'+
+        '       <div class="auto-complete-searching" ng-show="!searching && (!results || results.length == 0)" ng-bind="textNoResults"></div>'+
+        '       <div class="auto-complete-row" ng-repeat="result in results" ng-click="selectResult(result)" ng-mouseenter="hoverRow($index)" '+
+        '           ng-class="{\'auto-complete-selected-row\': $index == currentIndex}">'+
+        '           <div ng-if="imageField" class="auto-complete-image-holder"> '+
+        '               <img ng-if="result.image && result.image != \'\'" ng-src="{{result.image}}" class="auto-complete-image"/> '+
+        '               <div ng-if="!result.image && result.image != \'\'" class="auto-complete-image-default"></div> '+
+        '           </div> '+
+        '           <div class="auto-complete-title" ng-if="matchClass" ng-bind-html="result.title"></div> '+
+        '           <div class="auto-complete-title" ng-if="!matchClass">{{ result.title }}</div> '+
+        '           <div ng-if="matchClass && result.description && result.description != \'\'" class="auto-complete-description" ng-bind-html="result.description"></div> '+
+        '           <div ng-if="!matchClass && result.description && result.description != \'\'" class="auto-complete-description">{{result.description}}</div> '+
+        ''+
+        '       </div> '+
+        '   </div> '+
+        '</div>';
+
 
     return {
         restrict: 'EA',
@@ -73,9 +103,7 @@ form.directive('autoComplete', ['$q', '$parse', '$http', '$sce', '$timeout',
             focusOut: '&',
             focusIn: '&'
         },
-        templateUrl: function(element, attrs) {
-            return attrs.templateUrl || TEMPLATE_URL;
-        },
+        template: TEMPLATE,
         link: function(scope, elem, attrs, ctrl) {
             var inputField = elem.find('input');
             var minlength = MIN_LENGTH;

@@ -25,7 +25,7 @@ body a{
 
 /* z-index */
 .docs-navbar {
-    z-index: 10009;
+    z-index: 1000;
 }
 
 /* navbar */
@@ -193,6 +193,7 @@ body a{
 .docs-tab-content-container {
     position: relative;
     border: 1px solid #3F1164;
+    background: #FFFFFF;
 }
 .docs-tab-content .docs-example {
     padding: 15px;

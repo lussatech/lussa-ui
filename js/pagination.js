@@ -4,34 +4,7 @@
  * [pagination description]
  * @type {[type]}
  */
-var pagination = angular.module('lussa.ui.pagination',[]);
-
-pagination.factory('pagination',['$log',
-	function($log){
-
-	var constant = {
-		DEFAULT_ITEM_PER_PAGE : 10
-	};
-
-	var compose_query = function(query, page, itemPerPage){
-		var itemPerPage = itemPerPage || constant.DEFAULT_ITEM_PER_PAGE,
-			_query = {
-				'skip' : (page-1)*itemPerPage,
-				'limit' : itemPerPage
-			};
-			// extend query
-			angular.extend(_query,query);
-
-		$log.info(JSON.stringify(_query));
-
-		return _query;
-	};
-
-	return {
-		'composeQuery' : compose_query,
-		'constant' : constant
-	};
-}]);
+var pagination = angular.module('lussa.ui.pagination', []);
 
 /**
  * [description]
@@ -43,8 +16,33 @@ pagination.factory('pagination',['$log',
  * @param  {[type]} GLOBAL_EVENTS            [description]
  * @return {[type]}                          [description]
  */
-pagination.directive('paginationBar', ['$log','$http','$sce','$location','$stateParams','GLOBAL_EVENTS','pagination',
-	function($log,$http,$sce,$location,$stateParams,GLOBAL_EVENTS,pagination){
+pagination.directive('paginationBar', ['$log','$sce',
+	function($log, $sce){
+
+	// init vars
+	var DEFAULT_ITEM_PER_PAGE = 10,
+		TEMPLATE_DEFAULT = '<nav>'+
+		'<ul>'+
+		'	<!-- previous -->'+
+		'	<li ng-hide="previousPage() == false"><a ng-href="{{ path }}?page={{ previousPage() }}">'+
+		'		<span class="icon icon-ios-arrow-left pagination-icon-prev"></span>sebelumnya</a></li>'+
+		'	<!-- early segment -->'+
+		'	<li ng-hide="pages.early.length < 1" ng-repeat="page in pages.early">'+
+		'		<a ng-href="{{ path }}?page={{ page }}">{{page}}</a></li>'+
+		'	<li ng-hide="pages.early.length < 1" class="separator">...</li>'+
+		'	<!-- middle -->'+
+		'	<li ng-hide="pages.middle.length < 1" ng-repeat="page in pages.middle" ng-class="page == currentPage?\'active\':\'\'">'+
+		'		<a ng-href="{{ path }}?page={{ page }}">{{page}}</a></li>'+
+		'	<!-- last segment -->'+
+		'	<li ng-hide="pages.last.length < 1" class="separator">...</li>'+
+		'	<li ng-hide="pages.last.length < 1" ng-repeat="page in pages.last">'+
+		'		<a ng-href="{{ path }}?page={{ page }}">{{page}}</a></li>'+
+		'	<!-- next segment -->'+
+		'	<li ng-hide="nextPage() == false"><a ng-href="{{ path }}?page={{ nextPage() }}">selanjutnya'+
+		'		<span class="icon icon-ios-arrow-right pagination-icon-next"></span></a></li>'+
+		'</ul>'+
+		'</nav>';
+
 	// Runs during compile
 	return {
 		restrict : 'E',
@@ -52,13 +50,9 @@ pagination.directive('paginationBar', ['$log','$http','$sce','$location','$state
 			'currentPage' : '@',
 			'itemPerPage' : '@',
 			'totalItems' : '@',
-			'path' : '@',
+			'path' : '@'
 		},
-		templateUrl: '/partials/dependency/directives/pagination/pagination-bar.html',
-		// parent controller interface
-		controllerAs : 'pagination',
-		controller : function($scope, $element, $attrs, $transclude){
-		},
+		template: TEMPLATE_DEFAULT,
 		// isolate controller
 		link: function(scope, element, attributes, controller){
 			var segment = {
@@ -67,10 +61,10 @@ pagination.directive('paginationBar', ['$log','$http','$sce','$location','$state
 			};
 
 			// attribute
-			scope.path = scope.path || $location.path();
-			scope.currentPage = scope.currentPage || $stateParams.page || 1;
+			scope.path = scope.path ||  window.location.pathname;
+			scope.currentPage = scope.currentPage || 1;
 			scope.totalItems = scope.totalItems || 1;
-			scope.itemPerPage = scope.itemPerPage || pagination.constant.DEFAULT_ITEM_PER_PAGE;
+			scope.itemPerPage = scope.itemPerPage || DEFAULT_ITEM_PER_PAGE;
 			scope.pages = {
 				early : [],
 				middle : [],

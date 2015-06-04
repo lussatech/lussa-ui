@@ -5,14 +5,18 @@
 var app = angular.module('docs', [
     'ngSanitize',
     'ngAnimate',
-    'lussa.ui.form.datePicker'
+    'lussa.ui'
 ]);
+
+app.config(['$interpolateProvider', function($interpolateProvider) {
+    return $interpolateProvider.startSymbol('{(').endSymbol(')}');
+}]);
 
 /**
  * Component Controller
  */
-app.controller('ComponentController', ['$log', '$scope', 'page', 'lussaUI' , 'PageNavigationFactory',
-    function($log, $scope, page, lussaUI, PageNavigationFactory){
+app.controller('ComponentController', ['$http', '$log', '$scope', 'page', 'lussaUI' , 'PageNavigationFactory', 'helper', 'toast', 'loadingBar',
+    function($http, $log, $scope, page, lussaUI, PageNavigationFactory, helper, toast, loadingBar){
     // ui routine
     PageNavigationFactory.BuildTabs();
     PageNavigationFactory.LeftSidebar().init();
@@ -30,8 +34,66 @@ app.controller('ComponentController', ['$log', '$scope', 'page', 'lussaUI' , 'Pa
 
     // init scope
     $scope.docs = {
-        datePicker : new Date()
+        datePicker: new Date(),
+        tagsInput: [
+            { text: 'just' },
+            { text: 'some' },
+            { text: 'cool' },
+            { text: 'tags' }
+        ],
+        fileUpload: {},
+        autoComplete: {
+            model: {},
+            suggestion: [
+                {name: 'Afghanistan', code: 'AF'},
+                {name: 'Aland Islands', code: 'AX'},
+                {name: 'Albania', code: 'AL'},
+                {name: 'Algeria', code: 'DZ'},
+                {name: 'American Samoa', code: 'AS'},
+                {name: 'AndorrA', code: 'AD'},
+                {name: 'Angola', code: 'AO'},
+                {name: 'Anguilla', code: 'AI'},
+                {name: 'Antarctica', code: 'AQ'},
+                {name: 'Antigua and Barbuda', code: 'AG'},
+                {name: 'Argentina', code: 'AR'},
+                {name: 'Armenia', code: 'AM'},
+                {name: 'Aruba', code: 'AW'},
+                {name: 'Australia', code: 'AU'},
+                {name: 'Austria', code: 'AT'},
+                {name: 'Azerbaijan', code: 'AZ'}
+            ]
+        },
+        validator: {
+            match: {
+                reference: 'tekstur',
+                confirm: ''
+            }
+        },
+        summonToast: function(){
+            toast.create('howdy!');
+        },
+        toastSuccess: function(){
+            toast.create({content:'Yeah we are all success', className: 'success'});
+        },
+        loadingBar: {
+            start: function(){ loadingBar.start(); },
+            set: function(n){ loadingBar.set(0.32); },
+            inc: function(){ loadingBar.inc(); },
+            complete: function(){ loadingBar.complete(); },
+            status: loadingBar.status,
+            xhr: function(){
+                $http.get('http://jsonplaceholder.typicode.com/posts/1')
+                .success(function(data){
+                    toast.create({content:'data loaded!',className:'success'});
+                });
+            }
+        },
+        // helper
+        dump: helper.dump
     };
+
+    // event
+
 }]);
 
 /**
@@ -222,3 +284,40 @@ app.value('page', {
     slug: 'home',
     version: '0.1',
 });
+
+
+/**
+ * helper
+ */
+app.factory('helper', ['$log',
+    function($log){
+
+    var _dump = function (arr, level) {
+        var dumped_text = "";
+        if(!level) level = 0;
+
+        //The padding given at the beginning of the line.
+        var level_padding = "";
+        for(var j=0;j<level+1;j++) level_padding += "    ";
+
+        if(typeof(arr) == 'object') { //Array/Hashes/Objects
+            for(var item in arr) {
+                var value = arr[item];
+
+                if(typeof(value) == 'object') { //If it is an array,
+                    dumped_text += level_padding + "'" + item + "' ...\n";
+                    dumped_text += _dump(value,level+1);
+                } else {
+                    dumped_text += level_padding + "'" + item + "' => \"" + value + "\"\n";
+                }
+            }
+        } else { //Stings/Chars/Numbers etc.
+            dumped_text = "===>"+arr+"<===("+typeof(arr)+")";
+        }
+        return dumped_text;
+    };
+
+    return {
+        'dump': _dump
+    };
+}]);

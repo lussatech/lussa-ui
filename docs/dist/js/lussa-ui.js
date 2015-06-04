@@ -5,6 +5,119 @@
  */
 
 'use strict';
+// Source: js/dropdown.js
+/**
+ * $ngdoc directive
+ * @name module.method:attribute|AUTO|AUTO.:
+ * @deprecated
+ * @scope
+ * @eventType emit|broadcast
+ * @link
+ *
+ * @requires (,...)
+ * @propertyOf angular.Module
+ * @methodOf angular.Module|AUTO.
+ * @function
+ * @element ANY
+ * @description
+ * @param {type name description}
+ * @returns {type description}
+ */
+
+var dropDown = angular.module('lussa.ui.dropdown',[]);
+
+dropDown.directive('uiDropdown', ['$log', function($log){
+    var SPEED_DEFAULT = 500,
+        EASING_DEFAULT = 'easeOutExpo';
+
+    // Runs during compile
+    return {
+        scope: {
+            'isOpen': '@',
+            'onOpen': '&',
+            'onClose': '&',
+            'openEasing': '@',
+            'openSpeed': '@',
+            'closeEasing': '@',
+            'closeSpeed': '@',
+            'toggleByHover': '@'
+        },
+        transclude: true,
+        template: '<div class="ui-dropdown">'+
+            '<ng-transclude></ng-transclude></div>',
+        restrict: 'E',
+        link: function(scope, element, attrs, controller) {
+            // init vars
+            var opened = attrs.isOpen || false,
+                wrapper = element,
+                toggler = element.find('.dropdown-toggle'),
+                content = element.find('.dropdown-content, .dropdown-menu'),
+                fx = {
+                    open: {
+                        speed: attrs.openSpeed || SPEED_DEFAULT,
+                        easing: attrs.openEasing || EASING_DEFAULT,
+                    },
+                    close: {
+                        speed: attrs.closeSpeed || SPEED_DEFAULT,
+                        easing: attrs.closeEasing || EASING_DEFAULT,
+                    }
+                };
+
+            // default state
+            if(opened)
+                content.show();
+
+            /**
+             * [close_menu description]
+             * @return {[type]} [description]
+             */
+            function close_menu(){
+                opened = false;
+                content.slideUp(fx.open.speed, fx.open.easing);
+
+                // callback
+                scope.onOpen(element);
+            }
+
+            /**
+             * [open_menu description]
+             * @return {[type]} [description]
+             */
+            function open_menu(){
+                opened = true;
+                content.slideDown(fx.close.speed, fx.close.easing);
+
+                // callback
+                scope.onClose(element);
+            }
+
+
+            if(attrs.toggleByHover){
+                element.hoverIntent({
+                    over: function(){
+                        if(!opened)
+                            open_menu();
+                    },
+                    out: function(){
+                        if(opened)
+                            close_menu();
+                    },
+                    timeout: 500
+                });
+            } else {
+                // on click events
+                toggler.on('click',function(e){
+                    if(opened){
+                        close_menu();
+                    }else{
+                        open_menu();
+                    }
+                });
+            }
+
+        }
+    };
+}]);
 // Source: js/form.js
 /**
  * @ngdoc overview
@@ -17,7 +130,7 @@
  * @requires
  *
  */
-var lussaUiForm = angular.module('lussa.ui.form',[
+var LussaUiForm = angular.module('lussa.ui.form',[
     'lussa.ui.form.datePicker',
     'lussa.ui.form.autoComplete',
     'lussa.ui.form.fileUploader',
@@ -62,7 +175,37 @@ form.directive('autoComplete', ['$q', '$parse', '$http', '$sce', '$timeout',
     var REQUIRED_CLASS = 'autocomplete-required';
     var TEXT_SEARCHING = 'Pencarian..';
     var TEXT_NORESULTS = 'Pencarian tidak ditemukan';
-    var TEMPLATE_URL = '/partials/dependency/directives/form/auto-complete-default.html';
+    var TEMPLATE = '<div class="auto-complete-container" ng-class="{\'auto-complete-dropdown-visible\': showDropdown}"> '+
+        '   <input id="{{id}}_value" ng-model="searchStr" '+
+        '       ng-disabled="disableInput" '+
+        '       type="{{type}}" '+
+        '       placeholder="{{placeholder}}" '+
+        '       ng-focus="onFocusHandler()" '+
+        '       class="{{inputClass}}" '+
+        '       ng-focus="resetHideResults()" '+
+        '       ng-blur="hideResults($event)" '+
+        '       autocapitalize="off" '+
+        '       autocorrect="off" '+
+        '       autocomplete="off" '+
+        '       ng-change="inputChangeHandler(searchStr)"/> '+
+        '   <div id="{{id}}_dropdown" class="auto-complete-dropdown" ng-show="showDropdown"> '+
+        '       <div class="auto-complete-searching" ng-show="searching" ng-bind="textSearching"></div>'+
+        '       <div class="auto-complete-searching" ng-show="!searching && (!results || results.length == 0)" ng-bind="textNoResults"></div>'+
+        '       <div class="auto-complete-row" ng-repeat="result in results" ng-click="selectResult(result)" ng-mouseenter="hoverRow($index)" '+
+        '           ng-class="{\'auto-complete-selected-row\': $index == currentIndex}">'+
+        '           <div ng-if="imageField" class="auto-complete-image-holder"> '+
+        '               <img ng-if="result.image && result.image != \'\'" ng-src="{{result.image}}" class="auto-complete-image"/> '+
+        '               <div ng-if="!result.image && result.image != \'\'" class="auto-complete-image-default"></div> '+
+        '           </div> '+
+        '           <div class="auto-complete-title" ng-if="matchClass" ng-bind-html="result.title"></div> '+
+        '           <div class="auto-complete-title" ng-if="!matchClass">{{ result.title }}</div> '+
+        '           <div ng-if="matchClass && result.description && result.description != \'\'" class="auto-complete-description" ng-bind-html="result.description"></div> '+
+        '           <div ng-if="!matchClass && result.description && result.description != \'\'" class="auto-complete-description">{{result.description}}</div> '+
+        ''+
+        '       </div> '+
+        '   </div> '+
+        '</div>';
+
 
     return {
         restrict: 'EA',
@@ -98,9 +241,7 @@ form.directive('autoComplete', ['$q', '$parse', '$http', '$sce', '$timeout',
             focusOut: '&',
             focusIn: '&'
         },
-        templateUrl: function(element, attrs) {
-            return attrs.templateUrl || TEMPLATE_URL;
-        },
+        template: TEMPLATE,
         link: function(scope, elem, attrs, ctrl) {
             var inputField = elem.find('input');
             var minlength = MIN_LENGTH;
@@ -712,27 +853,27 @@ function ($log, $document, $filter){
     var partials = {
         headTemplate : '<thead>'+
         '<tr>'+
-        '<th class="prev"><i class="icon ion-ios-arrow-left"/></th>'+
+        '<th class="prev"><i class="icon icon-ios-arrow-left"/></th>'+
         '<th colspan="5" class="date-switch"></th>'+
-        '<th class="next"><i class="icon ion-ios-arrow-right"/></th>'+
+        '<th class="next"><i class="icon icon-ios-arrow-right"/></th>'+
         '</tr>'+
         '</thead>',
         contTemplate: '<tbody><tr><td colspan="7"></td></tr></tbody>',
         footTemplate: '<tfoot ng-show="todayButton"><tr><th colspan="7" class="today">{{todayButton}}</th></tr></tfoot>',
         headTemplateDays: '<thead>'+
         '<tr>'+
-        '<th class="prev"><i class="icon ion-ios-arrow-left"/></th>'+
+        '<th class="prev"><i class="icon icon-ios-arrow-left"/></th>'+
         '<th colspan="5" class="date-switch"></th>'+
-        '<th class="next"><i class="icon ion-ios-arrow-right"/></th>'+
+        '<th class="next"><i class="icon icon-ios-arrow-right"/></th>'+
         '</tr>'+
         '</thead>',
         footTemplateDays: '<tfoot class="picker {{todayClass}}" ng-show="todayButton"><tr><th colspan="7" class="today">{{todayButton}}</th></tr></tfoot>'
     };
 
     var template = '<div class="ui-date-picker"> ' +
-        '<div ng-click="displayPicker()" class="date-display">' +
+        '<div ng-click="displayPicker()" class="date-display form-group">' +
         '<label for={{pickerid}} class="date-input-label"></label>' +
-        '<input readonly id={{pickerid}} class="date-input {{attrs.inputClass}}" placeholder="{{placeholder}}" value="{{modelviewvalue}}">' +
+        '<input readonly id={{pickerid}} class="date-input form-control {{attrs.inputClass}}" placeholder="{{placeholder}}" value="{{modelviewvalue}}">' +
         '<span class="date-input-icon"></span>' +
 
         '<div ng-show="showPicker" class="datepicker datepicker-dropdown">'+
@@ -1375,7 +1516,7 @@ return {
 var form = angular.module('lussa.ui.form.fileUploader',[]);
 
 
-form.factory('fileUploader',['$http','$log',
+form.factory('FileUploaderFactory',['$http','$log',
 	function($http,$log){
 
 	/**
@@ -1412,7 +1553,7 @@ form.factory('fileUploader',['$http','$log',
 	 * @param  {[type]} file [description]
 	 * @return {[type]}      [description]
 	 */
-	var _uploadFile = function(files){
+	var _uploadFile = function(files, url){
 		var form = new FormData();
 
 		// iterate trough files
@@ -1426,7 +1567,7 @@ form.factory('fileUploader',['$http','$log',
 		});
 
 		// send file using http POST verb
-		$http.post('/upload', form, {
+		$http.post(url, form, {
 			transformRequest : angular.identity,
 			headers : {'Content-Type': undefined}
 		}).then(
@@ -1446,7 +1587,7 @@ form.factory('fileUploader',['$http','$log',
 	 * @param  {[type]} params [description]
 	 * @return {[type]}        [description]
 	 */
-	var _uploadImage = function(file,params){
+	var _uploadImage = function(file, url, params){
 		var form;
 
 		// validate file type & size
@@ -1461,7 +1602,7 @@ form.factory('fileUploader',['$http','$log',
 		// send file using http POST verb
 		return $http({
 			'method' : 'POST',
-			'url' : '/upload-image',
+			'url' : url,
 			'params' : params,
 			'data' : form,
 			'transformRequest' : angular.identity,
@@ -1491,14 +1632,14 @@ form.factory('fileUploader',['$http','$log',
  * @param  {[type]} $parse [description]
  * @return {[type]}        [description]
  */
-form.directive('fileModel', ['$parse', '$log',
+form.directive('uiFileModel', ['$parse', '$log',
     function ($parse,$log) {
     return {
         restrict: 'A',
         link: function(scope, element, attrs) {
             //setup model
-            var model = $parse(attrs.fileModel);
-            var modelSetter = model.assign;
+            var model = $parse(attrs.uiFileModel),
+            	modelSetter = model.assign;
 
             // bind element change
             element.bind('change', function(){
@@ -1526,6 +1667,44 @@ var MAX_SAFE_INTEGER = 9007199254740991;
 var SUPPORTED_INPUT_TYPES = ['text', 'email', 'url'];
 
 var form = angular.module('lussa.ui.form.tag', []);
+
+
+var partials = {
+    tagsInput : '<div class="host"'+
+        'tabindex="-1"'+
+        'ng-click="eventHandlers.host.click()"'+
+        'ti-transclude-append="">'+
+        '<div class="tags" ng-class="{focused: hasFocus}">'+
+        '    <ul class="tag-list">'+
+        '        <li class="tag-item" ng-repeat="tag in tagList.items track by track(tag)"'+
+        '            ng-class="{ selected: tag == tagList.selected }">'+
+        '            <span ng-bind="getDisplayText(tag)"></span>'+
+        '            <a class="remove-button icon icon-android-remove-circle"'+
+        '                ng-click="tagList.remove($index)" ></a>'+
+        '        </li>'+
+        '    </ul>'+
+        '   <input class="input" ng-model="newTag.text"'+
+        '        ng-change="eventHandlers.input.change(newTag.text)"'+
+        '        ng-keydown="eventHandlers.input.keydown($event)"'+
+        '        ng-focus="eventHandlers.input.focus($event)"'+
+        '        ng-blur="eventHandlers.input.blur($event)"'+
+        '        ng-paste="eventHandlers.input.paste($event)"'+
+        '        ng-trim="false" ng-class="{\'invalid-tag\': newTag.invalid}"'+
+        '        ti-bind-attrs="{type: options.type, placeholder: options.placeholder, tabindex: options.tabindex, spellcheck: options.spellcheck}"'+
+        '        ti-autosize="">'+
+        '</div>'+
+        '</div>',
+    tagsAutoComplete: '<div class="tags-auto-complete" ng-show="suggestionList.visible">'+
+        '<ul class="suggestion-list">'+
+        '    <li class="suggestion-item" ng-repeat="item in suggestionList.items track by track(item)"'+
+        '        ng-class="{selected: item == suggestionList.selected}"'+
+        '        ng-click="addSuggestionByIndex($index)"'+
+        '        ng-mouseenter="suggestionList.select($index)"'+
+        '        ng-bind-html="highlight(item)">'+
+        '    </li>'+
+        '</ul>'+
+        '</div>'
+};
 
 /**
  * @ngdoc directive
@@ -1654,7 +1833,7 @@ form.directive('tagsInput', ["$timeout","$document","tagsInputConfig","tiUtil", 
         },
         replace: false,
         transclude: true,
-        templateUrl: '/partials/dependency/directives/tags/tags-input.html',
+        template: partials.tagsInput,
         controller: ["$scope","$attrs","$element", function($scope, $attrs, $element) {
             $scope.events = tiUtil.simplePubSub();
 
@@ -1978,7 +2157,7 @@ form.directive('tagsAutoComplete', ["$document","$timeout","$sce","$q","tagsInpu
         restrict: 'E',
         require: '^tagsInput',
         scope: { source: '&' },
-        templateUrl: '/partials/dependency/directives/tags/tags-auto-complete.html',
+        template: partials.tagsAutoComplete,
         link: function(scope, element, attrs, tagsInputCtrl) {
             var hotkeys = [KEYS.enter, KEYS.tab, KEYS.escape, KEYS.up, KEYS.down],
                 suggestionList, tagsInput, options, getItem, getDisplayText, shouldLoadSuggestions;
@@ -2412,7 +2591,7 @@ var form = angular.module('lussa.ui.form.validation',[]);
  * Input Match Directives
  * @requires $parse
  */
-form.directive('ngMatch',['$parse','$log',
+form.directive('uiMatch',['$parse','$log',
 	function($parse,$log){
 	return {
         require: '?ngModel',
@@ -2420,9 +2599,9 @@ form.directive('ngMatch',['$parse','$log',
         link: function(scope, elem, attrs, ctrl) {
 			// if ngModel is not defined, we don't need to do anything
 			if (!ctrl) return;
-			if (!attrs.ngMatch) return;
+			if (!attrs.uiMatch) return;
 
-			var firstPassword = $parse(attrs.ngMatch);
+			var firstPassword = $parse(attrs.uiMatch);
 
 			/**
 			 * [validator description]
@@ -2666,11 +2845,11 @@ LoadingBar.provider('loadingBar', function() {
  *
  * @requires [description]
  */
-var lussaUi = angular.module('lussa.ui',[
+var LussaUi = angular.module('lussa.ui',[
     // form
     'lussa.ui.form',
     // dropdown
-//  'lussa.ui.dropdown',
+    'lussa.ui.dropdown',
     // components
     'lussa.ui.loadingBar',
     'lussa.ui.toast',
@@ -2683,34 +2862,7 @@ var lussaUi = angular.module('lussa.ui',[
  * [pagination description]
  * @type {[type]}
  */
-var pagination = angular.module('lussa.ui.pagination',[]);
-
-pagination.factory('pagination',['$log',
-	function($log){
-
-	var constant = {
-		DEFAULT_ITEM_PER_PAGE : 10
-	};
-
-	var compose_query = function(query, page, itemPerPage){
-		var itemPerPage = itemPerPage || constant.DEFAULT_ITEM_PER_PAGE,
-			_query = {
-				'skip' : (page-1)*itemPerPage,
-				'limit' : itemPerPage
-			};
-			// extend query
-			angular.extend(_query,query);
-
-		$log.info(JSON.stringify(_query));
-
-		return _query;
-	};
-
-	return {
-		'composeQuery' : compose_query,
-		'constant' : constant
-	};
-}]);
+var pagination = angular.module('lussa.ui.pagination', []);
 
 /**
  * [description]
@@ -2722,8 +2874,33 @@ pagination.factory('pagination',['$log',
  * @param  {[type]} GLOBAL_EVENTS            [description]
  * @return {[type]}                          [description]
  */
-pagination.directive('paginationBar', ['$log','$http','$sce','$location','$stateParams','GLOBAL_EVENTS','pagination',
-	function($log,$http,$sce,$location,$stateParams,GLOBAL_EVENTS,pagination){
+pagination.directive('paginationBar', ['$log','$sce',
+	function($log, $sce){
+
+	// init vars
+	var DEFAULT_ITEM_PER_PAGE = 10,
+		TEMPLATE_DEFAULT = '<nav>'+
+		'<ul>'+
+		'	<!-- previous -->'+
+		'	<li ng-hide="previousPage() == false"><a ng-href="{{ path }}?page={{ previousPage() }}">'+
+		'		<span class="icon icon-ios-arrow-left pagination-icon-prev"></span>sebelumnya</a></li>'+
+		'	<!-- early segment -->'+
+		'	<li ng-hide="pages.early.length < 1" ng-repeat="page in pages.early">'+
+		'		<a ng-href="{{ path }}?page={{ page }}">{{page}}</a></li>'+
+		'	<li ng-hide="pages.early.length < 1" class="separator">...</li>'+
+		'	<!-- middle -->'+
+		'	<li ng-hide="pages.middle.length < 1" ng-repeat="page in pages.middle" ng-class="page == currentPage?\'active\':\'\'">'+
+		'		<a ng-href="{{ path }}?page={{ page }}">{{page}}</a></li>'+
+		'	<!-- last segment -->'+
+		'	<li ng-hide="pages.last.length < 1" class="separator">...</li>'+
+		'	<li ng-hide="pages.last.length < 1" ng-repeat="page in pages.last">'+
+		'		<a ng-href="{{ path }}?page={{ page }}">{{page}}</a></li>'+
+		'	<!-- next segment -->'+
+		'	<li ng-hide="nextPage() == false"><a ng-href="{{ path }}?page={{ nextPage() }}">selanjutnya'+
+		'		<span class="icon icon-ios-arrow-right pagination-icon-next"></span></a></li>'+
+		'</ul>'+
+		'</nav>';
+
 	// Runs during compile
 	return {
 		restrict : 'E',
@@ -2731,13 +2908,9 @@ pagination.directive('paginationBar', ['$log','$http','$sce','$location','$state
 			'currentPage' : '@',
 			'itemPerPage' : '@',
 			'totalItems' : '@',
-			'path' : '@',
+			'path' : '@'
 		},
-		templateUrl: '/partials/dependency/directives/pagination/pagination-bar.html',
-		// parent controller interface
-		controllerAs : 'pagination',
-		controller : function($scope, $element, $attrs, $transclude){
-		},
+		template: TEMPLATE_DEFAULT,
 		// isolate controller
 		link: function(scope, element, attributes, controller){
 			var segment = {
@@ -2746,10 +2919,10 @@ pagination.directive('paginationBar', ['$log','$http','$sce','$location','$state
 			};
 
 			// attribute
-			scope.path = scope.path || $location.path();
-			scope.currentPage = scope.currentPage || $stateParams.page || 1;
+			scope.path = scope.path ||  window.location.pathname;
+			scope.currentPage = scope.currentPage || 1;
 			scope.totalItems = scope.totalItems || 1;
-			scope.itemPerPage = scope.itemPerPage || pagination.constant.DEFAULT_ITEM_PER_PAGE;
+			scope.itemPerPage = scope.itemPerPage || DEFAULT_ITEM_PER_PAGE;
 			scope.pages = {
 				early : [],
 				middle : [],
@@ -2848,6 +3021,7 @@ pagination.directive('paginationBar', ['$log','$http','$sce','$location','$state
 		}
 	};
 }]);
+
 // Source: js/toast.js
 /**
  * [toast description]
@@ -3012,7 +3186,7 @@ toast.directive('toastMessage', ['$timeout','$compile','toast',
 			'<li class="toast__message">' +
 			'<div class="alert alert-{{message.className}}" ' +
 			'ng-class="{\'alert-dismissible\': message.dismissButton}">' +
-			'<a role="link" class="alert-close icon ion-ios-close-empty" ' +
+			'<a role="link" class="close icon icon-close-round" ' +
 			'ng-if="message.dismissButton" ' +
 			'ng-bind-html="message.dismissButtonHtml" ' +
 			'ng-click="!message.dismissOnClick && dismiss()">' +
