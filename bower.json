@@ -5,8 +5,7 @@
   "homepage": "http://git.lussa.net/tarsius/lussa-ui",
   "license": "MIT",
   "main": [
-    "less/main.less",
-    "dist/js/tarsius-ui.js"
+    "dist/js/lussa-ui.min.js"
   ],
   "ignore": [
     "/.*",

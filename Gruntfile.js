@@ -7,7 +7,7 @@ module.exports = function(grunt) {
         // read package informations
         pkg : grunt.file.readJSON('package.json'),
         banner: '/*!\n' +
-                ' * Tarsius UI v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
+                ' * <%= pkg.name %> v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
                 ' * Copyright 2014-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
                 ' * Licensed under <%= pkg.license %>\n' +
                 ' */\n' ,
