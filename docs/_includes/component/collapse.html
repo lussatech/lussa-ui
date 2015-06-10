@@ -4,20 +4,43 @@
 <!-- Contoh Dasar -->
 <h2 class="docs-subsection-title" id="collapse-basic">Contoh Dasar</h2>
 <div class="docs-subsection-desc">
-    <p></p>
+    <p>Memberikan cara gampang untuk menampilkan dan menyembunyikan suatu elemen dengan menggunakan teknik <code>css transition</code></p>
 </div>
 <div class="docs-tab">
     <ul class="docs-tab-link-container">
         <li>tampilan</li>
         <li>&lt;html&gt;</li>
+        <li>controller</li>
     </ul>
     <div class="docs-tab-content-container">
         <div class="docs-tab-content">
             <div class="docs-example">
+<button class="button button-default"
+    ng-click="isCollapsed = !isCollapsed">
+    Klik Untuk Toggle <span class="caret"></span>
+</button>
+<div collapse="isCollapsed" class="padding-vertical-medium">
+    <img src="assets/img/images-sample.png" />
+</div>
             </div>
         </div>
         <div class="docs-tab-content">
 {% highlight html %}
+<button class="button button-default"
+    ng-click="isCollapsed = !isCollapsed">
+    Klik Untuk Toggle <span class="caret"></span>
+</button>
+<div data-collapse="isCollapsed">
+    <img src="assets/img/images-sample.png" class="img-responsive">
+</div>
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight js %}
+...
+// init collapse state
+$scope.isCollapsed = false;
+...
 {% endhighlight %}
         </div>
     </div>
