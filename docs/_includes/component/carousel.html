@@ -1,0 +1,121 @@
+<h1 class="docs-section-title" id="carousel">Carousel</h1>
+<p class="docs-section-desc">carousel slider</p>
+
+<!-- Contoh Dasar -->
+<h2 class="docs-subsection-title" id="carousel-basic">Contoh Dasar</h2>
+<div class="docs-subsection-desc">
+    <p>carousel yang datanya static</p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+        <li>theming&nbsp;<span class="icon icon-wand text-vibrant"></span></li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+<div style="width:204px">
+<carousel>
+    <slide>
+        <img src="assets/img/images-sample.png" style="margin:auto;">
+        <div class="carousel-caption">
+        <p>slide 1</p>
+    </div>
+    </slide>
+    <slide>
+        <img src="assets/img/images-sample.png" style="margin:auto;">
+        <div class="carousel-caption">
+        <p>slide 2</p>
+        </div>
+    </slide>
+</carousel>
+</div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<carousel>
+    <slide>
+        <img src="assets/img/images-sample.png" style="margin:auto;">
+        <div class="carousel-caption">
+        <p>slide 1</p>
+    </div>
+    </slide>
+    <slide>
+        <img src="assets/img/images-sample.png" style="margin:auto;">
+        <div class="carousel-caption">
+        <p>slide 2</p>
+        </div>
+    </slide>
+</carousel>
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight css %}
+@carousel-text-shadow:                        0 1px 2px rgba(0,0,0,.6);
+@carousel-control-color:                      @accent-light;
+@carousel-control-width:                      15%;
+@carousel-control-opacity:                    .5;
+@carousel-control-font-size:                  20px;
+@carousel-indicator-active-bg:                @accent-light;
+@carousel-indicator-border-color:             @accent-light;
+@carousel-caption-color:                      @accent-light;
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Contoh Dasar -->
+<h2 class="docs-subsection-title" id="carousel-dynamic">Dynamic Carousel</h2>
+<div class="docs-subsection-desc">
+    <p>carousel yang slidenya dapat dibinding menggunakan data</p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+        <li>controller</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+<div style="width:204px">
+<carousel>
+    <slide ng-repeat="slide in docs.carousel.slides" active="slide.active" index="$index">
+      <img ng-src="{(slide.image)}" style="margin:auto;">
+      <div class="carousel-caption">
+        <h4>Slide {($index)}</h4>
+        <p>{(slide.text)}</p>
+      </div>
+    </slide>
+</carousel>
+</div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<carousel>
+<slide ng-repeat="slide in slides" active="slide.active" index="$index">
+  <img ng-src="{{slide.image}}" style="margin:auto;">
+  <div class="carousel-caption">
+    <h4>Slide {{$index}}</h4>
+    <p>{{slide.text}}</p>
+  </div>
+</slide>
+</carousel>
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight js %}
+...
+$scopes.slides = [
+    { image: 'assets/img/images-sample.png', text: 'kamu' },
+    { image: 'assets/img/images-sample.png', text: 'lucu' },
+    { image: 'assets/img/images-sample.png', text: 'deh' }
+];
+...
+{% endhighlight %}
+        </div>
+    </div>
+</div>

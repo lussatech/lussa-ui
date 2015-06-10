@@ -88,6 +88,13 @@ app.controller('ComponentController', ['$http', '$log', '$scope', 'page', 'lussa
                 });
             }
         },
+        carousel: {
+            slides: [
+                { image: 'assets/img/images-sample.png', text: 'kamu' },
+                { image: 'assets/img/images-sample.png', text: 'lucu' },
+                { image: 'assets/img/images-sample.png', text: 'deh' }
+            ]
+        },
         // helper
         dump: helper.dump
     };
