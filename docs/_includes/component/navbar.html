@@ -2,9 +2,170 @@
 <p class="docs-section-desc">biasanya dipake untuk menu utama</p>
 
 <!-- Contoh Dasar -->
-<h2 class="docs-subsection-title" id="navbar-basic">Contoh Dasar</h2>
+<h2 class="docs-subsection-title" id="navbar-overview">Overview</h2>
 <div class="docs-subsection-desc">
-    <p></p>
+    <p>Navbar merupakan komponen yang paling sering digunakan. Digunakan untuk navigasi utama dkk.</p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+        <li>theming&nbsp;<span class="icon icon-wand text-vibrant"></span></li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" ng-click="isMenuCollapsed = !isMenuCollapsed">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" data-collapse="isMenuCollapsed">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="button button-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="">Link</a></li>
+        <li class="dropdown">
+          <a href="">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" ng-click="isMenuCollapsed = !isMenuCollapsed">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" data-collapse="isMenuCollapsed">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="button button-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="">Link</a></li>
+        <li class="dropdown">
+          <a href="">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight css %}
+// Basics of a navbar
+@navbar-height:                    50px;
+@navbar-margin-bottom:             @line-height-computed;
+@navbar-border-radius:             @border-radius-base;
+@navbar-padding-horizontal:        @grid-gutter-half;
+@navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
+@navbar-collapse-max-height:       50vh;
+
+@navbar-default-color:             #777;
+@navbar-default-bg:                #f8f8f8;
+@navbar-default-border:            darken(@navbar-default-bg, 6.5%);
+
+// Navbar links
+@navbar-default-link-color:                #777;
+@navbar-default-link-hover-color:          #333;
+@navbar-default-link-hover-bg:             transparent;
+@navbar-default-link-active-color:         #555;
+@navbar-default-link-active-bg:            darken(@navbar-default-bg, 6.5%);
+@navbar-default-link-disabled-color:       #ccc;
+@navbar-default-link-disabled-bg:          transparent;
+
+// Navbar brand label
+@navbar-default-brand-color:               @navbar-default-link-color;
+@navbar-default-brand-hover-color:         darken(@navbar-default-brand-color, 10%);
+@navbar-default-brand-hover-bg:            transparent;
+
+// Navbar toggle
+@navbar-default-toggle-hover-bg:           #ddd;
+@navbar-default-toggle-icon-bar-bg:        #888;
+@navbar-default-toggle-border-color:       #ddd;
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Contoh Dasar -->
+<h2 class="docs-subsection-title" id="navbar-brand">Logo / Brand</h2>
+<div class="docs-subsection-desc">
+    <p>Kamu bisa mengatur, logo brand menu utama dengan menambahkan gambar. jangan lupa atur tinggi gambar. Letakan logo didalam kelas <code>.navbar-brand</code></p>
 </div>
 <div class="docs-tab">
     <ul class="docs-tab-link-container">
@@ -14,10 +175,220 @@
     <div class="docs-tab-content-container">
         <div class="docs-tab-content">
             <div class="docs-example">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <img height="20px" src="/assets/img/home-artist-alt.png" />
+      </a>
+    </div>
+  </div>
+</nav>
             </div>
         </div>
         <div class="docs-tab-content">
 {% highlight html %}
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <img height="20px" src="/assets/img/home-artist-alt.png" />
+      </a>
+    </div>
+  </div>
+</nav>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Form -->
+<h2 class="docs-subsection-title" id="navbar-form">Menambahkan Form</h2>
+<div class="docs-subsection-desc">
+    <p>Kamu juga bisa menambahkan form di navbar</p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="#">Brand</a>
+      </a>
+    </div>
+    <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="button button-default">Submit</button>
+    </form>
+  </div>
+</nav>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="#">Brand</a>
+      </a>
+    </div>
+    ...
+    <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="button button-default">Submit</button>
+    </form>
+  </div>
+</nav>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Contoh Dasar -->
+<h2 class="docs-subsection-title" id="navbar-positioning">Varian Posisi</h2>
+<div class="docs-subsection-desc">
+    <p>Ada beberapa varian posisi dari navbar</p>
+    <ul>
+        <li><code>.navbar-fixed-top</code></li>
+        <p>Akan membuat navbar nyangkut diatas</p>
+{% highlight html %}
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    ...
+  </div>
+</nav>
+{% endhighlight %}
+        <li><code>.navbar-fixed-bottom</code></li>
+        <p>Akan membuat navbar nyangkut dibawah</p>
+{% highlight html %}
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container">
+    ...
+  </div>
+</nav>
+{% endhighlight %}
+        <li><code>.navbar-static-top</code></li>
+        <p>Akan membuat navbar memiliki lebar penuh, tetapi hilang ketika di scroll</p>
+{% highlight html %}
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    ...
+  </div>
+</nav>
+{% endhighlight %}
+    </ul>
+</div>
+
+<!-- Contoh Dasar -->
+<h2 class="docs-subsection-title" id="navbar-invert">Versi Aksen Invert</h2>
+<div class="docs-subsection-desc">
+    <p>Versi aksen alternatif dari navbar biasanya aksen gelap. </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+        <li>theming&nbsp;<span class="icon icon-wand text-vibrant"></span></li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" ng-click="isMenuCollapsed = !isMenuCollapsed">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" data-collapse="isMenuCollapsed">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="button button-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="">Link</a></li>
+        <li class="dropdown">
+          <a href="">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<nav class="navbar navbar-inverse">
+  ...
+</nav>
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight css %}
+@navbar-inverse-color:                      lighten(@accent-light, 15%);
+@navbar-inverse-bg:                         #222;
+@navbar-inverse-border:                     darken(@navbar-inverse-bg, 10%);
+
+// Inverted navbar links
+@navbar-inverse-link-color:                 lighten(@accent-light, 15%);
+@navbar-inverse-link-hover-color:           #fff;
+@navbar-inverse-link-hover-bg:              transparent;
+@navbar-inverse-link-active-color:          @navbar-inverse-link-hover-color;
+@navbar-inverse-link-active-bg:             darken(@navbar-inverse-bg, 10%);
+@navbar-inverse-link-disabled-color:        #444;
+@navbar-inverse-link-disabled-bg:           transparent;
+
+// Inverted navbar brand label
+@navbar-inverse-brand-color:                @navbar-inverse-link-color;
+@navbar-inverse-brand-hover-color:          #fff;
+@navbar-inverse-brand-hover-bg:             transparent;
+
+// Inverted navbar toggle
+@navbar-inverse-toggle-hover-bg:            #333;
+@navbar-inverse-toggle-icon-bar-bg:         #fff;
+@navbar-inverse-toggle-border-color:        #333;
 {% endhighlight %}
         </div>
     </div>

@@ -19,6 +19,7 @@
   min-height: @navbar-height; // Ensure a navbar always shows (e.g., without a .navbar-brand in collapsed mode)
   margin-bottom: @navbar-margin-bottom;
   border: 1px solid transparent;
+  padding: 0 @grid-gutter-half;
 
   // Prevent floats from breaking the navbar
   &:extend(.clearfix all);
@@ -239,8 +240,8 @@
   margin: (@navbar-padding-vertical / 2) -@navbar-padding-horizontal;
 
   > li > a {
-    padding-top:    10px;
-    padding-bottom: 10px;
+    padding-top:    10px !important;
+    padding-bottom: 10px !important;
     line-height: @line-height-computed;
   }
 
@@ -276,8 +277,8 @@
     > li {
       float: left;
       > a {
-        padding-top:    @navbar-padding-vertical;
-        padding-bottom: @navbar-padding-vertical;
+        padding-top:    @navbar-padding-vertical !important;
+        padding-bottom: @navbar-padding-vertical !important;
       }
     }
   }
@@ -664,6 +665,38 @@
       &:focus {
         color: @navbar-inverse-link-disabled-color;
       }
+    }
+  }
+}
+
+// fixed bottom
+.navbar-fixed-bottom .dropdown {
+  // Reverse the caret
+  .caret {
+    border-top: 0;
+    border-bottom: @caret-width-base solid;
+    content: "";
+  }
+  // Different positioning for bottom up menu
+  .dropdown-menu {
+    top: auto;
+    bottom: 100%;
+    margin-bottom: 2px;
+  }
+}
+
+
+// dropdown menu
+@media (min-width: @grid-float-breakpoint) {
+  .navbar-right {
+    .dropdown-menu,
+    .dropdown-content {
+      left: auto !important;
+      right: 0;
+    }
+    .dropdown-menu-left {
+      left: 0;
+      right: auto;
     }
   }
 }
