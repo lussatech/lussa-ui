@@ -2,23 +2,177 @@
 <p class="docs-section-desc">simple tab, for those how want it</p>
 
 <!-- Contoh Dasar -->
-<h2 class="docs-subsection-title" id="tab-basic">Contoh Dasar</h2>
+<h2 class="docs-subsection-title" id="tab-basic">Contoh-contoh</h2>
 <div class="docs-subsection-desc">
-    <p></p>
+    <p>Dengan Konten tab, kamu bisa membuat layout lebih rapih dan ringkas. Cukup dengan menggunakan direktif <code>&lt;tabset&gt;</code> dan <code>&lt;tabset&gt;</code> untuk item tab nya.</p>
 </div>
 <div class="docs-tab">
     <ul class="docs-tab-link-container">
         <li>tampilan</li>
         <li>&lt;html&gt;</li>
+        <li>controller</li>
+        <li>penggunaan</li>
+        <li>pengaturan</li>
     </ul>
     <div class="docs-tab-content-container">
         <div class="docs-tab-content">
             <div class="docs-example">
+<div>
+  <p>Memilih tab dengan mengatur <code>active</code> binding to true:</p>
+  <p>
+    <button class="button button-default" ng-click="docs.tabs.dynamic[0].active = true">Pilih tab kedua</button>
+    <button class="button button-default" ng-click="docs.tabs.dynamic[1].active = true">Pilih tab ketiga</button>
+  </p>
+  <p>
+    <button class="button button-default" ng-click="docs.tabs.dynamic[1].disabled = ! docs.tabs.dynamic[1].disabled">Enable / Disable Tab ketiga</button>
+  </p>
+  <hr />
+
+  <tabset>
+    <tab heading="Static title">Contoh Static content</tab>
+    <tab ng-repeat="tab in docs.tabs.dynamic" heading="{(tab.title)}" active="tab.active" disable="tab.disabled">
+      {(tab.content)}
+    </tab>
+    <tab select="docs.tabs.alertMe()">
+      <tab-heading>
+        <i class="icon icon-ios-bell-outline"></i> Toast!
+      </tab-heading>
+      Contoh custom heading, dan select callback
+    </tab>
+  </tabset>
+
+  <hr />
+
+  <tabset vertical="true" type="pills">
+    <tab heading="Vertical 1">Vertical content 1</tab>
+    <tab heading="Vertical 2">Vertical content 2</tab>
+  </tabset>
+
+  <hr />
+
+  <tabset justified="true">
+    <tab heading="Justified">Rata tengah bro!</tab>
+    <tab heading="PD">Konten pendek, rata tengah</tab>
+    <tab heading="Panjang, rata tengah">
+        <h3>Heading 3</h3>
+        <p>menggunakan tag <code>&lt;p&gt;</code> untuk konten panjang</p>
+    </tab>
+  </tabset>
+</div>
             </div>
         </div>
         <div class="docs-tab-content">
 {% highlight html %}
+<div>
+  <p>Memilih tab dengan mengatur <code>active</code> binding to true:</p>
+  <p>
+    <button class="button button-default" ng-click="tabs[0].active = true">Pilih tab kedua</button>
+    <button class="button button-default" ng-click="tabs[1].active = true">Pilih tab ketiga</button>
+  </p>
+  <p>
+    <button class="button button-default" ng-click="tabs[1].disabled = ! tabs[1].disabled">Enable / Disable Tab ketiga</button>
+  </p>
+  <hr />
+
+  <tabset>
+    <tab heading="Static title">Contoh Static content</tab>
+    <tab ng-repeat="tab in tabs" heading="{(tab.title)}" active="tab.active" disable="tab.disabled">
+      {(tab.content)}
+    </tab>
+    <tab select="alertMe()">
+      <tab-heading>
+        <i class="icon icon-ios-bell-outline"></i> Toast!
+      </tab-heading>
+      Contoh custom heading, dan select callback
+    </tab>
+  </tabset>
+
+  <hr />
+
+  <tabset vertical="true" type="pills">
+    <tab heading="Vertical 1">Vertical content 1</tab>
+    <tab heading="Vertical 2">Vertical content 2</tab>
+  </tabset>
+
+  <hr />
+
+  <tabset justified="true">
+    <tab heading="Justified">Rata tengah bro!</tab>
+    <tab heading="PD">Konten pendek, rata tengah</tab>
+    <tab heading="Panjang, rata tengah">
+        <h3>Heading 3</h3>
+        <p>menggunakan tag <code>&lt;p&gt;</code> untuk konten panjang</p>
+    </tab>
+  </tabset>
+</div>
 {% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight js %}
+...
+$scope.tabs: [
+    { title:'Judul Dinamis tab ke 2', content:'Konten Dinamis 1' },
+    { title:'Judul Dinamis tab ke 3', content:'Konten Dinamis 2', disabled: true }
+];
+$scope.alertMe: function(){
+    toast.create('kamu mencet tab toast!');
+};
+...
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<tabset
+    [vertical="{boolean}"]
+    [justified="{boolean}"]
+    [type="{string 'tabs' | 'pill'}"]>
+
+    <tab
+        [heading="{string}"]
+        [active="{boolean}"]
+        [disable="{boolean}"]
+        [select="{expression}"]
+        [deselect="{expression}"]>
+        <tab-heading>heading</tab-heading>
+
+        konten
+    </tab>
+    ...
+</tabset>
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+<h4><code>&lt;tabset&gt;</code></h4>
+<ul>
+<li><p><code>vertical</code>
+ <em>(Defaults: false)</em> :
+ Whether tabs appear vertically stacked.</p></li>
+<li><p><code>justified</code>
+ <em>(Defaults: false)</em> :
+ Whether tabs fill the container and have a consistent width.</p></li>
+<li><p><code>type</code>
+ <em>(Defaults: 'tabs')</em> :
+ Navigation type. Possible values are 'tabs' and 'pills'.</p></li>
+</ul>
+<h4><code>&lt;tab&gt;</code></h4>
+<ul>
+<li><p><code>heading</code> or <code>&lt;tab-heading&gt;</code>
+ :
+ Heading text or HTML markup.</p></li>
+<li><p><code>active</code> <i class="glyphicon glyphicon-eye-open"></i>
+ <em>(Defaults: false)</em> :
+ Whether tab is currently selected.</p></li>
+<li><p><code>disable</code> <i class="glyphicon glyphicon-eye-open"></i>
+ <em>(Defaults: false)</em> :
+ Whether tab is clickable and can be activated.
+ Note that this was previously the <code>disabled</code> attribute, which is now deprecated.</p></li>
+<li><p><code>select()</code>
+ <em>(Defaults: null)</em> :
+ An optional expression called when tab is activated.</p></li>
+<li><p><code>deselect()</code>
+ <em>(Defaults: null)</em> :
+ An optional expression called when tab is deactivated.</p></li>
+</ul>
         </div>
     </div>
 </div>

@@ -95,6 +95,15 @@ app.controller('ComponentController', ['$http', '$log', '$scope', 'page', 'lussa
                 { image: 'assets/img/images-sample.png', text: 'deh' }
             ]
         },
+        tabs: {
+            dynamic: [
+                { title:'Judul Dinamis tab ke 2', content:'Konten Dinamis 1' },
+                { title:'Judul Dinamis tab ke 3', content:'Konten Dinamis 2', disabled: true }
+            ],
+            alertMe: function(){
+                toast.create('kamu mencet tab toast!');
+            }
+        },
         // helper
         dump: helper.dump
     };

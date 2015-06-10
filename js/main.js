@@ -15,7 +15,7 @@ var LussaUi = angular.module('lussa.ui',[
     // components
     'lussa.ui.loadingBar',
     'lussa.ui.toast',
-//  'lussa.ui.tab',
+    'lussa.ui.tabs',
 //  'lussa.ui.preloader',
     'lussa.ui.pagination',
     'lussa.ui.carousel',
