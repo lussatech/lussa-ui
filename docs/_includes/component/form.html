@@ -333,6 +333,76 @@ ui-file-model="{model}"/>
     </div>
 </div>
 
+<!-- Rating -->
+<h2 class="docs-subsection-title" id="form-input-rating">Rating</h2>
+<div class="docs-subsection-desc">
+    <p>Visualisasi rating dalam bentuk deretan icon. Everyone deserve to be rated</p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+        <li>penggunaan</li>
+        <li>pengaturan</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+<rating ng-model="docs.rating" max="10"></rating> ( {(docs.rating)} bintang)
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<rating ng-model="rating" max="10"></rating>
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<rating
+    ng-model="{model}",
+    [max="{integer|5}"],
+    [readonly="{boolean|false}"],
+    [on-hover="{function(value)}"],
+    [on-leave="{function()}"],
+    [state-on="{string}"],
+    [state-off="{string}"],
+    [rating-states="{array}"],
+    >
+</rating>
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+<ul>
+<li><p><code>ng-model</code> <i class="glyphicon glyphicon-eye-open"></i>
+ :
+ The current rate.</p></li>
+<li><p><code>max</code>
+ <em>(Defaults: 5)</em> :
+ Changes the number of icons.</p></li>
+<li><p><code>readonly</code> <i class="icon-eye-open"></i>
+ <em>(Defaults: false)</em> :
+ Prevent user's interaction.</p></li>
+<li><p><code>on-hover(value)</code>
+ :
+ An optional expression called when user's mouse is over a particular icon.</p></li>
+<li><p><code>on-leave()</code>
+ :
+ An optional expression called when user's mouse leaves the control altogether.</p></li>
+<li><p><code>state-on</code>
+ <em>(Defaults: null)</em> :
+ A variable used in template to specify the state (class, src, etc) for selected icons.</p></li>
+<li><p><code>state-off</code>
+ <em>(Defaults: null)</em> :
+ A variable used in template to specify the state for unselected icons.</p></li>
+<li><p><code>rating-states</code>
+ <em>(Defaults: null)</em> :
+ An array of objects defining properties for all icons. In default template, <code>stateOn</code> &amp; <code>stateOff</code> property is used to specify the icon's class.</p></li>
+</ul>
+        </div>
+    </div>
+</div>
+
+
 <!-- Validasi -->
 <h2 class="docs-subsection-title" id="form-validation">Validasi</h2>
 <div class="docs-subsection-desc">

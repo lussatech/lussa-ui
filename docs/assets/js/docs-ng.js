@@ -104,6 +104,7 @@ app.controller('ComponentController', ['$http', '$log', '$scope', 'page', 'lussa
                 toast.create('kamu mencet tab toast!');
             }
         },
+        rating: 3,
         // helper
         dump: helper.dump
     };
