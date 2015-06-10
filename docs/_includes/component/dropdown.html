@@ -15,7 +15,7 @@
     <div class="docs-tab-content-container">
         <div class="docs-tab-content">
             <div class="docs-example">
-                <ui-dropdown>
+                <dropdown>
                     <button class="button button-default dropdown-toggle" type="button">
                         Dropdown Toggle
                         <span class="caret"></span>
@@ -28,8 +28,8 @@
                         <li role="presentation" class="divider"></li>
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
                     </ul>
-                </ui-dropdown>
-                <ui-dropdown toggle-by-hover="true">
+                </dropdown>
+                <dropdown toggle-by-hover="true">
                     <button class="button button-primary dropdown-toggle" type="button">
                         Dropdown Hover
                         <span class="caret"></span>
@@ -42,12 +42,12 @@
                         <li role="presentation" class="divider"></li>
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
                     </ul>
-                </ui-dropdown>
+                </dropdown>
             </div>
         </div>
         <div class="docs-tab-content">
 {% highlight html %}
-<ui-dropdown
+<dropdown
     [is-open="{boolean}"]
     [toggle-by-hover="{boolean}"]
     [on-open="{function}"]
@@ -68,7 +68,7 @@
         <li class="disabled"><a href="#">Disabled</a></li>
         ...
     </ul>
-</ui-dropdown>
+</dropdown>
 {% endhighlight %}
         </div>
     </div>
@@ -88,7 +88,7 @@
     <div class="docs-tab-content-container">
         <div class="docs-tab-content">
             <div class="docs-example">
-                <ui-dropdown>
+                <dropdown>
                     <button class="button button-default dropdown-toggle" type="button">
                         Custom Content
                         <span class="caret"></span>
@@ -97,12 +97,12 @@
                         <h1>Ini adalah contoh custom content!</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet vehicula purus, ut venenatis leo. Sed et dolor mattis, maximus ipsum id, blandit sapien. Donec elementum velit nisl, sit amet ultrices diam scelerisque eget. Vivamus iaculis elit id pharetra bibendum. Etiam finibus faucibus consectetur. Sed sit amet turpis velit. Mauris egestas velit dui, ac blandit purus commodo aliquam. Vivamus tincidunt placerat sollicitudin. Suspendisse luctus arcu eget ante sollicitudin, et interdum ligula facilisis. Phasellus efficitur magna eget leo condimentum, nec lobortis leo viverra. Pellentesque sagittis turpis metus, ut dictum felis dapibus nec. Integer elementum vulputate velit, id placerat nunc accumsan eget. Maecenas varius quam a velit congue, at bibendum ipsum consequat. Vivamus molestie pulvinar lorem, id tincidunt tortor fermentum vel. Suspendisse dictum auctor neque non lacinia.</p>
                     </div>
-                </ui-dropdown>
+                </dropdown>
             </div>
         </div>
         <div class="docs-tab-content">
 {% highlight html %}
-<ui-dropdown
+<dropdown
     [is-open="{boolean}"]
     [toggle-by-hover="{boolean}"]
     [on-open="{function}"]
@@ -120,7 +120,7 @@
         <!-- taro konten disini -->
         ...
     </div>
-</ui-dropdown>
+</dropdown>
 {% endhighlight %}
         </div>
     </div>

@@ -1,0 +1,225 @@
+<h1 class="docs-section-title" id="nav">Navigasi</h1>
+<p class="docs-section-desc">komponen navigasi dan varian bentukannya</p>
+
+<!-- Tab -->
+<h2 class="docs-subsection-title" id="nav-tabs">Tab</h2>
+<div class="docs-subsection-desc">
+    <p>varian tampilan navigasi yang berbentuk tab</p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+        <li>theming&nbsp;<span class="icon icon-wand text-vibrant"></span></li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="">Profile</a></li>
+  <li><a href="">Messages</a></li>
+</ul>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="#">Profile</a></li>
+  <li><a href="#">Messages</a></li>
+</ul>
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight css %}
+/* Shared nav styles */
+@nav-link-padding:                                      10px 15px;
+@nav-link-hover-bg:                                     @accent-light;
+@nav-disabled-link-color:                               @accent-light;
+@nav-disabled-link-hover-color:                         @accent-light;
+
+/* tab */
+@nav-tabs-border-color:                                 @accent-soft;
+@nav-tabs-link-hover-border-color:                      @accent-light;
+@nav-tabs-active-link-hover-bg:                         @body-bg;
+@nav-tabs-active-link-hover-color:                      @accent-neutral;
+@nav-tabs-active-link-hover-border-color:               @accent-soft;
+@nav-tabs-justified-link-border-color:                  @accent-soft;
+@nav-tabs-justified-active-link-border-color:           @body-bg;
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+
+<!-- Contoh Dasar -->
+<h2 class="docs-subsection-title" id="nav-pills">Pill / Kotak</h2>
+<div class="docs-subsection-desc">
+    <p>navigasi yang beberbentuk pill / kotak / kapsul</p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+        <li>theming&nbsp;<span class="icon icon-wand text-vibrant"></span></li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+<ul class="nav nav-pills">
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="">Profile</a></li>
+  <li><a href="">Messages</a></li>
+</ul>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<ul class="nav nav-pills">
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="">Profile</a></li>
+  <li><a href="">Messages</a></li>
+</ul>
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight css %}
+@nav-pills-border-radius:                   @border-radius-base;
+@nav-pills-active-link-hover-bg:            @component-active-bg;
+@nav-pills-active-link-hover-color:         @component-active-color;
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+<div class="docs-subsection-desc">
+    <p>navigasi pill, juga bisa distack secara horizontal dengan ditambahin kelas <code>.nav-stacked</code></p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+<ul class="nav nav-pills nav-stacked">
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="">Profile</a></li>
+  <li><a href="">Messages</a></li>
+</ul>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<ul class="nav nav-pills nav-stacked">
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="">Profile</a></li>
+  <li><a href="">Messages</a></li>
+</ul>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Contoh Dasar -->
+<h2 class="docs-subsection-title" id="nav- nav-stacked">Rata Tengah</h2>
+<div class="docs-subsection-desc">
+    <p>Untuk beberapa keperluan, biasanya untuk kebutuhan tampilan yang responsive, kamu bisa mengatur tab supaya ukurannya sama mengikuti containernya dengan menambahkan kelas <code>.nav-justified</code>.</p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+        <li>theming&nbsp;<span class="icon icon-wand text-vibrant"></span></li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+<ul class="nav nav-tabs nav-justified">
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="">Profile</a></li>
+  <li><a href="">Messages</a></li>
+</ul>
+<br/>
+<ul class="nav nav-pills nav-justified">
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="">Profile</a></li>
+  <li><a href="">Messages</a></li>
+</ul>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<ul class="nav nav-tabs nav-justified">
+  ...
+</ul>
+<ul class="nav nav-pills nav-justified">
+  ...
+</ul>
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight css %}
+@nav-tabs-justified-link-border-color:                  @accent-soft;
+@nav-tabs-justified-active-link-border-color:           @body-bg;
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+
+<!-- Contoh Dasar -->
+<h2 class="docs-subsection-title" id="nav-dropdown">Ditambah Dropdown / Collapse</h2>
+<div class="docs-subsection-desc">
+    <p>Jika dibutuhkan, kamu juga bisa nambahin dropdown di navigasi, biasanya dipake buat submenu. Kamu bisa juga bisa nambahin kelas <code>.disable</code> untuk item menu yg mau di-disabled.</p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#">Home</a></li>
+    <li class="dropdown">
+        <a href="">Profile <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+        </ul>
+    </li>
+    <li class="disabled"><a href="">disabled</a></li>
+</ul>
+<br/>
+<ul class="nav nav-pills">
+    <li class="active"><a href="#">Home</a></li>
+    <li class="dropdown">
+        <a href="">Profile <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+        </ul>
+    </li>
+    <li class="disabled"><a href="">disabled</a></li>
+</ul>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<ul class="nav nav-tabs">
+    <li class="dropdown">
+        <a href="">Profile <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            ...
+        </ul>
+    </li>
+    <li class="disabled"><a href="">disabled</a></li>
+    ...
+</ul>
+{% endhighlight %}
+        </div>
+    </div>
+</div>

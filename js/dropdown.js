@@ -18,7 +18,7 @@
 
 var dropDown = angular.module('lussa.ui.dropdown',[]);
 
-dropDown.directive('uiDropdown', ['$log', function($log){
+dropDown.directive('dropdown', ['$log', function($log){
     var SPEED_DEFAULT = 500,
         EASING_DEFAULT = 'easeOutExpo';
 
@@ -34,15 +34,12 @@ dropDown.directive('uiDropdown', ['$log', function($log){
             'closeSpeed': '@',
             'toggleByHover': '@'
         },
-        transclude: true,
-        template: '<div class="ui-dropdown">'+
-            '<ng-transclude></ng-transclude></div>',
-        restrict: 'E',
+        restrict: 'AEC',
         link: function(scope, element, attrs, controller) {
             // init vars
             var opened = attrs.isOpen || false,
                 wrapper = element,
-                toggler = element.find('.dropdown-toggle'),
+                toggler = element.find('.dropdown-toggle, a:first, .button:first, button:first'),
                 content = element.find('.dropdown-content, .dropdown-menu'),
                 fx = {
                     open: {
