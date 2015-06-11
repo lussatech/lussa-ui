@@ -8749,7 +8749,7 @@ pagination-bar ul > li > span,
   line-height: 1.42857143;
   color: #222222;
   background-color: #ffffff;
-  border: 1px solid #222222;
+  border: 1px solid #a2a2a2;
   margin-left: -1px;
   text-decoration: none;
 }
@@ -8765,7 +8765,7 @@ pagination-bar ul > li > span:focus,
   z-index: 3;
   color: #222222;
   background-color: #e1e1e1;
-  border-color: #222222;
+  border-color: #a2a2a2;
 }
 pagination-bar ul > li:first-child > a,
 .pagination-bar ul > li:first-child > a,
@@ -9544,6 +9544,56 @@ pagination-bar .pagination-icon-next,
   color: #444444;
   background-color: transparent;
 }
+.sidebar-toggle {
+  position: relative;
+  display: none;
+  margin-right: 10px;
+  padding: 9px 10px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  border-color: #dddddd;
+}
+.sidebar-toggle:focus {
+  outline: 0;
+}
+.sidebar-toggle .icon-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 1px;
+}
+.sidebar-toggle .icon-bar + .icon-bar {
+  margin-top: 4px;
+}
+.sidebar-toggle:hover,
+.sidebar-toggle:focus {
+  background-color: #dddddd;
+}
+.sidebar-toggle .icon-bar {
+  background-color: #888888;
+}
+@media (max-width: 520px) {
+  .sidebar-toggle-mobile {
+    display: block;
+  }
+}
+@media (min-width: 520px) and (max-width: 780px) {
+  .sidebar-toggle-tablet {
+    display: block;
+  }
+}
+@media (max-width: 780px) {
+  .sidebar-toggle-mobile-and-tablet {
+    display: block;
+  }
+}
+.sidebar-toggle-desktop {
+  display: block;
+}
 .offcanvas {
   display: none;
 }
@@ -9566,6 +9616,14 @@ pagination-bar .pagination-icon-next,
     display: block;
   }
 }
+@media (max-width: 780px) {
+  .offcanvas-mobile-and-tablet {
+    display: none;
+  }
+  .offcanvas-mobile-and-tablet.in {
+    display: block;
+  }
+}
 .offcanvas-dekstop {
   display: none;
 }
@@ -9573,10 +9631,10 @@ pagination-bar .pagination-icon-next,
   display: block;
 }
 .canvas-sliding {
-  -webkit-transition: top 0.35s, left 0.35s, bottom 0.35s, right 0.35s;
-  -moz-transition: top 0.35s, left 0.35s, bottom 0.35s, right 0.35s;
-  -o-transition: top 0.35s, left 0.35s, bottom 0.35s, right 0.35s;
-  transition: top 0.35s, left 0.35s, bottom 0.35s, right 0.35s;
+  -webkit-transition: padding 0.35s, left 0.35s, top 0.35s, right 0.35s;
+  -moz-transition: padding 0.35s, left 0.35s, top 0.35s, right 0.35s;
+  -o-transition: padding 0.35s, left 0.35s, top 0.35s, right 0.35s;
+  transition: padding 0.35s, left 0.35s, top 0.35s, right 0.35s;
 }
 .offcanvas-clone {
   height: 0px !important;

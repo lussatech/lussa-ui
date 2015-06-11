@@ -10,7 +10,7 @@
     <ul class="docs-tab-link-container">
         <li>tampilan</li>
         <li>penggunaan</li>
-        <li>pengaturan</li>
+        <li>theming&nbsp;<span class="icon icon-wand text-vibrant"></span></li>
     </ul>
     <div class="docs-tab-content-container">
         <div class="docs-tab-content">
@@ -31,7 +31,22 @@
 {% endhighlight %}
         </div>
         <div class="docs-tab-content">
-{% highlight html %}
+{% highlight css %}
+@pagination-color:                     @accent-dark;
+@pagination-bg:                        @accent-clear;
+@pagination-border:                    @accent-soft;
+
+@pagination-hover-color:               @accent-dark;
+@pagination-hover-bg:                  @accent-light;
+@pagination-hover-border:              @accent-soft;
+
+@pagination-active-color:              @accent-light;
+@pagination-active-bg:                 @accent-primary;
+@pagination-active-border:             @accent-primary;
+
+@pagination-disabled-color:            @accent-muted;
+@pagination-disabled-bg:               @accent-clear;
+@pagination-disabled-border:           lighten(@accent-muted, 20);
 {% endhighlight %}
         </div>
     </div>

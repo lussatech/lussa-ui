@@ -1,0 +1,44 @@
+---
+layout: example
+title: Example of Sidebar offcanvas
+slug: sidebar-off-canvas
+---
+
+<nav class="sidebar sidebar-default sidebar-fixed-left offcanvas-mobile-and-tablet"
+    role="navigation"
+    offcanvas="isOffcanvas"
+    data-canvas="body">
+  <a class="sidebar-brand" href="#">Brand</a>
+  <ul class="nav sidebar-nav">
+    <li class="active"><a href="#">Link</a></li>
+    <li><a href="#">Link</a></li>
+    <li class="dropdown">
+      <a href="" class="dropdown-toggle">Dropdown <span class="caret"></span></a>
+      <ul class="dropdown-menu sidebar-nav" role="menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li><a href="#">Separated link</a></li>
+        <li><a href="#">One more separated link</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+<div class="navbar navbar-default navbar-static-top">
+  <button type="button" class="sidebar-toggle sidebar-toggle-desktop"
+    ng-click="isOffcanvas = !isOffcanvas">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+</div>
+
+<!-- content -->
+<div class="grid-fluid">
+<div class="grid-100">
+<h1>Lorem Ipsum</h1>
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eu eros ut justo sollicitudin iaculis et ullamcorper nulla. Sed lobortis lacus sed mauris tincidunt elementum. Fusce venenatis sodales risus eget eleifend. Etiam erat ante, euismod quis justo nec, auctor aliquam libero. Nunc ac neque ac metus luctus sollicitudin ac id purus. Nam et rhoncus nisi. Phasellus vitae finibus metus. Fusce sit amet gravida nisl, et rhoncus nisl. Maecenas et tempus erat. Suspendisse nec venenatis nulla. Aliquam accumsan eros sollicitudin ligula efficitur consequat. Aliquam venenatis non lectus eu vehicula. Nam nibh neque, eleifend at euismod vitae, imperdiet sit amet ligula.
+</p>
+</div>
+</div>

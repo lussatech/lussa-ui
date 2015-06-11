@@ -19,5 +19,6 @@ var LussaUi = angular.module('lussa.ui',[
 //  'lussa.ui.preloader',
     'lussa.ui.pagination',
     'lussa.ui.carousel',
-    'lussa.ui.collapse'
+    'lussa.ui.collapse',
+    'lussa.ui.offcanvas'
 ]);

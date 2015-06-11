@@ -105,25 +105,79 @@
 <!-- Off-canvas -->
 <h2 class="docs-subsection-title" id="sidebar-off-canvas">Off-Canvas</h2>
 <div class="docs-subsection-desc">
-    <p>Kadang kamu juga menginginkan sidebar disembunyikan ketika berada di screen tertentu, lalu dapat muncul kembali dengan menekan tombol toggle. Sidebar sendiri menyediakan 3 tipe screen yang dapat dijadikan referensi. </p>
+    <p>Kadang kamu juga menginginkan sidebar disembunyikan ketika berada di screen tertentu, lalu dapat muncul kembali dengan menekan tombol toggle. Sidebar sendiri menyediakan 3 tipe screen yang dapat dijadikan referensi. contohnya bisa dilihat <a href="/example/sidebar-off-canvas.html" title="sidebar off canvas example" target="_blank">disini</a> </p>
     <ul>
       <li><code>.offcanvas-mobile</code></li>
       <p>sidebar akan di sembunyikan pada layar mobile</p>
 {% highlight html %}
-<nav class="sidebar sidebar-default sidebar-fixed-left offcanvas-mobile" role="navigation">
+<nav class="sidebar sidebar-default sidebar-fixed-right offcanvas-mobile"
+    role="navigation"
+    offcanvas="isOffcanvas"
+    data-canvas="body">
+...
 </nav>
+<div class="navbar navbar-default navbar-static-top">
+  <button type="button" class="sidebar-toggle sidebar-toggle-mobile pull-right"
+    ng-click="isOffcanvas = !isOffcanvas">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+</div>
 {% endhighlight %}
-      <li><code>.offcanvas-tablet</code></li>
+      <li><code>.offcanvas-mobile-and-tablet</code></li>
       <p>sidebar akan di sembunyikan pada layar tablet</p>
 {% highlight html %}
-<nav class="sidebar sidebar-default sidebar-fixed-left offcanvas-tablet" role="navigation">
+<nav class="sidebar sidebar-default sidebar-fixed-left offcanvas-mobile-and-tablet"
+    role="navigation"
+    offcanvas="isOffcanvas"
+    data-canvas="body">
+...
 </nav>
+<div class="navbar navbar-default navbar-static-top">
+  <button type="button" class="sidebar-toggle sidebar-toggle-mobile-and-tablet"
+    ng-click="isOffcanvas = !isOffcanvas">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+</div>
 {% endhighlight %}
       <li><code>.offcanvas-desktop</code></li>
       <p>sidebar akan di sembunyikan pada layar desktop</p>
 {% highlight html %}
-<nav class="sidebar sidebar-default sidebar-fixed-left offcanvas-desktop" role="navigation">
+<nav class="sidebar sidebar-default sidebar-fixed-left offcanvas-desktop"
+    role="navigation"
+    offcanvas="isOffcanvas"
+    data-canvas="body">
+...
 </nav>
+<div class="navbar navbar-default navbar-static-top">
+  <button type="button" class="sidebar-toggle sidebar-toggle-desktop"
+    ng-click="isOffcanvas = !isOffcanvas">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+</div>
+{% endhighlight %}
+      <li><code>.offcanvas</code> saja</li>
+      <p>sidebar akan di sembunyikan pada semua layar</p>
+{% highlight html %}
+<nav class="sidebar sidebar-default sidebar-fixed-left offcanvas"
+    role="navigation"
+    offcanvas="isOffcanvas"
+    data-canvas="body">
+...
+</nav>
+<div class="navbar navbar-default navbar-static-top">
+  <button type="button" class="sidebar-toggle"
+    ng-click="isOffcanvas = !isOffcanvas">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+</div>
 {% endhighlight %}
     </ul>
 </div>
