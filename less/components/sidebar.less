@@ -1,0 +1,273 @@
+// sidebar and offcanvas navbar
+// --------------------------------------------------
+
+
+// Wrapper and base class
+//
+// Provide a static sidebar from which we expand to create the fixed sidebar
+// variations.
+
+.sidebar,
+.navbar-offcanvas {
+  width: @sidebar-width;
+  height: auto;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: @border-radius-base;
+}
+
+.sidebar-fixed-left,
+.sidebar-fixed-right,
+.navbar-offcanvas {
+  position: fixed;
+  z-index: @zindex-sidebar-fixed;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto;
+  border-radius: 0;
+}
+.sidebar-fixed-left,
+.navbar-offcanvas.sidebar-fixed-left {
+  left: 0;
+  right: auto;
+  border-width: 0 1px 0 0;
+}
+.sidebar-fixed-right,
+.navbar-offcanvas {
+  left: auto;
+  right: 0;
+  border-width: 0 0 0 1px;
+}
+
+.sidebar-nav {
+  margin-bottom: @sidebar-margin-vertical;
+
+  &.dropdown-menu {
+    position: static;
+    margin: 0;
+    padding-top: 0;
+    float: none;
+    border: none;
+    .box-shadow(none);
+    border-radius: 0;
+  }
+}
+
+.navbar-offcanvas {
+  .navbar-nav {
+    margin: 0;
+  }
+
+  @media (min-width: @grid-float-breakpoint) {
+    width: auto;
+    border-top: 0;
+    box-shadow: none;
+
+    &.offcanvas {
+      position: static;
+      display: block !important;
+      height: auto !important;
+      padding-bottom: 0; // Override default setting
+      overflow: visible !important;
+    }
+
+    // Account for first and last children spacing
+    .navbar-nav.navbar-left:first-child {
+      margin-left: -@navbar-padding-horizontal;
+    }
+    .navbar-nav.navbar-right:last-child {
+      margin-right: -@navbar-padding-horizontal;
+    }
+
+    .sidebar-brand {
+      display: none;
+    }
+  }
+}
+
+// Brand/project name
+
+.sidebar-brand {
+  display: block;
+  font-size: @font-size-large;
+  line-height: @line-height-computed;
+  padding: @nav-link-padding;
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+  margin: @sidebar-margin-vertical 0;
+}
+
+// Alternate sidebars
+// --------------------------------------------------
+
+// Default sidebar
+.sidebar-default,
+.navbar-default .navbar-offcanvas {
+  background-color: @sidebar-default-bg;
+  border-color: @sidebar-default-border;
+
+  .sidebar-brand {
+    color: @sidebar-default-brand-color;
+    &:hover,
+    &:focus {
+      color: @sidebar-default-brand-hover-color;
+      background-color: @sidebar-default-brand-hover-bg;
+    }
+  }
+
+  .sidebar-text {
+    color: @sidebar-default-color;
+  }
+
+  .sidebar-nav {
+    // Caret should match text color on hover
+    > .dropdown > a:hover .caret,
+    > .dropdown > a:focus .caret {
+      border-top-color: @sidebar-default-link-hover-color;
+      border-bottom-color: @sidebar-default-link-hover-color;
+    }
+
+    // Remove background color from open dropdown
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: @sidebar-default-link-active-bg;
+        color: @sidebar-default-link-active-color;
+        .caret {
+          border-top-color: @sidebar-default-link-active-color;
+          border-bottom-color: @sidebar-default-link-active-color;
+        }
+      }
+    }
+    > .dropdown > a .caret {
+      border-top-color: @sidebar-default-link-color;
+      border-bottom-color: @sidebar-default-link-color;
+    }
+    &.dropdown-menu {
+      background-color: @sidebar-default-link-active-bg;
+      & > .divider {
+        background-color: @sidebar-default-bg;
+      }
+      > .active > a {
+        &,
+        &:hover,
+        &:focus {
+          background-color: darken(@sidebar-default-link-active-bg, 6.5%);
+        }
+      }
+    }
+
+    > li > a {
+      color: @sidebar-default-link-color;
+      &:hover,
+      &:focus {
+        color: @sidebar-default-link-hover-color;
+        background-color: @sidebar-default-link-hover-bg;
+      }
+    }
+    > .active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @sidebar-default-link-active-color;
+        background-color: @sidebar-default-link-active-bg;
+      }
+    }
+    > .disabled > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @sidebar-default-link-disabled-color;
+        background-color: @sidebar-default-link-disabled-bg;
+      }
+    }
+  }
+}
+
+// Inverse sidebar
+.sidebar-inverse,
+.navbar-inverse .navbar-offcanvas {
+  background-color: @sidebar-inverse-bg;
+  border-color: @sidebar-inverse-border;
+
+  .sidebar-brand {
+    color: @sidebar-inverse-brand-color;
+    &:hover,
+    &:focus {
+      color: @sidebar-inverse-brand-hover-color;
+      background-color: @sidebar-inverse-brand-hover-bg;
+    }
+  }
+
+  .sidebar-text {
+    color: @sidebar-inverse-color;
+  }
+
+  .sidebar-nav {
+    // Caret should match text color on hover
+    > .dropdown > a:hover .caret,
+    > .dropdown > a:focus .caret {
+      border-top-color: @sidebar-inverse-link-hover-color;
+      border-bottom-color: @sidebar-inverse-link-hover-color;
+    }
+
+    // Remove background color from open dropdown
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: @sidebar-inverse-link-active-bg;
+        color: @sidebar-inverse-link-active-color;
+        .caret {
+          border-top-color: @sidebar-inverse-link-active-color;
+          border-bottom-color: @sidebar-inverse-link-active-color;
+        }
+      }
+    }
+    > .dropdown > a .caret {
+      border-top-color: @sidebar-inverse-link-color;
+      border-bottom-color: @sidebar-inverse-link-color;
+    }
+    &.dropdown-menu {
+      background-color: @sidebar-inverse-link-active-bg;
+      & > .divider {
+        background-color: @sidebar-inverse-bg;
+      }
+      > .active > a {
+        &,
+        &:hover,
+        &:focus {
+          background-color: darken(@sidebar-inverse-link-active-bg, 6.5%);
+        }
+      }
+    }
+
+    > li > a {
+      color: @sidebar-inverse-link-color;
+      &:hover,
+      &:focus {
+        color: @sidebar-inverse-link-hover-color;
+        background-color: @sidebar-inverse-link-hover-bg;
+      }
+    }
+    > .active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @sidebar-inverse-link-active-color;
+        background-color: @sidebar-inverse-link-active-bg;
+      }
+    }
+    > .disabled > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @sidebar-inverse-link-disabled-color;
+        background-color: @sidebar-inverse-link-disabled-bg;
+      }
+    }
+  }
+}

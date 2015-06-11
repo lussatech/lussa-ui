@@ -496,12 +496,67 @@
 
 
 /**
+ * Sidebar
+ */
+
+// Basics of a sidebar
+@sidebar-width:                    300px;
+@sidebar-margin-vertical:           (0.5 * @line-height-computed);
+@sidebar-default-color:             #777;
+@sidebar-default-bg:                #f8f8f8;
+@sidebar-default-border:            darken(@sidebar-default-bg, 6.5%);
+
+// sidebar links
+@sidebar-default-link-color:                #777;
+@sidebar-default-link-hover-color:          #333;
+@sidebar-default-link-hover-bg:             transparent;
+@sidebar-default-link-active-color:         #555;
+@sidebar-default-link-active-bg:            darken(@sidebar-default-bg, 6.5%);
+@sidebar-default-link-disabled-color:       #ccc;
+@sidebar-default-link-disabled-bg:          transparent;
+
+// sidebar brand label
+@sidebar-default-brand-color:               @sidebar-default-link-color;
+@sidebar-default-brand-hover-color:         darken(@sidebar-default-link-color, 10%);
+@sidebar-default-brand-hover-bg:            transparent;
+
+
+// Inverted sidebar
+// Reset inverted sidebar basics
+@sidebar-inverse-color:                      @accent-light;
+@sidebar-inverse-bg:                         #222;
+@sidebar-inverse-border:                     darken(@sidebar-inverse-bg, 10%);
+
+// Inverted sidebar links
+@sidebar-inverse-link-color:                 @accent-light;
+@sidebar-inverse-link-hover-color:           #fff;
+@sidebar-inverse-link-hover-bg:              transparent;
+@sidebar-inverse-link-active-color:          @sidebar-inverse-link-hover-color;
+@sidebar-inverse-link-active-bg:             darken(@sidebar-inverse-bg, 10%);
+@sidebar-inverse-link-disabled-color:        #444;
+@sidebar-inverse-link-disabled-bg:           transparent;
+
+// Inverted sidebar brand label
+@sidebar-inverse-brand-color:                @sidebar-inverse-link-color;
+@sidebar-inverse-brand-hover-color:          #fff;
+@sidebar-inverse-brand-hover-bg:             transparent;
+
+// Inverted sidebar search
+// Normal sidebar needs no special styles or vars
+@sidebar-inverse-search-bg:                  lighten(@sidebar-inverse-bg, 25%);
+@sidebar-inverse-search-bg-focus:            #fff;
+@sidebar-inverse-search-border:              @sidebar-inverse-bg;
+@sidebar-inverse-search-placeholder-color:   #ccc;
+
+
+/**
  * Z-Index
  * ## z-index master control list
  */
 @zindex-navbar:            1000;
 @zindex-dropdown:          1000;
 @zindex-navbar-fixed:      1030;
+@zindex-sidebar-fixed:     1030;
 @zindex-loading-bar:      1033;
 
 /**

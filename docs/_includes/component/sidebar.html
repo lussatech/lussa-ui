@@ -1,0 +1,204 @@
+<h1 class="docs-section-title" id="sidebar">Sidebar</h1>
+<p class="docs-section-desc">navigasi vertikal yang menempel di samping layout</p>
+
+<!-- Basic -->
+<h2 class="docs-subsection-title" id="sidebar-basic">Dasar / Default</h2>
+<div class="docs-subsection-desc">
+    <p>memiliki fungsi sama seperti navbar. Memiliki bentuk visual vertikal yang menempel disamping layout. Biasa digunakan pada navigasi dashboard dll.</p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+        <li>theming&nbsp;<span class="icon icon-wand text-vibrant"></span></li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+<nav class="sidebar sidebar-default" role="navigation">
+  <a class="sidebar-brand" href="#">Brand</a>
+
+  <ul class="nav sidebar-nav">
+    <li class="active"><a href="#">Link</a></li>
+    <li><a href="#">Link</a></li>
+    <li class="dropdown">
+      <a href="" class="dropdown-toggle">Dropdown <span class="caret"></span></a>
+      <ul class="dropdown-menu sidebar-nav" role="menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li><a href="#">Separated link</a></li>
+        <li><a href="#">One more separated link</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<nav class="sidebar sidebar-default" role="navigation">
+  <a class="sidebar-brand" href="#">Brand</a>
+
+  <ul class="nav sidebar-nav">
+    <li class="active"><a href="#">Link</a></li>
+    <li><a href="#">Link</a></li>
+    <li class="dropdown">
+      <a href="" class="dropdown-toggle">Dropdown <span class="caret"></span></a>
+      <ul class="dropdown-menu sidebar-nav" role="menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li><a href="#">Separated link</a></li>
+        <li><a href="#">One more separated link</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight css %}
+// Basics of a sidebar
+@sidebar-width:                     300px;
+@sidebar-margin-vertical:           (0.5 * @line-height-computed);
+@sidebar-default-color:             #777;
+@sidebar-default-bg:                #f8f8f8;
+@sidebar-default-border:            darken(@sidebar-default-bg, 6.5%);
+
+// sidebar links
+@sidebar-default-link-color:                #777;
+@sidebar-default-link-hover-color:          #333;
+@sidebar-default-link-hover-bg:             transparent;
+@sidebar-default-link-active-color:         #555;
+@sidebar-default-link-active-bg:            darken(@sidebar-default-bg, 6.5%);
+@sidebar-default-link-disabled-color:       #ccc;
+@sidebar-default-link-disabled-bg:          transparent;
+
+// sidebar brand label
+@sidebar-default-brand-color:               @sidebar-default-link-color;
+@sidebar-default-brand-hover-color:         darken(@sidebar-default-link-color, 10%);
+@sidebar-default-brand-hover-bg:            transparent;
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- Posisi -->
+<h2 class="docs-subsection-title" id="sidebar-positioning">Varian Posisi</h2>
+<div class="docs-subsection-desc">
+    <p>Kamu bisa membuat sidebar menjadi floating di kiri dan kanan dengan menambahkan kelas <code>.sidebar-fixed-left</code> unuk kiri dan <code>.sidebar-fixed-right</code> untuk kanan</p>
+    <ul>
+      <li><code>.sidebar-fixed-left</code></li>
+{% highlight html %}
+<nav class="sidebar sidebar-default sidebar-fixed-left" role="navigation">
+</nav>
+{% endhighlight %}
+      <li><code>.sidebar-fixed-right</code></li>
+{% highlight html %}
+<nav class="sidebar sidebar-default sidebar-fixed-left" role="navigation">
+</nav>
+{% endhighlight %}
+    </ul>
+</div>
+
+<!-- Off-canvas -->
+<h2 class="docs-subsection-title" id="sidebar-off-canvas">Off-Canvas</h2>
+<div class="docs-subsection-desc">
+    <p>Kadang kamu juga menginginkan sidebar disembunyikan ketika berada di screen tertentu, lalu dapat muncul kembali dengan menekan tombol toggle. Sidebar sendiri menyediakan 3 tipe screen yang dapat dijadikan referensi. </p>
+    <ul>
+      <li><code>.offcanvas-mobile</code></li>
+      <p>sidebar akan di sembunyikan pada layar mobile</p>
+{% highlight html %}
+<nav class="sidebar sidebar-default sidebar-fixed-left offcanvas-mobile" role="navigation">
+</nav>
+{% endhighlight %}
+      <li><code>.offcanvas-tablet</code></li>
+      <p>sidebar akan di sembunyikan pada layar tablet</p>
+{% highlight html %}
+<nav class="sidebar sidebar-default sidebar-fixed-left offcanvas-tablet" role="navigation">
+</nav>
+{% endhighlight %}
+      <li><code>.offcanvas-desktop</code></li>
+      <p>sidebar akan di sembunyikan pada layar desktop</p>
+{% highlight html %}
+<nav class="sidebar sidebar-default sidebar-fixed-left offcanvas-desktop" role="navigation">
+</nav>
+{% endhighlight %}
+    </ul>
+</div>
+
+<!-- Invert -->
+<h2 class="docs-subsection-title" id="sidebar-invert">Aksen Inverse</h2>
+<div class="docs-subsection-desc">
+    <p>sama seperti navbar, sidebar juga memiliki varian invert aksen (umumnya versi gelap), cukup tambahkan kelas <code>.sidebar-inverse</code></p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+        <li>theming&nbsp;<span class="icon icon-wand text-vibrant"></span></li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+<nav class="sidebar sidebar-inverse" role="navigation">
+  <a class="sidebar-brand" href="#">Brand</a>
+
+  <ul class="nav sidebar-nav">
+    <li class="active"><a href="#">Link</a></li>
+    <li><a href="#">Link</a></li>
+    <li class="dropdown">
+      <a href="" class="dropdown-toggle">Dropdown <span class="caret"></span></a>
+      <ul class="dropdown-menu sidebar-nav" role="menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li><a href="#">Separated link</a></li>
+        <li><a href="#">One more separated link</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+
+<nav class="sidebar sidebar-inverse" role="navigation">
+...
+</nav>
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight css %}
+// Reset inverted sidebar basics
+@sidebar-inverse-color:                      @accent-light;
+@sidebar-inverse-bg:                         #222;
+@sidebar-inverse-border:                     darken(@sidebar-inverse-bg, 10%);
+
+// Inverted sidebar links
+@sidebar-inverse-link-color:                 @accent-light;
+@sidebar-inverse-link-hover-color:           #fff;
+@sidebar-inverse-link-hover-bg:              transparent;
+@sidebar-inverse-link-active-color:          @sidebar-inverse-link-hover-color;
+@sidebar-inverse-link-active-bg:             darken(@sidebar-inverse-bg, 10%);
+@sidebar-inverse-link-disabled-color:        #444;
+@sidebar-inverse-link-disabled-bg:           transparent;
+
+// Inverted sidebar brand label
+@sidebar-inverse-brand-color:                @sidebar-inverse-link-color;
+@sidebar-inverse-brand-hover-color:          #fff;
+@sidebar-inverse-brand-hover-bg:             transparent;
+
+// Inverted sidebar search
+// Normal sidebar needs no special styles or vars
+@sidebar-inverse-search-bg:                  lighten(@sidebar-inverse-bg, 25%);
+@sidebar-inverse-search-bg-focus:            #fff;
+@sidebar-inverse-search-border:              @sidebar-inverse-bg;
+@sidebar-inverse-search-placeholder-color:   #ccc;
+
+{% endhighlight %}
+        </div>
+    </div>
+</div>
