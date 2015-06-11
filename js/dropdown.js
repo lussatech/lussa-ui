@@ -62,7 +62,9 @@ dropDown.directive('dropdown', ['$log', function($log){
              */
             function close_menu(){
                 opened = false;
-                content.slideUp(fx.open.speed, fx.open.easing);
+                content.slideUp(fx.open.speed, fx.open.easing, function(){
+                    wrapper.removeClass('open');
+                });
 
                 // callback
                 scope.onOpen(element);
@@ -75,6 +77,7 @@ dropDown.directive('dropdown', ['$log', function($log){
             function open_menu(){
                 opened = true;
                 content.slideDown(fx.close.speed, fx.close.easing);
+                wrapper.addClass('open');
 
                 // callback
                 scope.onClose(element);
