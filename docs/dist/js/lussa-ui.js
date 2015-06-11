@@ -3370,15 +3370,16 @@ var LussaUi = angular.module('lussa.ui',[
  * @name lussa.ui.collapse
  */
 angular.module('lussa.ui.offcanvas', [])
-.directive('offcanvas', ['$animate',
-    function ($animate) {
+.directive('offcanvas', ['$animate','$window',
+    function ($animate,$window) {
     var isolateController = function (scope, element, attrs) {
         var canvasSelector = attrs.canvas || 'body',
             canvas = angular.element(canvasSelector),
             position = 'left',
             desktopBreakpoint = 780,
-            mobileBreakpoint = 520,
-            alreadyInitiate = false;
+            tabletBreakpoint = 520,
+            alreadyInitiate = false,
+            screenSize = 0;
 
         // get sidebar class
         if(element.hasClass('sidebar-fixed-right'))
@@ -3472,14 +3473,10 @@ angular.module('lussa.ui.offcanvas', [])
             alreadyInitiate = true;
         }
 
-        angular.element(document).on('resize',function(e){
-            if(!alreadyInitiate)
-                determineInitState();
-        });
-
         // init
         determineInitState();
         scope.$watch('offcanvas', function (shouldOffCanvas) {
+            console.log(scope.offcanvas);
             if(alreadyInitiate){
                 if (shouldOffCanvas) {
                     offCanvas();
