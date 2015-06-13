@@ -33,6 +33,7 @@ body a{
     padding: 0;
     top: 0;
     position: fixed;
+    z-index: 999999;
     height: 50px;
     width: 100%;
     background: rgba(90,25,143,0.95);
