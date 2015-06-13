@@ -18,6 +18,7 @@ app.config(['$interpolateProvider', function($interpolateProvider) {
 app.controller('ComponentController', ['$http', '$log', '$scope', 'page', 'lussaUI' , 'PageNavigationFactory', 'helper', 'toast', 'loadingBar',
     function($http, $log, $scope, page, lussaUI, PageNavigationFactory, helper, toast, loadingBar){
     // ui routine
+    PageNavigationFactory.NavbarToggle();
     PageNavigationFactory.BuildTabs();
     PageNavigationFactory.LeftSidebar().init();
     PageNavigationFactory.SmoothScroll().linkListener();
@@ -105,6 +106,29 @@ app.controller('ComponentController', ['$http', '$log', '$scope', 'page', 'lussa
             }
         },
         rating: 3,
+        mask: {
+            date: {
+                a: null, b:null, c: null, d:null,e: null, f:null,
+            },
+            phone: {
+                a: null, b:null, c: null
+            },
+            string: {
+                a: null, b:null, c: null
+            },
+            ip: {
+                a: null, b:null, c: null
+            },
+            cpf: {
+                a: null, b:null, c: null
+            },
+            number: {
+                a: null, b:null, c: null
+            },
+            common: {
+                a: null, b:null, c: null
+            }
+        },
         // helper
         dump: helper.dump
     };
@@ -133,6 +157,33 @@ app.value('PageNavigationValue', {
 // service
 app.factory('PageNavigationFactory', ['$log', 'PageNavigationValue',
     function($log, PageNavigationValue){
+    /**
+     * Navbar
+     */
+    function _navbar_toggle(){
+        var toggle = $('.docs-navbar-toggle'),
+            navbar = $('.docs-navbar .list-inline');
+
+        toggle.click(function(e){
+            console.log(e);
+            // navbar visible
+            if(navbar.is(':visible')){
+                navbar.fadeOut(200, 'easeInExpo');
+
+            // navbar hide
+            }else{
+                navbar.slideDown(500, 'easeOutExpo');
+            }
+        });
+
+        $(window).resize(function(e){
+            if($(this).width() > 780)
+                navbar.show();
+            else
+                navbar.hide();
+        });
+    }
+
     /**
      * Tabs
      */
@@ -287,6 +338,7 @@ app.factory('PageNavigationFactory', ['$log', 'PageNavigationValue',
     }
 
     return {
+        NavbarToggle: _navbar_toggle,
         BuildTabs: _build_tabs,
         LeftSidebar: _left_sidebar,
         SmoothScroll: _smooth_scroll

@@ -49,15 +49,77 @@ body a{
 .docs-navbar .list-inline li{
     font-size: 15px;
     margin: 0 -2px;
+    vertical-align: top;
+}
+.docs-navbar .list-inline li a{
+    display: block;
+    padding: 15px 15px;
+    line-height: 20px;
     color: #FFFFFF;
     font-family: 'texgyreherosbold';
-    line-height: 20px;
-    vertical-align: top;
-    padding: 15px 15px;
 }
+
 .docs-navbar .list-inline li:hover,
 .docs-navbar .list-inline li.active {
     background: rgba(0,0,0,0.3);
+}
+/* navbar on mobile */
+@media (max-width: 780px){
+    .docs-navbar .list-inline{
+        position: absolute;
+        display: block;
+        width: 100%;
+        margin-left: 0;
+        left: 0;
+        top: 50px;
+        padding-bottom: 10px;
+        background: rgba(90,25,143,0.95);
+        max-height: 500px;
+        display: none;
+    }
+    .docs-navbar .list-inline li{
+        display: block;
+    }
+}
+
+/* navbar toggle */
+.docs-navbar-toggle {
+    position: relative;
+    float: right;
+    margin: 9px;
+    margin-right: 10px;
+    padding: 9px 10px;
+    background-color: rgba(0,0,0,0.3);
+    background-image: none;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 0;
+    display: none;
+}
+.docs-navbar-toggle:hover,
+.docs-navbar-toggle:focus {
+    background-color: rgba(0,0,0,0.1);
+    border-color: rgba(255,255,255,0.5);
+    outline: none;
+}
+.docs-navbar-toggle:hover .icon-bar,
+.docs-navbar-toggle:focus .icon-bar{
+    background-color: rgba(255,255,255,0.5);
+}
+.docs-navbar-toggle .icon-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+    background-color: rgba(255,255,255,0.3);
+}
+.docs-navbar-toggle .icon-bar + .icon-bar{
+    margin-top: 4px;
+}
+/* navbar on mobile */
+@media (max-width: 780px){
+    .docs-navbar-toggle {
+        display: block;
+    }
 }
 
 /* navbar-brand */
@@ -78,6 +140,13 @@ body a{
     height: calc(100vh - 50px);
     overflow: auto;
 }
+
+@media (max-width: 780px){
+    .docs-left-sidebar {
+        display: none;
+    }
+}
+
 .docs-left-sidebar a,
 .docs-left-sidebar a:hover {
     color: inherit;
@@ -103,6 +172,7 @@ body a{
     padding: 10px 0;
     margin: 10px 0;
     border-top: 1px solid #dddddd;
+    display: none;
 }
 .docs-left-sidebar > ul > li > ul > li {
     font-family: 'texgyreherosregular';

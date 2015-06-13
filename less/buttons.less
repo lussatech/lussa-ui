@@ -164,3 +164,29 @@ input[type="button"] {
     width: 100%;
   }
 }
+
+.button-labeled {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.button-label {
+  position: relative;
+  background: transparent;
+  background: rgba(0, 0, 0, 0.15);
+  display: inline-block;
+  .button-label-size(@padding-base-vertical; @padding-base-horizontal; @border-radius-base);
+}
+
+.button-large .button-label {
+  .button-label-size(@padding-large-vertical; @padding-large-horizontal; @border-radius-large);
+}
+.button-small .button-label {
+  .button-label-size(@padding-small-vertical; @padding-small-horizontal; @border-radius-small);
+}
+.button-xs .button-label {
+  .button-label-size(1px; 5px; @border-radius-small);
+}
+.button-xl .button-label {
+  .button-label-size(@padding-xl-vertical; @padding-xl-horizontal; @border-radius-large);
+}

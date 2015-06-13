@@ -12,6 +12,7 @@ var header_height = 50,
 $(window).load(function(e){
     // init
     BuildTabs();
+    NavbarToggle();
     LeftSidebar().init();
     SmoothScroll().linkListener();
 
@@ -27,6 +28,32 @@ $(window).load(function(e){
     });
 });
 
+/**
+ * Navbar
+ */
+function NavbarToggle(){
+    var toggle = $('.docs-navbar-toggle'),
+        navbar = $('.docs-navbar .list-inline');
+
+    toggle.click(function(e){
+        console.log(e);
+        // navbar visible
+        if(navbar.is(':visible')){
+            navbar.fadeOut(200, 'easeInExpo');
+
+        // navbar hide
+        }else{
+            navbar.slideDown(500, 'easeOutExpo');
+        }
+    });
+
+    $(window).resize(function(e){
+        if($(this).width() > 780)
+            navbar.show();
+        else
+            navbar.hide();
+    });
+}
 
 /**
  * Tabs

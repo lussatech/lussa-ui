@@ -15,5 +15,6 @@ var LussaUiForm = angular.module('lussa.ui.form',[
     'lussa.ui.form.fileUploader',
     'lussa.ui.form.tag',
     'lussa.ui.form.validation',
-    'lussa.ui.form.rating'
+    'lussa.ui.form.rating',
+    'lussa.ui.form.inputMask'
 ]);

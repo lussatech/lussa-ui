@@ -443,24 +443,334 @@ ui-file-model="{model}"/>
     </div>
 </div>
 
-<!-- Form Filter -->
-<h2 class="docs-subsection-title" id="form-filter">Form Filter</h2>
+<!-- input mask -->
+<h2 class="docs-subsection-title" id="form-input-mask">Input Masking</h2>
 <div class="docs-subsection-desc">
-    <p><em>coming soon!</em></p>
+    <p>Komponen yang berguna untuk melakukan masking <code>input</code> fields. Sangat berguna untuk fields seperti IP, ISBN dll. Kamu cukup tambahkan format masking dengan menggunakan atribut <code>data-mask</code> atau <code>mask</code>.</p>
 </div>
 <div class="docs-tab">
     <ul class="docs-tab-link-container">
-        <li>tampilan</li>
+        <li>contoh</li>
         <li>&lt;html&gt;</li>
+        <li>pengaturan</li>
+        <li>format / pola</li>
     </ul>
     <div class="docs-tab-content-container">
         <div class="docs-tab-content">
             <div class="docs-example">
+<form name="docsMaskForm" novalidate>
+    <div class="grid-fluid grid-parent">
+        <h4 class="grid-100">Tanggal</h4>
+        <div class="from-group grid-33">
+            <label>mask: 39/19/9999</label>
+            <input class="form-control" type="text" name="date" mask="39/19/9999" ng-model="docs.mask.date.a"/>
+            <p>model: {(docs.mask.date.a)}</p>
+            <p>Field Error: {(docsMaskForm.date.$error)}</p>
+            <p>Field Valid: {(docsMaskForm.date.$valid)}</p>
+        </div>
+        <div class="from-group grid-33">
+            <label>mask: 39/19/9999, clean: true</label>
+            <input class="form-control" type="text" name="date1" mask="39/19/9999" clean="true" ng-model="docs.mask.date.b"/>
+            <p>model: {(docs.mask.date.b)}</p>
+            <p>Field Error: {(docsMaskForm.date1.$error)}</p>
+            <p>Field Valid: {(docsMaskForm.date1.$valid)}</p>
+        </div>
+        <div class="from-group grid-33">
+            <label>mask: 39/19/9999, restrict: reject</label>
+            <input class="form-control" type="text" name="date2" mask="39/19/9999" restrict="reject" ng-model="docs.mask.date.c"/>
+            <p>model: {(docs.mask.date.c)}</p>
+            <p>Field Error: {(docsMaskForm.date2.$error)}</p>
+            <p>Field Valid: {(docsMaskForm.date2.$valid)}</p>
+        </div>
+        <div class="from-group grid-33">
+            <label>mask: 39/19/9999, restrict: accept</label>
+            <input class="form-control" type="text" name="date3" mask="39/19/9999" restrict="accept" ng-model="docs.mask.date.d"/>
+            <p>model: {(docs.mask.date.d)}</p>
+            <p>Field Error: {(docsMaskForm.date3.$error)}</p>
+            <p>Field Valid: {(docsMaskForm.date3.$valid)}</p>
+        </div>
+        <h4 class="grid-100">Nomor Telefon</h4>
+        <div class="from-group grid-33">
+            <label>mask: (999) 999-9999</label>
+            <input class="form-control" type="text" name="phone" mask="(999) 999-9999" ng-model="docs.mask.phone.a"/>
+            <p>model: {(docs.mask.phone.a)}</p>
+            <p>Field Error: {(docsMaskForm.phone.$error)}</p>
+            <p>Field Valid: {(docsMaskForm.phone.$valid)}</p>
+        </div>
+        <div class="from-group grid-33">
+            <label>mask: (99) 9?9999-9999 </label>
+            <input class="form-control" type="text" name="phone1" mask="(99) 9?9999-9999" ng-model="docs.mask.phone.b"/>
+            <p>model: {(docs.mask.phone.b)}</p>
+            <p>Field Error: {(docsMaskForm.phone1.$error)}</p>
+            <p>Field Valid: {(docsMaskForm.phone1.$valid)}</p>
+        </div>
+        <div class="from-group grid-33">
+            <label>mask: +99 99 9?9999-9999, restrict: reject </label>
+            <input class="form-control" type="text" name="phone1" mask="+99 99 9?9999-9999" restrict="reject" ng-model="docs.mask.phone.c"/>
+            <p>model: {(docs.mask.phone.c)}</p>
+            <p>Field Error: {(docsMaskForm.phone2.$error)}</p>
+            <p>Field Valid: {(docsMaskForm.phone2.$valid)}</p>
+        </div>
+    </div>
+</form>
             </div>
         </div>
         <div class="docs-tab-content">
 {% highlight html %}
+<form name="docsMaskForm" novalidate>
+    <div class="grid-fluid grid-parent">
+        <h4 class="grid-100">Tanggal</h4>
+        <div class="from-group grid-33">
+            <label>mask: 39/19/9999</label>
+            <input class="form-control" type="text" name="date" mask="39/19/9999" ng-model="docs.mask.date.a"/>
+            <p>model: {{docs.mask.date.a}}</p>
+            <p>Field Error: {{docsMaskForm.date.$error}}</p>
+            <p>Field Valid: {{docsMaskForm.date.$valid}}</p>
+        </div>
+        <div class="from-group grid-33">
+            <label>mask: 39/19/9999, clean: true</label>
+            <input class="form-control" type="text" name="date1" mask="39/19/9999" clean="true" ng-model="docs.mask.date.b"/>
+            <p>model: {{docs.mask.date.b}}</p>
+            <p>Field Error: {{docsMaskForm.date1.$error}}</p>
+            <p>Field Valid: {{docsMaskForm.date1.$valid}}</p>
+        </div>
+        <div class="from-group grid-33">
+            <label>mask: 39/19/9999, restrict: reject</label>
+            <input class="form-control" type="text" name="date2" mask="39/19/9999" restrict="reject" ng-model="docs.mask.date.c"/>
+            <p>model: {{docs.mask.date.c}}</p>
+            <p>Field Error: {{docsMaskForm.date2.$error}}</p>
+            <p>Field Valid: {{docsMaskForm.date2.$valid}}</p>
+        </div>
+        <div class="from-group grid-33">
+            <label>mask: 39/19/9999, restrict: accept</label>
+            <input class="form-control" type="text" name="date3" mask="39/19/9999" restrict="accept" ng-model="docs.mask.date.d"/>
+            <p>model: {{docs.mask.date.d}}</p>
+            <p>Field Error: {{docsMaskForm.date3.$error}}</p>
+            <p>Field Valid: {{docsMaskForm.date3.$valid}}</p>
+        </div>
+        <h4 class="grid-100">Nomor Telefon</h4>
+        <div class="from-group grid-33">
+            <label>mask: (999) 999-9999</label>
+            <input class="form-control" type="text" name="phone" mask="(999) 999-9999" ng-model="docs.mask.phone.a"/>
+            <p>model: {{docs.mask.phone.a}}</p>
+            <p>Field Error: {{docsMaskForm.phone.$error}}</p>
+            <p>Field Valid: {{docsMaskForm.phone.$valid}}</p>
+        </div>
+        <div class="from-group grid-33">
+            <label>mask: (99) 9?9999-9999 </label>
+            <input class="form-control" type="text" name="phone1" mask="(99) 9?9999-9999" ng-model="docs.mask.phone.b"/>
+            <p>model: {{docs.mask.phone.b}}</p>
+            <p>Field Error: {{docsMaskForm.phone1.$error}}</p>
+            <p>Field Valid: {{docsMaskForm.phone1.$valid}}</p>
+        </div>
+        <div class="from-group grid-33">
+            <label>mask: +99 99 9?9999-9999, restrict: reject </label>
+            <input class="form-control" type="text" name="phone1" mask="+99 99 9?9999-9999" restrict="reject" ng-model="docs.mask.phone.c"/>
+            <p>model: {{docs.mask.phone.c}}</p>
+            <p>Field Error: {{docsMaskForm.phone2.$error}}</p>
+            <p>Field Valid: {{docsMaskForm.phone2.$valid}}</p>
+        </div>
+    </div>
+</form>
 {% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<input
+    ng-model="{model}"
+    mask="{string}"
+    [ng-value="{model}"]
+    [restrict="{select|reject|accept}"]
+    [repeat="{integer}"]
+    [clean="{boolean}"]
+    [validate="{boolean}"]
+    [limit="{boolean}"]/>
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+            <div class="docs-example">
+<div class="grid-fluid">
+    <p class="grid-100">
+      Kamu bisa buat masking dengan menggunakan pola-pola yang tersedia dibawah ini. Jika kamu pake pola yang tidak ditentukan dibawah ini, akan dianggap sebagai <code>divisor</code>.
+    </p>
+    <p class="grid-100">
+      <code>Divisor</code> adalah karakter yang digunakan untuk mengelompokan elemen-elemen semantik, seperti <code>/</code> pada tanggal untuk memisahkan hari, bulan dan tahun, <code>-</code> pada ISBN untuk memisahkan kode area, grup dan serial number atau <code>.</code> pada IPv4 untuk membuat 4 segmen 8 bit.
+    </p>
+    <div class="grid-100 grid-parent">
+        <div class="grid-33">
+          <h3>Pola Umum</h3>
+          <ul class="list-unstyled">
+            <li>
+              <span>
+                <strong>'*'</strong> =&gt; /./
+              </span>
+              <span class="help-block">Any single character</span>
+            </li>
+            <li>
+              <span>
+                <strong>'w'</strong> =&gt; /\w/
+              </span>
+              <span class="help-block">Any word character (letter, number, underscore)</span>
+            </li>
+            <li>
+              <span>
+                <strong>'W'</strong> =&gt; /\W/
+              </span>
+              <span class="help-block">Any non-word character</span>
+            </li>
+            <li>
+              <span>
+                <strong>'d'</strong> =&gt; /\d/
+              </span>
+              <span class="help-block">Any digit</span>
+            </li>
+            <li>
+              <span>
+                <strong>'D'</strong> =&gt; /\D/
+              </span>
+              <span class="help-block">Any non-digit</span>
+            </li>
+            <li>
+              <span>
+                <strong>'s'</strong> =&gt; /\s/
+              </span>
+              <span class="help-block">Any whitespace character</span>
+            </li>
+            <li>
+              <span>
+                <strong>'S'</strong> =&gt; /\S/
+              </span>
+              <span class="help-block">Any non-whitespace character</span>
+            </li>
+            <li>
+              <span>
+                <strong>'b'</strong> =&gt; /\b/
+              </span>
+              <span class="help-block">Any word boundary</span>
+            </li>
+          </ul>
+        </div>
+        <div class="grid-33">
+          <h3>Pola Angka</h3>
+          <ul class="list-unstyled">
+            <li>
+              <span>
+                <strong>'9'</strong> =&gt; /[0-9]/
+              </span>
+              <span class="help-block">Valid numbers: 0,1,2,3,4,5,6,7,8,9</span>
+            </li>
+            <li>
+              <span>
+                <strong>'8'</strong> =&gt; /[0-8]/
+              </span>
+              <span class="help-block">Valid numbers: 0,1,2,3,4,5,6,7,8</span>
+            </li>
+            <li>
+              <span>
+                <strong>'7'</strong> =&gt; /[0-7]/
+              </span>
+              <span class="help-block">Valid numbers: 0,1,2,3,4,5,6,7</span>
+            </li>
+            <li>
+              <span>
+                <strong>'6'</strong> =&gt; /[0-6]/
+              </span>
+              <span class="help-block">Valid numbers: 0,1,2,3,4,5,6</span>
+            </li>
+            <li>
+              <span>
+                <strong>'5'</strong> =&gt; /[0-5]/
+              </span>
+              <span class="help-block">Valid numbers: 0,1,2,3,4,5</span>
+            </li>
+            <li>
+              <span>
+                <strong>'4'</strong> =&gt; /[0-4]/
+              </span>
+              <span class="help-block">Valid numbers: 0,1,2,3,4</span>
+            </li>
+            <li>
+              <span>
+                <strong>'3'</strong> =&gt; /[0-3]/
+              </span>
+              <span class="help-block">Valid numbers: 0,1,2,3</span>
+            </li>
+            <li>
+              <span>
+                <strong>'2'</strong> =&gt; /[0-2]/
+              </span>
+              <span class="help-block">Valid numbers: 0,1,2</span>
+            </li>
+            <li>
+              <span>
+                <strong>'1'</strong> =&gt; /[0-1]/
+              </span>
+              <span class="help-block">Valid numbers: 0,1</span>
+            </li>
+            <li>
+              <span>
+                <strong>'0'</strong> =&gt; /[0]/
+              </span>
+              <span class="help-block">Valid numbers: 0</span>
+            </li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <h3>Pola Tambahan</h3>
+          <ul class="list-unstyled">
+            <li>
+              <span>
+                <strong>'?'</strong> =&gt; /?/
+              </span>
+              <span class="help-block">Optional character. It makes the previous pattern optional.</span>
+            </li>
+            <li>
+              <span>
+                <strong>'A'</strong> =&gt; /[A-Z]/
+              </span>
+              <span class="help-block">Any uppercase alphabet letter without accents</span>
+            </li>
+            <li>
+              <span>
+                <strong>'a'</strong> =&gt; /[a-z]/
+              </span>
+              <span class="help-block">Any lowercase alphabet letter without accents</span>
+            </li>
+            <li>
+              <span>
+                <strong>'Z'</strong> =&gt; /[A-ZÇÀÁÂÃÈÉÊẼÌÍÎĨÒÓÔÕÙÚÛŨ]/
+              </span>
+              <span class="help-block">Any uppercase alphabet letter with accents</span>
+            </li>
+            <li>
+              <span>
+                <strong>'z'</strong> =&gt; /[a-zçáàãâéèêẽíìĩîóòôõúùũüû]/
+              </span>
+              <span class="help-block">Any lowercase alphabet letter with accents</span>
+            </li>
+            <li>
+              <span>
+                <strong>'@'</strong> =&gt; /[a-zA-Z]/
+              </span>
+              <span class="help-block">Any alphabet letter without accents</span>
+            </li>
+            <li>
+              <span>
+                <strong>'#'</strong> =&gt; /[a-zA-Zçáàãâéèêẽíìĩîóòôõúùũ üûÇÀÁÂÃÈÉÊẼÌÍÎĨÒÓÔÕÙÚÛŨ]/
+              </span>
+              <span class="help-block">Any alphabet letter with accents</span>
+            </li>
+            <li>
+              <span>
+                <strong>'%'</strong> =&gt; /[0-9a-zA-zçáàãâéèêẽíìĩ îóòôõúùũü ûÇÀÁÂÃÈÉÊẼÌÍÎĨÒÓÔÕÙÚÛŨ]/
+              </span>
+              <span class="help-block">Any digit and alphabet letter with accents</span>
+            </li>
+          </ul>
+        </div>
+    </div>
+</div>
+            </div>
         </div>
     </div>
 </div>

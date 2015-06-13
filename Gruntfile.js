@@ -152,7 +152,11 @@ module.exports = function(grunt) {
         // concurrent process
         concurrent: {
             docs: {
-                tasks: ['docs-deploy','watch:docs'],
+                tasks: [
+                    'docs-deploy',
+                    'watch:js',
+                    'watch:css'
+                ],
                 options: {
                     logConcurrentOutput: true
                 }

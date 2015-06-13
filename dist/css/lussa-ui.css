@@ -6691,6 +6691,64 @@ input[type="reset"].button-block,
 input[type="button"].button-block {
   width: 100%;
 }
+.button-labeled {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.button-label {
+  position: relative;
+  background: transparent;
+  background: rgba(0, 0, 0, 0.15);
+  display: inline-block;
+  padding: 6px 12px;
+  left: -12px;
+  border-radius: 2px 0 0 2px;
+}
+.button-label.button-label-right {
+  left: auto;
+  right: -12px;
+  border-radius: 0 2px 2px 0;
+}
+.button-large .button-label {
+  padding: 10px 16px;
+  left: -16px;
+  border-radius: 2px 0 0 2px;
+}
+.button-large .button-label.button-label-right {
+  left: auto;
+  right: -16px;
+  border-radius: 0 2px 2px 0;
+}
+.button-small .button-label {
+  padding: 5px 10px;
+  left: -10px;
+  border-radius: 2px 0 0 2px;
+}
+.button-small .button-label.button-label-right {
+  left: auto;
+  right: -10px;
+  border-radius: 0 2px 2px 0;
+}
+.button-xs .button-label {
+  padding: 1px 5px;
+  left: -5px;
+  border-radius: 2px 0 0 2px;
+}
+.button-xs .button-label.button-label-right {
+  left: auto;
+  right: -5px;
+  border-radius: 0 2px 2px 0;
+}
+.button-xl .button-label {
+  padding: 15px 80px;
+  left: -80px;
+  border-radius: 2px 0 0 2px;
+}
+.button-xl .button-label.button-label-right {
+  left: auto;
+  right: -80px;
+  border-radius: 0 2px 2px 0;
+}
 code,
 kbd,
 pre,
