@@ -1,0 +1,505 @@
+<h1 class="docs-section-title" id="table">Tabel Dinamis</h1>
+<p class="docs-section-desc">Tabel dinamis, mempermudah dalam pembuatan modul view pada dashboard</p>
+
+<!-- overview -->
+<h2 class="docs-subsection-title" id="table-overview">Pengenalan</h2>
+<div class="docs-subsection-desc">
+    <p>Tabel dinamis merupakan tabel yang isinya dapat di-<em>binding</em> dengan data. Sumber data dapat berupa data statis yang didefinisikan di <code>controller</code>, atau dapat juga diambil langsung dari API.</p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+        <li>controller</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+<table ui-table class="table">
+    <tr ng-repeat="user in docs.table.overview.data">
+        <td data-title="'Name'">
+            {(user.name)}
+        </td>
+        <td data-title="'Age'">
+            {(user.age)}
+        </td>
+    </tr>
+</table>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<table ui-table class="table">
+    <tr ng-repeat="user in users">
+        <td data-title="'Name'">
+            {{user.name}}
+        </td>
+        <td data-title="'Age'">
+            {{user.age}}
+        </td>
+    </tr>
+</table>
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight js %}
+...
+$scope.users: [
+    {name: "Moroni", age: 50},
+    {name: "Tiancum", age: 43},
+    {name: "Jacob", age: 27},
+    {name: "Nephi", age: 29},
+    {name: "Enos", age: 34}
+]
+...
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- pagination -->
+<h2 class="docs-subsection-title" id="table-pagination">Halaman</h2>
+<div class="docs-subsection-desc">
+    <p>Apabila data terlalu banyak, kamu dapat mengatur jumlah item yang dapat ditampilkan dengan memanfaatkan fitur <code>pagination</code>, dengan mengaturnya pada parameter tabel pada controller.</p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+        <li>controller</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+<table ui-table="docs.table.pagination.param_0" class="table">
+    <tr ng-repeat="user in $data">
+        <td data-title="'Name'">
+            {(user.name)}
+        </td>
+        <td data-title="'Age'">
+            {(user.age)}
+        </td>
+    </tr>
+</table>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<table ui-table="params" class="table">
+    <tr ng-repeat="user in $data">
+        {($data)}
+        <td data-title="'Name'">
+            {{user.name}}
+        </td>
+        <td data-title="'Age'">
+            {{user.age}}
+        </td>
+    </tr>
+</table>
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight js %}
+angular.controller('pageController',function(TableParams){
+    data =  [{name: "Moroni", age: 50},
+        {name: "Tiancum", age: 43},
+        {name: "Jacob", age: 27},
+        {name: "Nephi", age: 29},
+        {name: "Enos", age: 34},
+        {name: "Tiancum", age: 43},
+        {name: "Jacob", age: 27},
+        {name: "Nephi", age: 29},
+        {name: "Enos", age: 34},
+        {name: "Tiancum", age: 43},
+        {name: "Jacob", age: 27},
+        {name: "Nephi", age: 29},
+        {name: "Enos", age: 34},
+        {name: "Tiancum", age: 43},
+        {name: "Jacob", age: 27},
+        {name: "Nephi", age: 29},
+        {name: "Enos", age: 34}
+    ];
+
+    $scope.params = new TableParams({
+        page: 1,
+        count: 10,
+        sorting: {
+            name: 'asc'
+        }
+    }, {
+        total: data.length,
+        getData: function($defer, params) {
+            $defer.resolve( data.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+        }
+    });
+});
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- sorting -->
+<h2 class="docs-subsection-title" id="table-sorting">Sorting</h2>
+<div class="docs-subsection-desc">
+    <p>Kamu juga bisa menambahkan fungsi sorting dengan menambahkan atribut <code>sortable</code> pada kolom yang perlu disorting. Lalu modifikasi fungsi <code>getData()</code> untuk menerima fungsi sorting dengan memanfaatkan provider <code>$filter</code>.</p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+        <li>controller</li>
+        <li>theming&nbsp;<span class="icon icon-wand text-vibrant"></span></li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+<table ui-table="docs.table.sorting.param_0" class="table">
+    <tr ng-repeat="user in $data">
+        <td data-title="'Name'" sortable="'name'">
+            {(user.name)}
+        </td>
+        <td data-title="'Age'" sortable="'age'">
+            {(user.age)}
+        </td>
+    </tr>
+</table>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<table ui-table="paramas" class="table">
+    <tr ng-repeat="user in $data">
+        <td data-title="'Name'" sortable="'name'">
+            {{user.name}}
+        </td>
+        <td data-title="'Age'" sortable="'age'">
+            {{user.age}}
+        </td>
+    </tr>
+</table>
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight js %}
+angular.controller('pageController',function(TableParams){
+    data =  [{name: "Moroni", age: 50},
+        {name: "Tiancum", age: 43},
+        {name: "Jacob", age: 27},
+        {name: "Nephi", age: 29},
+        {name: "Enos", age: 34},
+        {name: "Tiancum", age: 43},
+        {name: "Jacob", age: 27},
+        {name: "Nephi", age: 29},
+        {name: "Enos", age: 34},
+        {name: "Tiancum", age: 43},
+        {name: "Jacob", age: 27},
+        {name: "Nephi", age: 29},
+        {name: "Enos", age: 34},
+        {name: "Tiancum", age: 43},
+        {name: "Jacob", age: 27},
+        {name: "Nephi", age: 29},
+        {name: "Enos", age: 34}
+    ];
+
+    $scope.params = new TableParams({
+        page: 1,
+        count: 10,
+        sorting: {
+            name: 'asc'
+        }
+    }, {
+        total: data.length,
+        getData: function($defer, params) {
+            var orderedData = params.sorting() ?
+                    $filter('orderBy')(data, params.orderBy()) :
+                    data;
+
+            $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+        }
+    });
+});
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight css %}
+// sorting
+@table-sorting-indicator-color:   @accent-dark;
+@table-sorting-active-bg:   @accent-light;
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- filtering -->
+<h2 class="docs-subsection-title" id="table-fitering">Filtering</h2>
+<div class="docs-subsection-desc">
+    <p>Salah satu keuntungan dari dynamic table, kita dapat dengan mudah melakukan filtering data. Cukup dengan menambahkan atribut <code> show-filter="true"</code> lalu tambahkan atribut <code>filter="{ 'name': 'text' }"</code> pada kolom yang mau difilter. Filter yang umum digunakan adalah text. Ada 3 filter <em>built-in</em> lussa UI yaitu filter text, select dan multiselect</p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+        <li>controller</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+<table ui-table="docs.table.filtering.param_0" show-filter="true" class="table">
+    <tr ng-repeat="user in $data">
+        <td data-title="'Name'" filter="{ 'name': 'text' }">
+            {(user.name)}
+        </td>
+        <td data-title="'Age'">
+            {(user.age)}
+        </td>
+    </tr>
+</table>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<table ui-table="params" show-filter="true" class="table">
+    <tr ng-repeat="user in $data">
+        <td data-title="'Name'" filter="{ 'name': 'text' }">
+            {(user.name)}
+        </td>
+        <td data-title="'Age'">
+            {(user.age)}
+        </td>
+    </tr>
+</table>
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight js %}
+angular.controller('pageController',function(TableParams){
+    data =  [{name: "Moroni", age: 50},
+        {name: "Tiancum", age: 43},
+        {name: "Jacob", age: 27},
+        {name: "Nephi", age: 29},
+        {name: "Enos", age: 34},
+        {name: "Tiancum", age: 43},
+        {name: "Jacob", age: 27},
+        {name: "Nephi", age: 29},
+        {name: "Enos", age: 34},
+        {name: "Tiancum", age: 43},
+        {name: "Jacob", age: 27},
+        {name: "Nephi", age: 29},
+        {name: "Enos", age: 34},
+        {name: "Tiancum", age: 43},
+        {name: "Jacob", age: 27},
+        {name: "Nephi", age: 29},
+        {name: "Enos", age: 34}
+    ];
+
+    $scope.params = new TableParams({
+        page: 1,
+        count: 10,
+        sorting: {
+            name: 'asc'
+        }
+    }, {
+        total: data.length,
+        getData: function($defer, params) {
+            var orderedData = params.filter() ?
+                $filter('filter')(data, params.filter()) :
+                data,
+                filteredData = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
+
+            params.total(orderedData.length); // set total for recalc pagination
+            $defer.resolve(filteredData);
+        }
+    });
+});
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- grouping -->
+<h2 class="docs-subsection-title" id="table-grouping">Pengelompokan / Grouping</h2>
+<div class="docs-subsection-desc">
+    <p>dengan adanya local scope <code>$group</code>, kita dengan mudah dapat melakukan grouping berdasarkan atribut tertentu pada data.</p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+        <li>controller</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+<table ui-table="docs.table.grouping.param_0" class="table ui-table-responsive">
+    <tbody ng-repeat="group in $groups">
+    <tr class="ui-table-group">
+        <td colspan="{($columns.length)}">
+            <a href="" ng-click="group.$hideRows = !group.$hideRows">
+                <span class="glyphicon" ng-class="{ 'icon-chevron-right': group.$hideRows, 'icon-chevron-down': !group.$hideRows }"></span>
+                <strong>{( group.value )}</strong>
+            </a>
+        </td>
+    </tr>
+    <tr ng-hide="group.$hideRows" ng-repeat="user in group.data">
+        <td sortable="'name'" data-title="'Name'">
+            {(user.name)}
+        </td>
+        <td sortable="'age'" data-title="'Age'">
+            {(user.age)}
+        </td>
+    </tr>
+    </tbody>
+</table>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<table ui-table="params" class="table ui-table-responsive">
+    <tbody ng-repeat="group in $groups">
+    <tr class="ui-table-group">
+        <td colspan="{($columns.length}}">
+            <a href="" ng-click="group.$hideRows = !group.$hideRows">
+                <span class="glyphicon" ng-class="{ 'icon-chevron-right': group.$hideRows, 'icon-chevron-down': !group.$hideRows }"></span>
+                <strong>{( group.value }}</strong>
+            </a>
+        </td>
+    </tr>
+    <tr ng-hide="group.$hideRows" ng-repeat="user in group.data">
+        <td sortable="'name'" data-title="'Name'">
+            {(user.name}}
+        </td>
+        <td sortable="'age'" data-title="'Age'">
+            {(user.age}}
+        </td>
+    </tr>
+    </tbody>
+</table>
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight js %}
+angular.controller('pageController',function(TableParams){
+    data =  [{name: "Moroni", age: 50, role: 'Administrator'},
+        {name: "Tiancum", age: 43, role: 'Administrator'},
+        {name: "Jacob", age: 27, role: 'Administrator'},
+        {name: "Nephi", age: 29, role: 'Moderator'},
+        {name: "Enos", age: 34, role: 'User'},
+        {name: "Tiancum", age: 43, role: 'User'},
+        {name: "Jacob", age: 27, role: 'User'},
+        {name: "Nephi", age: 29, role: 'Moderator'},
+        {name: "Enos", age: 34, role: 'User'},
+        {name: "Tiancum", age: 43, role: 'Moderator'},
+        {name: "Jacob", age: 27, role: 'User'},
+        {name: "Nephi", age: 29, role: 'User'},
+        {name: "Enos", age: 34, role: 'Moderator'},
+        {name: "Tiancum", age: 43, role: 'User'},
+        {name: "Jacob", age: 27, role: 'User'},
+        {name: "Nephi", age: 29, role: 'User'},
+        {name: "Enos", age: 34, role: 'User'}
+    ];
+
+    $scope.params = new TableParams({
+        page: 1,
+        count: 10,
+        sorting: {
+            name: 'asc'
+        }
+    }, {
+        groupBy: 'role',
+        total: data.length,
+        getData: function($defer, params) {
+            var orderedData = params.sorting() ?
+                $filter('orderBy')(data, params.orderBy()) :
+                data;
+
+            $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+        }
+    });
+});
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- customize -->
+<h2 class="docs-subsection-title" id="table-customize">Customizing</h2>
+<div class="docs-subsection-desc">
+    <p></p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+        <li>controller</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight js %}
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+
+<!-- summary -->
+<h2 class="docs-subsection-title" id="table-summary">Baris total / summary</h2>
+<div class="docs-subsection-desc">
+    <p></p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+        <li>controller</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight js %}
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+
+<!-- extend -->
+<h2 class="docs-subsection-title" id="table-extend">Plugin Tambahan</h2>
+<div class="docs-subsection-desc">
+    <p></p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+        <li>controller</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight js %}
+{% endhighlight %}
+        </div>
+    </div>
+</div>

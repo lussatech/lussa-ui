@@ -12,5 +12,6 @@
   "unused": false,
   "shadow": true,
   "jquery": true,
-  "node": true
+  "node": true,
+  "loopfunc": true
 }

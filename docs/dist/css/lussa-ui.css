@@ -6139,6 +6139,143 @@ th {
   }
 }
 /**
+ * Dynamic Table
+ */
+.ui-table th {
+  text-align: center;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.ui-table th.sortable {
+  cursor: pointer;
+}
+.ui-table th.sortable .sort-indicator {
+  padding-right: 18px;
+  position: relative;
+}
+.ui-table th.sortable .sort-indicator:after,
+.ui-table th.sortable .sort-indicator:before {
+  content: "";
+  border-width: 0 4px 4px;
+  border-style: solid;
+  border-color: #222222 transparent;
+  visibility: visible;
+  right: 5px;
+  top: 50%;
+  position: absolute;
+  opacity: .3;
+  margin-top: -4px;
+}
+.ui-table th.sortable .sort-indicator:before {
+  margin-top: 2px;
+  border-bottom: none;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #222222;
+}
+.ui-table th.sortable .sort-indicator:hover:after,
+.ui-table th.sortable .sort-indicator:hover:before {
+  opacity: 1;
+  visibility: visible;
+}
+.ui-table th.sortable.sort-desc,
+.ui-table th.sortable.sort-asc {
+  background-color: #e1e1e1;
+}
+.ui-table th.sortable.sort-desc .sort-indicator:after,
+.ui-table th.sortable.sort-asc .sort-indicator:after {
+  margin-top: -2px;
+}
+.ui-table th.sortable.sort-desc .sort-indicator:before,
+.ui-table th.sortable.sort-asc .sort-indicator:before {
+  visibility: hidden;
+}
+.ui-table th.sortable.sort-asc .sort-indicator:after,
+.ui-table th.sortable.sort-asc .sort-indicator:hover:after {
+  visibility: visible;
+  filter: alpha(opacity=60);
+  -khtml-opacity: 0.6;
+  -moz-opacity: 0.6;
+  opacity: 0.6;
+}
+.ui-table th.sortable.sort-desc .sort-indicator:after {
+  border-bottom: none;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #222222;
+  visibility: visible;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  filter: alpha(opacity=60);
+  -khtml-opacity: 0.6;
+  -moz-opacity: 0.6;
+  opacity: 0.6;
+}
+.ui-table th.filter .input-filter {
+  margin: 0;
+  display: block;
+  width: 100%;
+  min-height: 30px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.ui-table + .pagination {
+  margin-top: 0;
+}
+@media only screen and (max-width: 800px) {
+  .ui-table-responsive {
+    border-bottom: 1px solid #dddddd;
+  }
+  .ui-table-responsive tr {
+    border-top: 1px solid #dddddd;
+    border-left: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
+  }
+  .ui-table-responsive td:before {
+    position: absolute;
+    padding: 8px;
+    left: 0;
+    top: 0;
+    width: 50%;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: bold;
+  }
+  .ui-table-responsive thead tr th {
+    text-align: left;
+  }
+  .ui-table-responsive thead tr.ng-table-filters th {
+    padding: 0;
+  }
+  .ui-table-responsive thead tr.ng-table-filters th form > div {
+    padding: 8px;
+  }
+  .ui-table-responsive td {
+    border: none;
+    border-bottom: 1px solid #dddddd;
+    position: relative;
+    padding-left: 50%;
+    white-space: normal;
+    text-align: left;
+  }
+  .ui-table-responsive td:before {
+    content: attr(data-title-text);
+  }
+  .ui-table-responsive,
+  .ui-table-responsive thead,
+  .ui-table-responsive tbody,
+  .ui-table-responsive th,
+  .ui-table-responsive td,
+  .ui-table-responsive tr {
+    display: block;
+  }
+}
+/**
  * Buttons
  * ## Button and link that shape like button
  * ==========================================================================
@@ -8823,7 +8960,7 @@ pagination-bar ul > li > span:focus,
   z-index: 3;
   color: #222222;
   background-color: #e1e1e1;
-  border-color: #a2a2a2;
+  border-color: #222222;
 }
 pagination-bar ul > li:first-child > a,
 .pagination-bar ul > li:first-child > a,
@@ -8869,7 +9006,7 @@ pagination-bar ul > li.active > span:focus,
   z-index: 2;
   color: #e1e1e1;
   background-color: #3f1164;
-  border-color: #3f1164;
+  border-color: #08020d;
   cursor: default;
 }
 pagination-bar ul > li.separator,
@@ -8884,6 +9021,144 @@ pagination-bar .pagination-icon-prev,
 pagination-bar .pagination-icon-next,
 .pagination-bar .pagination-icon-next {
   margin-left: 5px;
+}
+.pagination {
+  display: inline-block;
+  padding-left: 0;
+  margin: 17px 0;
+  border-radius: 3px;
+}
+.pagination > li {
+  display: inline;
+}
+.pagination > li > a,
+.pagination > li > span {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  line-height: 1.42857143;
+  text-decoration: none;
+  color: #222222;
+  background-color: #ffffff;
+  border: 1px solid #a2a2a2;
+  margin-left: -1px;
+}
+.pagination > li:first-child > a,
+.pagination > li:first-child > span {
+  margin-left: 0;
+  -webkit-border-top-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius-bottomleft: 3px;
+  -moz-background-clip: padding;
+  border-bottom-left-radius: 3px;
+  background-clip: padding-box;
+}
+.pagination > li:last-child > a,
+.pagination > li:last-child > span {
+  -webkit-border-top-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius-bottomright: 3px;
+  -moz-background-clip: padding;
+  border-bottom-right-radius: 3px;
+  background-clip: padding-box;
+}
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus {
+  z-index: 3;
+  color: #222222;
+  background-color: #e1e1e1;
+  border-color: #222222;
+}
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+  z-index: 2;
+  color: #e1e1e1;
+  background-color: #3f1164;
+  border-color: #08020d;
+  cursor: default;
+}
+.pagination > .disabled > span,
+.pagination > .disabled > span:hover,
+.pagination > .disabled > span:focus,
+.pagination > .disabled > a,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > a:focus {
+  color: #e1e1e1;
+  background-color: #ffffff;
+  border-color: #e1e1e1;
+  cursor: not-allowed;
+}
+.pagination-large > li > a,
+.pagination-large > li > span {
+  padding: 10px 16px;
+  font-size: 15px;
+  line-height: 1.3333333;
+}
+.pagination-large > li:first-child > a,
+.pagination-large > li:first-child > span {
+  -webkit-border-top-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius-bottomleft: 3px;
+  -moz-background-clip: padding;
+  border-bottom-left-radius: 3px;
+  background-clip: padding-box;
+}
+.pagination-large > li:last-child > a,
+.pagination-large > li:last-child > span {
+  -webkit-border-top-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius-bottomright: 3px;
+  -moz-background-clip: padding;
+  border-bottom-right-radius: 3px;
+  background-clip: padding-box;
+}
+.pagination-small > li > a,
+.pagination-small > li > span {
+  padding: 5px 10px;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.pagination-small > li:first-child > a,
+.pagination-small > li:first-child > span {
+  -webkit-border-top-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius-bottomleft: 3px;
+  -moz-background-clip: padding;
+  border-bottom-left-radius: 3px;
+  background-clip: padding-box;
+}
+.pagination-small > li:last-child > a,
+.pagination-small > li:last-child > span {
+  -webkit-border-top-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius-bottomright: 3px;
+  -moz-background-clip: padding;
+  border-bottom-right-radius: 3px;
+  background-clip: padding-box;
 }
 .carousel {
   position: relative;

@@ -15,8 +15,8 @@ app.config(['$interpolateProvider', function($interpolateProvider) {
 /**
  * Component Controller
  */
-app.controller('ComponentController', ['$http', '$log', '$scope', 'page', 'lussaUI' , 'PageNavigationFactory', 'helper', 'toast', 'loadingBar',
-    function($http, $log, $scope, page, lussaUI, PageNavigationFactory, helper, toast, loadingBar){
+app.controller('ComponentController', ['$http', '$log', '$filter', '$scope', '$timeout','page', 'lussaUI' , 'PageNavigationFactory', 'helper', 'toast', 'loadingBar', 'TableParams',
+    function($http, $log, $filter, $scope, $timeout, page, lussaUI, PageNavigationFactory, helper, toast, loadingBar, TableParams){
     // ui routine
     PageNavigationFactory.NavbarToggle();
     PageNavigationFactory.BuildTabs();
@@ -32,6 +32,54 @@ app.controller('ComponentController', ['$http', '$log', '$scope', 'page', 'lussa
     angular.element(window).on('hashchange',function(e){
         LeftSidebar().renderMenubyHash(location.hash);
     });
+
+    // reload sidebar only when all content loaded
+    $(window).load(function(){
+        // give 1 s buffer time
+        $timeout(function(){
+            PageNavigationFactory.LeftSidebar().reload();
+        },1000);
+    });
+
+    // dummy table data
+    var table = {
+        data: [{name: "Moroni", age: 50},
+            {name: "Tiancum", age: 43},
+            {name: "Jacob", age: 27},
+            {name: "Nephi", age: 29},
+            {name: "Enos", age: 34},
+            {name: "Tiancum", age: 43},
+            {name: "Jacob", age: 27},
+            {name: "Nephi", age: 29},
+            {name: "Enos", age: 34},
+            {name: "Tiancum", age: 43},
+            {name: "Jacob", age: 27},
+            {name: "Nephi", age: 29},
+            {name: "Enos", age: 34},
+            {name: "Tiancum", age: 43},
+            {name: "Jacob", age: 27},
+            {name: "Nephi", age: 29},
+            {name: "Enos", age: 34}
+        ],
+        data_1: [{name: "Moroni", age: 50, role: 'Administrator'},
+            {name: "Tiancum", age: 43, role: 'Administrator'},
+            {name: "Jacob", age: 27, role: 'Administrator'},
+            {name: "Nephi", age: 29, role: 'Moderator'},
+            {name: "Enos", age: 34, role: 'User'},
+            {name: "Tiancum", age: 43, role: 'User'},
+            {name: "Jacob", age: 27, role: 'User'},
+            {name: "Nephi", age: 29, role: 'Moderator'},
+            {name: "Enos", age: 34, role: 'User'},
+            {name: "Tiancum", age: 43, role: 'Moderator'},
+            {name: "Jacob", age: 27, role: 'User'},
+            {name: "Nephi", age: 29, role: 'User'},
+            {name: "Enos", age: 34, role: 'Moderator'},
+            {name: "Tiancum", age: 43, role: 'User'},
+            {name: "Jacob", age: 27, role: 'User'},
+            {name: "Nephi", age: 29, role: 'User'},
+            {name: "Enos", age: 34, role: 'User'}
+        ]
+    };
 
     // init scope
     $scope.docs = {
@@ -129,10 +177,91 @@ app.controller('ComponentController', ['$http', '$log', '$scope', 'page', 'lussa
                 a: null, b:null, c: null
             }
         },
+        table: {
+            overview: {
+                data: [
+                    {name: "Moroni", age: 50},
+                    {name: "Tiancum", age: 43},
+                    {name: "Jacob", age: 27},
+                    {name: "Nephi", age: 29},
+                    {name: "Enos", age: 34}
+                ]
+            },
+            pagination: {
+                param_0: new TableParams({
+                        page: 1,
+                        count: 10,
+                        sorting: {
+                            name: 'asc'
+                        }
+                    }, {
+                        total: table.data.length,
+                        getData: function($defer, params) {
+                            $defer.resolve( table.data.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                        }
+                })
+            },
+            sorting: {
+                param_0: new TableParams({
+                    page: 1,
+                    count: 10,
+                    sorting: {
+                        name: 'asc'
+                    }
+                }, {
+                    total: table.data.length,
+                    getData: function($defer, params) {
+                        var orderedData = params.sorting() ?
+                                $filter('orderBy')(table.data, params.orderBy()) :
+                                data;
+
+                        $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                    }
+                })
+            },
+            filtering: {
+                param_0: new TableParams({
+                    page: 1,
+                    count: 10,
+                    sorting: {
+                        name: 'asc'
+                    }
+                }, {
+                    total: table.data.length,
+                    getData: function($defer, params) {
+                        var orderedData = params.filter() ?
+                            $filter('filter')(table.data, params.filter()) :
+                            table.data,
+                            filteredData = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
+
+                        params.total(orderedData.length); // set total for recalc pagination
+                        $defer.resolve(filteredData);
+                    }
+                })
+            },
+            grouping: {
+                param_0: new TableParams({
+                    page: 1,
+                    count: 10,
+                    sorting: {
+                        name: 'asc'
+                    }
+                }, {
+                    groupBy: 'role',
+                    total: table.data_1.length,
+                    getData: function($defer, params) {
+                        var orderedData = params.sorting() ?
+                            $filter('orderBy')(table.data_1, params.orderBy()) :
+                            table.data_1;
+
+                        $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                    }
+                })
+            }
+        },
         // helper
         dump: helper.dump
     };
-
     // event
 
 }]);
@@ -291,10 +420,16 @@ app.factory('PageNavigationFactory', ['$log', 'PageNavigationValue',
             _render_menu_by_hash(location.hash);
         }
 
+        function _reload(){
+            PageNavigationValue.menu_offset_collections = [];
+            _get_all_menu_scroll_offset();
+        }
+
         return {
             onScroll: _on_scroll,
             renderMenubyHash : _render_menu_by_hash,
-            init: _init
+            init: _init,
+            reload: _reload
         };
     }
 

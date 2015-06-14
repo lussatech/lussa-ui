@@ -33,7 +33,7 @@ body a{
     padding: 0;
     top: 0;
     position: fixed;
-    z-index: 999999;
+    z-index: 1001;
     height: 50px;
     width: 100%;
     background: rgba(90,25,143,0.95);
@@ -257,7 +257,14 @@ body a{
     background: #5A198F;
     margin-right: -5px;
 }
+@media (max-width: 780px){
+    .docs-tab-link-container li{
+        display: block;
+        margin-right: 0;
+    }
+}
 .docs-tab-link-container li:hover,
+.docs-tab-link-container li:focus,
 .docs-tab-link-container li.active {
     background: #3F1164;
 }
@@ -266,8 +273,14 @@ body a{
     border: 1px solid #3F1164;
     background: #FFFFFF;
 }
+.docs-tab-content:first{
+    display: block;
+}
+.docs-tab-content + .docs-tab-content {
+    display: none;
+}
 .docs-tab-content .docs-example {
-    padding: 15px;
+    padding: 10px;
     background: #FFFFFF;
 }
 .docs-tab-content .highlight {

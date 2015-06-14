@@ -196,6 +196,10 @@
 // Border color for table and cell borders.
 @table-border-color:            #ddd;
 
+// sorting
+@table-sorting-indicator-color:   @accent-dark;
+@table-sorting-active-bg:   @accent-light;
+
 
 /**
  * Button
@@ -385,15 +389,15 @@
 
 @pagination-hover-color:               @accent-dark;
 @pagination-hover-bg:                  @accent-light;
-@pagination-hover-border:              @accent-soft;
+@pagination-hover-border:              @accent-dark;
 
 @pagination-active-color:              @accent-light;
 @pagination-active-bg:                 @accent-primary;
-@pagination-active-border:             @accent-primary;
+@pagination-active-border:             darken(@accent-primary,20);
 
 @pagination-disabled-color:            @accent-muted;
 @pagination-disabled-bg:               @accent-clear;
-@pagination-disabled-border:           lighten(@accent-muted, 20);
+@pagination-disabled-border:           @accent-muted;
 
 /**
  * Carousel
