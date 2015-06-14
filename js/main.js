@@ -21,5 +21,6 @@ var LussaUi = angular.module('lussa.ui',[
     'lussa.ui.carousel',
     'lussa.ui.collapse',
     'lussa.ui.offcanvas',
-    'lussa.ui.table'
+    'lussa.ui.table',
+    'lussa.ui.modal'
 ]);

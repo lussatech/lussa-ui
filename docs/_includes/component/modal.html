@@ -1,0 +1,147 @@
+<h1 class="docs-section-title" id="modal">Modal</h1>
+<p class="docs-section-desc">Tabel dinamis, mempermudah dalam pembuatan modul view pada dashboard</p>
+
+<!-- overview -->
+<h2 class="docs-subsection-title" id="modal-basic">Contoh Dasar</h2>
+<div class="docs-subsection-desc">
+    <p>Modal merupakan komponen yang cukup kompleks, karena modal pada domain angular bukan hanya sekedar menampilkan konten pada sebuah window tetapi juga memiliki <code>controller</code> khusus. Kadang modal juga dapat ditrigger malalui proses routing, atau dapat pula dipangil secara explisit melalui <em>parent controller</em>-nya, seperti contoh dibawah ini.</p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+        <li>controller</li>
+        <li>theming&nbsp;<span class="icon icon-wand text-vibrant"></span></li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+<script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title">i am a modal!</h3>
+    </div>
+    <div class="modal-body">
+        <ul>
+            <li ng-repeat="item in items">
+                <a ng-click="selected.item = item">{( item )}</a>
+            </li>
+        </ul>
+        Selected: <b>{( selected.item )}</b>
+    </div>
+    <div class="modal-footer">
+        <button class="button button-primary" ng-click="ok()">OK</button>
+        <button class="button button-muted" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
+
+<button class="button button-default" ng-click="docs.modal.open()">Open me!</button>
+<button class="button button-default" ng-click="docs.modal.open('large')">Large modal</button>
+<button class="button button-default" ng-click="docs.modal.open('small')">Small modal</button>
+<button class="button button-default" ng-click="docs.modal.toggleAnimation()">Toggle Animation ( {( docs.modal.animationsEnabled )} )</button>
+<p ng-show="docs.modal.selected">Selection from a modal: {( docs.modal.selected )}</p>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title">i am a modal!</h3>
+    </div>
+    <div class="modal-body">
+        <ul>
+            <li ng-repeat="item in items">
+                <a ng-click="selected.item = item">{( item )}</a>
+            </li>
+        </ul>
+        Selected: <b>{( selected.item )}</b>
+    </div>
+    <div class="modal-footer">
+        <button class="button button-primary" ng-click="ok()">OK</button>
+        <button class="button button-muted" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
+
+<button class="button button-default" ng-click="open()">Open me!</button>
+<button class="button button-default" ng-click="open('large')">Large modal</button>
+<button class="button button-default" ng-click="open('small')">Small modal</button>
+<button class="button button-default" ng-click="toggleAnimation()">Toggle Animation ( {( animationsEnabled )} )</button>
+<p ng-show="selected">Selection from a modal: {( selected )}</p>
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight js %}
+app.controller('ModalDemoCtrl', function ($scope, $modal, $log) {
+
+  $scope.items = ['item1', 'item2', 'item3'];
+
+  $scope.animationsEnabled = true;
+
+  $scope.open = function (size) {
+
+    var modalInstance = $modal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: 'myModalContent.html',
+      controller: 'ModalInstanceCtrl',
+      size: size,
+      resolve: {
+        items: function () {
+          return $scope.items;
+        }
+      }
+    });
+
+    modalInstance.result.then(function (selectedItem) {
+      $scope.selected = selectedItem;
+    }, function () {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+
+  $scope.toggleAnimation = function () {
+    $scope.animationsEnabled = !$scope.animationsEnabled;
+  };
+
+});
+
+// Please note that $modalInstance represents a modal window (instance) dependency.
+// It is not the same as the $modal service used above.
+
+app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
+
+  $scope.items = items;
+  $scope.selected = {
+    item: $scope.items[0]
+  };
+
+  $scope.ok = function () {
+    $modalInstance.close($scope.selected.item);
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+});
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight css %}
+@modal-inner-padding:                           15px;
+@modal-title-padding:                           15px;
+@modal-title-line-height:                       @line-height-base;
+
+@modal-content-bg:                              #fff;
+@modal-content-border-color:                    rgba(0,0,0,.2);
+@modal-content-fallback-border-color:           #999;
+
+@modal-backdrop-bg:                             #000;
+@modal-backdrop-opacity:                        .5;
+@modal-header-border-color:                     #e5e5e5;
+@modal-footer-border-color:                     @modal-header-border-color;
+
+@modal-large:                                   900px;
+@modal-medium:                                  600px;
+@modal-small:                                   300px;
+{% endhighlight %}
+        </div>
+    </div>
+</div>

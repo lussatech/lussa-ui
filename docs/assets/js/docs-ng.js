@@ -15,8 +15,8 @@ app.config(['$interpolateProvider', function($interpolateProvider) {
 /**
  * Component Controller
  */
-app.controller('ComponentController', ['$http', '$log', '$filter', '$scope', '$timeout','page', 'lussaUI' , 'PageNavigationFactory', 'helper', 'toast', 'loadingBar', 'TableParams',
-    function($http, $log, $filter, $scope, $timeout, page, lussaUI, PageNavigationFactory, helper, toast, loadingBar, TableParams){
+app.controller('ComponentController', ['$http', '$log', '$filter', '$scope', '$timeout','page', 'lussaUI' , 'PageNavigationFactory', 'helper', 'toast', 'loadingBar', 'TableParams', '$modal',
+    function($http, $log, $filter, $scope, $timeout, page, lussaUI, PageNavigationFactory, helper, toast, loadingBar, TableParams, $modal){
     // ui routine
     PageNavigationFactory.NavbarToggle();
     PageNavigationFactory.BuildTabs();
@@ -259,11 +259,57 @@ app.controller('ComponentController', ['$http', '$log', '$filter', '$scope', '$t
                 })
             }
         },
+        modal: {
+            items : ['item1', 'item2', 'item3'],
+            animationsEnabled : true,
+            open : function (size) {
+                var modalInstance = $modal.open({
+                  animation: $scope.docs.modal.animationsEnabled,
+                  templateUrl: 'myModalContent.html',
+                  controller: 'ModalInstanceCtrl',
+                  size: size,
+                  resolve: {
+                    items: function () {
+                      return $scope.docs.modal.items;
+                    }
+                  }
+                });
+
+                modalInstance.result.then(function (selectedItem) {
+                  $scope.docs.modal.selected = selectedItem;
+                }, function () {
+                  $log.info('Modal dismissed at: ' + new Date());
+                });
+            },
+            toggleAnimation : function () {
+                $scope.docs.modal.animationsEnabled = !$scope.docs.modal.animationsEnabled;
+            }
+        },
         // helper
         dump: helper.dump
     };
     // event
 
+}]);
+
+/**
+ * Modal Example
+ */
+app.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', 'items',
+    function ($scope, $modalInstance, items) {
+
+  $scope.items = items;
+  $scope.selected = {
+    item: $scope.items[0]
+  };
+
+  $scope.ok = function () {
+    $modalInstance.close($scope.selected.item);
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
 }]);
 
 /**
