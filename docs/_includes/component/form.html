@@ -273,6 +273,8 @@ ui-file-model="{model}"/>
 <div class="docs-tab">
     <ul class="docs-tab-link-container">
         <li>tampilan</li>
+        <li>html</li>
+        <li>controller</li>
         <li>penggunaan</li>
         <li>pengaturan</li>
     </ul>
@@ -290,6 +292,44 @@ ui-file-model="{model}"/>
                     input-class="form-control">
                 </auto-complete>
             </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<auto-complete
+    pause="100"
+    local-data="suggestion"
+    selected-object="model"
+    search-fields="name"
+    title-field="name"
+    minlength="1"
+    placeholder="negara dengan huruf depan A.."
+    input-class="form-control">
+</auto-complete>
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight js %}
+...
+$scope.suggestion = [
+    {name: 'Afghanistan', code: 'AF'},
+    {name: 'Aland Islands', code: 'AX'},
+    {name: 'Albania', code: 'AL'},
+    {name: 'Algeria', code: 'DZ'},
+    {name: 'American Samoa', code: 'AS'},
+    {name: 'AndorrA', code: 'AD'},
+    {name: 'Angola', code: 'AO'},
+    {name: 'Anguilla', code: 'AI'},
+    {name: 'Antarctica', code: 'AQ'},
+    {name: 'Antigua and Barbuda', code: 'AG'},
+    {name: 'Argentina', code: 'AR'},
+    {name: 'Armenia', code: 'AM'},
+    {name: 'Aruba', code: 'AW'},
+    {name: 'Australia', code: 'AU'},
+    {name: 'Austria', code: 'AT'},
+    {name: 'Azerbaijan', code: 'AZ'}
+]
+...
+{% endhighlight %}
         </div>
         <div class="docs-tab-content">
 {% highlight html %}
