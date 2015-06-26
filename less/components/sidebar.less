@@ -9,94 +9,94 @@
 
 .sidebar,
 .navbar-offcanvas {
-  width: @sidebar-width;
-  height: auto;
-  border-width: 1px;
-  border-style: solid;
-  border-radius: @border-radius-base;
+    width: @sidebar-width;
+    height: auto;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: @border-radius-base;
 }
 
 .sidebar-fixed-left,
 .sidebar-fixed-right,
 .navbar-offcanvas {
-  position: fixed;
-  z-index: @zindex-sidebar-fixed;
-  top: 0;
-  bottom: 0;
-  overflow-y: auto;
-  border-radius: 0;
+    position: fixed;
+    z-index: @zindex-sidebar-fixed;
+    top: 0;
+    bottom: 0;
+    overflow-y: auto;
+    border-radius: 0;
 }
 .sidebar-fixed-left,
 .navbar-offcanvas.sidebar-fixed-left {
-  left: 0;
-  right: auto;
-  border-width: 0 1px 0 0;
+    left: 0;
+    right: auto;
+    border-width: 0 1px 0 0;
 }
 .sidebar-fixed-right,
 .navbar-offcanvas {
-  left: auto;
-  right: 0;
-  border-width: 0 0 0 1px;
+    left: auto;
+    right: 0;
+    border-width: 0 0 0 1px;
 }
 
 .sidebar-nav {
-  margin-bottom: @sidebar-margin-vertical;
+    margin-bottom: @sidebar-margin-vertical;
 
-  &.dropdown-menu {
-    position: static;
-    margin: 0;
-    padding-top: 0;
-    float: none;
-    border: none;
-    .box-shadow(none);
-    border-radius: 0;
-  }
+    &.dropdown-menu {
+        position: static;
+        margin: 0;
+        padding-top: 0;
+        float: none;
+        border: none;
+        .box-shadow(none);
+        border-radius: 0;
+    }
 }
 
 .navbar-offcanvas {
-  .navbar-nav {
-    margin: 0;
-  }
-
-  @media (min-width: @grid-float-breakpoint) {
-    width: auto;
-    border-top: 0;
-    box-shadow: none;
-
-    &.offcanvas {
-      position: static;
-      display: block !important;
-      height: auto !important;
-      padding-bottom: 0; // Override default setting
-      overflow: visible !important;
+    .navbar-nav {
+        margin: 0;
     }
 
-    // Account for first and last children spacing
-    .navbar-nav.navbar-left:first-child {
-      margin-left: -@navbar-padding-horizontal;
-    }
-    .navbar-nav.navbar-right:last-child {
-      margin-right: -@navbar-padding-horizontal;
-    }
+    @media (min-width: @grid-float-breakpoint) {
+        width: auto;
+        border-top: 0;
+        box-shadow: none;
 
-    .sidebar-brand {
-      display: none;
+        &.offcanvas {
+            position: static;
+            display: block !important;
+            height: auto !important;
+            padding-bottom: 0; // Override default setting
+            overflow: visible !important;
+        }
+
+        // Account for first and last children spacing
+        .navbar-nav.navbar-left:first-child {
+            margin-left: -@navbar-padding-horizontal;
+        }
+        .navbar-nav.navbar-right:last-child {
+            margin-right: -@navbar-padding-horizontal;
+        }
+
+        .sidebar-brand {
+            display: none;
+        }
     }
-  }
 }
 
 // Brand/project name
 
 .sidebar-brand {
-  display: block;
-  font-size: @font-size-large;
-  line-height: @line-height-computed;
-  padding: @nav-link-padding;
-  &:hover,
-  &:focus {
-    text-decoration: none;
-  }
-  margin: @sidebar-margin-vertical 0;
+    display: block;
+    font-size: @font-size-large;
+    line-height: @line-height-computed;
+    padding: @nav-link-padding;
+    &:hover,
+    &:focus {
+        text-decoration: none;
+    }
+    margin: @sidebar-margin-vertical 0;
 }
 
 // Alternate sidebars
@@ -105,226 +105,234 @@
 // Default sidebar
 .sidebar-default,
 .navbar-default .navbar-offcanvas {
-  background-color: @sidebar-default-bg;
-  border-color: @sidebar-default-border;
+    background-color: @sidebar-default-bg;
+    border-color: @sidebar-default-border;
 
-  .sidebar-brand {
-    color: @sidebar-default-brand-color;
-    &:hover,
-    &:focus {
-      color: @sidebar-default-brand-hover-color;
-      background-color: @sidebar-default-brand-hover-bg;
-    }
-  }
-
-  .sidebar-text {
-    color: @sidebar-default-color;
-  }
-
-  .sidebar-nav {
-    // Caret should match text color on hover
-    > .dropdown > a:hover .caret,
-    > .dropdown > a:focus .caret {
-      border-top-color: @sidebar-default-link-hover-color;
-      border-bottom-color: @sidebar-default-link-hover-color;
-    }
-
-    // Remove background color from open dropdown
-    > .open > a {
-      &,
-      &:hover,
-      &:focus {
-        background-color: @sidebar-default-link-active-bg;
-        color: @sidebar-default-link-active-color;
-        .caret {
-          border-top-color: @sidebar-default-link-active-color;
-          border-bottom-color: @sidebar-default-link-active-color;
-        }
-      }
-    }
-    > .dropdown > a .caret {
-      border-top-color: @sidebar-default-link-color;
-      border-bottom-color: @sidebar-default-link-color;
-    }
-    &.dropdown-menu {
-      background-color: @sidebar-default-link-active-bg;
-      & > .divider {
-        background-color: @sidebar-default-bg;
-      }
-      > .active > a {
-        &,
+    .sidebar-brand {
+        color: @sidebar-default-brand-color;
         &:hover,
         &:focus {
-          background-color: darken(@sidebar-default-link-active-bg, 6.5%);
+            color: @sidebar-default-brand-hover-color;
+            background-color: @sidebar-default-brand-hover-bg;
         }
-      }
     }
 
-    > li > a {
-      color: @sidebar-default-link-color;
-      &:hover,
-      &:focus {
-        color: @sidebar-default-link-hover-color;
-        background-color: @sidebar-default-link-hover-bg;
-      }
+    .sidebar-text {
+        color: @sidebar-default-color;
     }
-    > .active > a {
-      &,
-      &:hover,
-      &:focus {
-        color: @sidebar-default-link-active-color;
-        background-color: @sidebar-default-link-active-bg;
-      }
+
+    .sidebar-nav {
+        // Caret should match text color on hover
+        > .dropdown > a:hover .caret,
+        > .dropdown > a:focus .caret {
+            border-top-color: @sidebar-default-link-hover-color;
+            border-bottom-color: @sidebar-default-link-hover-color;
+        }
+
+        // Remove background color from open dropdown
+        > .open > a {
+            &,
+            &:hover,
+            &:focus {
+                background-color: @sidebar-default-link-active-bg;
+                color: @sidebar-default-link-active-color;
+                .caret {
+                    border-top-color: @sidebar-default-link-active-color;
+                    border-bottom-color: @sidebar-default-link-active-color;
+                }
+            }
+        }
+        > .dropdown > a .caret {
+            border-top-color: @sidebar-default-link-color;
+            border-bottom-color: @sidebar-default-link-color;
+        }
+        &.dropdown-menu {
+            background-color: @sidebar-default-link-active-bg;
+            & > .divider {
+                background-color: @sidebar-default-bg;
+            }
+            > .active > a {
+                &,
+                &:hover,
+                &:focus {
+                    background-color: darken(@sidebar-default-link-active-bg, 6.5%);
+                }
+            }
+        }
+
+        > li > a {
+            color: @sidebar-default-link-color;
+            &:hover,
+            &:focus {
+                color: @sidebar-default-link-hover-color;
+                background-color: @sidebar-default-link-hover-bg;
+            }
+        }
+        > .active > a {
+            &,
+            &:hover,
+            &:focus {
+                color: @sidebar-default-link-active-color;
+                background-color: @sidebar-default-link-active-bg;
+            }
+        }
+        > .disabled > a {
+            &,
+            &:hover,
+            &:focus {
+                color: @sidebar-default-link-disabled-color;
+                background-color: @sidebar-default-link-disabled-bg;
+            }
+        }
     }
-    > .disabled > a {
-      &,
-      &:hover,
-      &:focus {
-        color: @sidebar-default-link-disabled-color;
-        background-color: @sidebar-default-link-disabled-bg;
-      }
-    }
-  }
 }
 
 // Inverse sidebar
 .sidebar-inverse,
 .navbar-inverse .navbar-offcanvas {
-  background-color: @sidebar-inverse-bg;
-  border-color: @sidebar-inverse-border;
+    background-color: @sidebar-inverse-bg;
+    border-color: @sidebar-inverse-border;
 
-  .sidebar-brand {
-    color: @sidebar-inverse-brand-color;
-    &:hover,
-    &:focus {
-      color: @sidebar-inverse-brand-hover-color;
-      background-color: @sidebar-inverse-brand-hover-bg;
-    }
-  }
-
-  .sidebar-text {
-    color: @sidebar-inverse-color;
-  }
-
-  .sidebar-nav {
-    // Caret should match text color on hover
-    > .dropdown > a:hover .caret,
-    > .dropdown > a:focus .caret {
-      border-top-color: @sidebar-inverse-link-hover-color;
-      border-bottom-color: @sidebar-inverse-link-hover-color;
-    }
-
-    // Remove background color from open dropdown
-    > .open > a {
-      &,
-      &:hover,
-      &:focus {
-        background-color: @sidebar-inverse-link-active-bg;
-        color: @sidebar-inverse-link-active-color;
-        .caret {
-          border-top-color: @sidebar-inverse-link-active-color;
-          border-bottom-color: @sidebar-inverse-link-active-color;
-        }
-      }
-    }
-    > .dropdown > a .caret {
-      border-top-color: @sidebar-inverse-link-color;
-      border-bottom-color: @sidebar-inverse-link-color;
-    }
-    &.dropdown-menu {
-      background-color: @sidebar-inverse-link-active-bg;
-      & > .divider {
-        background-color: @sidebar-inverse-bg;
-      }
-      > .active > a {
-        &,
+    .sidebar-brand {
+        color: @sidebar-inverse-brand-color;
         &:hover,
         &:focus {
-          background-color: darken(@sidebar-inverse-link-active-bg, 6.5%);
+            color: @sidebar-inverse-brand-hover-color;
+            background-color: @sidebar-inverse-brand-hover-bg;
         }
-      }
     }
 
-    > li > a {
-      color: @sidebar-inverse-link-color;
-      &:hover,
-      &:focus {
-        color: @sidebar-inverse-link-hover-color;
-        background-color: @sidebar-inverse-link-hover-bg;
-      }
+    .sidebar-text {
+        color: @sidebar-inverse-color;
     }
-    > .active > a {
-      &,
-      &:hover,
-      &:focus {
-        color: @sidebar-inverse-link-active-color;
-        background-color: @sidebar-inverse-link-active-bg;
-      }
+
+    .sidebar-nav {
+        // Caret should match text color on hover
+        > .dropdown > a:hover .caret,
+        > .dropdown > a:focus .caret {
+            border-top-color: @sidebar-inverse-link-hover-color;
+            border-bottom-color: @sidebar-inverse-link-hover-color;
+        }
+
+        // Remove background color from open dropdown
+        > .open > a {
+            &,
+            &:hover,
+            &:focus {
+                background-color: @sidebar-inverse-link-active-bg;
+                color: @sidebar-inverse-link-active-color;
+                .caret {
+                    border-top-color: @sidebar-inverse-link-active-color;
+                    border-bottom-color: @sidebar-inverse-link-active-color;
+                }
+            }
+        }
+        > .dropdown > a .caret {
+            border-top-color: @sidebar-inverse-link-color;
+            border-bottom-color: @sidebar-inverse-link-color;
+        }
+        &.dropdown-menu {
+            background-color: @sidebar-inverse-link-active-bg;
+            & > .divider {
+                background-color: @sidebar-inverse-bg;
+            }
+            > .active > a {
+                &,
+                &:hover,
+                &:focus {
+                    background-color: darken(@sidebar-inverse-link-active-bg, 6.5%);
+                }
+            }
+        }
+
+        > li > a {
+            color: @sidebar-inverse-link-color;
+            &:hover,
+            &:focus {
+                color: @sidebar-inverse-link-hover-color;
+                background-color: @sidebar-inverse-link-hover-bg;
+            }
+        }
+        > .active > a {
+            &,
+            &:hover,
+            &:focus {
+                color: @sidebar-inverse-link-active-color;
+                background-color: @sidebar-inverse-link-active-bg;
+            }
+        }
+        > .disabled > a {
+            &,
+            &:hover,
+            &:focus {
+                color: @sidebar-inverse-link-disabled-color;
+                background-color: @sidebar-inverse-link-disabled-bg;
+            }
+        }
     }
-    > .disabled > a {
-      &,
-      &:hover,
-      &:focus {
-        color: @sidebar-inverse-link-disabled-color;
-        background-color: @sidebar-inverse-link-disabled-bg;
-      }
-    }
-  }
 }
 
 .sidebar-toggle {
-  position: relative;
-  display: none;
-  margin-right: @navbar-padding-horizontal;
-  padding: 9px 10px;
-  .navbar-vertical-align(34px);
-  background-color: transparent;
-  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
-  border: 1px solid transparent;
-  border-radius: @border-radius-base;
+    position: relative;
+    display: none;
+    margin-right: @navbar-padding-horizontal;
+    padding: 9px 10px;
+    .navbar-vertical-align(34px);
+    background-color: transparent;
+    background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+    border: 1px solid transparent;
+    border-radius: @border-radius-base;
 
-  // We remove the `outline` here, but later compensate by attaching `:hover`
-  // styles to `:focus`.
-  &:focus {
-    outline: 0;
-  }
+    // We remove the `outline` here, but later compensate by attaching `:hover`
+    // styles to `:focus`.
+    &:focus {
+        outline: 0;
+    }
 
-  // Bars
-  .icon-bar {
-    display: block;
-    width: 22px;
-    height: 2px;
-    border-radius: 1px;
-  }
-  .icon-bar + .icon-bar {
-    margin-top: 4px;
-  }
+    // Bars
+    .icon-bar {
+        display: block;
+        width: 22px;
+        height: 2px;
+        border-radius: 1px;
+    }
+    .icon-bar + .icon-bar {
+        margin-top: 4px;
+    }
 
-  border-color: @navbar-default-toggle-border-color;
-  &:hover,
-  &:focus {
-    background-color: @navbar-default-toggle-hover-bg;
-  }
-  .icon-bar {
-    background-color: @navbar-default-toggle-icon-bar-bg;
-  }
+    border-color: @navbar-default-toggle-border-color;
+    &:hover,
+    &:focus {
+        background-color: @navbar-default-toggle-hover-bg;
+    }
+    .icon-bar {
+        background-color: @navbar-default-toggle-icon-bar-bg;
+    }
+    .sidebar-toggle-left{
+        margin-left: @navbar-padding-horizontal;
+        float: left;
+    }
+    .sidebar-toggle-right{
+        margin-right: @navbar-padding-horizontal;
+        float: right;
+    }
 }
 
 @media @mobile {
-  .sidebar-toggle-mobile {
-    display: block;
-  }
+    .sidebar-toggle-mobile {
+        display: block;
+    }
 }
 @media @tablet {
-  .sidebar-toggle-tablet {
-    display: block;
-  }
+    .sidebar-toggle-tablet {
+        display: block;
+    }
 }
 @media @mobile-and-tablet {
-  .sidebar-toggle-mobile-and-tablet {
-    display: block;
-  }
+    .sidebar-toggle-mobile-and-tablet {
+        display: block;
+    }
 }
 .sidebar-toggle-desktop {
-  display: block;
+    display: block;
 }

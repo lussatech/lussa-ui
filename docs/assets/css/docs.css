@@ -389,9 +389,11 @@ body a{
     border-color: #3900E6;
 }
 .docs-margin-example {
-    display: inline-block;
+    display: block;
     background: #449BFB;
     border: 1px dotted #033E7E;
+    margin: 20px 0;
+    line-height: 2;
 }
 .docs-padding-example {
     background: #FF8040;
@@ -399,8 +401,7 @@ body a{
 }
 .docs-padding-content-example {
     background: #FFFFFF;
-    width: 100px;
-    height: 50px;
+    display: block;
     position: relative;
 }
 .docs-corner-wrapper-example {

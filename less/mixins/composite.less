@@ -174,8 +174,29 @@
             @{name}-bottom: @xl;
         }
     }
-    & when (@direction = top) and (@direction = bottom)
-        and (@direction = left) and (@direction = right) {
+    & when (@direction = horizontal) {
+        &-medium {
+            @{name}-left: @base;
+            @{name}-right: @base;
+        }
+        &-large {
+            @{name}-left: @large;
+            @{name}-right: @large;
+        }
+        &-small {
+            @{name}-left: @small;
+            @{name}-right: @small;
+        }
+        &-xs {
+            @{name}-left: @xs;
+            @{name}-right: @xs;
+        }
+        &-xl {
+            @{name}-left: @xl;
+            @{name}-right: @xl;
+        }
+    }
+    & when (@direction = top),(@direction = bottom),(@direction = left),(@direction = right) {
         &-medium {
             @{name}-@{direction}: @base;
         }
