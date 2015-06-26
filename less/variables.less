@@ -13,99 +13,99 @@
  */
 
 // By Translucency
-@accent-neutral                             : #555555;
-@accent-dark                                : darken(@accent-neutral, 20%);
-@accent-light                               : lighten(@accent-neutral, 55%);
-@accent-soft                                : lighten(@accent-neutral, 30%);
+@accent-neutral                 : #555555;
+@accent-dark                    : darken(@accent-neutral, 20%);
+@accent-light                   : lighten(@accent-neutral, 55%);
+@accent-soft                    : lighten(@accent-neutral, 30%);
 
 // By Contrast
-@accent-vibrant                             : #FFC926;
-@accent-clear                               : #FFFFFF;
+@accent-vibrant                 : #FFC926;
+@accent-clear                   : #FFFFFF;
 
 // By Context
-@accent-primary                             : #3F1164;
-@accent-success                             : #349B02;
-@accent-info                                : #FFFFFF;
-@accent-warning                             : #F9FE34;
-@accent-error                               : #FF0000;
-@accent-muted                               : lighten(@accent-neutral, 55%);
+@accent-primary                 : #3F1164;
+@accent-success                 : #349B02;
+@accent-info                    : #FFFFFF;
+@accent-warning                 : #F9FE34;
+@accent-error                   : #FF0000;
+@accent-muted                   : lighten(@accent-neutral, 55%);
 
 // Global Accent
-@body-bg                                    : @accent-clear;
-@text-color                                 : @accent-dark;
-@link-color                                 : @accent-primary;
-@link-hover-color                           : darken(@link-color, 15%);
-@link-hover-decoration                      : underline;
+@body-bg                        : @accent-clear;
+@text-color                     : @accent-dark;
+@link-color                     : @accent-primary;
+@link-hover-color               : darken(@link-color, 15%);
+@link-hover-decoration          : underline;
 
 /**
  * Transistion
  * ## Global transition speed & easing
  */
-@transition-speed                           : 0.5s;
-@transition-easing                          : ease;
+@transition-speed               : 0.5s;
+@transition-easing              : ease;
 
 /**
  * Typography
  * ## text font family
  */
 // Font family
-@font-family-base                           : 'texgyreherosregular';
-@font-family-monospace                      : Menlo, Monaco, Consolas, "Courier New", monospace;
+@font-family-base               : 'texgyreherosregular';
+@font-family-monospace          : Menlo, Monaco, Consolas, "Courier New", monospace;
 
 // accent fonts
-@font-family-alternative-1                  : 'texgyreherosregular';
-@font-family-alternative-2                  : 'texgyreherosbold';
-@font-family-alternative-3                  : 'texgyreherositalic';
+@font-family-alternative-1      : 'texgyreherosregular';
+@font-family-alternative-2      : 'texgyreherosbold';
+@font-family-alternative-3      : 'texgyreherositalic';
 
 // custom fonts
-@font-path                                  : '../fonts';
+@font-path                      : '../fonts';
 
 // Heading font size
-@font-size-base                             : 12px;
-@font-size-large                            : ceil((@font-size-base * 1.25));
-@font-size-small                            : ceil((@font-size-base * 0.85));
+@font-size-base                 : 12px;
+@font-size-large                : ceil((@font-size-base * 1.25));
+@font-size-small                : ceil((@font-size-base * 0.85));
 
-@font-size-h1                               : floor((@font-size-base * 2.6));
-@font-size-h2                               : floor((@font-size-base * 2.15));
-@font-size-h3                               : ceil((@font-size-base * 1.7));
-@font-size-h4                               : ceil((@font-size-base * 1.25));
-@font-size-h5                               : @font-size-base;
-@font-size-h6                               : ceil((@font-size-base * 0.85));
+@font-size-h1                   : floor((@font-size-base * 2.6));
+@font-size-h2                   : floor((@font-size-base * 2.15));
+@font-size-h3                   : ceil((@font-size-base * 1.7));
+@font-size-h4                   : ceil((@font-size-base * 1.25));
+@font-size-h5                   : @font-size-base;
+@font-size-h6                   : ceil((@font-size-base * 0.85));
 
 // Unit-less `line-height` for use in components like buttons.
-@line-height-base                           : 1.428571429;
-@line-height-computed                       : floor((@font-size-base * @line-height-base));
+@line-height-base               : 1.428571429;
+@line-height-computed           : floor((@font-size-base * @line-height-base));
 
 // default heading
-@headings-font-family                       : inherit;
-@headings-font-weight                       : 500;
-@headings-line-height                       : 1.1;
-@headings-color                             : inherit;
+@headings-font-family           : inherit;
+@headings-font-weight           : 500;
+@headings-line-height           : 1.1;
+@headings-color                 : inherit;
 
 // Heading Variant
-@headings-large-font-family                 : @font-family-base;
-@headings-large-font-weight                 : light;
-@headings-large-line-height                 : 1.2;
-@headings-large-letter-spacing              : 0;
+@headings-large-font-family     : @font-family-base;
+@headings-large-font-weight     : light;
+@headings-large-line-height     : 1.2;
+@headings-large-letter-spacing  : 0;
 
-@headings-medium-font-family                : @font-family-base;
-@headings-medium-font-weight                : normal;
-@headings-medium-line-height                : 1.4;
-@headings-medium-letter-spacing             : 0;
+@headings-medium-font-family    : @font-family-base;
+@headings-medium-font-weight    : normal;
+@headings-medium-line-height    : 1.4;
+@headings-medium-letter-spacing : 0;
 
-@headings-small-font-family                 : @font-family-base;
-@headings-small-font-weight                 : normal;
-@headings-small-line-height                 : 1.1;
-@headings-small-letter-spacing              : 0;
+@headings-small-font-family     : @font-family-base;
+@headings-small-font-weight     : normal;
+@headings-small-line-height     : 1.1;
+@headings-small-letter-spacing  : 0;
 
 // type
-@component-offset-horizontal                : 180px;
-@text-muted                                 : @accent-muted;
-@dl-horizontal-offset                       : @component-offset-horizontal;
+@component-offset-horizontal    : 180px;
+@text-muted                     : @accent-muted;
+@dl-horizontal-offset           : @component-offset-horizontal;
 
-@blockquote-small-color                     : @accent-soft;
-@blockquote-font-size                       : (@font-size-base * 1.25);
-@blockquote-border-color                    : @accent-soft;
+@blockquote-small-color         : @accent-soft;
+@blockquote-font-size           : (@font-size-base * 1.25);
+@blockquote-border-color        : @accent-soft;
 
 
 
@@ -113,23 +113,23 @@
  * Ruler
  * ## hr & vr
  */
-@ruler-border-accent                        : @accent-soft;
-@ruler-border-size                          : 1px;
-@ruler-border-style                         : solid;
-@ruler-border-size-large                    : 5px;
+@ruler-border-accent            : @accent-soft;
+@ruler-border-size              : 1px;
+@ruler-border-style             : solid;
+@ruler-border-size-large        : 5px;
 
 /**
  * Iconography
  * ## icon font & default sprite
  */
-@icon-font-path                             : "../fonts";
-@icon-font-prefix                           : icon-;
-@icon-base-class                            : ionicon;
+@icon-font-path                 : "../fonts";
+@icon-font-prefix               : icon-;
+@icon-base-class                : ionicon;
 
-@close-font-weight                          : bold;
-@close-color                                : #000;
-@close-text-shadow                          : 0 1px 0 #fff;
-@close-icon                                 : "\f405";
+@close-font-weight              : bold;
+@close-color                    : #000;
+@close-text-shadow              : 0 1px 0 #fff;
+@close-icon                     : "\f405";
 
 /**
  * Component
@@ -137,195 +137,200 @@
  */
 
 // padding
-@padding-base-vertical                      : 6px;
-@padding-base-horizontal                    : 12px;
-@padding-large-vertical                     : 10px;
-@padding-large-horizontal                   : 16px;
-@padding-small-vertical                     : 5px;
-@padding-small-horizontal                   : 10px;
-@padding-xs-vertical                        : 1px;
-@padding-xs-horizontal                      : 5px;
-@padding-xl-vertical                        : 15px;
-@padding-xl-horizontal                      : 80px;
+@padding-base-vertical          : 6px;
+@padding-base-horizontal        : 12px;
+@padding-large-vertical         : 10px;
+@padding-large-horizontal       : 16px;
+@padding-small-vertical         : 5px;
+@padding-small-horizontal       : 10px;
+@padding-xs-vertical            : 1px;
+@padding-xs-horizontal          : 5px;
+@padding-xl-vertical            : 15px;
+@padding-xl-horizontal          : 80px;
 
 // margin
-@margin-base-vertical                       : 6px;
-@margin-base-horizontal                     : 12px;
-@margin-large-vertical                      : 10px;
-@margin-large-horizontal                    : 16px;
-@margin-small-vertical                      : 5px;
-@margin-small-horizontal                    : 10px;
-@margin-xs-vertical                         : 1px;
-@margin-xs-horizontal                       : 5px;
-@margin-xl-vertical                         : 15px;
-@margin-xl-horizontal                       : 80px;
+@margin-base-vertical           : 6px;
+@margin-base-horizontal         : 12px;
+@margin-large-vertical          : 10px;
+@margin-large-horizontal        : 16px;
+@margin-small-vertical          : 5px;
+@margin-small-horizontal        : 10px;
+@margin-xs-vertical             : 1px;
+@margin-xs-horizontal           : 5px;
+@margin-xl-vertical             : 15px;
+@margin-xl-horizontal           : 80px;
 
 // line
-@line-height-large                          : 1.3333333; // extra decimals for Win 8.1 Chrome
-@line-height-small                          : 1.5;
+@line-height-large              : 1.3333333; // extra decimals for Win 8.1 Chrome
+@line-height-small              : 1.5;
 
 // border radius
-@border-radius-base                         : 3px;
-@border-radius-large                        : 3px;
-@border-radius-small                        : 3px;
+@border-radius-base             : 3px;
+@border-radius-large            : 3px;
+@border-radius-small            : 3px;
 
 // carret
-@caret-width-base                           : 4px;
-@caret-width-large                          : 5px;
+@caret-width-base               : 4px;
+@caret-width-large              : 5px;
 
 // components
-@component-active-color                     : @accent-clear;
-@component-active-bg                        : @accent-primary;
+@component-active-color         : @accent-clear;
+@component-active-bg            : @accent-primary;
+
+// border
+@border-small                   : 1px;
+@border-medium                  : 2px;
+@border-large                   : 4px;
 
 // list
-@dl-horizontal-offset                       : 180px;
+@dl-horizontal-offset           : 180px;
 
 /**
  * Tables
  * ## default table sizing & stuff
  */
-@table-cell-padding                         : 8px;
-@table-condensed-cell-padding               : 5px;
+@table-cell-padding             : 8px;
+@table-condensed-cell-padding   : 5px;
 
-@table-bg                                   : transparent;
+@table-bg                       : transparent;
 // Background color used for `.table-striped`.
-@table-bg-accent                            : #f9f9f9;
+@table-bg-accent                : #f9f9f9;
 // Background color used for `.table-hover`.
-@table-bg-hover                             : #f5f5f5;
-@table-bg-active                            : @table-bg-hover;
+@table-bg-hover                 : #f5f5f5;
+@table-bg-active                : @table-bg-hover;
 // Border color for table and cell borders.
-@table-border-color                         : #ddd;
+@table-border-color             : #ddd;
 
 // sorting
-@table-sorting-indicator-color              : @accent-dark;
-@table-sorting-active-bg                    : @accent-light;
+@table-sorting-indicator-color  : @accent-dark;
+@table-sorting-active-bg        : @accent-light;
 
 
 /**
  * Button
  * ## Button accent, size variant & accent
  */
-@button-font-weight                         : normal;
+@button-font-weight             : normal;
 
-@button-default-color                       : @accent-dark;
-@button-default-bg                          : @accent-clear;
-@button-default-border                      : @accent-soft;
+@button-default-color           : @accent-dark;
+@button-default-bg              : @accent-clear;
+@button-default-border          : @accent-soft;
 
-@button-primary-color                       : @accent-clear;
-@button-primary-bg                          : @accent-primary;
-@button-primary-border                      : darken(@button-primary-bg, 5%);
+@button-primary-color           : @accent-clear;
+@button-primary-bg              : @accent-primary;
+@button-primary-border          : darken(@button-primary-bg, 5%);
 
-@button-success-color                       : @accent-clear;
-@button-success-bg                          : @accent-success;
-@button-success-border                      : darken(@button-success-bg, 5%);
+@button-success-color           : @accent-clear;
+@button-success-bg              : @accent-success;
+@button-success-border          : darken(@button-success-bg, 5%);
 
-@button-info-color                          : @accent-dark;
-@button-info-bg                             : @accent-info;
-@button-info-border                         : darken(@button-info-bg, 5%);
+@button-info-color              : @accent-dark;
+@button-info-bg                 : @accent-info;
+@button-info-border             : darken(@button-info-bg, 5%);
 
-@button-warning-color                       : @accent-clear;
-@button-warning-bg                          : @accent-warning;
-@button-warning-border                      : darken(@button-warning-bg, 5%);
+@button-warning-color           : @accent-clear;
+@button-warning-bg              : @accent-warning;
+@button-warning-border          : darken(@button-warning-bg, 5%);
 
-@button-error-color                         : @accent-clear;
-@button-error-bg                            : @accent-error;
-@button-error-border                        : darken(@button-error-bg, 5%);
+@button-error-color             : @accent-clear;
+@button-error-bg                : @accent-error;
+@button-error-border            : darken(@button-error-bg, 5%);
 
-@button-link-disabled-color                 : @accent-muted;
+@button-link-disabled-color     : @accent-muted;
 
 // Allows for customizing button radius independently from global border radius
-@button-border-radius-base                  : @border-radius-base;
-@button-border-radius-large                 : @border-radius-large;
-@button-border-radius-small                 : @border-radius-small;
+@button-border-radius-base      : @border-radius-base;
+@button-border-radius-large     : @border-radius-large;
+@button-border-radius-small     : @border-radius-small;
 
 /**
  * Forms
  * ## input, textarea, autocomplete, tags style
  */
 
-@input-bg                                   : @accent-clear;
-@input-bg-disabled                          : @accent-muted;
-@input-color                                : @accent-neutral;
-@input-border                               : @accent-dark;
+@input-bg                       : @accent-clear;
+@input-bg-disabled              : @accent-muted;
+@input-color                    : @accent-neutral;
+@input-border                   : @accent-dark;
 
-@input-border-radius                        : @border-radius-base;
-@input-border-radius-large                  : @border-radius-large;
-@input-border-radius-small                  : @border-radius-small;
+@input-border-radius            : @border-radius-base;
+@input-border-radius-large      : @border-radius-large;
+@input-border-radius-small      : @border-radius-small;
 
-@input-border-focus                         : @accent-neutral;
+@input-border-focus             : @accent-neutral;
 
-@input-color-placeholder                    : @accent-soft;
+@input-color-placeholder        : @accent-soft;
 
-@input-height-base                          : (@line-height-computed + (@padding-base-vertical * 2) + 2);
-@input-height-large                         : (ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
-@input-height-small                         : (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
+@input-height-base              : (@line-height-computed + (@padding-base-vertical * 2) + 2);
+@input-height-large             : (ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
+@input-height-small             : (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
 
-@form-group-margin-bottom                   : 15px;
+@form-group-margin-bottom       : 15px;
 
-@legend-color                               : @accent-dark;
-@legend-border-color                        : @accent-light;
+@legend-color                   : @accent-dark;
+@legend-border-color            : @accent-light;
 
-@input-group-addon-bg                       : @accent-light;
-@input-group-addon-border-color             : @input-border;
+@input-group-addon-bg           : @accent-light;
+@input-group-addon-border-color : @input-border;
 
-@cursor-disabled                            : not-allowed;
+@cursor-disabled                : not-allowed;
 
 /**
 * Label
 * ## Label vars & control
 */
-@label-default-bg                           : @accent-light;
-@label-primary-bg                           : @accent-primary;
-@label-success-bg                           : @accent-success;
-@label-info-bg                              : @accent-info;
-@label-warning-bg                           : @accent-warning;
-@label-error-bg                             : @accent-error;
+@label-default-bg               : @accent-light;
+@label-primary-bg               : @accent-primary;
+@label-success-bg               : @accent-success;
+@label-info-bg                  : @accent-info;
+@label-warning-bg               : @accent-warning;
+@label-error-bg                 : @accent-error;
 
 // color
-@label-color-light                          : @accent-clear;
-@label-color-dark                           : @accent-dark;
-@label-color                                : @label-color-light;
-@label-link-hover-color                     : @accent-light;
+@label-color-light              : @accent-clear;
+@label-color-dark               : @accent-dark;
+@label-color                    : @label-color-light;
+@label-link-hover-color         : @accent-light;
 
 /**
 * State Accent
 * ## for forms & alert
 */
 
-@state-success-text                         : darken(@accent-success,20);
-@state-success-bg                           : lighten(@accent-success,50);
-@state-success-border                       : darken(spin(@state-success-bg, -10), 20%);
+@state-success-text             : darken(@accent-success,20);
+@state-success-bg               : lighten(@accent-success,50);
+@state-success-border           : darken(spin(@state-success-bg, -10), 20%);
 
-@state-info-text                            : darken(@accent-info,60);
-@state-info-bg                              : lighten(@accent-info,30);
-@state-info-border                          : darken(spin(@state-info-bg, -10), 20%);
+@state-info-text                : darken(@accent-info,60);
+@state-info-bg                  : lighten(@accent-info,30);
+@state-info-border              : darken(spin(@state-info-bg, -10), 20%);
 
-@state-warning-text                         : darken(@accent-warning,20);
-@state-warning-bg                           : lighten(@accent-warning,30);
-@state-warning-border                       : darken(spin(@state-warning-bg, -10), 20%);
+@state-warning-text             : darken(@accent-warning,20);
+@state-warning-bg               : lighten(@accent-warning,30);
+@state-warning-border           : darken(spin(@state-warning-bg, -10), 20%);
 
-@state-error-text                           : darken(@accent-error,20);
-@state-error-bg                             : lighten(@accent-error,30);
-@state-error-border                         : darken(spin(@state-error-bg, -10), 20%);
+@state-error-text               : darken(@accent-error,20);
+@state-error-bg                 : lighten(@accent-error,30);
+@state-error-border             : darken(spin(@state-error-bg, -10), 20%);
 
 /**
 * Thumbnails
 * ## default image style
 */
 
-@thumbnail-padding                          : 4px;
-@thumbnail-bg                               : @body-bg;
-@thumbnail-border                           : #ddd;
-@thumbnail-border-radius                    : @border-radius-base;
-@thumbnail-caption-color                    : @text-color;
-@thumbnail-caption-padding                  : 9px;
+@thumbnail-padding              : 4px;
+@thumbnail-bg                   : @body-bg;
+@thumbnail-border               : #ddd;
+@thumbnail-border-radius        : @border-radius-base;
+@thumbnail-caption-color        : @text-color;
+@thumbnail-caption-padding      : 9px;
 
 
 /**
 * Code
 * ## default code accent
 */
-@pre-scrollable-max-height                  : 340px;
+@pre-scrollable-max-height      : 340px;
 
 
 /**
@@ -333,71 +338,71 @@
  * ## Dropdown menu container and contents.
  */
 
-@dropdown-bg                                : @accent-clear;
-@dropdown-border                            : rgba(0,0,0,.15);
-@dropdown-fallback-border                   : @accent-soft;
-@dropdown-divider-bg                        : @ruler-border-accent;
+@dropdown-bg                    : @accent-clear;
+@dropdown-border                : rgba(0,0,0,.15);
+@dropdown-fallback-border       : @accent-soft;
+@dropdown-divider-bg            : @ruler-border-accent;
 
-@dropdown-link-color                        : @accent-neutral;
-@dropdown-link-hover-color                  : @accent-neutral;
-@dropdown-link-hover-bg                     : @accent-light;
+@dropdown-link-color            : @accent-neutral;
+@dropdown-link-hover-color      : @accent-neutral;
+@dropdown-link-hover-bg         : @accent-light;
 
-@dropdown-link-active-color                 : @component-active-color;
-@dropdown-link-active-bg                    : @component-active-bg;
+@dropdown-link-active-color     : @component-active-color;
+@dropdown-link-active-bg        : @component-active-bg;
 
-@dropdown-link-disabled-color               : @accent-light;
+@dropdown-link-disabled-color   : @accent-light;
 
-@dropdown-header-color                      : @accent-neutral;
-@dropdown-caret-color                       : @accent-dark;
+@dropdown-header-color          : @accent-neutral;
+@dropdown-caret-color           : @accent-dark;
 
 /**
  * Alert
  * ## Define alert colors, border radius, and padding.
  */
-@alert-padding                              : 15px;
-@alert-border-radius                        : @border-radius-base;
-@alert-link-font-weight                     : bold;
+@alert-padding                  : 15px;
+@alert-border-radius            : @border-radius-base;
+@alert-link-font-weight         : bold;
 
-@alert-success-bg                           : @state-success-bg;
-@alert-success-text                         : @state-success-text;
-@alert-success-border                       : @state-success-border;
+@alert-success-bg               : @state-success-bg;
+@alert-success-text             : @state-success-text;
+@alert-success-border           : @state-success-border;
 
-@alert-info-bg                              : @state-info-bg;
-@alert-info-text                            : @state-info-text;
-@alert-info-border                          : @state-info-border;
+@alert-info-bg                  : @state-info-bg;
+@alert-info-text                : @state-info-text;
+@alert-info-border              : @state-info-border;
 
-@alert-warning-bg                           : @state-warning-bg;
-@alert-warning-text                         : @state-warning-text;
-@alert-warning-border                       : @state-warning-border;
+@alert-warning-bg               : @state-warning-bg;
+@alert-warning-text             : @state-warning-text;
+@alert-warning-border           : @state-warning-border;
 
-@alert-error-bg                             : @state-error-bg;
-@alert-error-text                           : @state-error-text;
-@alert-error-border                         : @state-error-border;
+@alert-error-bg                 : @state-error-bg;
+@alert-error-text               : @state-error-text;
+@alert-error-border             : @state-error-border;
 
 /**
  * Loading Bar
  */
-@loading-bar-bg                             : @accent-clear;
-@loading-bar-border                         : @accent-clear;
+@loading-bar-bg                 : @accent-clear;
+@loading-bar-border             : @accent-clear;
 
 /**
  * Pagination
  */
-@pagination-color                           : @accent-dark;
-@pagination-bg                              : @accent-clear;
-@pagination-border                          : @accent-soft;
+@pagination-color               : @accent-dark;
+@pagination-bg                  : @accent-clear;
+@pagination-border              : @accent-soft;
 
-@pagination-hover-color                     : @accent-dark;
-@pagination-hover-bg                        : @accent-light;
-@pagination-hover-border                    : @accent-dark;
+@pagination-hover-color         : @accent-dark;
+@pagination-hover-bg            : @accent-light;
+@pagination-hover-border        : @accent-dark;
 
-@pagination-active-color                    : @accent-light;
-@pagination-active-bg                       : @accent-primary;
-@pagination-active-border                   : darken(@accent-primary,20);
+@pagination-active-color        : @accent-light;
+@pagination-active-bg           : @accent-primary;
+@pagination-active-border       : darken(@accent-primary,20);
 
-@pagination-disabled-color                  : @accent-muted;
-@pagination-disabled-bg                     : @accent-clear;
-@pagination-disabled-border                 : @accent-muted;
+@pagination-disabled-color      : @accent-muted;
+@pagination-disabled-bg         : @accent-clear;
+@pagination-disabled-border     : @accent-muted;
 
 /**
  * Carousel
@@ -559,51 +564,51 @@
 @modal-title-padding                        : 15px;
 @modal-title-line-height                    : @line-height-base;
 
-@modal-content-bg                           : #fff;
-@modal-content-border-color                 : rgba(0,0,0,.2);
-@modal-content-fallback-border-color        : #999;
+@modal-content-bg                    : #fff;
+@modal-content-border-color          : rgba(0,0,0,.2);
+@modal-content-fallback-border-color : #999;
 
-@modal-backdrop-bg                          : #000;
-@modal-backdrop-opacity                     : .5;
-@modal-header-border-color                  : #e5e5e5;
-@modal-footer-border-color                  : @modal-header-border-color;
+@modal-backdrop-bg                   : #000;
+@modal-backdrop-opacity              : .5;
+@modal-header-border-color           : #e5e5e5;
+@modal-footer-border-color           : @modal-header-border-color;
 
-@modal-large                                : 900px;
-@modal-medium                               : 600px;
-@modal-small                                : 300px;
+@modal-large                         : 900px;
+@modal-medium                        : 600px;
+@modal-small                         : 300px;
 
 
 /**
  * Z-Index
  * ## z-index master control list
  */
-@zindex-navbar                              : 1000;
-@zindex-dropdown                            : 1000;
-@zindex-navbar-fixed                        : 1030;
-@zindex-sidebar-fixed                       : 1030;
-@zindex-modal-background                    : 1040;
-@zindex-modal                               : 1050;
-@zindex-loading-bar                         : 1060;
+@zindex-navbar                       : 1000;
+@zindex-dropdown                     : 1000;
+@zindex-navbar-fixed                 : 1030;
+@zindex-sidebar-fixed                : 1030;
+@zindex-modal-background             : 1040;
+@zindex-modal                        : 1050;
+@zindex-loading-bar                  : 1060;
 
 /**
  * Grid
  * ## Spesify grid size for mobile, desktop, container max size & stuff
  */
 
-@tablet-breakpoint                          : 520px;
-@desktop-breakpoint                         : 780px;
+@tablet-breakpoint                   : 520px;
+@desktop-breakpoint                  : 780px;
 
-@desktop                                    : ~"(min-width: @{desktop-breakpoint})";
-@mobile-and-tablet                          : ~"(max-width: @{desktop-breakpoint})";
-@tablet                                     : ~"(min-width: @{tablet-breakpoint}) and (max-width: @{desktop-breakpoint})";
-@mobile                                     : ~"(max-width: @{tablet-breakpoint})";
+@desktop                             : ~"(min-width: @{desktop-breakpoint})";
+@mobile-and-tablet                   : ~"(max-width: @{desktop-breakpoint})";
+@tablet                              : ~"(min-width: @{tablet-breakpoint}) and (max-width: @{desktop-breakpoint})";
+@mobile                              : ~"(max-width: @{tablet-breakpoint})";
 
-@max-width                                  : 1200px;
-@min-width                                  : 320px;
+@max-width                           : 1200px;
+@min-width                           : 320px;
 
-@grid-gutter                                : 20px;
-@grid-gutter-half                           : @grid-gutter/2;
+@grid-gutter                         : 20px;
+@grid-gutter-half                    : @grid-gutter/2;
 
 
-@grid-float-breakpoint                      : @desktop-breakpoint;
-@grid-float-breakpoint-max                  : (@grid-float-breakpoint - 1);
+@grid-float-breakpoint               : @desktop-breakpoint;
+@grid-float-breakpoint-max           : (@grid-float-breakpoint - 1);

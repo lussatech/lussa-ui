@@ -58,12 +58,17 @@
 /**
  * Border Style
  */
+.border-small{ border-width : @border-small; }
+.border-medium{ border-width: @border-medium; }
+.border-large{ border-width : @border-large; }
+
 .border-dotted{ border-style: dotted; }
 .border-dashed{ border-style: dashed; }
-.border-inset{ border-style: inset; }
+.border-inset{ border-style : inset; }
 .border-outset{ border-style: outset; }
 .border-groove{ border-style: groove; }
-.border-ridge{ border-style: ridge; }
+.border-ridge{ border-style : ridge; }
+.border-solid{ border-style : solid; }
 
 /**
  * Padding & Margin
@@ -87,6 +92,11 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+.vertical-center > *{
+    position: relative;
+    top: 50%;
+    .transform(translateY(-50%))
 }
 
 // positioning
