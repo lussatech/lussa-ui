@@ -1,102 +1,108 @@
 /**
- *
- */
+*
+*/
 
 .toast {
-  position: fixed;
-  z-index: 99999;
-  width: 100%;
-  height: 0;
-  text-align: center;
-
-  .alert {
-    .box-shadow(0 0 5px -1px rgba(0,0,0,.5));
-  }
-
-  &.toast--top {
-    top: 60px;
-    bottom: auto;
-  }
-  &.toast--top .toast__list {
-    top: 0;
-    bottom: auto;
-  }
-  &.toast--top.toast--center .toast__list {
-    position: static;
-  }
-  &.toast--bottom {
-    top: auto;
-    bottom: 0;
-  }
-  &.toast--bottom .toast__list {
-    top: auto;
-    bottom: 10px;
-  }
-  &.toast--bottom.toast--center .toast__list {
-    pointer-events: none;
-  }
-  &.toast--bottom.toast--center .toast__message .alert {
-    pointer-events: auto;
-  }
-  &.toast--right .toast__list {
-    left: auto;
-    right: 0;
-    margin-right: 20px;
-  }
-  &.toast--right .toast__message {
-    text-align: right;
-  }
-  &.toast--left .toast__list {
-    right: auto;
-    left: 0;
-    margin-left: 20px;
-  }
-  &.toast--left .toast__message {
-    text-align: left;
-  }
-
-  .toast__list {
-    display: inline-block;
-    position: absolute;
-    right: 0;
-    left: 0;
-    margin: 0 auto;
-    padding: 0;
-    list-style: none;
-  }
-  .toast__message {
-    display: block;
+    position: fixed;
+    z-index: 99999;
     width: 100%;
+    height: 0;
     text-align: center;
-  }
-  .toast__message .alert {
-    display: inline-block;
-  }
-  .ng-enter,
-  .ng-leave,
-  .ng-move {
-    transition: 0.3s ease left, 0.3s ease opacity;
-  }
-  .ng-enter {
-    left: -50px;
-    opacity: 0;
-  }
-  .ng-enter.ng-enter-active {
-    left: 0;
-    opacity: 1;
-  }
-  .ng-leave {
-    left: 0;
-    opacity: 1;
-  }
-  .ng-leave.ng-leave-active {
-    left: -50px;
-    opacity: 0;
-  }
-  .ng-move {
-    opacity: 0.5;
-  }
-  .ng-move.ng-move-active {
-    opacity: 1;
-  }
+
+    .alert {
+        .box-shadow(0 0 5px -1px rgba(0,0,0,.5));
+    }
+
+    &.toast--top {
+        top: 60px;
+        bottom: auto;
+    }
+    &.toast--top .toast__list {
+        top: 0;
+        bottom: auto;
+    }
+    &.toast--top.toast--center .toast__list {
+        position: static;
+    }
+    &.toast--bottom {
+        top: auto;
+        bottom: 0;
+    }
+    &.toast--bottom .toast__list {
+        top: auto;
+        bottom: 10px;
+    }
+    &.toast--bottom.toast--center .toast__list {
+        pointer-events: none;
+    }
+    &.toast--bottom.toast--center .toast__message .alert {
+        pointer-events: auto;
+    }
+    &.toast--right {
+        right: 0;
+    }
+    &.toast--right .toast__list {
+        left: auto;
+        right: 0;
+        margin-right: 20px;
+    }
+    &.toast--right .toast__message {
+        text-align: right;
+    }
+    &.toast--left {
+        left: 0;
+    }
+    &.toast--left .toast__list {
+        right: auto;
+        left: 0;
+        margin-left: 20px;
+    }
+    &.toast--left .toast__message {
+        text-align: left;
+    }
+
+    .toast__list {
+        display: inline-block;
+        position: absolute;
+        right: 0;
+        left: 0;
+        margin: 0 auto;
+        padding: 0;
+        list-style: none;
+    }
+    .toast__message {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+    .toast__message .alert {
+        display: inline-block;
+    }
+    .ng-enter,
+    .ng-leave,
+    .ng-move {
+        transition: 0.3s ease left, 0.3s ease opacity;
+    }
+    .ng-enter {
+        left: -50px;
+        opacity: 0;
+    }
+    .ng-enter.ng-enter-active {
+        left: 0;
+        opacity: 1;
+    }
+    .ng-leave {
+        left: 0;
+        opacity: 1;
+    }
+    .ng-leave.ng-leave-active {
+        left: -50px;
+        opacity: 0;
+    }
+    .ng-move {
+        opacity: 0.5;
+    }
+    .ng-move.ng-move-active {
+        opacity: 1;
+    }
 }

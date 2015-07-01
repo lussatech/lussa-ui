@@ -163,7 +163,7 @@ toast.directive('toastMessage', ['$timeout','$compile','toast',
 			'<li class="toast__message">' +
 			'<div class="alert alert-{{message.className}}" ' +
 			'ng-class="{\'alert-dismissible\': message.dismissButton}">' +
-			'<a role="link" class="close icon icon-close-round" ' +
+			'<a role="link" class="close" ' +
 			'ng-if="message.dismissButton" ' +
 			'ng-bind-html="message.dismissButtonHtml" ' +
 			'ng-click="!message.dismissOnClick && dismiss()">' +
