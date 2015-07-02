@@ -7,7 +7,7 @@ slug: sidebar-off-canvas
 <nav class="sidebar sidebar-default sidebar-fixed-left offcanvas-mobile-and-tablet"
     role="navigation"
     offcanvas="isOffcanvas"
-    data-canvas="body">
+    data-canvas="body, .navbar-fixed-top">
   <a class="sidebar-brand" href="#">Brand</a>
   <ul class="nav sidebar-nav">
     <li class="active"><a href="#">Link</a></li>
@@ -24,7 +24,7 @@ slug: sidebar-off-canvas
     </li>
   </ul>
 </nav>
-<div class="navbar navbar-default navbar-static-top">
+<div class="navbar navbar-default navbar-fixed-top">
   <button type="button" class="sidebar-toggle sidebar-toggle-desktop"
     ng-click="isOffcanvas = !isOffcanvas">
     <span class="icon-bar"></span>
