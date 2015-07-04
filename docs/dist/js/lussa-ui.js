@@ -4651,119 +4651,72 @@ modal.provider('$modal', function () {
  * @name lussa.ui.collapse
  */
 angular.module('lussa.ui.offcanvas', [])
-.directive('offcanvas', ['$animate','$window',
-    function ($animate,$window) {
+.directive('offcanvas', ['$animate', '$log', '$q',
+    function ($animate,$log,$q) {
     var isolateController = function (scope, element, attrs) {
-        var canvasSelector = attrs.canvas || 'body',
-            canvas = angular.element(canvasSelector),
-            position = 'left',
-            desktopBreakpoint = 780,
-            tabletBreakpoint = 520,
-            alreadyInitiate = false,
-            screenSize = 0;
+        var canvasSelector    = attrs.canvas || 'body',
+            canvas            = angular.element(canvasSelector),
+            navbar            = canvas.find('.navbar.navbar-fixed-top, .navbar.navbar-fixed-bottom'),
+            position          = 'left',
+            DESKTOP_BREAKPOINT = 780,
+            TABLET_BREAKPOINT  = 520,
+            breakPoint = 0;
 
         // get sidebar class
         if(element.hasClass('sidebar-fixed-right'))
             position = 'right';
 
+        // determine breakpoint
+        if(element.hasClass('offcanvas-mobile'))
+            breakPoint = TABLET_BREAKPOINT;
+        if(element.hasClass('offcanvas-tablet'))
+            breakPoint = DESKTOP_BREAKPOINT;
+
         function onCanvas() {
-            element.addClass('in');
-            if(position === 'left') {
-                element.css({'left' : '-' + element.outerWidth() + 'px'});
-                $animate.addClass(element, 'canvas-sliding', {
-                    to: { left: '0' }
-                }).then(onCanvasDone);
-
-                $animate.addClass(canvas, 'canvas-sliding', {
-                    to: { 'padding-left': element.outerWidth() + 'px'}
-                }).then(onCanvasDone);
-            }else if(position === 'right'){
-                element.css({'right' : '-' + element.outerWidth() + 'px'});
-                $animate.addClass(element, 'canvas-sliding', {
-                    to: { right: '0' }
-                }).then(onCanvasDone);
-
-                $animate.addClass(canvas, 'canvas-sliding', {
-                    to: { 'padding-right': element.outerWidth() + 'px'}
-                }).then(onCanvasDone);
-            }
+            canvas.removeClass('canvas-in');
+            $q.all([
+                $animate.addClass(canvas, 'canvas-out'),
+                $animate.addClass(element, 'in')
+            ])
+            .then(onCanvasDone());
         }
 
         function onCanvasDone() {
-            // element state
-            if(position === 'left') {
-                element.removeClass('canvas-sliding')
-                    .css({left: '0'});
-                // canvas state
-                canvas.removeClass('canvas-sliding')
-                    .addClass('canvas-slide')
-                    .css({'padding-left': element.outerWidth() + 'px'});
-            }else if(position === 'right'){
-                element.removeClass('canvas-sliding')
-                    .css({right: '0'});
-                // canvas state
-                canvas.removeClass('canvas-sliding')
-                    .addClass('canvas-slide')
-                    .css({'padding-right': element.outerWidth() + 'px'});
-            }
+            $log.info('on canvas done');
         }
 
         function offCanvas() {
-            canvas.removeClass('canvas-slide');
-
-            if(position === 'left') {
-                $animate.addClass(element, 'canvas-sliding', {
-                    to: {left: '-' + element.outerWidth() + 'px'}
-                }).then(offCanvasDone);
-
-                $animate.addClass(canvas, 'canvas-sliding', {
-                    to: { 'padding-left': '0'}
-                }).then(offCanvasDone);
-            }else if(position === 'right'){
-                $animate.addClass(element, 'canvas-sliding', {
-                    to: {right: '-' + element.outerWidth() + 'px'}
-                }).then(offCanvasDone);
-
-                $animate.addClass(canvas, 'canvas-sliding', {
-                    to: { 'padding-right': '0'}
-                }).then(offCanvasDone);
-            }
+            canvas.removeClass('canvas-out');
+            $q.all([
+                $animate.addClass(canvas, 'canvas-in'),
+                $animate.removeClass(element, 'in')
+            ])
+            .then(offCanvasDone());
         }
 
         function offCanvasDone() {
-
-            if(position === 'left') {
-                element.removeClass('canvas-sliding')
-                    .css({left: '-' + element.outerWidth() + 'px'});
-                canvas.removeClass('canvas-sliding')
-                    .css({'padding-left': '0'});
-            }else if(position === 'right'){
-                element.removeClass('canvas-sliding')
-                    .css({right: '-' + element.outerWidth() + 'px'});
-                canvas.removeClass('canvas-sliding')
-                    .css({'padding-right': '0'});
-            }
-        }
-
-        function determineInitState(){
-            if(element.is(":visible"))
-                scope.offcanvas = false;
-            else
-                scope.offcanvas = true;
-
-            alreadyInitiate = true;
+            $log.info('off canvas done');
         }
 
         // init
-        determineInitState();
+        if(angular.isUndefined(scope.offcanvas)){
+            scope.offcanvas = (window.innerWidth <= breakPoint);
+        }
+
+        // responsive
+        window.onresize = function(){
+            scope.offcanvas = (window.innerWidth <= breakPoint);
+            scope.$apply();
+        };
+
+        // watch scope
         scope.$watch('offcanvas', function (shouldOffCanvas) {
-            console.log(scope.offcanvas);
-            if(alreadyInitiate){
-                if (shouldOffCanvas) {
-                    offCanvas();
-                } else {
-                    onCanvas();
-                }
+            $log.info('should off canvas?');
+            $log.info(shouldOffCanvas);
+            if (shouldOffCanvas) {
+                offCanvas();
+            } else {
+                onCanvas();
             }
         });
     };

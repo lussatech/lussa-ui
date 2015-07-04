@@ -10071,60 +10071,125 @@ pagination-bar .pagination-icon-next,
   }
 }
 .offcanvas {
-  display: none;
+  display: block;
+  -webkit-transition: padding 0.3s, left 0.3s, right 0.3s;
+  -moz-transition: padding 0.3s, left 0.3s, right 0.3s;
+  -o-transition: padding 0.3s, left 0.3s, right 0.3s;
+  transition: padding 0.3s, left 0.3s, right 0.3s;
+  left: -300px;
 }
 .offcanvas.in {
+  left: 0;
+}
+.offcanvas-mobile,
+.offcanvas-tablet,
+.offcanvas-dekstop {
   display: block;
+  -webkit-transition: padding 0.3s, left 0.3s, right 0.3s;
+  -moz-transition: padding 0.3s, left 0.3s, right 0.3s;
+  -o-transition: padding 0.3s, left 0.3s, right 0.3s;
+  transition: padding 0.3s, left 0.3s, right 0.3s;
+  left: -300px;
 }
-@media (max-width: 520px) {
-  .offcanvas-mobile {
-    display: none;
-  }
-  .offcanvas-mobile.in {
-    display: block;
-  }
+.offcanvas-mobile.in,
+.offcanvas-tablet.in,
+.offcanvas-dekstop.in {
+  left: 0;
 }
-@media (min-width: 520px) and (max-width: 780px) {
-  .offcanvas-tablet {
-    display: none;
-  }
-  .offcanvas-tablet.in {
-    display: block;
+.canvas-in,
+.canvas-out {
+  -webkit-transition: padding 0.3s, left 0.3s, right 0.3s;
+  -moz-transition: padding 0.3s, left 0.3s, right 0.3s;
+  -o-transition: padding 0.3s, left 0.3s, right 0.3s;
+  transition: padding 0.3s, left 0.3s, right 0.3s;
+}
+.canvas-in .navbar-fixed-top,
+.canvas-out .navbar-fixed-top,
+.canvas-in .navbar-fixed-bottom,
+.canvas-out .navbar-fixed-bottom {
+  -webkit-transition: margin 0.3s, left 0.3s, right 0.3s;
+  -moz-transition: margin 0.3s, left 0.3s, right 0.3s;
+  -o-transition: margin 0.3s, left 0.3s, right 0.3s;
+  transition: margin 0.3s, left 0.3s, right 0.3s;
+}
+@media (max-width: 780px) {
+  .canvas-in .navbar-fixed-top,
+  .canvas-out .navbar-fixed-top,
+  .canvas-in .navbar-fixed-bottom,
+  .canvas-out .navbar-fixed-bottom {
+    width: 100%;
   }
 }
 @media (max-width: 780px) {
-  .offcanvas-mobile-and-tablet {
-    display: none;
+  .canvas-out,
+  .canvas-in-add {
+    position: fixed;
+    overflow: hidden;
   }
-  .offcanvas-mobile-and-tablet.in {
-    display: block;
+}
+@media (min-width: 780px) {
+  .canvas-in-add.canvas-in-add-active,
+  .canvas-out-add {
+    padding-left: 0;
   }
 }
-.offcanvas-dekstop {
-  display: none;
+@media (max-width: 780px) {
+  .canvas-in-add.canvas-in-add-active,
+  .canvas-out-add {
+    left: 0;
+    position: fixed;
+    overflow: hidden;
+  }
 }
-.offcanvas-dekstop.in {
-  display: block;
+@media (min-width: 780px) {
+  .canvas-in-add.canvas-in-add-active .navbar-fixed-top,
+  .canvas-out-add .navbar-fixed-top,
+  .canvas-in-add.canvas-in-add-active .navbar-fixed-bottom,
+  .canvas-out-add .navbar-fixed-bottom {
+    margin-left: 0;
+  }
 }
-.canvas-sliding {
-  -webkit-transition: padding 0.35s, left 0.35s, top 0.35s, right 0.35s;
-  -moz-transition: padding 0.35s, left 0.35s, top 0.35s, right 0.35s;
-  -o-transition: padding 0.35s, left 0.35s, top 0.35s, right 0.35s;
-  transition: padding 0.35s, left 0.35s, top 0.35s, right 0.35s;
+@media (max-width: 780px) {
+  .canvas-in-add.canvas-in-add-active .navbar-fixed-top,
+  .canvas-out-add .navbar-fixed-top,
+  .canvas-in-add.canvas-in-add-active .navbar-fixed-bottom,
+  .canvas-out-add .navbar-fixed-bottom {
+    left: 0;
+  }
 }
-.offcanvas-clone {
-  height: 0px !important;
-  width: 0px !important;
-  overflow: hidden !important;
-  border: none !important;
-  margin: 0px !important;
-  padding: 0px !important;
-  position: absolute !important;
-  top: auto !important;
-  left: auto !important;
-  bottom: 0px !important;
-  right: 0px !important;
-  opacity: 0 !important;
+@media (min-width: 780px) {
+  .canvas-out,
+  .canvas-out.canvas-out-add-active,
+  .canvas-in-add {
+    padding-left: 300px;
+  }
+}
+@media (max-width: 780px) {
+  .canvas-out,
+  .canvas-out.canvas-out-add-active,
+  .canvas-in-add {
+    left: 300px;
+  }
+}
+@media (min-width: 780px) {
+  .canvas-out .navbar-fixed-top,
+  .canvas-out.canvas-out-add-active .navbar-fixed-top,
+  .canvas-in-add .navbar-fixed-top,
+  .canvas-out .navbar-fixed-bottom,
+  .canvas-out.canvas-out-add-active .navbar-fixed-bottom,
+  .canvas-in-add .navbar-fixed-bottom {
+    margin-left: 300px;
+  }
+}
+@media (max-width: 780px) {
+  .canvas-out .navbar-fixed-top,
+  .canvas-out.canvas-out-add-active .navbar-fixed-top,
+  .canvas-in-add .navbar-fixed-top,
+  .canvas-out .navbar-fixed-bottom,
+  .canvas-out.canvas-out-add-active .navbar-fixed-bottom,
+  .canvas-in-add .navbar-fixed-bottom {
+    left: 300px;
+  }
 }
 .panel {
   margin-bottom: 17px;

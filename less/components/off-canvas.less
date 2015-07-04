@@ -1,43 +1,81 @@
 .offcanvas {
-    display: none;
-    &.in {
-        display: block;
+    display: block;
+    .transition(padding 0.3s,left 0.3s,right 0.3s);
+    left: -@sidebar-width;
+    &.in{
+        left: 0;
     }
 }
 
-@media @mobile {
-    .offcanvas-mobile {
-        .offcanvas;
-    }
-}
-@media @tablet {
-    .offcanvas-tablet {
-        .offcanvas;
-    }
-}
-@media @mobile-and-tablet {
-    .offcanvas-mobile-and-tablet {
-        .offcanvas;
-    }
-}
+.offcanvas-mobile,
+.offcanvas-tablet,
 .offcanvas-dekstop {
     .offcanvas;
 }
 
-.canvas-sliding{
-    .transition(padding 0.35s,left 0.35s,top 0.35s,right 0.35s);
+// animation class
+.canvas-in,
+.canvas-out{
+    .transition(padding 0.3s,left 0.3s,right 0.3s);
+
+    .navbar-fixed-top,
+    .navbar-fixed-bottom{
+        .transition(margin 0.3s,left 0.3s,right 0.3s);
+        @media @mobile-and-tablet{
+            width: 100%;
+        }
+    }
 }
-.offcanvas-clone {
-    height: 0px !important;
-    width: 0px !important;
-    overflow: hidden !important;
-    border: none !important;
-    margin: 0px !important;
-    padding: 0px !important;
-    position: absolute !important;
-    top: auto !important;
-    left: auto !important;
-    bottom: 0px !important;
-    right: 0px !important;
-    opacity: 0 !important;
+.canvas-out,
+.canvas-in-add{
+    @media @mobile-and-tablet{
+        position: fixed;
+        overflow: hidden;
+    }
+}
+.canvas-in-add.canvas-in-add-active,
+.canvas-out-add{
+    @media @desktop {
+        padding-left: 0;
+    }
+
+    @media @mobile-and-tablet{
+        left: 0;
+        position: fixed;
+        overflow: hidden;
+    }
+
+    .navbar-fixed-top,
+    .navbar-fixed-bottom{
+        @media @desktop {
+            margin-left: 0;
+        }
+
+        @media @mobile-and-tablet{
+            left: 0;
+        }
+    }
+}
+
+.canvas-out,
+.canvas-out.canvas-out-add-active,
+.canvas-in-add{
+    @media @desktop {
+        padding-left: @sidebar-width;
+    }
+
+    @media @mobile-and-tablet{
+        left: @sidebar-width;
+    }
+
+    .navbar-fixed-top,
+    .navbar-fixed-bottom{
+        @media @desktop {
+            margin-left: @sidebar-width;
+        }
+
+        @media @mobile-and-tablet{
+            left: @sidebar-width;
+        }
+    }
 }
