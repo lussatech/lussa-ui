@@ -84,6 +84,9 @@
  * Navbar
  */
 /**
+ * Breadcrumbs
+ */
+/**
  * Sidebar
  */
 /**
@@ -10583,6 +10586,27 @@ pagination-bar .pagination-icon-next,
 }
 .panel-error > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #ff3355;
+}
+/**
+ * Breadcrumbs
+ */
+.breadcrumb {
+  padding: 8px 15px;
+  margin-bottom: 17px;
+  list-style: none;
+  background-color: #e1e1e1;
+  border-radius: 3px;
+}
+.breadcrumb > li {
+  display: inline-block;
+}
+.breadcrumb > li + li:before {
+  content: "/\00a0";
+  padding: 0 5px;
+  color: #a2a2a2;
+}
+.breadcrumb > .active {
+  color: #555555;
 }
 /**
  * Block
