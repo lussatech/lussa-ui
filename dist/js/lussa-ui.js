@@ -1259,6 +1259,11 @@ function ($log, $document, $filter){
             months: ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'],
             monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'],
             today: 'Vandaag'
+        },
+        id: {
+            months: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+            monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
+            today: 'Hari Ini'
         }
     };
 
@@ -1283,37 +1288,37 @@ function ($log, $document, $filter){
     };
 
     var template = '<div class="ui-date-picker"> ' +
-        '<div ng-click="displayPicker()" class="date-display form-group">' +
-        '<label for={{pickerid}} class="date-input-label"></label>' +
-        '<input readonly id={{pickerid}} class="date-input form-control {{attrs.inputClass}}" placeholder="{{placeholder}}" value="{{modelviewvalue}}">' +
-        '<span class="date-input-icon"></span>' +
+    '<div ng-click="displayPicker()" class="date-display form-group">' +
+    '<label for={{pickerid}} class="date-input-label"></label>' +
+    '<input readonly id={{pickerid}} class="date-input form-control {{attrs.inputClass}}" placeholder="{{placeholder}}" value="{{modelviewvalue}}">' +
+    '<span class="date-input-icon"></span>' +
 
-        '<div ng-show="showPicker" class="datepicker datepicker-dropdown">'+
-        '<div ng-show="viewMode === 0" class="datepicker-days">'+
-        '<table class=" table-condensed">'+
-        partials.headTemplateDays+
-        '<tbody></tbody>'+
-        partials.footTemplateDays+
-        '</table>'+
-        '</div>'+
+    '<div ng-show="showPicker" class="datepicker datepicker-dropdown">'+
+    '<div ng-show="viewMode === 0" class="datepicker-days">'+
+    '<table class=" table-condensed">'+
+    partials.headTemplateDays+
+    '<tbody></tbody>'+
+    partials.footTemplateDays+
+    '</table>'+
+    '</div>'+
 
-        '<div ng-show="viewMode === 1" class="datepicker-months">'+
-        '<table class="table-condensed">'+
-        partials.headTemplate+
-        partials.contTemplate+
-        partials.footTemplate+
-        '</table>'+
-        '</div>'+
+    '<div ng-show="viewMode === 1" class="datepicker-months">'+
+    '<table class="table-condensed">'+
+    partials.headTemplate+
+    partials.contTemplate+
+    partials.footTemplate+
+    '</table>'+
+    '</div>'+
 
-        '<div ng-show="viewMode === 2" class="datepicker-years">'+
-        '<table class="table-condensed">'+
-        partials.headTemplate+
-        partials.contTemplate+
-        partials.footTemplate+
-        '</table>'+
-        '</div>'+
-        '<a class="button datepicker-close small alert right" style="width:auto;"><i class="fa fa-remove fa-times fi-x"></i></a>'+
-        '</div>';
+    '<div ng-show="viewMode === 2" class="datepicker-years">'+
+    '<table class="table-condensed">'+
+    partials.headTemplate+
+    partials.contTemplate+
+    partials.footTemplate+
+    '</table>'+
+    '</div>'+
+    '<a class="button datepicker-close small alert right" style="width:auto;"><i class="icon icon-close"></i></a>'+
+    '</div>';
 
     var DPGlobal = {
         modes: [
@@ -1332,125 +1337,125 @@ function ($log, $document, $filter){
                 navFnc: 'FullYear',
                 navStep: 10
             }],
-        isLeapYear: function (year) {
-            return (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0));
-        },
-        getDaysInMonth: function (year, month) {
-            return [31, (DPGlobal.isLeapYear(year) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month];
-        },
-        formatDate: function(date, format, timezone) {
+            isLeapYear: function (year) {
+                return (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0));
+            },
+            getDaysInMonth: function (year, month) {
+                return [31, (DPGlobal.isLeapYear(year) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month];
+            },
+            formatDate: function(date, format, timezone) {
 
-            var datestring = $filter('date')(date, format, timezone);
-            return (datestring);
-        }
-    };
+                var datestring = $filter('date')(date, format, timezone);
+                return (datestring);
+            }
+        };
 
-    function link (scope, element, attrs, model) {
+        function link (scope, element, attrs, model) {
 
-        scope.attrs = attrs;
+            scope.attrs = attrs;
 
-        // update external representation when internal value change
-        model.$formatters.unshift(function (date) {
+            // update external representation when internal value change
+            model.$formatters.unshift(function (date) {
 
-            // move from internal object format to external view string
-            var fmtdata =  DPGlobal.formatDate (date, scope.format);
+                // move from internal object format to external view string
+                var fmtdata =  DPGlobal.formatDate (date, scope.format);
 
-            // check date validity
-            if (date < scope.startDate) model.$setValidity ('DATE-TOO-EARLY', false);
-            if (date > scope.endDate)   model.$setValidity ('DATE-TOO-LATE', false);
+                // check date validity
+                if (date < scope.startDate) model.$setValidity ('DATE-TOO-EARLY', false);
+                if (date > scope.endDate)   model.$setValidity ('DATE-TOO-LATE', false);
 
-            // update template
-            scope.modelviewvalue=fmtdata;
+                // update template
+                scope.modelviewvalue=fmtdata;
 
-            return (fmtdata);
-        });
+                return (fmtdata);
+            });
 
-        // Update Internal form when external representation change
-        model.$parsers.unshift(function(value) {
-            return 'Hoops';
-        });
+            // Update Internal form when external representation change
+            model.$parsers.unshift(function(value) {
+                return 'Hoops';
+            });
 
-        scope.moveMonth = function(date, dir){
-            if (!dir) return date;
-            var new_date = scope.ngModel,
+            scope.moveMonth = function(date, dir){
+                if (!dir) return date;
+                var new_date = scope.ngModel,
                 day = new_date.getDate(),
                 month = new_date.getMonth(),
                 mag = Math.abs(dir),
                 new_month, test;
-            dir = dir > 0 ? 1 : -1;
-            if (mag == 1){
-                test = dir === -1 ?
+                dir = dir > 0 ? 1 : -1;
+                if (mag == 1){
+                    test = dir === -1 ?
                     // If going back one month, make sure month is not current month
                     // (eg, Mar 31 -> Feb 31 == Feb 28, not Mar 02)
                     function(){ return new_date.getMonth() == month; } :
                     // If going forward one month, make sure month is as expected
                     // (eg, Jan 31 -> Feb 31 == Feb 28, not Mar 02)
                     function(){ return new_date.getMonth() != new_month; };
-                new_month = month + dir;
-                new_date.setMonth(new_month);
-                // Dec -> Jan (12) or Jan -> Dec (-1) -- limit expected date to 0-11
-                if (new_month < 0 || new_month > 11)
+                    new_month = month + dir;
+                    new_date.setMonth(new_month);
+                    // Dec -> Jan (12) or Jan -> Dec (-1) -- limit expected date to 0-11
+                    if (new_month < 0 || new_month > 11)
                     new_month = (new_month + 12) % 12;
-            } else {
-                // For magnitudes >1, move one month at a time...
-                for (var i=0; i<mag; i++)
+                } else {
+                    // For magnitudes >1, move one month at a time...
+                    for (var i=0; i<mag; i++)
                     // ...which might decrease the day (eg, Jan 31 to Feb 28, etc)...
                     new_date = scope.moveMonth(new_date, dir);
-                // ...then reset the day, keeping it in the new month
-                new_month = new_date.getMonth();
-                new_date.setDate(day);
-                test = function(){ return new_month != new_date.getMonth(); };
-            }
-            // Common date-resetting loop -- if date is beyond end of month, make it
-            // end of month
-            while (test()){
-                new_date.setDate(--day);
-                new_date.setMonth(new_month);
-            }
-            return new_date;
-        };
-
-        scope.moveYear = function(date, dir){
-            return scope.moveMonth(date, dir*12);
-        };
-
-        scope.showMode = function(dir) {
-            if (dir) {
-                scope.viewMode = Math.max(0, Math.min(2, scope.viewMode + dir));
-                scope.$apply(); // notify template/view that scope changed
-                scope.updateNavArrows();
-            }
-        };
-
-
-        // emulate jQuery closest API to enable search by tag+class within current element and parents
-       scope.closest = function (angelem, selector) {
-           var parent = angelem;
-           while (parent[0]) {
-                for (var idx= 0; idx < selector.length; idx++) {
-                    if (selector [idx] === parent[0].tagName) {
-                        return parent;
-                    }  // HTMLDivElement properties
+                    // ...then reset the day, keeping it in the new month
+                    new_month = new_date.getMonth();
+                    new_date.setDate(day);
+                    test = function(){ return new_month != new_date.getMonth(); };
                 }
-               parent = parent.parent();
-            }
-           // alert ("Browser not supported [scope.closest please report a bug]");
-        };
+                // Common date-resetting loop -- if date is beyond end of month, make it
+                // end of month
+                while (test()){
+                    new_date.setDate(--day);
+                    new_date.setMonth(new_month);
+                }
+                return new_date;
+            };
+
+            scope.moveYear = function(date, dir){
+                return scope.moveMonth(date, dir*12);
+            };
+
+            scope.showMode = function(dir) {
+                if (dir) {
+                    scope.viewMode = Math.max(0, Math.min(2, scope.viewMode + dir));
+                    scope.$apply(); // notify template/view that scope changed
+                    scope.updateNavArrows();
+                }
+            };
 
 
-        scope.today = function () {
-            var now  =new Date();
-            var today= new Date (now.getFullYear(), now.getMonth(), now.getDate(),0,0,0,0);
-            return today;
-        };
+            // emulate jQuery closest API to enable search by tag+class within current element and parents
+            scope.closest = function (angelem, selector) {
+                var parent = angelem;
+                while (parent[0]) {
+                    for (var idx= 0; idx < selector.length; idx++) {
+                        if (selector [idx] === parent[0].tagName) {
+                            return parent;
+                        }  // HTMLDivElement properties
+                    }
+                    parent = parent.parent();
+                }
+                // alert ("Browser not supported [scope.closest please report a bug]");
+            };
 
-        // update internal value of ng-model [external form is updated automatically through scope/watch]
-        scope.setDate =  function(date){
-            // if no date is provided take Today/NOW
-            if (!date) date = scope.today();
 
-            // update date model through its scope
-            scope.$apply(function() {
+            scope.today = function () {
+                var now  =new Date();
+                var today= new Date (now.getFullYear(), now.getMonth(), now.getDate(),0,0,0,0);
+                return today;
+            };
+
+            // update internal value of ng-model [external form is updated automatically through scope/watch]
+            scope.setDate =  function(date){
+                // if no date is provided take Today/NOW
+                if (!date) date = scope.today();
+
+                // update date model through its scope
+                scope.$apply(function() {
                     scope.ngModel = date;
                 }
             );
@@ -1465,40 +1470,40 @@ function ($log, $document, $filter){
         // If start/end date is provided this will display or not corresponding arrows
         scope.updateNavArrows = function() {
             var d = scope.viewDate,
-                year = d.getFullYear(),
-                month = d.getMonth();
+            year = d.getFullYear(),
+            month = d.getMonth();
             switch (scope.viewMode) {
                 case 0:
-                    if (year <= scope.startDate.getFullYear() && month <= scope.startDate.getMonth()) {
-                        scope.find('.prev').css({visibility: 'hidden'});
-                    } else {
-                        scope.find('.prev').css({visibility: 'visible'});
-                    }
-                    if (year >= scope.endDate.getFullYear() && month >= scope.endDate.getMonth()) {
-                        scope.find('.next').css({visibility: 'hidden'});
-                    } else {
-                        scope.find('.next').css({visibility: 'visible'});
-                    }
-                    break;
+                if (year <= scope.startDate.getFullYear() && month <= scope.startDate.getMonth()) {
+                    scope.find('.prev').css({visibility: 'hidden'});
+                } else {
+                    scope.find('.prev').css({visibility: 'visible'});
+                }
+                if (year >= scope.endDate.getFullYear() && month >= scope.endDate.getMonth()) {
+                    scope.find('.next').css({visibility: 'hidden'});
+                } else {
+                    scope.find('.next').css({visibility: 'visible'});
+                }
+                break;
                 case 1:
                 case 2:
-                    if (year <= scope.startDate.getFullYear()) {
-                        scope.find('.prev').css({visibility: 'hidden'});
-                    } else {
-                        scope.find('.prev').css({visibility: 'visible'});
-                    }
-                    if (year >= scope.endDate.getFullYear()) {
-                        scope.find('.next').css({visibility: 'hidden'});
-                    } else {
-                        scope.find('.next').css({visibility: 'visible'});
-                    }
-                    break;
+                if (year <= scope.startDate.getFullYear()) {
+                    scope.find('.prev').css({visibility: 'hidden'});
+                } else {
+                    scope.find('.prev').css({visibility: 'visible'});
+                }
+                if (year >= scope.endDate.getFullYear()) {
+                    scope.find('.next').css({visibility: 'hidden'});
+                } else {
+                    scope.find('.next').css({visibility: 'visible'});
+                }
+                break;
             }
         };
 
         scope.fillMonths= function(){
             var html = '',
-                i = 0;
+            i = 0;
             while (i < 12) {
                 html += '<span class="picker month">'+dates[scope.language].monthsShort[i++]+'</span>';
             }
@@ -1541,14 +1546,14 @@ function ($log, $document, $filter){
                     if(scope.calendarWeeks){
                         // adapted from https://github.com/timrwood/moment/blob/master/moment.js#L128
                         var a = new Date(prevMonth.getFullYear(), prevMonth.getMonth(), prevMonth.getDate() - prevMonth.getDay() + 10 - (scope.weekStart && scope.weekStart%7 < 5 && 7)),
-                            b = new Date(a.getFullYear(), 0, 4),
-                            calWeek =  ~~((a - b) / 864e5 / 7 + 1.5);
+                        b = new Date(a.getFullYear(), 0, 4),
+                        calWeek =  ~~((a - b) / 864e5 / 7 + 1.5);
                         html.push('<td class="cw">'+ calWeek +'</td>');
                     }
                 }
 
                 if (prevMonth.valueOf() < scope.startDate.valueOf() || prevMonth.valueOf() > scope.endDate.valueOf() ||
-                    scope.dayoff.indexOf (prevMonth.getDay()) !== -1) {
+                scope.dayoff.indexOf (prevMonth.getDay()) !== -1) {
                     clsName += ' disabled';
                     disableday = true;
                 } else disableday= false;
@@ -1567,7 +1572,7 @@ function ($log, $document, $filter){
                 }
 
                 if (viewyear === prevMonth.getFullYear() && viewmonth === prevMonth.getMonth() && viewdate === prevMonth.getDate())  {
-                      clsName += ' active';
+                    clsName += ' active';
                 }
 
                 html.push('<td class="day ' + clsName + '">'+prevMonth.getDate() + '</td>');
@@ -1620,15 +1625,11 @@ function ($log, $document, $filter){
 
         // Place picker on the screen [need to be fixes to handle exceptions]
         scope.place = function(){
-
-            var bounds = element[0].getBoundingClientRect();
-            // $log.log ("bounds=", bounds, "picker=", scope.picker);
-
-            scope.picker.css({/*
-                top:    bounds.top,
-                left:   bounds.left,*/
+            scope.picker.css({
+                // top:    element[0].offsetTop,
+                // left:   element[0].offsetLeft,
                 zIndex: 100,
-                display: 'block'
+                display: "block"
             });
         };
 
@@ -1669,76 +1670,76 @@ function ($log, $document, $filter){
 
             switch(closestElemNg[0].tagName) {
                 case 'TH':
-                    if (closestElemNg.hasClass ('date-switch')) {
-                        scope.showMode(1);
-                    }
+                if (closestElemNg.hasClass ('date-switch')) {
+                    scope.showMode(1);
+                }
 
-                    if (closestElemNg.hasClass ('prev') || closestElemNg.hasClass ('next')) {
+                if (closestElemNg.hasClass ('prev') || closestElemNg.hasClass ('next')) {
 
-                        var dir = DPGlobal.modes[scope.viewMode].navStep * (closestElemNg.hasClass ('prev') ? -1 : 1);
-                        switch (scope.viewMode) {
-                            case 0:
-                                scope.viewDate = scope.moveMonth(scope.viewDate, dir);
-                                break;
-                            case 1:
-                            case 2:
-                                scope.viewDate = scope.moveYear(scope.viewDate, dir);
-                                break;
-                        }
-                        scope.fill();
-                    } else if (closestElemNg.hasClass ('today')) {
-                        // select current day and force picker closing
-                        scope.setDate();
-                        if (scope.autohide) scope.hide(true);
+                    var dir = DPGlobal.modes[scope.viewMode].navStep * (closestElemNg.hasClass ('prev') ? -1 : 1);
+                    switch (scope.viewMode) {
+                        case 0:
+                        scope.viewDate = scope.moveMonth(scope.viewDate, dir);
+                        break;
+                        case 1:
+                        case 2:
+                        scope.viewDate = scope.moveYear(scope.viewDate, dir);
                         break;
                     }
-
+                    scope.fill();
+                } else if (closestElemNg.hasClass ('today')) {
+                    // select current day and force picker closing
+                    scope.setDate();
+                    if (scope.autohide) scope.hide(true);
                     break;
+                }
+
+                break;
 
                 case 'SPAN':
-                    if (!closestElemNg.hasClass('disabled')) {
-                        if (closestElemNg.hasClass('month')) {
-                            var months = closestElemNg.parent().find('span');
-                            for (var idx=0; idx < months.length; idx++) {
-                                if (closestElemNg.text() === months.eq(idx).text()) {
-                                    scope.viewDate.setMonth(idx);
-                                    break;
-                                }
+                if (!closestElemNg.hasClass('disabled')) {
+                    if (closestElemNg.hasClass('month')) {
+                        var months = closestElemNg.parent().find('span');
+                        for (var idx=0; idx < months.length; idx++) {
+                            if (closestElemNg.text() === months.eq(idx).text()) {
+                                scope.viewDate.setMonth(idx);
+                                break;
                             }
-
-                        } else {
-                            var year = parseInt(closestElemNg.text(), 10)||0;
-                            scope.viewDate.setFullYear(year);
                         }
-                        scope.showMode(-1);
-                        scope.fill();
+
+                    } else {
+                        var year = parseInt(closestElemNg.text(), 10)||0;
+                        scope.viewDate.setFullYear(year);
                     }
-                    break;
+                    scope.showMode(-1);
+                    scope.fill();
+                }
+                break;
 
                 case 'TD':
-                    if (closestElemNg.hasClass('day') && !closestElemNg.hasClass('disabled')){
+                if (closestElemNg.hasClass('day') && !closestElemNg.hasClass('disabled')){
 
-                        var day   = parseInt(closestElemNg.text(), 10)||1;
-                        var year  = scope.viewDate.getFullYear(),
-                            month = scope.viewDate.getMonth();
-                        if (closestElemNg.hasClass('old')) {
-                            if (month === 0) {
-                                month = 11;
-                                year -= 1;
-                            } else {
-                                month -= 1;
-                            }
-                        } else if (closestElemNg.hasClass('new')) {
-                            if (month === 11) {
-                                month = 0;
-                                year += 1;
-                            } else {
-                                month += 1;
-                            }
+                    var day   = parseInt(closestElemNg.text(), 10)||1;
+                    var year  = scope.viewDate.getFullYear(),
+                    month = scope.viewDate.getMonth();
+                    if (closestElemNg.hasClass('old')) {
+                        if (month === 0) {
+                            month = 11;
+                            year -= 1;
+                        } else {
+                            month -= 1;
                         }
-                        scope.setDate( new Date (year, month, day,0,0,0,0));
+                    } else if (closestElemNg.hasClass('new')) {
+                        if (month === 11) {
+                            month = 0;
+                            year += 1;
+                        } else {
+                            month += 1;
+                        }
                     }
-                    break;
+                    scope.setDate( new Date (year, month, day,0,0,0,0));
+                }
+                break;
             }
         };
 
@@ -1748,7 +1749,7 @@ function ($log, $document, $filter){
                 case 27: // escape
                 case 13: // enter
                 case 9: // tab
-                    scope.hide(true);
+                scope.hide(true);
             }
         };
 
@@ -1796,7 +1797,6 @@ function ($log, $document, $filter){
         };
 
         scope.hide = function(apply) {
-            $log.log('hide picker');
 
             scope.showPicker = false;
             scope.picker.off('mousedown');
@@ -1807,14 +1807,14 @@ function ($log, $document, $filter){
 
         // input field was selected
         scope.displayPicker = function (elem) {
-          if (!scope.picker) {
-              return;
-          }
+            if (!scope.picker) {
+                return;
+            }
 
-          if (!scope.showPicker) {
-              scope.bindevent(scope.picker);
-              scope.show();
-          } else scope.hide();
+            if (!scope.showPicker) {
+                scope.bindevent(scope.picker);
+                scope.show();
+            }
         };
 
         // bind mouse event
@@ -1847,7 +1847,7 @@ function ($log, $document, $filter){
                 for (var idx = 0; idx < dayoff.length; idx++) scope.dayoff.push(parseInt(dayoff[idx]));
             }
             scope.pickerid          = attrs.id || 'date-picker-' + parseInt (Math.random() * 1000);
-            scope.language          = attrs.language    || scope.locale || 'en';
+            scope.language          = attrs.language    || scope.locale || 'id';
             scope.autohide          = attrs.autohide    || true;
             scope.weekStart         = attrs.weekstart   || 1;
             scope.calendarWeeks     = attrs.weeknum     || false;
@@ -1875,12 +1875,14 @@ function ($log, $document, $filter){
 
             if (attrs.icon || attrs.iconify) {
                 var span= element.find('span');
-                span.addClass ('icon-label-input fa fa-calendar fi-calendar');
+                span.addClass ('icon-label-input icon icon-calendar');
             }
 
+            label = element.find('label');
             if (attrs.label) {
-                label = element.find('label');
                 label.html(attrs.label);
+            }else{
+                label.remove();
             }
 
             // Monitor any changes on start/stop dates.
@@ -1902,15 +1904,15 @@ function ($log, $document, $filter){
         scope.init();
     }
 
-return {
+    return {
         restrict: 'E',    // restrict to <pickadate> HTML element name
         scope: {
-          datefmt : '=',  // see angular date format string
-          locale  : '=',  // hopefully this is defined from controller
-          ngModel : '=',  // necessary to update internal from inside directive
-          notAfter: '=',  // First acceptable date
-          notBefore:'=',  // Last acceptable date
-          callback : '='  // Callback to active when a date is selected
+            datefmt : '=',  // see angular date format string
+            locale  : '=',  // hopefully this is defined from controller
+            ngModel : '=',  // necessary to update internal from inside directive
+            notAfter: '=',  // First acceptable date
+            notBefore:'=',  // Last acceptable date
+            callback : '='  // Callback to active when a date is selected
         },
         template: template, // html template is build from JS
         require: 'ngModel', // get access to external/internal representation
@@ -1920,6 +1922,7 @@ return {
 }
 
 ]);
+
 // Source: js/form/file-uploader.js
 /**
  * [fileUploader description]
