@@ -152,6 +152,46 @@
     </div>
 </div>
 
+<!-- Time Picker -->
+<h2 class="docs-subsection-title" id="form-input-time">Time Picker</h2>
+<div class="docs-subsection-desc">
+    <p>Direktif untuk menginput waktu</p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>html</li>
+        <li>pengaturan</li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <time-picker ng-model="docs.timePicker"></time-picker>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+            <time-picker ng-model="timeModel"></time-picker>
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<time-picker
+    ng-model="{model}"
+    [hour-step="{number | 1}"]
+    [minute-step="{number | 1}"]
+    [show-meridian="{boolean | true}"]
+    [meridians="{Array | ['AM,'PM'] | null}"]
+    [readonly-input="{boolean | false}"]
+    [mousewheel="{boolean | true}"]
+    [arrowkeys="{boolean | true}"]
+    [show-spinners="{boolean | true}"]
+/></time-picker>
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
 <!-- Color Picker -->
 <h2 class="docs-subsection-title" id="form-input-color">Color Picker</h2>
 <div class="docs-subsection-desc">

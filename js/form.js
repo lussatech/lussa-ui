@@ -11,6 +11,7 @@
  */
 var LussaUiForm = angular.module('lussa.ui.form',[
     'lussa.ui.form.datePicker',
+    'lussa.ui.form.timePicker',
     'lussa.ui.form.autoComplete',
     'lussa.ui.form.fileUploader',
     'lussa.ui.form.tag',

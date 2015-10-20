@@ -8339,6 +8339,12 @@ ui-date-picker .datepicker-close {
   padding: 0;
   display: none;
 }
+.time-picker td {
+  padding: 0 1px;
+}
+.time-picker .time-picker-meridian {
+  margin-left: 3px;
+}
 /**
  * TagsInput
  */

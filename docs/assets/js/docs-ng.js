@@ -84,6 +84,7 @@ app.controller('ComponentController', ['$http', '$log', '$filter', '$scope', '$t
     // init scope
     $scope.docs = {
         datePicker: new Date(),
+        timePicker: new Date(),
         tagsInput: [
             { text: 'just' },
             { text: 'some' },
