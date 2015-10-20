@@ -10,6 +10,8 @@
 var LussaUi = angular.module('lussa.ui',[
     // form
     'lussa.ui.form',
+    // helper
+    'lussa.ui.helper',
     // dropdown
     'lussa.ui.dropdown',
     // components
@@ -22,5 +24,7 @@ var LussaUi = angular.module('lussa.ui',[
     'lussa.ui.collapse',
     'lussa.ui.offcanvas',
     'lussa.ui.table',
-    'lussa.ui.modal'
+    'lussa.ui.modal',
+    'lussa.ui.tooltip',
+    'lussa.ui.popover'
 ]);

@@ -587,6 +587,34 @@
 @modal-medium                        : 600px;
 @modal-small                         : 300px;
 
+/**
+ * Tooltip
+ */
+@tooltip-max-width                   : 200px;
+@tooltip-color                       : @accent-clear;
+@tooltip-bg                          : @accent-dark;
+@tooltip-opacity                     : .9;
+
+// Tooltip arrow width
+@tooltip-arrow-width                 : 5px;
+@tooltip-arrow-color                 : @tooltip-bg;
+
+/**
+ * Popover
+ */
+ @popover-bg:                          @accent-light;
+ @popover-max-width:                   276px;
+ @popover-border-color:                rgba(0,0,0,.2);
+ @popover-fallback-border-color:       #ccc;
+ @popover-title-bg:                    darken(@popover-bg, 3%);
+
+ @popover-arrow-width:                 10px;
+ @popover-arrow-color:                 @popover-bg;
+
+ @popover-arrow-outer-width:           (@popover-arrow-width + 1);
+ @popover-arrow-outer-color:           fadein(@popover-border-color, 5%);
+ @popover-arrow-outer-fallback-color:  darken(@popover-fallback-border-color, 20%);
+
 
 /**
  * Z-Index
@@ -599,6 +627,8 @@
 @zindex-modal-background             : 1040;
 @zindex-modal                        : 1050;
 @zindex-loading-bar                  : 1060;
+@zindex-popover                      : 1060;
+@zindex-tooltip                      : 1070;
 
 /**
  * Grid

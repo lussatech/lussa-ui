@@ -1,0 +1,164 @@
+<h1 class="docs-section-title" id="tooltip-popover">Tooltip & Popover</h1>
+<p class="docs-section-desc">cocok digunakan sebagai helper text, untuk elemen-elemen kontrol</p>
+
+<!-- tooltip -->
+<h2 class="docs-subsection-title" id="tooltip">Tooltip</h2>
+<div class="docs-subsection-desc">
+    <p>Browser sebenarnya sudah menyediakan default <code>Tooltip</code> dengan menambahkan atribut <code>title</code>. Tooltip pada lussa-ui berfungsi untuk menambah fungsi & aksen warna pada tooltip browser. Tampilan dapat ditambahkan di kustom dengan tambahan kelas, maupun dapat diiisi dengan elemen html lain.</p>
+    <p>ada 3 versi tooltip yaitu <code>tooltip</code>,  <code>tooltip-template</code> dan  <code>tooltip-html</code>
+        <ul>
+            <li><code>tooltip</code> cuma bisa nerima teks, semua html akan di-<em>escape</em></li>
+            <li><code>tooltip-template</code> dapat menerima url / lokasi template yang akan digunakan oleh <code>tooltip</code></li>
+            <li><code>tooltip-html</code> memenerima konten HTML dan akan di-render. User bertanggung jawab terhadap keamanan konten yang bakal di load di DOM</li>
+            <li><code>tooltip-html-unsafe</code> versi <code>deperecated</code> dari <code>tooltip-html</code></li>
+        </ul>
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+        <li>penggunaan</li>
+        <li>theming&nbsp;<span class="icon icon-wand text-vibrant"></span></li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <div class="form-group">
+                    <label>Contoh tooltip</label>
+                    <input type="text" class="form-control"
+                      placeholder="hover kemari untuk melihat tooltip"
+                      tooltip="ini tooltip"
+                      tooltip-placement="top"
+                      tooltip-trigger="mouseenter" />
+                 </div>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<div class="form-group">
+    <label>Contoh tooltip</label>
+    <input type="text" class="form-control"
+      placeholder="hover kemari untuk melihat tooltip"
+      tooltip="ini tooltip"
+      tooltip-placement="top"
+      tooltip-trigger="mouseenter" />
+ </div>
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<!-- elemen apapun bisa sebenernya -->
+<div tooltip-placement={"top"|"bottom"|"left"|"right"}
+    tooltip-animation={"boolean"}
+    tooltip-popup-delay={"number"}
+    tooltip-trigger={"expression"}
+    tooltip-enable={"boolean"}
+    tooltip-append-to-body={"boolean"}
+    tooltip-class={"string"}>
+</div>
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight css %}
+@tooltip-max-width                   : 200px;
+@tooltip-color                       : @accent-clear;
+@tooltip-bg                          : @accent-dark;
+@tooltip-opacity                     : .9;
+
+// Tooltip arrow width
+@tooltip-arrow-width                 : 5px;
+@tooltip-arrow-color                 : @tooltip-bg;
+{% endhighlight %}
+        </div>
+    </div>
+</div>
+
+<!-- tooltip -->
+<h2 class="docs-subsection-title" id="popover">Popover</h2>
+<div class="docs-subsection-desc">
+    <p> Popover merupakan varian tooltip yang menyerupai panel. Bisa digunakan untuk memuat informasi tambahan yang cukup banyak.
+    </p>
+    <p>ada 2 versi popover yaitu <code>popover</code> dan <code>popover-template</code>
+        <ul>
+            <li><code>popover</code> cuma bisa nerima teks, semua html akan di-<em>escape</em></li>
+            <li><code>popover-template</code> dapat menerima url / lokasi template yang akan digunakan oleh bagian badan dari <code>popover</code></li>
+        </ul>
+    </p>
+</div>
+<div class="docs-tab">
+    <ul class="docs-tab-link-container">
+        <li>tampilan</li>
+        <li>&lt;html&gt;</li>
+        <li>penggunaan</li>
+        <li>theming&nbsp;<span class="icon icon-wand text-vibrant"></span></li>
+    </ul>
+    <div class="docs-tab-content-container">
+        <div class="docs-tab-content">
+            <div class="docs-example">
+                <h4>Posisi popover</h4>
+                <button popover-placement="top" popover="Diatas" class="button button-default">Atas</button>
+                <button popover-placement="left" popover="Di Kiri" class="button button-default">Kiri</button>
+                <button popover-placement="right" popover="Di Kanan" class="button button-default">Kanan</button>
+                <button popover-placement="bottom" popover="Di bawah" class="button button-default">Bawah</button>
+                <hr />
+                <h4>Trigger</h4>
+                <p>
+                    <button popover="Muncul kalo di hover" popover-trigger="mouseenter" class="button button-default">Mouseenter</button>
+                </p>
+                <input type="text" value="Click me!" popover="muncul kalo di focus, di klik hilang"  popover-trigger="focus" class="form-control">
+                <hr />
+                <h4>Lain-lain</h4>
+                <button popover-animation="true" popover="Efek fade-in and out" class="button button-default">efek tansisi</button>
+                <button popover="punya judul" popover-title="Ceritanya ini judul" class="button button-default">pake judul</button>
+            </div>
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<h4>Posisi popover</h4>
+<button popover-placement="top" popover="Diatas" class="button button-default">Atas</button>
+<button popover-placement="left" popover="Di Kiri" class="button button-default">Kiri</button>
+<button popover-placement="right" popover="Di Kanan" class="button button-default">Kanan</button>
+<button popover-placement="bottom" popover="Di bawah" class="button button-default">Bawah</button>
+<hr />
+<h4>Trigger</h4>
+<p>
+    <button popover="Muncul kalo di hover" popover-trigger="mouseenter" class="button button-default">Mouseenter</button>
+</p>
+<input type="text" value="Click me!" popover="muncul kalo di focus, di klik hilang"  popover-trigger="focus" class="form-control">
+<hr />
+<h4>Lain-lain</h4>
+<button popover-animation="true" popover="Efek fade-in and out" class="button button-default">efek tansisi</button>
+<button popover="punya judul" popover-title="Ceritanya ini judul" class="button button-default">pake judul</button>
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight html %}
+<!-- elemen apapun bisa sebenernya -->
+<div popover-title={string}
+    popover-placement={"top"|"bottom"|"left"|"right"}
+    popover-animation={"boolean"}
+    popover-popup-delay={"number"}
+    popover-trigger={"expression"}
+    popover-append-to-body={"boolean"}>
+</div>
+{% endhighlight %}
+        </div>
+        <div class="docs-tab-content">
+{% highlight css %}
+@popover-bg:                          @accent-light;
+@popover-max-width:                   276px;
+@popover-border-color:                rgba(0,0,0,.2);
+@popover-fallback-border-color:       #ccc;
+@popover-title-bg:                    darken(@popover-bg, 3%);
+
+@popover-arrow-width:                 10px;
+@popover-arrow-color:                 @popover-bg;
+
+@popover-arrow-outer-width:           (@popover-arrow-width + 1);
+@popover-arrow-outer-color:           fadein(@popover-border-color, 5%);
+@popover-arrow-outer-fallback-color:  darken(@popover-fallback-border-color, 20%);
+{% endhighlight %}
+        </div>
+    </div>
+</div>
