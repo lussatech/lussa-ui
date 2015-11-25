@@ -11,7 +11,6 @@ build-job:
     script:
         - grunt build
     stage: build
-    allow_failure: true
 
 test-job:
     script:
@@ -29,7 +28,5 @@ deploy-job:
         - mv artifact.zip /var/www/assul/www/ui.lussa.net/
         - unzip /var/www/assul/www/ui.lussa.net/artifact.zip
     stage: deploy
-    only:
-        - master
     tags:
         - local
