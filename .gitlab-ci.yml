@@ -15,7 +15,7 @@ staging:
     script:
         - grunt test
     stage: test
-    allow_failure: false
+    allow_failure: true
 
 deploy:
     script:
@@ -28,4 +28,4 @@ deploy:
     stage: deploy
     only:
         - master
-    allow_failure: false
+    allow_failure: true
