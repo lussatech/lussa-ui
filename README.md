@@ -2,11 +2,11 @@
 
 ----------
 
-[![build status](http://ci.lussa.net/projects/6/status.png?ref=master)](http://ci.lussa.net/projects/6?ref=master)
+[![build status](http://git.lussa.net/ci/projects/3/status.png?ref=master)](http://git.lussa.net/ci/projects/3?ref=master)
 
 Responsive, Mobile-First, Front-End Frameworks for Angular-Based App on Lussa Team, mainly on Tarsius-based projects. For Documentation reads the [wiki](http://git.lussa.net/tarsius/tarsius-ui/wikis/home "tarsius docs") or the Docs section.
 
-## Test 
+## Test
 We are using Jshint to make the test, for uni test still on progress
 ```bash
 # run the test
@@ -21,5 +21,3 @@ bower install
 # deploy
 grunt dist
 ```
-
-

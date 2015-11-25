@@ -1,0 +1,34 @@
+before_script:
+  - bundle_install
+
+stages:
+  - build
+  - test
+  - deploy
+
+pretask:
+    script:
+        - npm install
+        - bower install
+        - grunt build
+    stage: build
+    allow_failure: true
+
+staging:
+    script:
+        - grunt test
+    stage: test
+    allow_failure: false
+
+deploy:
+    script:
+        - grunt docs
+        - cd ./docs/_site
+        - zip -r artifact.zip ./*
+        - rm -R /var/www/assul/www/ui.lussa.net/*
+        - mv artifact.zip /var/www/assul/www/ui.lussa.net/
+        - unzip /var/www/assul/www/ui.lussa.net/artifact.zip
+    stage: deploy
+    only:
+        - master
+    allow_failure: false
