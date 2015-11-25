@@ -3,21 +3,24 @@ stages:
   - test
   - deploy
 
-pretask:
+before_script:
+    - npm install
+    - bower install
+
+build-job:
     script:
-        - npm install
-        - bower install
         - grunt build
     stage: build
     allow_failure: true
 
-staging:
+test-job:
     script:
         - grunt test
     stage: test
-    allow_failure: true
+    tags:
+        - local
 
-deploy:
+deploy-job:
     script:
         - grunt docs
         - cd ./docs/_site
@@ -28,4 +31,5 @@ deploy:
     stage: deploy
     only:
         - master
-    allow_failure: true
+    tags:
+        - local
