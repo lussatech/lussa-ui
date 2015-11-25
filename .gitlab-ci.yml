@@ -35,7 +35,9 @@ deploy-production-job:
         - zip -r artifact.zip ./*
         - sudo rm -R /var/www/assul/www/ui.lussa.net/*
         - sudo mv artifact.zip /var/www/assul/www/ui.lussa.net/
-        - sudo unzip /var/www/assul/www/ui.lussa.net/artifact.zip
+        - cd /var/www/assul/www/ui.lussa.net/
+        - sudo unzip artifact.zip
+        - sudo rm artifact.zip
     stage: deploy
     only:
         - master
