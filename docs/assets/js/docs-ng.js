@@ -30,7 +30,7 @@ app.controller('ComponentController', ['$http', '$log', '$filter', '$scope', '$t
 
     // when hash change
     angular.element(window).on('hashchange',function(e){
-        LeftSidebar().renderMenubyHash(location.hash);
+        PageNavigationFactory.LeftSidebar().renderMenubyHash(location.hash);
     });
 
     // reload sidebar only when all content loaded
