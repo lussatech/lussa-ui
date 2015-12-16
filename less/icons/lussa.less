@@ -1,0 +1,56 @@
+/**
+ * Lussa Icon Set
+ */
+@lussaicon-font-family: "lussa";
+@lussaicon-prefix: ls-;
+
+// Lussa Font face
+@font-face {
+	font-family: @lussaicon-font-family;
+	src:url('@{icon-font-path}/lussa.eot?hqu5bo');
+	src:url('@{icon-font-path}/lussa.eot?hqu5bo#iefix') format('embedded-opentype'),
+		url('@{icon-font-path}/lussa.ttf?hqu5bo') format('truetype'),
+		url('@{icon-font-path}/lussa.woff?hqu5bo') format('woff'),
+		url('@{icon-font-path}/lussa.svg?hqu5bo#lussa') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+// Lussa Icon Base Style
+.lussaicon-base-style{
+  display: inline-block;
+  font-family: @lussaicon-font-family;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  text-rendering: auto;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// lussa icon mapping
+@lussaicon-var-lussa   : "\e100";
+@lussaicon-var-ui      : "\e902";
+@lussaicon-var-pawang  : "\e903";
+@lussaicon-var-tarsius : "\e900";
+@lussaicon-var-kandang : "\e904";
+
+// base style
+.@{lussaicon-prefix}lussa:before,
+.@{lussaicon-prefix}ui:before,
+.@{lussaicon-prefix}pawang:before,
+.@{lussaicon-prefix}tarsius:before,
+.@{lussaicon-prefix}kandang:before
+{
+  &:extend(.lussaicon-base-style);
+}
+
+// content
+.@{lussaicon-prefix}lussa:before { content: @lussaicon-var-lussa; }
+.@{lussaicon-prefix}ui:before { content: @lussaicon-var-ui; }
+.@{lussaicon-prefix}pawang:before { content: @lussaicon-var-pawang; }
+.@{lussaicon-prefix}tarsius:before { content: @lussaicon-var-tarsius; }
+.@{lussaicon-prefix}kandang:before { content: @lussaicon-var-kandang; }

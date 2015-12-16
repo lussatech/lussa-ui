@@ -3376,6 +3376,50 @@ th {
   content: "\f30c";
 }
 /**
+ * Lussa Icon Set
+ */
+@font-face {
+  font-family: "lussa";
+  src: url('../fonts/lussa.eot?hqu5bo');
+  src: url('../fonts/lussa.eot?hqu5bo#iefix') format('embedded-opentype'), url('../fonts/lussa.ttf?hqu5bo') format('truetype'), url('../fonts/lussa.woff?hqu5bo') format('woff'), url('../fonts/lussa.svg?hqu5bo#lussa') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.lussaicon-base-style,
+.ls-lussa:before,
+.ls-ui:before,
+.ls-pawang:before,
+.ls-tarsius:before,
+.ls-kandang:before,
+.ls {
+  display: inline-block;
+  font-family: "lussa";
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  text-rendering: auto;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.ls-lussa:before {
+  content: "\e100";
+}
+.ls-ui:before {
+  content: "\e902";
+}
+.ls-pawang:before {
+  content: "\e903";
+}
+.ls-tarsius:before {
+  content: "\e900";
+}
+.ls-kandang:before {
+  content: "\e904";
+}
+/**
  * Fonts
  * ## Register custom fonts
  * ==========================================================================
