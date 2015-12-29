@@ -15,165 +15,230 @@
 *
 */
 angular.module('lussa.ui.carousel', [])
-.controller('CarouselController', ['$scope', '$interval', '$animate', function ($scope, $interval, $animate) {
-  var self = this,
-    slides = self.slides = $scope.slides = [],
-    currentIndex = -1,
-    currentInterval, isPlaying;
-  self.currentSlide = null;
+.controller('CarouselController', ['$scope', '$element', '$interval', '$timeout', '$animate', function($scope, $element, $interval, $timeout, $animate) {
+    var self = this,
+      slides = self.slides = $scope.slides = [],
+      SLIDE_DIRECTION = 'ui-slideDirection',
+      currentIndex = -1,
+      currentInterval, isPlaying, bufferedTransitions = [];
+    self.currentSlide = null;
 
-  var destroyed = false;
-  /* direction: "prev" or "next" */
-  self.select = $scope.select = function(nextSlide, direction) {
-    var nextIndex = self.indexOfSlide(nextSlide);
-    //Decide direction if it's not given
-    if (direction === undefined) {
-      direction = nextIndex > self.getCurrentIndex() ? 'next' : 'prev';
-    }
-    //Prevent this user-triggered transition from occurring if there is already one in progress
-    if (nextSlide && nextSlide !== self.currentSlide && !$scope.$currentTransition) {
-      goNext(nextSlide, nextIndex, direction);
-    }
-  };
+    var destroyed = false;
 
-  function goNext(slide, index, direction) {
-    // Scope has been destroyed, stop here.
-    if (destroyed) { return; }
+    self.addSlide = function(slide, element) {
+      slide.$element = element;
+      slides.push(slide);
+      //if this is the first slide or the slide is set to active, select it
+      if (slides.length === 1 || slide.active) {
+        if ($scope.$currentTransition) {
+          $scope.$currentTransition = null;
+        }
 
-    angular.extend(slide, {direction: direction, active: true});
-    angular.extend(self.currentSlide || {}, {direction: direction, active: false});
-    if ($animate.enabled() && !$scope.noTransition && !$scope.$currentTransition &&
-      slide.$element) {
-      $scope.$currentTransition = true;
-      slide.$element.one('$animate:close', function closeFn() {
-        $scope.$currentTransition = null;
+        self.select(slides[slides.length - 1]);
+        if (slides.length === 1) {
+          $scope.play();
+        }
+      } else {
+        slide.active = false;
+      }
+    };
+
+    self.getCurrentIndex = function() {
+      if (self.currentSlide && angular.isDefined(self.currentSlide.index)) {
+        return +self.currentSlide.index;
+      }
+      return currentIndex;
+    };
+
+    self.next = $scope.next = function() {
+      var newIndex = (self.getCurrentIndex() + 1) % slides.length;
+
+      if (newIndex === 0 && $scope.noWrap()) {
+        $scope.pause();
+        return;
+      }
+
+      return self.select(getSlideByIndex(newIndex), 'next');
+    };
+
+    self.prev = $scope.prev = function() {
+      var newIndex = self.getCurrentIndex() - 1 < 0 ? slides.length - 1 : self.getCurrentIndex() - 1;
+
+      if ($scope.noWrap() && newIndex === slides.length - 1) {
+        $scope.pause();
+        return;
+      }
+
+      return self.select(getSlideByIndex(newIndex), 'prev');
+    };
+
+    self.removeSlide = function(slide) {
+      if (angular.isDefined(slide.index)) {
+        slides.sort(function(a, b) {
+          return +a.index > +b.index;
+        });
+      }
+
+      var bufferedIndex = bufferedTransitions.indexOf(slide);
+      if (bufferedIndex !== -1) {
+        bufferedTransitions.splice(bufferedIndex, 1);
+      }
+      //get the index of the slide inside the carousel
+      var index = slides.indexOf(slide);
+      slides.splice(index, 1);
+      $timeout(function() {
+        if (slides.length > 0 && slide.active) {
+          if (index >= slides.length) {
+            self.select(slides[index - 1]);
+          } else {
+            self.select(slides[index]);
+          }
+        } else if (currentIndex > index) {
+          currentIndex--;
+        }
       });
-    }
 
-    self.currentSlide = slide;
-    currentIndex = index;
+      //clean the currentSlide when no more slide
+      if (slides.length === 0) {
+        self.currentSlide = null;
+        clearBufferedTransitions();
+      }
+    };
 
-    //every time you change slides, reset the timer
-    restartTimer();
-  }
+    /* direction: "prev" or "next" */
+    self.select = $scope.select = function(nextSlide, direction) {
+      var nextIndex = $scope.indexOfSlide(nextSlide);
+      //Decide direction if it's not given
+      if (direction === undefined) {
+        direction = nextIndex > self.getCurrentIndex() ? 'next' : 'prev';
+      }
+      //Prevent this user-triggered transition from occurring if there is already one in progress
+      if (nextSlide && nextSlide !== self.currentSlide && !$scope.$currentTransition) {
+        goNext(nextSlide, nextIndex, direction);
+      } else if (nextSlide && nextSlide !== self.currentSlide && $scope.$currentTransition) {
+        bufferedTransitions.push(nextSlide);
+      }
+    };
 
-  $scope.$on('$destroy', function () {
-    destroyed = true;
-  });
+    /* Allow outside people to call indexOf on slides array */
+    $scope.indexOfSlide = function(slide) {
+      return angular.isDefined(slide.index) ? +slide.index : slides.indexOf(slide);
+    };
 
-  function getSlideByIndex(index) {
-    if (angular.isUndefined(slides[index].index)) {
-      return slides[index];
-    }
-    var i, len = slides.length;
-    for (i = 0; i < slides.length; ++i) {
-      if (slides[i].index == index) {
-        return slides[i];
+    $scope.isActive = function(slide) {
+      return self.currentSlide === slide;
+    };
+
+    $scope.pause = function() {
+      if (!$scope.noPause) {
+        isPlaying = false;
+        resetTimer();
+      }
+    };
+
+    $scope.play = function() {
+      if (!isPlaying) {
+        isPlaying = true;
+        restartTimer();
+      }
+    };
+
+    $scope.$on('$destroy', function() {
+      destroyed = true;
+      resetTimer();
+    });
+
+    $scope.$watch('noTransition', function(noTransition) {
+      $animate.enabled($element, !noTransition);
+    });
+
+    $scope.$watch('interval', restartTimer);
+
+    $scope.$watchCollection('slides', resetTransition);
+
+    function clearBufferedTransitions() {
+      while (bufferedTransitions.length) {
+        bufferedTransitions.shift();
       }
     }
-  }
 
-  self.getCurrentIndex = function() {
-    if (self.currentSlide && angular.isDefined(self.currentSlide.index)) {
-      return +self.currentSlide.index;
+    function getSlideByIndex(index) {
+      if (angular.isUndefined(slides[index].index)) {
+        return slides[index];
+      }
+      for (var i = 0, l = slides.length; i < l; ++i) {
+        if (slides[i].index === index) {
+          return slides[i];
+        }
+      }
     }
-    return currentIndex;
-  };
 
-  /* Allow outside people to call indexOf on slides array */
-  self.indexOfSlide = function(slide) {
-    return angular.isDefined(slide.index) ? +slide.index : slides.indexOf(slide);
-  };
+    function goNext(slide, index, direction) {
+      if (destroyed) { return; }
 
-  $scope.next = function() {
-    var newIndex = (self.getCurrentIndex() + 1) % slides.length;
+      angular.extend(slide, {direction: direction, active: true});
+      angular.extend(self.currentSlide || {}, {direction: direction, active: false});
+      if ($animate.enabled($element) && !$scope.$currentTransition &&
+        slide.$element && self.slides.length > 1) {
+        slide.$element.data(SLIDE_DIRECTION, slide.direction);
+        if (self.currentSlide && self.currentSlide.$element) {
+          self.currentSlide.$element.data(SLIDE_DIRECTION, slide.direction);
+        }
 
-    return self.select(getSlideByIndex(newIndex), 'next');
-  };
+        $scope.$currentTransition = true;
+        $animate.on('addClass', slide.$element, function(element, phase) {
+          if (phase === 'close') {
+            $scope.$currentTransition = null;
+            $animate.off('addClass', element);
+            if (bufferedTransitions.length) {
+              var nextSlide = bufferedTransitions.pop();
+              var nextIndex = $scope.indexOfSlide(nextSlide);
+              var nextDirection = nextIndex > self.getCurrentIndex() ? 'next' : 'prev';
+              clearBufferedTransitions();
 
-  $scope.prev = function() {
-    var newIndex = self.getCurrentIndex() - 1 < 0 ? slides.length - 1 : self.getCurrentIndex() - 1;
+              goNext(nextSlide, nextIndex, nextDirection);
+            }
+          }
+        });
+      }
 
-    return self.select(getSlideByIndex(newIndex), 'prev');
-  };
+      self.currentSlide = slide;
+      currentIndex = index;
 
-  $scope.isActive = function(slide) {
-     return self.currentSlide === slide;
-  };
-
-  $scope.$watch('interval', restartTimer);
-  $scope.$on('$destroy', resetTimer);
-
-  function restartTimer() {
-    resetTimer();
-    var interval = +$scope.interval;
-    if (!isNaN(interval) && interval > 0) {
-      currentInterval = $interval(timerFn, interval);
-    }
-  }
-
-  function resetTimer() {
-    if (currentInterval) {
-      $interval.cancel(currentInterval);
-      currentInterval = null;
-    }
-  }
-
-  function timerFn() {
-    var interval = +$scope.interval;
-    if (isPlaying && !isNaN(interval) && interval > 0) {
-      $scope.next();
-    } else {
-      $scope.pause();
-    }
-  }
-
-  $scope.play = function() {
-    if (!isPlaying) {
-      isPlaying = true;
+      //every time you change slides, reset the timer
       restartTimer();
     }
-  };
-  $scope.pause = function() {
-    if (!$scope.noPause) {
-      isPlaying = false;
+
+    function resetTimer() {
+      if (currentInterval) {
+        $interval.cancel(currentInterval);
+        currentInterval = null;
+      }
+    }
+
+    function resetTransition(slides) {
+      if (!slides.length) {
+        $scope.$currentTransition = null;
+        clearBufferedTransitions();
+      }
+    }
+
+    function restartTimer() {
       resetTimer();
-    }
-  };
-
-  self.addSlide = function(slide, element) {
-    slide.$element = element;
-    slides.push(slide);
-    //if this is the first slide or the slide is set to active, select it
-    if(slides.length === 1 || slide.active) {
-      self.select(slides[slides.length-1]);
-      if (slides.length == 1) {
-        $scope.play();
+      var interval = +$scope.interval;
+      if (!isNaN(interval) && interval > 0) {
+        currentInterval = $interval(timerFn, interval);
       }
-    } else {
-      slide.active = false;
     }
-  };
 
-  self.removeSlide = function(slide) {
-    if (angular.isDefined(slide.index)) {
-      slides.sort(function(a, b) {
-        return +a.index > +b.index;
-      });
-    }
-    //get the index of the slide inside the carousel
-    var index = slides.indexOf(slide);
-    slides.splice(index, 1);
-    if (slides.length > 0 && slide.active) {
-      if (index >= slides.length) {
-        self.select(slides[index-1]);
+    function timerFn() {
+      var interval = +$scope.interval;
+      if (isPlaying && !isNaN(interval) && interval > 0 && slides.length) {
+        $scope.next();
       } else {
-        self.select(slides[index]);
+        $scope.pause();
       }
-    } else if (currentIndex > index) {
-      currentIndex--;
     }
-  };
 
 }])
 
@@ -217,23 +282,31 @@ angular.module('lussa.ui.carousel', [])
  */
 .directive('carousel', [function() {
   return {
-    restrict: 'EA',
     transclude: true,
     replace: true,
     controller: 'CarouselController',
     require: 'carousel',
     template: '<div ng-mouseenter="pause()" ng-mouseleave="play()" class="carousel" ng-swipe-right="prev()" ng-swipe-left="next()">'+
-      '    <ol class="carousel-indicators" ng-show="slides.length > 1">'+
-      '        <li ng-repeat="slide in slides | orderBy:\'index\' track by $index" ng-class="{active: isActive(slide)}" ng-click="select(slide)"></li>'+
-      '    </ol>'+
-      '    <div class="carousel-inner" ng-transclude></div>'+
-      '    <a class="left carousel-control" ng-click="prev()" ng-show="slides.length > 1"><span class="icon icon-chevron-left"></span></a>'+
-      '    <a class="right carousel-control" ng-click="next()" ng-show="slides.length > 1"><span class="icon icon-chevron-right"></span></a>'+
-      '</div>',
+        '  <div class="carousel-inner" ng-transclude></div>'+
+        '  <a role="button" href class="left carousel-control" ng-click="prev()" ng-show="slides.length > 1">'+
+        '    <span aria-hidden="true" class="icon icon-chevron-left"></span>'+
+        '    <span class="sr-only">previous</span>'+
+        '  </a>'+
+        '  <a role="button" href class="right carousel-control" ng-click="next()" ng-show="slides.length > 1">'+
+        '    <span aria-hidden="true" class="icon icon-chevron-right"></span>'+
+        '    <span class="sr-only">next</span>'+
+        '  </a>'+
+        '  <ol class="carousel-indicators" ng-show="slides.length > 1">'+
+        '    <li ng-repeat="slide in slides | orderBy:indexOfSlide track by $index" ng-class="{ active: isActive(slide) }" ng-click="select(slide)">'+
+        '      <span class="sr-only">slide {{ $index + 1 }} of {{ slides.length }}<span ng-if="isActive(slide)">, currently active</span></span>'+
+        '    </li>'+
+        '  </ol>'+
+        '</div>',
     scope: {
       interval: '=',
       noTransition: '=',
-      noPause: '='
+      noPause: '=',
+      noWrap: '&'
     }
   };
 }])
@@ -283,7 +356,6 @@ function CarouselDemoCtrl($scope) {
 .directive('slide', function() {
   return {
     require: '^carousel',
-    restrict: 'EA',
     transclude: true,
     replace: true,
     template: '<div ng-class="{'+
@@ -291,6 +363,7 @@ function CarouselDemoCtrl($scope) {
       '  }" class="item text-center" ng-transclude></div>',
     scope: {
       active: '=?',
+      actual: '=?',
       index: '=?'
     },
     link: function (scope, element, attrs, carouselCtrl) {
@@ -309,56 +382,56 @@ function CarouselDemoCtrl($scope) {
   };
 })
 
-.animation('.item', [
-         '$animate',
-function ($animate) {
-  return {
-    beforeAddClass: function (element, className, done) {
-      // Due to transclusion, noTransition property is on parent's scope
-      if (className == 'active' && element.parent() &&
-          !element.parent().scope().noTransition) {
-        var stopped = false;
-        var direction = element.isolateScope().direction;
-        var directionClass = direction == 'next' ? 'left' : 'right';
-        element.addClass(direction);
-        $animate.addClass(element, directionClass).then(function () {
-          if (!stopped) {
-            element.removeClass(directionClass + ' ' + direction);
-          }
-          done();
-        });
+.animation('.item', ['$animateCss',
+function($animateCss) {
+  var SLIDE_DIRECTION = 'ui-slideDirection';
 
-        return function () {
+  function removeClass(element, className, callback) {
+    element.removeClass(className);
+    if (callback) {
+      callback();
+    }
+  }
+
+  return {
+    beforeAddClass: function(element, className, done) {
+      if (className === 'active') {
+        var stopped = false;
+        var direction = element.data(SLIDE_DIRECTION);
+        var directionClass = direction === 'next' ? 'left' : 'right';
+        var removeClassFn = removeClass.bind(this, element,
+          directionClass + ' ' + direction, done);
+        element.addClass(direction);
+
+        $animateCss(element, {addClass: directionClass})
+          .start()
+          .done(removeClassFn);
+
+        return function() {
           stopped = true;
         };
       }
       done();
     },
     beforeRemoveClass: function (element, className, done) {
-      // Due to transclusion, noTransition property is on parent's scope
-      if (className == 'active' && element.parent() &&
-          !element.parent().scope().noTransition) {
+      if (className === 'active') {
         var stopped = false;
-        var direction = element.isolateScope().direction;
-        var directionClass = direction == 'next' ? 'left' : 'right';
-        $animate.addClass(element, directionClass).then(function () {
-          if (!stopped) {
-            element.removeClass(directionClass);
-          }
-          done();
-        });
-        return function () {
+        var direction = element.data(SLIDE_DIRECTION);
+        var directionClass = direction === 'next' ? 'left' : 'right';
+        var removeClassFn = removeClass.bind(this, element, directionClass, done);
+
+        $animateCss(element, {addClass: directionClass})
+          .start()
+          .done(removeClassFn);
+
+        return function() {
           stopped = true;
         };
       }
       done();
     }
   };
-
-}])
-
-
-;
+}]);
 
 // Source: js/collapse.js
 /**
