@@ -35,7 +35,6 @@ angular.module('lussa.ui.offcanvas', [])
         }
 
         function onCanvasDone() {
-            $log.info('on canvas done');
         }
 
         function offCanvas() {
@@ -48,7 +47,6 @@ angular.module('lussa.ui.offcanvas', [])
         }
 
         function offCanvasDone() {
-            $log.info('off canvas done');
         }
 
         // init
@@ -64,8 +62,6 @@ angular.module('lussa.ui.offcanvas', [])
 
         // watch scope
         scope.$watch('offcanvas', function (shouldOffCanvas) {
-            $log.info('should off canvas?');
-            $log.info(shouldOffCanvas);
             if (shouldOffCanvas) {
                 offCanvas();
             } else {

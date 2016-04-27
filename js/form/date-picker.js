@@ -653,6 +653,7 @@ function ($log, $document, $filter){
             if (attrs.label) {
                 label.html(attrs.label);
             }else{
+                element.find('.date-display').removeClass('form-group');
                 label.remove();
             }
 

@@ -1,6 +1,6 @@
 /*!
  * lussa-ui v0.0.1 (http://git.lussa.net/tarsius/tarsius-ui)
- * Copyright 2014-2015 Muhammad Hasan
+ * Copyright 2014-2016 Muhammad Hasan
  * Licensed under MIT
  */
 
@@ -1957,6 +1957,7 @@ function ($log, $document, $filter){
             if (attrs.label) {
                 label.html(attrs.label);
             }else{
+                element.find('.date-display').removeClass('form-group');
                 label.remove();
             }
 
@@ -5548,7 +5549,6 @@ angular.module('lussa.ui.offcanvas', [])
         }
 
         function onCanvasDone() {
-            $log.info('on canvas done');
         }
 
         function offCanvas() {
@@ -5561,7 +5561,6 @@ angular.module('lussa.ui.offcanvas', [])
         }
 
         function offCanvasDone() {
-            $log.info('off canvas done');
         }
 
         // init
@@ -5577,8 +5576,6 @@ angular.module('lussa.ui.offcanvas', [])
 
         // watch scope
         scope.$watch('offcanvas', function (shouldOffCanvas) {
-            $log.info('should off canvas?');
-            $log.info(shouldOffCanvas);
             if (shouldOffCanvas) {
                 offCanvas();
             } else {
