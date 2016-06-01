@@ -14,7 +14,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test",
+    "start": "grunt serve",
+    "build": "grunt build"
   },
   "engines": {
     "node": ">=0.10.1"

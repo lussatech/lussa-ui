@@ -122,8 +122,17 @@ function ($log, $document, $filter){
         };
 
         function link (scope, element, attrs, model) {
-
             scope.attrs = attrs;
+
+            // hide on blur
+            angular.element('body').on('click', function(event){
+                var isBlur = _.some(angular.element(event.target).parents(), function(el){
+                    return el.classList.contains('ui-date-picker');
+                });
+
+                if(!isBlur && scope.showPicker === true && scope.autohide)
+                    scope.hide(true);
+            });
 
             // update external representation when internal value change
             model.$formatters.unshift(function (date) {
@@ -228,14 +237,13 @@ function ($log, $document, $filter){
                 // update date model through its scope
                 scope.$apply(function() {
                     scope.ngModel = date;
-                }
-            );
-            model.$setTouched();
-            if (scope.autohide) scope.hide(true);
+                });
+                model.$setTouched();
+                if (scope.autohide) scope.hide(true);
 
-            // if a callback defined call it now
-            if (scope.callback) scope.callback (date, scope.pickerid);
-        };
+                // if a callback defined call it now
+                if (scope.callback) scope.callback (date, scope.pickerid);
+            };
 
 
         // If start/end date is provided this will display or not corresponding arrows
@@ -439,83 +447,86 @@ function ($log, $document, $filter){
             // search for closest element by tag to find which one was clicked
             var closestElemNg = scope.closest(angelem, ['SPAN','TD','TH']);
 
+            if(!closestElemNg)
+                return;
+
             switch(closestElemNg[0].tagName) {
                 case 'TH':
-                if (closestElemNg.hasClass ('date-switch')) {
-                    scope.showMode(1);
-                }
+                    if (closestElemNg.hasClass ('date-switch')) {
+                        scope.showMode(1);
+                    }
 
-                if (closestElemNg.hasClass ('prev') || closestElemNg.hasClass ('next')) {
+                    if (closestElemNg.hasClass ('prev') || closestElemNg.hasClass ('next')) {
 
-                    var dir = DPGlobal.modes[scope.viewMode].navStep * (closestElemNg.hasClass ('prev') ? -1 : 1);
-                    switch (scope.viewMode) {
-                        case 0:
-                        scope.viewDate = scope.moveMonth(scope.viewDate, dir);
-                        break;
-                        case 1:
-                        case 2:
-                        scope.viewDate = scope.moveYear(scope.viewDate, dir);
+                        var dir = DPGlobal.modes[scope.viewMode].navStep * (closestElemNg.hasClass ('prev') ? -1 : 1);
+                        switch (scope.viewMode) {
+                            case 0:
+                            scope.viewDate = scope.moveMonth(scope.viewDate, dir);
+                            break;
+                            case 1:
+                            case 2:
+                            scope.viewDate = scope.moveYear(scope.viewDate, dir);
+                            break;
+                        }
+                        scope.fill();
+                    } else if (closestElemNg.hasClass ('today')) {
+                        // select current day and force picker closing
+                        scope.setDate();
+                        if (scope.autohide) scope.hide(true);
                         break;
                     }
-                    scope.fill();
-                } else if (closestElemNg.hasClass ('today')) {
-                    // select current day and force picker closing
-                    scope.setDate();
-                    if (scope.autohide) scope.hide(true);
-                    break;
-                }
 
                 break;
 
                 case 'SPAN':
-                if (!closestElemNg.hasClass('disabled')) {
-                    if (closestElemNg.hasClass('month')) {
-                        var months = closestElemNg.parent().find('span');
-                        for (var idx=0; idx < months.length; idx++) {
-                            if (closestElemNg.text() === months.eq(idx).text()) {
-                                scope.viewDate.setMonth(idx);
-                                break;
+                    if (!closestElemNg.hasClass('disabled')) {
+                        if (closestElemNg.hasClass('month')) {
+                            var months = closestElemNg.parent().find('span');
+                            for (var idx=0; idx < months.length; idx++) {
+                                if (closestElemNg.text() === months.eq(idx).text()) {
+                                    scope.viewDate.setMonth(idx);
+                                    break;
+                                }
                             }
-                        }
 
-                    } else {
-                        var year = parseInt(closestElemNg.text(), 10)||0;
-                        scope.viewDate.setFullYear(year);
+                        } else {
+                            var year = parseInt(closestElemNg.text(), 10)||0;
+                            scope.viewDate.setFullYear(year);
+                        }
+                        scope.showMode(-1);
+                        scope.fill();
                     }
-                    scope.showMode(-1);
-                    scope.fill();
-                }
                 break;
 
                 case 'TD':
-                if (closestElemNg.hasClass('day') && !closestElemNg.hasClass('disabled')){
+                    if (closestElemNg.hasClass('day') && !closestElemNg.hasClass('disabled')){
 
-                    var day   = parseInt(closestElemNg.text(), 10)||1;
-                    var year  = scope.viewDate.getFullYear(),
-                    month = scope.viewDate.getMonth();
-                    if (closestElemNg.hasClass('old')) {
-                        if (month === 0) {
-                            month = 11;
-                            year -= 1;
-                        } else {
-                            month -= 1;
+                        var day   = parseInt(closestElemNg.text(), 10)||1;
+                        var year  = scope.viewDate.getFullYear(),
+                        month = scope.viewDate.getMonth();
+                        if (closestElemNg.hasClass('old')) {
+                            if (month === 0) {
+                                month = 11;
+                                year -= 1;
+                            } else {
+                                month -= 1;
+                            }
+                        } else if (closestElemNg.hasClass('new')) {
+                            if (month === 11) {
+                                month = 0;
+                                year += 1;
+                            } else {
+                                month += 1;
+                            }
                         }
-                    } else if (closestElemNg.hasClass('new')) {
-                        if (month === 11) {
-                            month = 0;
-                            year += 1;
-                        } else {
-                            month += 1;
-                        }
+                        scope.setDate( new Date (year, month, day,0,0,0,0));
                     }
-                    scope.setDate( new Date (year, month, day,0,0,0,0));
-                }
-                break;
+                    break;
             }
         };
 
         // Minimal keystroke handling to close picker with ESC
-        scope.keydown=  function(e){
+        scope.keydown = function(e){
             switch(e.keyCode){
                 case 27: // escape
                 case 13: // enter
