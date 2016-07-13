@@ -6,10 +6,10 @@
   "homepage": "http://git.lussa.net/tarsius/tarsius-ui",
   "repository": {
     "type": "git",
-    "url": "http://git.lussa.net/tarsius/tarsius-ui"
+    "url": "https://github.com/lussatech/lussa-ui"
   },
   "bugs": {
-    "url": "http://git.lussa.net/tarsius/tarsius-ui/issues"
+    "url": "https://github.com/lussatech/lussa-ui/issues"
   },
   "license": "MIT",
   "private": true,

@@ -9,11 +9,10 @@ description: > # Responsive, Mobile-First, Front-End Frameworks for Angular-Base
 
 # Server
 baseurl: "/"
-url: "http://tarsius-ui.lussa.net"
+url: "http://ui.lussa.net"
 source: "docs"
 destination: "docs/_site"
 
 # Custom Site Vars
 current_version:  0.0.1
-repo: http://git.lussa.net/tarsius/tarsius-ui.git
-
+repo: https://github.com/lussatech/lussa-ui.git

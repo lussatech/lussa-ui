@@ -1,4 +1,4 @@
-# Lussa UI
+# ![lussa ui](https://raw.githubusercontent.com/lussatech/lussa-ui/master/lussa-ui.png "Lussa UI") Lussa UI
 
 ----------
 
