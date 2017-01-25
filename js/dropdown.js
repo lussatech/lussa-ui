@@ -49,6 +49,7 @@ dropDown.directive('dropdown', ['$log','$animate', function($log){
             function close_menu(){
                 opened = false;
                 content.removeClass('open');
+                toggler.removeClass('open');
                 // callback
                 scope.onOpen(element);
             }
@@ -60,6 +61,7 @@ dropDown.directive('dropdown', ['$log','$animate', function($log){
             function open_menu(){
                 opened = true;
                 content.addClass('open');
+                toggler.addClass('open');
                 // callback
                 scope.onClose(element);
             }
