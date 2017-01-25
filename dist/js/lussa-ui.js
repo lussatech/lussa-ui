@@ -1,5 +1,5 @@
 /*!
- * lussa-ui v1.0.0 (http://git.lussa.net/tarsius/tarsius-ui)
+ * lussa-ui v1.0.1 (http://git.lussa.net/tarsius/tarsius-ui)
  * Copyright 2014-2017 Muhammad Hasan
  * Licensed under MIT
  */
@@ -540,6 +540,7 @@ dropDown.directive('dropdown', ['$log','$animate', function($log){
             function close_menu(){
                 opened = false;
                 content.removeClass('open');
+                wrapper.removeClass('open');
                 // callback
                 scope.onOpen(element);
             }
@@ -551,6 +552,7 @@ dropDown.directive('dropdown', ['$log','$animate', function($log){
             function open_menu(){
                 opened = true;
                 content.addClass('open');
+                wrapper.addClass('open');
                 // callback
                 scope.onClose(element);
             }
