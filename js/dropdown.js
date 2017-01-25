@@ -18,7 +18,7 @@
 
 var dropDown = angular.module('lussa.ui.dropdown',[]);
 
-dropDown.directive('dropdown', ['$log', function($log){
+dropDown.directive('dropdown', ['$log','$animate', function($log){
     var SPEED_DEFAULT = 500,
         EASING_DEFAULT = 'easeOutExpo';
 
@@ -28,33 +28,19 @@ dropDown.directive('dropdown', ['$log', function($log){
             'isOpen': '@',
             'onOpen': '&',
             'onClose': '&',
-            'openEasing': '@',
-            'openSpeed': '@',
-            'closeEasing': '@',
-            'closeSpeed': '@',
+            'enableAnimation': '@',
             'toggleByHover': '@'
         },
         restrict: 'AEC',
         link: function(scope, element, attrs, controller) {
             // init vars
-            var opened = attrs.isOpen || false,
+            var opened = scope.isOpen || false,
                 wrapper = element,
                 toggler = element.find('.dropdown-toggle, a:first, .button:first, button:first'),
-                content = element.find('.dropdown-content, .dropdown-menu'),
-                fx = {
-                    open: {
-                        speed: attrs.openSpeed || SPEED_DEFAULT,
-                        easing: attrs.openEasing || EASING_DEFAULT,
-                    },
-                    close: {
-                        speed: attrs.closeSpeed || SPEED_DEFAULT,
-                        easing: attrs.closeEasing || EASING_DEFAULT,
-                    }
-                };
+                content = element.find('.dropdown-content, .dropdown-menu');
 
             // default state
-            if(opened)
-                content.show();
+            if(opened) open_menu();
 
             /**
              * [close_menu description]
@@ -62,10 +48,7 @@ dropDown.directive('dropdown', ['$log', function($log){
              */
             function close_menu(){
                 opened = false;
-                content.slideUp(fx.open.speed, fx.open.easing, function(){
-                    wrapper.removeClass('open');
-                });
-
+                content.removeClass('open');
                 // callback
                 scope.onOpen(element);
             }
@@ -76,9 +59,7 @@ dropDown.directive('dropdown', ['$log', function($log){
              */
             function open_menu(){
                 opened = true;
-                content.slideDown(fx.close.speed, fx.close.easing);
-                wrapper.addClass('open');
-
+                content.addClass('open');
                 // callback
                 scope.onClose(element);
             }
@@ -107,6 +88,9 @@ dropDown.directive('dropdown', ['$log', function($log){
                 });
             }
 
+            toggler.on('blur', function(e){
+                close_menu();
+            });
         }
     };
 }]);

@@ -1,7 +1,7 @@
 {
     "name": "lussa-ui",
     "description": "Responsive, Mobile-First, Front-End Frameworks for Angular-Based App on Lussa Team",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "homepage": "http://git.lussa.net/tarsius/lussa-ui",
     "license": "MIT",
     "main": [
