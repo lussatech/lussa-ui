@@ -89,10 +89,6 @@ dropDown.directive('dropdown', ['$log','$animate', function($log){
                     }
                 });
             }
-
-            toggler.on('blur', function(e){
-                close_menu();
-            });
         }
     };
 }]);
